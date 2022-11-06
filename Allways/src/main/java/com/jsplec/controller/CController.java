@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerReviewListCommand;
 import com.jsplec.manager.command.CManagerCommand;
+import com.jsplec.manager.command.CManagerMainCommand;
 
 /**
  * Servlet implementation class controller
@@ -82,7 +83,11 @@ public class CController extends HttpServlet {
 //		오수
 		
 //		유승
-		
+		case("/Manager/managerMain.do"):
+			managercommand=new CManagerMainCommand();
+			managercommand.execute(request, response);
+			viewPage = "managermain.jsp";
+			break;
 //		태권
 		
 		case("/Manager/managerLoginPage.do"):
@@ -93,9 +98,7 @@ public class CController extends HttpServlet {
 		viewPage = "managerMain.do";
 		break;
 		
-		case("/Manager/managerMain.do"):
-		viewPage = "managerMain.jsp";
-		break;
+		
 		
 		}
 		

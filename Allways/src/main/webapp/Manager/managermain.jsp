@@ -26,9 +26,11 @@
 					<th>주문량</th>
 					<th>매출</th>
 				</tr>
-				<c:forEach var="cnt" begin="1" end="10">
+				<c:forEach var="cnt" items="${SALESDTO }" begin="1" end="10">
 					<tr>
-						<td>2022-10-05</td><td>5</td><td><fmt:formatNumber value="1000" type="currency"/></td>
+						<td>${SALESDTO.ordersdate }</td>
+						<td>${SALESDTO.ordersquantity }</td>
+						<td><fmt:formatNumber value="${SALESDTO.ordersdate }" type="currency"/></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -66,9 +68,11 @@
 					<th>주문량</th>
 					<th>매출</th>
 				</tr>
-				<c:forEach var="cnt" begin="1" end="10">
+				<c:forEach var="cnt" items="${SALESDTO }" begin="1" end="10">
 					<tr>
-						<td>2022-10-05</td><td>5</td><td><fmt:formatNumber value="1000" type="currency"/></td>
+						<td>${SALESDTO.ordersdate }</td>
+						<td>${SALESDTO.ordersquantity }</td>
+						<td><fmt:formatNumber value="${SALESDTO.ordersdate }" type="currency"/></td>
 					</tr>
 				</c:forEach>
 			</table>
