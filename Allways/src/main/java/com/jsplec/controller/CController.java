@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jsplec.customer.command.CCustomerCommand;
+import com.jsplec.customer.command.CCustomerReviewListCommand;
 import com.jsplec.manager.command.CManagerCommand;
 
 /**
@@ -72,7 +73,12 @@ public class CController extends HttpServlet {
 		break;
 		
 //		한별
-		
+		// 리뷰 리스트 출력
+		case("/Customer/customerOrdersReview.do"):
+			customercommand = new CCustomerReviewListCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerOrderReview.jsp";
+			break;
 //		오수
 		
 //		유승
