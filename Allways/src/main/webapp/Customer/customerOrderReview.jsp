@@ -62,7 +62,7 @@ crossorigin="anonymous">
 
 <script type="text/javascript">
 
-function review() {
+function review(event) {
 	var form = document.radioButton;
 	form.method = "post";
 	form.action = "customerOrdersReview.do";
