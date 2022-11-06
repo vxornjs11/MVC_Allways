@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jsplec.customer.command.CCustomerCommand;
+import com.jsplec.customer.command.CCustomerLoginCommand;
 import com.jsplec.customer.command.CCustomerReviewListCommand;
 import com.jsplec.manager.command.CManagerCommand;
 import com.jsplec.manager.command.CManagerMainCommand;
@@ -61,12 +62,17 @@ public class CController extends HttpServlet {
 		switch(com) {
 		
 //		예진
-		case("/Customer/customerMain.do"):
-		viewPage = "customerMain.jsp";
+		case("/Customer/customerLogin.do"):
+			customercommand = new CCustomerLoginCommand();
+			if(customercommand.execute2(request, response)==true) {
+				viewPage = "customerMain.do";
+			}else {
+				viewPage = "customerLogin.jsp";
+			}
 		break;
 		
-		case("/Customer/customerLogin.do"):
-		viewPage = "customerMain.do";
+		case("/Customer/customerMain.do"):
+		viewPage = "customerMain.jsp";
 		break;
 		
 		case("/Customer/customerJoin.do"):
