@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>케이크 추가</title>
+<title>케이크 관리</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
 <style>
@@ -37,7 +37,7 @@ div{
 <body>
 <div align="center">
 <form action="#" method="post">
-	<h1 style="margin-bottom:3%;margin-top:3%"><b>케이크 추가</b></h1>
+	<h1 style="margin-bottom:3%;margin-top:3%"><b>케이크 관리</b></h1>
 	<div style="display: inline-block;width:60%">
 		<div align="left" style="width:20%;display:inline-block">
 			케이크 이름
@@ -47,7 +47,7 @@ div{
 				<input type="text" name="menuname" class="form-control" style="border-color:#fdcdcd">
 			</div>
 			<div style="display:inline-block">
-				<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="중복체크">
+				<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="중복체크">
 			</div>
 		</div>
 		<div align="left" style="width:20%;display:inline-block">
@@ -100,13 +100,15 @@ div{
 			사진 미리보기
 		</div>
 		<div>
-			<img src="" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
+			<img src="" height="200" width="200" style="display:block;margin:20px;border-radius:10px">
 		</div>
 		<div>
-			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="취소">
-			<input type="submit" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="추가">
+			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="취소">
+			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="삭제">
+			<input type="submit" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="수정">
 		</div>
 	</div>
+
 </form>
 </div>
 </body>

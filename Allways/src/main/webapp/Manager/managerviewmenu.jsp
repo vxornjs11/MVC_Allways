@@ -17,10 +17,10 @@
 	<form action="#">
 		<div align="center" style="margin-bottom:10px;padding:5px;width:90%">
 			<div style="width:20%;display:inline-block" align="left">
-				<input type="text" size="1" class="form-control" name="query">
+				<input type="text" size="1" class="form-control" name="query" style="border-color:#a87878">
 			</div>
 			<div style="width:25%;display:inline-block" align="left">
-				<input type="submit" class="btn btn-primary" style="background:#fdcdcd;border-color:#a87878;color:#a87878" value="검색">
+				<input type="submit" class="btn btn-primary" style="background:#ffffff;border-color:#a87878;color:#a87878" value="검색">
 			</div>
 			<div style="width:50%;display:inline-block" align="right">
 				<span style="font-size:1.2em">총 7건</span>
