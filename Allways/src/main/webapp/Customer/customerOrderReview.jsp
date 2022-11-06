@@ -39,7 +39,7 @@ crossorigin="anonymous">
 	border-radius: 70px;
 	}
 
-#button {
+#write_button {
 
 	width: 115px;
 	height: 45px;
@@ -58,8 +58,30 @@ crossorigin="anonymous">
 	height: 55px;
 	
 	background: #FBEAEA;
-	border: 3px solid #FBEAEA;
+	border: 0.7px solid #000000;
 	border-radius: 70px;
+
+}
+
+#search_button {
+
+	box-sizing: border-box;
+	width: 73px;
+	height: 35px;
+	font-family: 'Baloo Tammudu 2';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 32px;
+	align-items: center;
+	text-align: center;
+	color: #766262;
+
+	width: 60px;
+	height: 25px;
+	background: #FBEAEA;
+	border: 0.7px solid #000000;
+	border-radius: 30px;
 
 }
 
@@ -86,7 +108,7 @@ crossorigin="anonymous">
 				<div class="form-check">
 					<tr>
 						<td>
-							<button id="button">Write Review</button>
+							<button id="write_button">Write Review</button>
 							
 							<input class="form-check-input" type="radio" name="flexRadioDefault" id="labelClick1" checked>
  							<label class="form-check-label" for="labelClick1">
@@ -100,12 +122,12 @@ crossorigin="anonymous">
 							
 							<input class="form-check-input" type="radio" name="flexRadioDefault" id="labelClick3">
 							<label class="form-check-label" for="labelClick3">
-							 &nbsp;Like
+							&nbsp;Like
 							</label>
 						</td>
 						
-						<td><input type = "text" name = "" size = "20"></td>
-						<td><button id="button">Search</button></td>
+						<td><input type = "text" name = "" size = "20"> &nbsp;</td>
+						<td><button id="search_button">Search</button></td>
 					</tr>
 				</div>
 				
