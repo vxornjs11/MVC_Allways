@@ -13,87 +13,87 @@
 <body>
 <fmt:setLocale value="ko_kr"/>
 <div align="center">
-<h1 style="margin-bottom:3%;margin-top:3%"><b>Manager Main</b></h1>
-<div class="main">
-<h2 class="inner">최근 매출</h2>
-<div align="right" style="margin:1px">
-최근 5건
-</div>
-<div class="inner">
-<table class="table table-striped">
-<tr>
-<th>날짜</th>
-<th>주문량</th>
-<th>매출</th>
-</tr>
-<c:forEach var="cnt" begin="1" end="5">
-<tr>
-<td>2022-10-05</td><td>5</td><td><fmt:formatNumber value="1000" type="currency"/></td>
-</tr>
-</c:forEach>
-</table>
-</div>
-</div>
-<div class="main">
-<h2 class="inner">미답변 문의</h2>
-<div align="right" style="margin:1px">
-최근 5건
-</div>
-<div class="inner">
-<table class="table table-striped">
-<tr>
-<th>날짜</th>
-<th>주문량</th>
-<th>매출</th>
-</tr>
-<c:forEach var="cnt" begin="1" end="5">
-<tr>
-<td>2022-10-05</td><td>5</td><td>100000</td>
-</tr>
-</c:forEach>
-</table>
-</div>
-</div>
-<div class="main">
-<h2 class="inner">최근 주문 건수</h2>
-<div align="right" style="margin:1px">
-최근 5건
-</div>
-<div class="inner">
-<table class="table table-striped">
-<tr>
-<th>날짜</th>
-<th>주문량</th>
-<th>매출</th>
-</tr>
-<c:forEach var="cnt" begin="1" end="5">
-<tr>
-<td>2022-10-05</td><td>5</td><td><fmt:formatNumber value="1000" type="currency"/></td>
-</tr>
-</c:forEach>
-</table>
-</div>
-</div>
-<div class="main">
-<h2 class="inner">오늘의 리뷰</h2>
-<div align="right" style="margin:1px">
-최근 5건
-</div>
-<div class="inner">
-<table class="table table-striped">
-<tr>
-<th>날짜</th>
-<th>주문량</th>
-<th>매출</th>
-</tr>
-<c:forEach var="cnt" begin="1" end="5">
-<tr>
-<td>2022-10-05</td><td>5</td><td>100000</td>
-</tr>
-</c:forEach>
-</table>
-</div>
-</div>
+	<h1 style="margin-bottom:3%;margin-top:3%"><b>Manager Main</b></h1>
+	<div class="main">
+		<h2 class="inner">최근 매출</h2>
+		<div align="right" style="margin:1px">
+			<a href="#" class="viewall">전체보기</a>
+		</div>
+		<div class="inner">
+			<table class="table">
+				<tr>
+					<th>날짜</th>
+					<th>주문량</th>
+					<th>매출</th>
+				</tr>
+				<c:forEach var="cnt" begin="1" end="10">
+					<tr>
+						<td>2022-10-05</td><td>5</td><td><fmt:formatNumber value="1000" type="currency"/></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
+	<div class="main">
+		<h2 class="inner">미답변 문의</h2>
+		<div align="right" style="margin:1px">
+			<a href="#" class="viewall">전체보기</a>
+		</div>
+		<div class="inner">
+			<table class="table">
+				<tr>
+					<th>날짜</th>
+					<th>작성자</th>
+					<th>제목</th>
+				</tr>
+				<c:forEach var="cnt" begin="1" end="10">
+					<tr>
+						<td>2022-10-05</td><td>5</td><td>100000</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
+	<div class="main">
+		<h2 class="inner">최근 주문 건수</h2>
+		<div align="right" style="margin:1px">
+			<a href="#" class="viewall">전체보기</a>
+		</div>
+		<div class="inner">
+			<table class="table">
+				<tr>
+					<th>날짜</th>
+					<th>주문량</th>
+					<th>매출</th>
+				</tr>
+				<c:forEach var="cnt" begin="1" end="10">
+					<tr>
+						<td>2022-10-05</td><td>5</td><td><fmt:formatNumber value="1000" type="currency"/></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
+	<div class="main">
+		<h2 class="inner">최근 리뷰</h2>
+		<div align="right" style="margin:1px">
+			<a href="#" class="viewall">전체보기</a>
+		</div>
+		<div class="inner">
+			<table class="table">
+				<tr>
+					<th>날짜</th>
+					<th>작성자</th>
+					<th>제목</th>
+				</tr>
+				<c:forEach var="cnt" begin="1" end="10">
+					<tr>
+						<td>2022-10-05</td><td>5</td><td>100000</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
 </div>
 </body>
 </html>

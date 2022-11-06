@@ -28,7 +28,7 @@
 		</div>
 	</form>
 	<div class="tablediv">
-		<table class="table table-striped">
+		<table class="table">
 			<tr>
 				<th>메뉴번호</th>
 				<th>이름</th>
