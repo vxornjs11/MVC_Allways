@@ -1,6 +1,7 @@
 package com.jsplec.customer.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class CCustomerReviewListDao {
 		}
 	}
 	
-	public ArrayList<CCustomerReviewListDto> cartList() {
+	public ArrayList<CCustomerReviewListDto> reviewList(String radio) {
 		
 		ArrayList<CCustomerReviewListDto> dtos = new ArrayList<CCustomerReviewListDto>();
 		
@@ -35,7 +36,9 @@ public class CCustomerReviewListDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query1 = "";
+			String query1 = "select oreviewId, or_customerId, oreviewContent, oreviewInitdate from ordersreview order by " + radio + " desc";
+			
+			System.out.println(query1);
 			
 			preparedStatement = connection.prepareStatement(query1);
 			
@@ -43,7 +46,12 @@ public class CCustomerReviewListDao {
 			
 			while(rs.next()) {
 
-				CCustomerReviewListDto dto = new CCustomerReviewListDto();
+				int oreviewId = rs.getInt(1);
+				String or_customerId = rs.getString(2);
+				String oreviewContent = rs.getString(3);
+				Date oreviewInitdate = rs.getDate(4);
+				
+				CCustomerReviewListDto dto = new CCustomerReviewListDto(oreviewId, or_customerId, oreviewContent, oreviewInitdate);
 				dtos.add(dto);
 			}
 			

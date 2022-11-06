@@ -5,7 +5,7 @@ import java.sql.Date;
 public class CCustomerReviewListDto {
 
 	int oreviewId;
-	String d_customerId;
+	String or_customerId;
 	String oreviewContent;
 	Date oreviewInitdate;
 	
@@ -15,13 +15,15 @@ public class CCustomerReviewListDto {
 
 	
 	
-	public CCustomerReviewListDto(int oreviewId, String d_customerId, String oreviewContent, Date oreviewInitdate) {
+	
+	public CCustomerReviewListDto(int oreviewId, String or_customerId, String oreviewContent, Date oreviewInitdate) {
 		super();
 		this.oreviewId = oreviewId;
-		this.d_customerId = d_customerId;
+		this.or_customerId = or_customerId;
 		this.oreviewContent = oreviewContent;
 		this.oreviewInitdate = oreviewInitdate;
 	}
+
 
 
 
@@ -33,12 +35,12 @@ public class CCustomerReviewListDto {
 		this.oreviewId = oreviewId;
 	}
 
-	public String getD_customerId() {
-		return d_customerId;
+	public String getOr_customerId() {
+		return or_customerId;
 	}
 
-	public void setD_customerId(String d_customerId) {
-		this.d_customerId = d_customerId;
+	public void setOr_customerId(String or_customerId) {
+		this.or_customerId = or_customerId;
 	}
 
 	public String getOreviewContent() {
@@ -56,6 +58,11 @@ public class CCustomerReviewListDto {
 	public void setOreviewInitdate(Date oreviewInitdate) {
 		this.oreviewInitdate = oreviewInitdate;
 	}
+
+	
+
+
+
 	
 	
 	

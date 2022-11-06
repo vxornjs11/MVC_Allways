@@ -11,33 +11,7 @@ rel="stylesheet"
 integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 crossorigin="anonymous">
 
-<script type="text/javascript">
-
-</script>
-
 <style>
-
-#button_group {
-	width: 115px;
-	height: 45px;
-	
-	font-family: 'Baloo Tammudu 2';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 14px;
-	line-height: 32px;
-	align-items: center;
-	text-align: center;
-	
-	color: #766262;
-
-	width: 145px;
-	height: 55px;
-	
-	background: #FFFFFF;
-	border: 3px solid #FBEAEA;
-	border-radius: 70px;
-	}
 
 #write_button {
 
@@ -53,7 +27,6 @@ crossorigin="anonymous">
 	text-align: center;
 	
 	color: #766262;
-
 	width: 145px;
 	height: 55px;
 	
@@ -87,63 +60,102 @@ crossorigin="anonymous">
 
 </style>
 
+<script type="text/javascript">
+
+function review() {
+	var form = document.radioButton;
+	form.method = "post";
+	form.action = "customerOrdersReview.do";
+}
+
+</script>
+
 </head>
 <body>
 
 <%@include file="customerHeader.jsp" %>
 
 	<div align="center">
-		<form action = "" method = "post">
-			<table>
-				
-				<tr>
-					<td>
-						<button id="button_group">NOTICE</button>
-						<button id="button_group">REVIEW</button>
-						<button id="button_group">FAQ</button>
-						<button id="button_group">Q&A</button>
-					</td>
-				</tr>
-				
-				<div class="form-check">
-					<tr>
-						<td>
-							<button id="write_button">Write Review</button>
-							
-							<input class="form-check-input" type="radio" name="flexRadioDefault" id="labelClick1" checked>
- 							<label class="form-check-label" for="labelClick1">
-							&nbsp;Newest
-							</label>
-							
-							<input class="form-check-input" type="radio" name="flexRadioDefault" id="labelClick2">
- 							<label class="form-check-label" for="labelClick2">
-							&nbsp;Star Rating
-							</label>
-							
-							<input class="form-check-input" type="radio" name="flexRadioDefault" id="labelClick3">
-							<label class="form-check-label" for="labelClick3">
-							&nbsp;Like
-							</label>
-						</td>
-						
-						<td><input type = "text" name = "" size = "20"> &nbsp;</td>
-						<td><button id="search_button">Search</button></td>
-					</tr>
-				</div>
-				
-				<tr>
-					<th>No</th>
-					<th>내용</th>
-					<th>작성자</th>
-					<th>작성일</th>
-				</tr>
+		<%@include file = "includeButtons.jsp" %>
+	</div>
+	
+	<div style = "margin-left: 50px; margin-top: 120px;">
+	
+		<button id="write_button">Write Review</button>
+		<form name = "radioButton" method = "post">
+	
+			&nbsp;
+			<c:choose>
+				<c:when test="${checkRadio eq 'oreviewInitdate'}">
+					<div class="form-check form-check-inline" id="select">
+						<input onclick = "review(event)" class="form-check-input" type="radio" name="radio" id="labelClick1" value = "oreviewInitdate" checked />
+						<label class="form-check-label" for="labelClick1">
+						Newest
+						</label>
+					</div>
+				</c:when>
 			
+				<c:otherwise>
+					<div class="form-check form-check-inline" id="select">
+						<input onclick = "review(event)" class="form-check-input" type="radio" name="radio" id="labelClick1" value = "oreviewInitdate" />
+						<label class="form-check-label" for="labelClick1">
+						Newest
+						</label>
+					</div>
+				</c:otherwise> 
+			</c:choose> 
+			&nbsp;
+			<c:choose>
+				<c:when test="${checkRadio eq 'oreviewStarrating'}">
+					<div class="form-check form-check-inline" id="select">
+						<input onclick = "review(event)" class="form-check-input" type="radio" name="radio" id="labelClick2" value = "oreviewStarrating" checked />
+						<label class="form-check-label" for="labelClick2">
+						Star Rating
+						</label>
+					</div>
+				</c:when>
+			
+				<c:otherwise>
+					<div class="form-check form-check-inline" id="select">
+						<input onclick = "review(event)" class="form-check-input" type="radio" name="radio" id="labelClick2" value = "oreviewStarrating" />
+						<label class="form-check-label" for="labelClick2">
+						Star Rating
+						</label>
+					</div>
+				</c:otherwise> 
+			</c:choose> 
+			
+			
+		</form>
+		
+		<input type = "text" name = "" size = "20"> &nbsp;
+		<button id="search_button">Search</button>
+		
+	</div>
+				
+	<div align="center" class="container text-center">
+		<form action = "" name = "list" method = "post">
+			<table class="table">
+				
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>내용</th>
+						<th>작성자</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				
+				<c:forEach var = "dto" items="${reviewList }">
+			<tbody>
 				<tr>
-					<td>1</td>
-					<td>리뷰입니다.</td>
-					<td>나</td>
-					<td>2022-11-06</td>
+					<td>${dto.oreviewId }</td>
+					<td>${dto.oreviewContent }</td>
+					<td>${dto.or_customerId }</td>
+					<td>${dto.oreviewInitdate }</td>
 				</tr>
+			</tbody>
+		</c:forEach>
 				
 			</table>
 		</form>
