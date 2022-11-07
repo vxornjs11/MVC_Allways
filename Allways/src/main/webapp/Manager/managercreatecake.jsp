@@ -36,7 +36,7 @@ div{
 </head>
 <body>
 <div align="center">
-<form action="#" method="post">
+<form action="#" method="post" enctype="multipart/form-data">
 	<h1 style="margin-bottom:3%;margin-top:3%"><b>케이크 추가</b></h1>
 	<div style="display: inline-block;width:60%">
 		<div align="left" style="width:20%;display:inline-block">
@@ -44,7 +44,7 @@ div{
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:50%;display:inline-block">
-				<input type="text" name="menuname" class="form-control" style="border-color:#fdcdcd">
+				<input type="text" name="cakeName" class="form-control" style="border-color:#fdcdcd">
 			</div>
 			<div style="display:inline-block">
 				<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="중복체크">
@@ -55,44 +55,20 @@ div{
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:30%;display:inline-block">
-				<input type="text" name="menuprice" class="form-control" style="border-color:#fdcdcd">
+				<input type="text" name="cakePrice" class="form-control" style="border-color:#fdcdcd">
 			</div>원
-		</div>
-		<div align="left" style="width:20%;display:inline-block">
-			맛
-		</div>
-		<div align="left" style="width:74%;display:inline-block">
-			<div style="width:30%">
-				<select name="flavor" class="form-select" style="border-color:#fdcdcd">
-					<c:forEach var="cnt" begin="1" end="10">
-						<option value="딸기">딸기</option>
-					</c:forEach>
-				</select>
-			</div>
-		</div>
-		<div align="left" style="width:20%;display:inline-block">
-			사이즈
-		</div>
-		<div align="left" style="width:74%;display:inline-block">
-			<div style="width:30%">
-				<select name="size" class="form-select" style="border-color:#fdcdcd">
-					<c:forEach var="cnt" begin="1" end="3">
-						<option value="딸기">${cnt }호</option>
-					</c:forEach>
-				</select>
-			</div>
 		</div>
 		<div align="left" style="width:20%;height:20%;display:inline-block">
 			메뉴설명
 		</div>
 		<div align="left" style="width:74%;height:20%;display:inline-block">
-			<textarea style="width:100%;margin-top:20px" class="form-control"></textarea>
+			<textarea style="width:100%;margin-top:20px" class="form-control" name="cakeDetail"></textarea>
 		</div>
 		<div align="left" style="width:20%;display:inline-block">
 			사진
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
-			<input type="file" name="cakeviews" onchange="previewFile(event)">
+			<input type="file" name="cakeImage" onchange="previewFile(event)">
 		</div>
 	</div>
 	<div style="display:inline-block;width:30%;height:50%" align="center">
