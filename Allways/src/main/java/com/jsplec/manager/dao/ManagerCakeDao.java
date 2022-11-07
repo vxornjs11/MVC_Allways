@@ -219,4 +219,142 @@ public class ManagerCakeDao {
 		}
 		return dto;
 	}
+	
+	public void updateCake(int cakeId, String cakeName, int cakePrice, String cakeDetail, String cakeImage) {
+		Connection connection = null;
+		PreparedStatement ps = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "update cake set cakeName=?, cakePrice=?, cakeDetail=?, cakeImage=?, cakeUpdatedate=now() where cakeId=?;";
+			ps = connection.prepareStatement(query);
+
+			ps.setString(1, cakeName);
+			ps.setInt(2, cakePrice);
+			ps.setString(3, cakeImage);
+			ps.setString(4, cakeDetail);
+			ps.setInt(5, cakeId);
+
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public int findID(String cakeName) {
+		int cakeId=0;
+		
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "select cakeId from cake where cakeName='" + cakeName + "';";
+
+			ps = connection.prepareStatement(query);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				cakeId = rs.getInt(1);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return cakeId;
+	}
+	
+	public boolean checkName(String cakeOriginalName, String cakeNewName) {
+
+		boolean check = false;
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "select count(*) from cake where cakeName!='" + cakeOriginalName + "' and cakeName='" + cakeNewName + "';";
+
+			ps = connection.prepareStatement(query);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int count = rs.getInt(1);
+
+				if (count == 0) {
+					check = true;
+				} else {
+					check = false;
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return check;
+	}
+	
+	public void deleteCake(int cakeId) {
+		Connection connection = null;
+		PreparedStatement ps = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "update cake set cakeDeletedate=now() where cakeId=?;";
+			ps = connection.prepareStatement(query);
+
+			ps.setInt(1, cakeId);
+
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
 }

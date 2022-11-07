@@ -16,7 +16,9 @@ import com.jsplec.customer.command.CCustomerReviewListCommand;
 import com.jsplec.customer.command.CCustomerWriteReviewCommand;
 import com.jsplec.manager.command.CManagerAddCakeCommand;
 import com.jsplec.manager.command.CManagerCheckNameCommand;
+import com.jsplec.manager.command.CManagerCheckNameCommand2;
 import com.jsplec.manager.command.CManagerCommand;
+import com.jsplec.manager.command.CManagerDeleteCakeCommand;
 import com.jsplec.manager.command.CManagerLoginCommand;
 import com.jsplec.manager.command.CManagerMainCommand;
 import com.jsplec.manager.command.CManagerOptionAdd;
@@ -25,6 +27,7 @@ import com.jsplec.manager.command.CManagerOptionSelect;
 import com.jsplec.manager.command.CManagerOptionUpdate;
 import com.jsplec.manager.command.CManagerOptionView;
 import com.jsplec.manager.command.CManagerSearchCakeCommand;
+import com.jsplec.manager.command.CManagerUpdateCakeCommand;
 import com.jsplec.manager.command.CManagerViewCakeDetailCommand;
 import com.jsplec.manager.command.CManagerViewCakeListCommand;
 
@@ -144,6 +147,24 @@ public class CController extends HttpServlet {
 			
 		case("/Manager/addCake.do"):
 			managercommand=new CManagerAddCakeCommand();
+			managercommand.execute(request, response);
+			viewPage="viewCakeList.do";
+			break;
+			
+		case("/Manager/updateCake.do"):
+			managercommand=new CManagerUpdateCakeCommand();
+			managercommand.execute(request, response);
+			viewPage="viewCakeList.do";
+			break;
+			
+		case("/Manager/checkName2.do"):
+			managercommand=new CManagerCheckNameCommand2();
+			managercommand.execute(request, response);
+			viewPage="managermanagecake.jsp";
+			break;
+		
+		case("/Manager/deleteCake.do"):
+			managercommand=new CManagerDeleteCakeCommand();
 			managercommand.execute(request, response);
 			viewPage="viewCakeList.do";
 			break;

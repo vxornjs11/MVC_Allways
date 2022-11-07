@@ -6,32 +6,27 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jsplec.manager.dao.ManagerCakeDao;
-import com.jsplec.manager.dto.cakeDetailDto;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class CManagerViewCakeDetailCommand implements CManagerCommand {
+public class CManagerDeleteCakeCommand implements CManagerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		
 		ManagerCakeDao dao=new ManagerCakeDao();
-		cakeDetailDto dto=null;
+		HttpSession session=request.getSession();
+		ServletContext context=session.getServletContext();
+		int maxSize = 1024 * 1024 * 1024;
+		
 		try {
-			String cakeName=request.getParameter("cakeName");
-			dto=dao.viewCakeDetail(cakeName);
-//			dto.setCakeImage(context.getRealPath("/") + dto.getCakeImage());
-			request.setAttribute("DTO", dto);
-			request.setAttribute("cakeOriginalName", dto.getCakeName());
-			request.setAttribute("cakeName", dto.getCakeName());
-			request.setAttribute("cakePrice", dto.getCakePrice());
-			request.setAttribute("cakeDetail", dto.getCakeDetail());
-			request.setAttribute("cakeImage", dto.getCakeImage());
+			MultipartRequest multi = new MultipartRequest(request, context.getRealPath("/"), maxSize, "utf-8", new DefaultFileRenamePolicy());
+			String cakeName=multi.getParameter("cakeOriginalName");
+			dao.deleteCake(dao.findID(cakeName));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
-
 	}
 
 	@Override

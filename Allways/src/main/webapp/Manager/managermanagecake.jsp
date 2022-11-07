@@ -60,6 +60,40 @@ div{
 		form.action="viewCakeList.do";
 		form.submit();
 	}
+	
+	function updateDo(){
+		var form=document.actionForm;
+		if (form.check.value==false){
+			alert("이름 중복체크를 해주세요.");
+			return;
+		}
+		form.action="updateCake.do";
+		alert("수정이 완료되었습니다");
+		form.submit();
+	}
+	
+	function deleteDo(){
+		var form=document.actionForm;
+		form.action="deleteCake.do";
+		alert("삭제가 완료되었습니다");
+		form.submit();
+	}
+	
+	function nameCheck(){
+		var form=document.actionForm;
+		if (form.cakeName.value==""){
+			alert("케이크 이름을 입력하세요");
+			return;
+		} else{
+			form.action="checkName2.do";
+			form.submit();
+		}
+	}
+	
+	function formChange(){
+		var form=document.actionForm;
+		form.check.value=false;
+	}
 </script>
 </head>
 <body>
@@ -72,7 +106,22 @@ div{
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:50%;display:inline-block">
-				<input type="text" name="cakeName" class="form-control" style="border-color:#fdcdcd" value="${DTO.cakeName }">
+				<c:if test="${check==null }">
+				<input type="text" name="cakeName" class="form-control" style="border-color:#fdcdcd" value="${cakeName }" onchange="formChange()">
+				</c:if>
+				<c:if test="${check==true }">
+				<script>alert("사용 가능한 이름입니다.");</script>
+				<input type="text" name="cakeName" class="form-control is-valid" style="border-color:#fdcdcd" value="${cakeName }">
+				</c:if>
+				<c:if test="${check==false }">
+				<script>alert("이미 사용중인 이름입니다.");</script>
+				<input type="text" name="cakeName" class="form-control is-invalid" style="border-color:#fdcdcd" value="${cakeName }">
+				</c:if>
+				<input type="hidden" name="cakeOriginalName" class="form-control" style="border-color:#fdcdcd" value="${cakeOriginalName }">
+				<input type="hidden" name="check" class="form-control" style="border-color:#fdcdcd" value="${check }">
+			</div>
+			<div style="display:inline-block">
+				<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="중복체크" onclick="nameCheck()">
 			</div>
 		</div>
 		<div align="left" style="width:20%;display:inline-block">
@@ -80,20 +129,20 @@ div{
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:30%;display:inline-block">
-				<input type="text" name="cakePrice" class="form-control" style="border-color:#fdcdcd" value="${DTO.cakePrice }">
+				<input type="text" name="cakePrice" class="form-control" style="border-color:#fdcdcd" value="${cakePrice }">
 			</div>원
 		</div>
 		<div align="left" style="width:20%;height:20%;display:inline-block">
 			메뉴설명
 		</div>
 		<div align="left" style="width:74%;height:20%;display:inline-block">
-			<textarea style="width:100%;margin-top:20px" class="form-control" name="cakeDetail">${DTO.cakeDetail }</textarea>
+			<textarea style="width:100%;margin-top:20px" class="form-control" name="cakeDetail">${cakeDetail }</textarea>
 		</div>
 		<div align="left" style="width:20%;display:inline-block">
 			사진
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
-			<input type="file" name="cakeImage" onchange="previewFile(event)">
+			<input type="file" name="cakeImage" onchange="previewFile(event)" value="${DTO.cakeImage }">
 		</div>
 	</div>
 	<div style="display:inline-block;width:30%;height:50%" align="center">
@@ -101,11 +150,11 @@ div{
 			사진 미리보기
 		</div>
 		<div>
-			<img src="/Allways/${DTO.cakeImage }" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
+			<img src="/Allways/${cakeImage }" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
 		</div>
 		<div>
 			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">
-			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="수정" onclick="submitDo()">
+			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="수정" onclick="updateDo()">
 			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="삭제" onclick="deleteDo()">
 		</div>
 	</div>

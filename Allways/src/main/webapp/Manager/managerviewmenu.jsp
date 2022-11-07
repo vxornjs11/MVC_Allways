@@ -20,7 +20,7 @@
 				<input type="text" size="1" class="form-control" name="query" style="border-color:#a87878" value="${Query }">
 			</div>
 			<div style="width:25%;display:inline-block" align="left">
-				<input type="button" class="btn btn-primary" style="background:#ffffff;border-color:#a87878;color:#a87878" value="검색">
+				<input type="submit" class="btn btn-primary" style="background:#ffffff;border-color:#a87878;color:#a87878" value="검색">
 			</div>
 			<div style="width:50%;display:inline-block" align="right">
 				<span style="font-size:1.2em">총 ${Size}건</span>
