@@ -32,11 +32,33 @@ div{
 		    reader.readAsDataURL(file);
 		  }
 		}
-    </script>
+	
+	function submitDo(){
+		var form=document.actionForm;
+		if (form.checkName.value==true){
+			alert("추가가 완료되었습니다");
+			form.submit();
+		} else{
+			alert("이름 중복체크를 해 주세요.");
+			return;
+		}
+	}
+	
+	function nameCheck(){
+		var form=document.actionForm;
+		if (form.cakeName.value==""){
+			alert("케이크 이름을 입력하세요");
+			return;
+		} else{
+			form.action="checkName.do";
+			form.submit();
+		}
+	}
+</script>
 </head>
 <body>
 <div align="center">
-<form action="addCake.do" method="post" enctype="multipart/form-data">
+<form action="addCake.do" method="post" enctype="multipart/form-data" name="actionForm">
 	<h1 style="margin-bottom:3%;margin-top:3%"><b>케이크 추가</b></h1>
 	<div style="display: inline-block;width:60%">
 		<div align="left" style="width:20%;display:inline-block">
@@ -44,10 +66,21 @@ div{
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:50%;display:inline-block">
-				<input type="text" name="cakeName" class="form-control" style="border-color:#fdcdcd">
+				<input type="hidden" name="checkName">
+				<c:if test="${check==null }">
+					<input type="text" name="cakeName" class="form-control" style="border-color:#fdcdcd">
+				</c:if>
+				<c:if test="${check==true }">
+					<script>alert("사용 가능한 이름입니다.");</script>
+					<input type="text" name="cakeName" class="form-control is-valid" style="border-color:#fdcdcd" value="${cakeName }">
+				</c:if>
+				<c:if test="${check==false }">
+					<script>alert("이미 사용중인 이름입니다.");</script>
+					<input type="text" name="cakeName" class="form-control is-invalid" style="border-color:#fdcdcd" value="${cakeName }">
+				</c:if>
 			</div>
 			<div style="display:inline-block">
-				<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="중복체크">
+				<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="중복체크" onclick="nameCheck()">
 			</div>
 		</div>
 		<div align="left" style="width:20%;display:inline-block">
@@ -55,14 +88,14 @@ div{
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:30%;display:inline-block">
-				<input type="text" name="cakePrice" class="form-control" style="border-color:#fdcdcd">
+				<input type="text" name="cakePrice" class="form-control" style="border-color:#fdcdcd" value="${cakePrice }">
 			</div>원
 		</div>
 		<div align="left" style="width:20%;height:20%;display:inline-block">
 			메뉴설명
 		</div>
 		<div align="left" style="width:74%;height:20%;display:inline-block">
-			<textarea style="width:100%;margin-top:20px" class="form-control" name="cakeDetail"></textarea>
+			<textarea style="width:100%;margin-top:20px" class="form-control" name="cakeDetail">${cakeDetail }</textarea>
 		</div>
 		<div align="left" style="width:20%;display:inline-block">
 			사진
@@ -80,7 +113,7 @@ div{
 		</div>
 		<div>
 			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="취소">
-			<input type="submit" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="추가">
+			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="추가" onclick="submitDo()">
 		</div>
 	</div>
 </form>

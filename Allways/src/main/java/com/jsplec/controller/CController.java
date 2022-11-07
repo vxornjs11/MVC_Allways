@@ -15,6 +15,7 @@ import com.jsplec.customer.command.CCustomerLoginCommand;
 import com.jsplec.customer.command.CCustomerReviewListCommand;
 import com.jsplec.customer.command.CCustomerWriteReviewCommand;
 import com.jsplec.manager.command.CManagerAddCakeCommand;
+import com.jsplec.manager.command.CManagerCheckNameCommand;
 import com.jsplec.manager.command.CManagerCommand;
 import com.jsplec.manager.command.CManagerMainCommand;
 import com.jsplec.manager.command.CManagerOptionAdd;
@@ -22,6 +23,8 @@ import com.jsplec.manager.command.CManagerOptionListCommand;
 import com.jsplec.manager.command.CManagerOptionSelect;
 import com.jsplec.manager.command.CManagerOptionUpdate;
 import com.jsplec.manager.command.CManagerOptionView;
+import com.jsplec.manager.command.CManagerSearchCakeCommand;
+import com.jsplec.manager.command.CManagerViewCakeListCommand;
 
 /**
  * Servlet implementation class controller
@@ -106,14 +109,27 @@ public class CController extends HttpServlet {
 		case("/Manager/managerMain.do"):
 			managercommand=new CManagerMainCommand();
 			managercommand.execute(request, response);
-			viewPage = "managermain.jsp";
+			viewPage="viewCakeList.do";
 			break;
-		
-		case("/Manager/addCake.do"):
-			managercommand=new CManagerAddCakeCommand();
+			
+		case("/Manager/viewCakeList.do"):
+			managercommand=new CManagerViewCakeListCommand();
 			managercommand.execute(request, response);
 			viewPage="managerviewmenu.jsp";
 			break;
+		
+		case("/Manager/searchCake.do"):
+			managercommand=new CManagerSearchCakeCommand();
+			managercommand.execute(request, response);
+			viewPage="managerviewmenu.jsp";
+			break;
+			
+		case("/Manager/checkName.do"):
+			managercommand=new CManagerCheckNameCommand();
+			managercommand.execute(request, response);
+			viewPage="managercreatecake.jsp";
+			break;
+			
 //		태권
 		
 		case("/Manager/managerLoginPage.do"):
