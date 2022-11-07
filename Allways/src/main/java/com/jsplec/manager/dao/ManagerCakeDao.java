@@ -9,6 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.jsplec.manager.dto.cakeDetailDto;
 import com.jsplec.manager.dto.cakeListDto;
 
 public class ManagerCakeDao {
@@ -65,9 +66,10 @@ public class ManagerCakeDao {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "select cakeId, cakeName, cakePrice from cake";
+			String query = "select cakeId, cakeName, cakePrice from cake ";
+			String query2 = "where cakeDeletedate is null";
 
-			ps = connection.prepareStatement(query);
+			ps = connection.prepareStatement(query + query2);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -95,8 +97,8 @@ public class ManagerCakeDao {
 
 		return dtos;
 	}
-	
-	public ArrayList<cakeListDto> searchCake(String cakeName){
+
+	public ArrayList<cakeListDto> searchCake(String cakeName) {
 		ArrayList<cakeListDto> dtos = new ArrayList<cakeListDto>();
 
 		Connection connection = null;
@@ -105,9 +107,10 @@ public class ManagerCakeDao {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "select cakeId, cakeName, cakePrice from cake where cakeName like '%" + cakeName + "%';";
+			String query = "select cakeId, cakeName, cakePrice from cake where cakeName like '%" + cakeName + "%' ";
+			String query2 = "and cakeDeletedate is null";
 
-			ps = connection.prepareStatement(query);
+			ps = connection.prepareStatement(query + query2);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -135,10 +138,10 @@ public class ManagerCakeDao {
 
 		return dtos;
 	}
-	
+
 	public boolean checkName(String cakeName) {
-		
-		boolean check=false;
+
+		boolean check = false;
 		Connection connection = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -151,12 +154,12 @@ public class ManagerCakeDao {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				int count=rs.getInt(1);
-				
-				if (count==0) {
-					check=true;
+				int count = rs.getInt(1);
+
+				if (count == 0) {
+					check = true;
 				} else {
-					check=false;
+					check = false;
 				}
 
 			}
@@ -174,7 +177,46 @@ public class ManagerCakeDao {
 				e2.printStackTrace();
 			}
 		}
-		
+
 		return check;
+	}
+	
+	public cakeDetailDto viewCakeDetail(String cakeName) {
+		cakeDetailDto dto=null;
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "select cakeName, cakePrice, cakeDetail, cakeImage from cake where cakeName='" + cakeName + "' ";
+			String query2 = "and cakeDeletedate is null";
+
+			ps = connection.prepareStatement(query + query2);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				String wkcakeName = rs.getString(1);
+				int wkcakePrice = rs.getInt(2);
+				String wkcakeDetail=rs.getString(3);
+				String wkcakeImage=rs.getString(4);
+
+				dto = new cakeDetailDto(wkcakeName, wkcakePrice, wkcakeDetail, wkcakeImage);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dto;
 	}
 }

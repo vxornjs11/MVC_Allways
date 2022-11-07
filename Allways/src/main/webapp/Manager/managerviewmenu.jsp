@@ -37,7 +37,7 @@
 			<c:forEach var="cnt" items="${Dtos}">
 				<tr>
 					<td>${cnt.cakeId}</td>
-					<td>${cnt.cakeName}</td>
+					<td><a href="cakeDetail.do?cakeName=${cnt.cakeName}">${cnt.cakeName}</a></td>
 					<td><fmt:formatNumber value="${cnt.cakePrice}" type="currency"/></td>
 				</tr>
 			</c:forEach>
