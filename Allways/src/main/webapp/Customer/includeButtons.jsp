@@ -51,7 +51,7 @@ function review(){
 </head>
 <body>
 
-	<div align="center" style = "margin-top: 200px">
+	<div align="center" style = "margin-top: 110px">
 		<form action = "#" name = "list" method = "post">
 			<table>
 				

@@ -74,17 +74,6 @@ function writerReview() {
 	form.submit();
 }
 
-$(document).ready(function(){
-    alert(1);
-  });
-
-  (function(){
-    alert(2);
-  })();
-
-  $(function(){
-    alert(3);
-  });
 
 </script>
 
@@ -167,19 +156,49 @@ $(document).ready(function(){
 					</tr>
 				</thead>
 				
-				<c:forEach var = "dto" items="${reviewList }">
-			<tbody>
-				<tr>
-					<td>${dto.oreviewId }</td>
-					<td>${dto.oreviewContent }</td>
-					<td>${dto.or_customerId }</td>
-					<td>${dto.oreviewInitdate }</td>
-				</tr>
-			</tbody>
+		<c:forEach var = "dto" items="${reviewList }" begin="${(index - 1) * rowcount }" end="${(index) * rowcount - 1}">
+			<c:if test="${dto != null }">
+				<tbody>
+					<tr>
+						<td>${dto.oreviewId }</td>
+						<td>${dto.oreviewContent }</td>
+						<td>${dto.or_customerId }</td>
+						<td>${dto.oreviewInitdate }</td>
+					</tr>
+				</tbody>
+			</c:if>
 		</c:forEach>
 				
 			</table>
 		</form>
+		
+		
+		<a href="customerOrdersReview.do?index=1&radio=${checkRadio }">처음으로</a>
+		
+		<c:if test="${index != 1 }">
+			<a href="customerOrdersReview.do?index=${index-1 }&radio=${checkRadio }">이전</a>
+		</c:if>
+		
+		<c:forEach var="cnt" begin="${pagecount * pagepage + 1}" end="${pagecount * (pagepage + 1)}">
+			<c:if test="${cnt <= Math.ceil(arrsize / rowcount) }">
+				<c:if test="${cnt == index }">
+					<span style="display:inline">
+						<a href="customerOrdersReview.do?index=${cnt }&radio=${checkRadio }" style="font-size:1.3em">${cnt }</a>
+					</span>
+				</c:if>
+				
+				<c:if test="${cnt != index }">
+					<a href="customerOrdersReview.do?index=${cnt }&radio=${checkRadio }" style="font-size:0.9em">${cnt }</a>
+				</c:if>
+			</c:if>
+		</c:forEach>
+	
+	<c:if test="${index < Math.ceil(arrsize / rowcount) }">
+		<a href="customerOrdersReview.do?index=${index+1 }&radio=${checkRadio }">다음</a>
+	</c:if>
+	
+	<a href="customerOrdersReview.do?index=${Math.ceil(arrsize / rowcount) }&radio=${checkRadio }">끝으로</a>
+		
 	</div>
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
