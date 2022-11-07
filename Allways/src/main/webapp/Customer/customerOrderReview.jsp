@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Review Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 rel="stylesheet"
 integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
@@ -63,14 +65,20 @@ crossorigin="anonymous">
 <script type="text/javascript">
 
 function review() {
-	var form = document.radioButton;
+	var form = document.myform;
 	form.method = "post";
 	form.action = "customerOrdersReview.do";
 }
 
 function writerReview() {
-	var form = document.radioButton;
+	var form = document.myform;
 	form.action = "customerWriteReview.jsp";
+	form.submit();
+}
+
+function searchList() {
+	var form = document.myform;
+	form.action = "customerOrdersReview.do";
 	form.submit();
 }
 
@@ -88,61 +96,30 @@ function writerReview() {
 	
 	<div style = "margin-left: 250px; margin-top: 100px;">
 	
-		<form name = "radioButton" method = "post">
+		<form name = "myform" method = "get">
 		<button style = "margin-left: -160px;" id="write_button" onclick = "writerReview()">Write Review</button>
 	
-			&nbsp;
-			<c:choose>
-				<c:when test="${checkRadio eq 'oreviewInitdate'}">
-					<div class="form-check form-check-inline" id="select">
-						<input class="form-check-input" type="radio" name="radio" id="labelClick1" value = "oreviewInitdate" checked />
-						<label class="form-check-label" for="labelClick1">
-						Newest
-						</label>
-					</div>
-				</c:when>
+		<div class="btn-group">
+		  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+		    Sort
+		  </button>
+		  <ul class="dropdown-menu">
+		    <li><a class="dropdown-item" href="customerOrdersReview.do?sort=oreviewInitdate&index=${pageNum }">Newest</a></li>
+		    <li><a class="dropdown-item" href="customerOrdersReview.do?sort=oreviewStarrating&index=${pageNum }">Star Rating</a></li>
+		  </ul>
+		</div>
 			
-				<c:otherwise>
-					<div class="form-check form-check-inline" id="select">
-						<input class="form-check-input" type="radio" name="radio" id="labelClick1" value = "oreviewInitdate" />
-						<label class="form-check-label" for="labelClick1">
-						Newest
-						</label>
-					</div>
-				</c:otherwise> 
-			</c:choose> 
-			&nbsp;
-			<c:choose>
-				<c:when test="${checkRadio eq 'oreviewStarrating'}">
-					<div class="form-check form-check-inline" id="select">
-						<input class="form-check-input" type="radio" name="radio" id="labelClick2" value = "oreviewStarrating" checked />
-						<label class="form-check-label" for="labelClick2">
-						Star Rating
-						</label>
-					</div>
-				</c:when>
-			
-				<c:otherwise>
-					<div class="form-check form-check-inline" id="select">
-						<input class="form-check-input" type="radio" name="radio" id="labelClick2" value = "oreviewStarrating" />
-						<label class="form-check-label" for="labelClick2">
-						Star Rating
-						</label>
-					</div>
-				</c:otherwise>
-			</c:choose> 
-			
-			<button id="search_button">Sort</button>
-			<select style = "margin-left: 480px;" name = "combo">
+			<select style = "margin-left: 620px;" name = "combo">
 				<option value = "or_customerId">작성자</option>
 				<option value = "oreviewContent">내용</option>
 			</select>
+			
 			<input type = "text" name = "searchContent" size = "20"> &nbsp;
-			<button id="search_button">Search</button>
+			<button id="search_button" onclick = "searchList()">Search</button>
 			
 		</form>
 	</div>
-				
+	
 	<div align="center" class="container text-center">
 		<form action = "" name = "list" method = "post">
 			<table class="table">
@@ -172,35 +149,78 @@ function writerReview() {
 			</table>
 		</form>
 		
-		
-		<a href="customerOrdersReview.do?index=1&radio=${checkRadio }">처음으로</a>
+	<div align="center">
+		<table>
+			<tr align="center" height="20">
+				<td colspan="5">
+				
+					<c:if test="${index <= 1}">
+						[이전] &nbsp;
+					</c:if>
+				
+					<c:if test="${index != 1 }">
+						<a href="customerOrdersReview.do?index=${index-1 }&sort=${sort }">이전</a>&nbsp;
+					</c:if> 
+			
+					<c:forEach var="cnt" begin="${pagecount * pagepage + 1}" end="${pagecount * (pagepage + 1)}">
+						<c:if test="${cnt <= Math.ceil(arrsize / rowcount)}">
+						
+							<c:if test="${cnt == index }">
+								<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:1.3em">[${cnt }]</a>
+							</c:if>
+					
+							<c:if test = "${cnt != index }">
+								<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:0.9em">[${cnt }]</a>&nbsp;
+							</c:if>
+							
+						</c:if>
+					</c:forEach>
+			
+					<c:if test="${index >= maxpage }">
+						[다음]
+					</c:if>
+					
+					<c:if test="${index < Math.ceil(arrsize / rowcount)}">
+						<a href="customerOrdersReview.do?index=${index+1 }&sort=${sort }">다음</a>&nbsp;
+					</c:if>
+					
+				</td>
+			</tr>
+		</table>
+	</div>
+	</div>
+	
+	
+	<%-- 
+	<a href="customerOrdersReview.do?index=1&sort=${sort }">처음으로</a>
 		
 		<c:if test="${index != 1 }">
-			<a href="customerOrdersReview.do?index=${index-1 }&radio=${checkRadio }">이전</a>
+			<a href="customerOrdersReview.do?index=${index-1 }&sort=${sort }">이전</a>
 		</c:if>
 		
 		<c:forEach var="cnt" begin="${pagecount * pagepage + 1}" end="${pagecount * (pagepage + 1)}">
 			<c:if test="${cnt <= Math.ceil(arrsize / rowcount) }">
 				<c:if test="${cnt == index }">
 					<span style="display:inline">
-						<a href="customerOrdersReview.do?index=${cnt }&radio=${checkRadio }" style="font-size:1.3em">${cnt }</a>
+						<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:1.3em">${cnt }</a>
 					</span>
 				</c:if>
 				
 				<c:if test="${cnt != index }">
-					<a href="customerOrdersReview.do?index=${cnt }&radio=${checkRadio }" style="font-size:0.9em">${cnt }</a>
+					<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:0.9em">${cnt }</a>
 				</c:if>
 			</c:if>
 		</c:forEach>
 	
 	<c:if test="${index < Math.ceil(arrsize / rowcount) }">
-		<a href="customerOrdersReview.do?index=${index+1 }&radio=${checkRadio }">다음</a>
+		<a href="customerOrdersReview.do?index=${index+1 }&sort=${sort }">다음</a>
 	</c:if>
 	
-	<a href="customerOrdersReview.do?index=${Math.ceil(arrsize / rowcount) }&radio=${checkRadio }">끝으로</a>
-		
-	</div>
+	<a href="customerOrdersReview.do?index=${Math.ceil(arrsize / rowcount) }&sort=${sort }">끝으로</a>
+		 --%>
 	
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 crossorigin="anonymous"></script>

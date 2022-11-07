@@ -13,17 +13,36 @@ public class CCustomerReviewListCommand implements CCustomerCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String radio = request.getParameter("radio");
+		String sort = request.getParameter("sort");
 		String searchContent = request.getParameter("searchContent");
 		String combo = request.getParameter("combo");
-		
-		CCustomerReviewListDao dao = new CCustomerReviewListDao();
-		ArrayList<CCustomerReviewListDto> dtos = dao.reviewList(radio, searchContent, combo);
+		String pageNum = request.getParameter("index");
 		
 		int index = 1; // 시작 페이지 번호
 		int rowcount = 10; // 한 페이지에 출력할 리스트 개수
 		int pagecount = 10; // 한 페이지에 출력할 페이지 개수
 		int pagepage = 0; // ??
+		
+		if(pageNum == null) {
+			pageNum = "1";
+		}
+		if(combo == null) {
+			combo = "or_customerId";
+		}
+		if(searchContent == null) {
+			searchContent = "";
+		}
+		
+		CCustomerReviewListDao dao = new CCustomerReviewListDao();
+		
+		ArrayList<CCustomerReviewListDto> dtos = dao.reviewList1(sort, searchContent, combo);
+		
+		request.setAttribute("reviewList", dtos);
+		request.setAttribute("listcount", dtos.size());
+		request.setAttribute("sort", sort);
+		
+		int maxpage = (dtos.size() % rowcount) != 0 ? (dtos.size() / rowcount) + 1 : (dtos.size() / rowcount);
+		ArrayList<CCustomerReviewListDto> dtos2 = dao.reviewList2(sort, searchContent, combo, index, dtos.size());
 		
 		if (request.getParameter("index")!=null) {
 			index=(int)Float.parseFloat(request.getParameter("index"));
@@ -35,23 +54,14 @@ public class CCustomerReviewListCommand implements CCustomerCommand {
 			pagepage = index / pagecount;
 		}
 		
-		if(combo == null) {
-			combo = "or_customerId"; // 초기값 설정
-		}
-		if(searchContent == null) {
-			searchContent = ""; // 텍스트 필드의 값이 null 일 경우 초기값을 비어있는 값으로 설정
-		}
-		
-		
-		request.setAttribute("reviewList", dtos); // dao에서 출력한 리스트
-		request.setAttribute("checkRadio", radio); // 라디오 버튼에서 가져온 value값
-		request.setAttribute("arrsize", dtos.size()); // 리스트의 개수
-		request.setAttribute("index", index); // 페이지 번호
-		request.setAttribute("rowcount", rowcount); // 한 페이지에 출력할 리스트 개수
-		request.setAttribute("pagecount", pagecount); // 한 페이지에 출력할 페이지 개수
-		request.setAttribute("pagepage", pagepage); // ??
-		
-		
+		request.setAttribute("maxpage", maxpage);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("reviewList", dtos2);
+		request.setAttribute("arrsize", dtos.size());
+		request.setAttribute("index", index);
+		request.setAttribute("rowcount", rowcount);
+		request.setAttribute("pagecount", pagecount);
+		request.setAttribute("pagepage", pagepage);
 		
 	}
 

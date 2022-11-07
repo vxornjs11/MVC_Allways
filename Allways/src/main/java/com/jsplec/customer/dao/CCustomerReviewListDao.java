@@ -25,7 +25,7 @@ public class CCustomerReviewListDao {
 		}
 	}
 	
-	public ArrayList<CCustomerReviewListDto> reviewList(String radio, String searchContent, String combo) {
+	public ArrayList<CCustomerReviewListDto> reviewList1(String sort, String searchContent, String combo) {
 		
 		ArrayList<CCustomerReviewListDto> dtos = new ArrayList<CCustomerReviewListDto>();
 		
@@ -36,10 +36,59 @@ public class CCustomerReviewListDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query1 = "select oreviewId, or_customerId, oreviewContent, oreviewInitdate from ordersreview where " + combo + " like '%" + searchContent + "%' ";
-			String query2 = "order by " + radio + " desc";
+			String query1 = "select @rownum:=@rownum+1, o.or_customerId, o.oreviewContent, o.oreviewInitdate from ordersreview o ";
+			String query2 = "where (@rownum:=0)=0 and " + combo + " like '%" + searchContent + "%' order by " + sort + " desc";
+			
+//			String query1 = "select * from (select row_number() over(order by oreviewId) "
+//					+ "as rownum, or_customerId, oreviewContent, oreviewInitdate from ordersreview  order by oreviewId desc) o"
+//					+ "where rownum between ? and ?";
 			
 			preparedStatement = connection.prepareStatement(query1 + query2);
+			
+			rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				
+				int oreviewId = rs.getInt(1);
+				String or_customerId = rs.getString(2);
+				String oreviewContent = rs.getString(3);
+				Date oreviewInitdate = rs.getDate(4);
+				
+				CCustomerReviewListDto dto = new CCustomerReviewListDto(oreviewId, or_customerId, oreviewContent, oreviewInitdate);
+				dtos.add(dto);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	} // reviewList1() --
+	
+	public ArrayList<CCustomerReviewListDto> reviewList2(String sort, String searchContent, String combo, int index, int maxPage) {
+		
+		ArrayList<CCustomerReviewListDto> dtos = new ArrayList<CCustomerReviewListDto>();
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query1 = "select * from (select row_number() over(order by oreviewId) "
+					+ "as rownum, or_customerId, oreviewContent, oreviewInitdate from ordersreview  order by oreviewId desc) o "
+					+ "where rownum between " + index + " and " + maxPage + " and " + combo + " like '%" + searchContent + "%' order by " + sort + " desc";
+			
+			
+			preparedStatement = connection.prepareStatement(query1);
 			
 			rs = preparedStatement.executeQuery();
 			
@@ -66,6 +115,7 @@ public class CCustomerReviewListDao {
 			}
 		}
 		return dtos;
-	} // productDetailSize() --
+	} // reviewList2() --
+	
 	
 }
