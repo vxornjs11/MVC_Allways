@@ -190,35 +190,6 @@ function searchList() {
 	</div>
 	</div>
 	
-	
-	<%-- 
-	<a href="customerOrdersReview.do?index=1&sort=${sort }">처음으로</a>
-		
-		<c:if test="${index != 1 }">
-			<a href="customerOrdersReview.do?index=${index-1 }&sort=${sort }">이전</a>
-		</c:if>
-		
-		<c:forEach var="cnt" begin="${pagecount * pagepage + 1}" end="${pagecount * (pagepage + 1)}">
-			<c:if test="${cnt <= Math.ceil(arrsize / rowcount) }">
-				<c:if test="${cnt == index }">
-					<span style="display:inline">
-						<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:1.3em">${cnt }</a>
-					</span>
-				</c:if>
-				
-				<c:if test="${cnt != index }">
-					<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:0.9em">${cnt }</a>
-				</c:if>
-			</c:if>
-		</c:forEach>
-	
-	<c:if test="${index < Math.ceil(arrsize / rowcount) }">
-		<a href="customerOrdersReview.do?index=${index+1 }&sort=${sort }">다음</a>
-	</c:if>
-	
-	<a href="customerOrdersReview.do?index=${Math.ceil(arrsize / rowcount) }&sort=${sort }">끝으로</a>
-		 --%>
-	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
