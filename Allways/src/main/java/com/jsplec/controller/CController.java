@@ -83,6 +83,10 @@ public class CController extends HttpServlet {
 			}
 		break;
 		
+		case("/Customer/customerAbout.do"):
+			viewPage = "customerAbout.jsp";
+			break;
+		
 		case("/Customer/customerMain.do"):
 		viewPage = "customerMain.jsp";
 		break;

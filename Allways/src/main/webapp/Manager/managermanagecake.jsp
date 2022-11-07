@@ -65,7 +65,7 @@ div{
 <body>
 <div align="center">
 <form action="addCake.do" method="post" enctype="multipart/form-data" name="actionForm">
-	<h1 style="margin-bottom:3%;margin-top:3%"><b>케이크 추가</b></h1>
+	<h1 style="margin-bottom:3%;margin-top:3%"><b>케이크 관리</b></h1>
 	<div style="display: inline-block;width:60%">
 		<div align="left" style="width:20%;display:inline-block">
 			케이크 이름
