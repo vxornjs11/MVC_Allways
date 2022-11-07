@@ -12,7 +12,7 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<script language="JavaScript">
+<script type="text/javascript">
 	$(document).ready(function() {
 		var $banner = $(".banner").find("ul");
 
@@ -40,6 +40,7 @@
 			});
 		}
 	}); 
+
 </script>
 <script type="text/javascript">
 function getGender(event) {
@@ -51,8 +52,7 @@ function getGender(event) {
 <body>
 	<div class="contents">
 
-		<h3>롤링 배너 만들기 </h3>
-
+		<h3>배너 </h3>
 		<div class="banner">
 			<ul>
 				<li><img src="https://cdn.pixabay.com/photo/2016/02/01/16/10/eye-1173863__340.jpg" width="340" height="210px"></li>
@@ -63,15 +63,5 @@ function getGender(event) {
 			</ul>
 		</div>
 	</div>
-	
-	<input type='radio'
-       name='gender' 
-       value='female' 
-       onclick='getGender(event)'/>여성
-<input type='radio' 
-       name='gender' 
-       value='male' 
-       onclick='getGender(event)'/>남성
-<div id='result'></div>
 </body>
 </html>
