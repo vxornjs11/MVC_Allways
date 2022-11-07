@@ -30,10 +30,10 @@ public class ManagerCakeDao {
 			String query = "insert into cake (cakeName, cakePrice, cakeImage, cakeDetail, cakeInitdate) values (?, ?, ?, ?, now());";
 			ps = connection.prepareStatement(query);
 			
-			ps.setString(1,  cakeName);
-			ps.setInt(2,  cakePrice);
-			ps.setString(3,  cakeImage);
-			ps.setString(3,  cakeDetail);
+			ps.setString(1, cakeName);
+			ps.setInt(2, cakePrice);
+			ps.setString(3, cakeImage);
+			ps.setString(4, cakeDetail);
 			
 			ps.executeUpdate();
 			

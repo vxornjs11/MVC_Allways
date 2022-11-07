@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
 import com.jsplec.customer.command.CCustomerReviewListCommand;
+import com.jsplec.manager.command.CManagerAddCakeCommand;
 import com.jsplec.manager.command.CManagerCommand;
 import com.jsplec.manager.command.CManagerMainCommand;
 
@@ -93,6 +94,12 @@ public class CController extends HttpServlet {
 			managercommand=new CManagerMainCommand();
 			managercommand.execute(request, response);
 			viewPage = "managermain.jsp";
+			break;
+		
+		case("/Manager/addCake.do"):
+			managercommand=new CManagerAddCakeCommand();
+			managercommand.execute(request, response);
+			viewPage="managerviewmenu.jsp";
 			break;
 //		태권
 		
