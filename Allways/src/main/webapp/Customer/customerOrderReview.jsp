@@ -62,11 +62,29 @@ crossorigin="anonymous">
 
 <script type="text/javascript">
 
-function review(event) {
+function review() {
 	var form = document.radioButton;
 	form.method = "post";
 	form.action = "customerOrdersReview.do";
 }
+
+function writerReview() {
+	var form = document.radioButton;
+	form.action = "customerWriteReview.jsp";
+	form.submit();
+}
+
+$(document).ready(function(){
+    alert(1);
+  });
+
+  (function(){
+    alert(2);
+  })();
+
+  $(function(){
+    alert(3);
+  });
 
 </script>
 
@@ -79,16 +97,16 @@ function review(event) {
 		<%@include file = "includeButtons.jsp" %>
 	</div>
 	
-	<div style = "margin-left: 50px; margin-top: 120px;">
+	<div style = "margin-left: 250px; margin-top: 100px;">
 	
-		<button id="write_button">Write Review</button>
 		<form name = "radioButton" method = "post">
+		<button style = "margin-left: -160px;" id="write_button" onclick = "writerReview()">Write Review</button>
 	
 			&nbsp;
 			<c:choose>
 				<c:when test="${checkRadio eq 'oreviewInitdate'}">
 					<div class="form-check form-check-inline" id="select">
-						<input onclick = "review(event)" class="form-check-input" type="radio" name="radio" id="labelClick1" value = "oreviewInitdate" checked />
+						<input class="form-check-input" type="radio" name="radio" id="labelClick1" value = "oreviewInitdate" checked />
 						<label class="form-check-label" for="labelClick1">
 						Newest
 						</label>
@@ -97,7 +115,7 @@ function review(event) {
 			
 				<c:otherwise>
 					<div class="form-check form-check-inline" id="select">
-						<input onclick = "review(event)" class="form-check-input" type="radio" name="radio" id="labelClick1" value = "oreviewInitdate" />
+						<input class="form-check-input" type="radio" name="radio" id="labelClick1" value = "oreviewInitdate" />
 						<label class="form-check-label" for="labelClick1">
 						Newest
 						</label>
@@ -108,7 +126,7 @@ function review(event) {
 			<c:choose>
 				<c:when test="${checkRadio eq 'oreviewStarrating'}">
 					<div class="form-check form-check-inline" id="select">
-						<input onclick = "review(event)" class="form-check-input" type="radio" name="radio" id="labelClick2" value = "oreviewStarrating" checked />
+						<input class="form-check-input" type="radio" name="radio" id="labelClick2" value = "oreviewStarrating" checked />
 						<label class="form-check-label" for="labelClick2">
 						Star Rating
 						</label>
@@ -117,20 +135,23 @@ function review(event) {
 			
 				<c:otherwise>
 					<div class="form-check form-check-inline" id="select">
-						<input onclick = "review(event)" class="form-check-input" type="radio" name="radio" id="labelClick2" value = "oreviewStarrating" />
+						<input class="form-check-input" type="radio" name="radio" id="labelClick2" value = "oreviewStarrating" />
 						<label class="form-check-label" for="labelClick2">
 						Star Rating
 						</label>
 					</div>
-				</c:otherwise> 
+				</c:otherwise>
 			</c:choose> 
 			
+			<button id="search_button">Sort</button>
+			<select style = "margin-left: 480px;" name = "combo">
+				<option value = "or_customerId">작성자</option>
+				<option value = "oreviewContent">내용</option>
+			</select>
+			<input type = "text" name = "searchContent" size = "20"> &nbsp;
+			<button id="search_button">Search</button>
 			
 		</form>
-		
-		<input type = "text" name = "" size = "20"> &nbsp;
-		<button id="search_button">Search</button>
-		
 	</div>
 				
 	<div align="center" class="container text-center">

@@ -14,9 +14,18 @@ public class CCustomerReviewListCommand implements CCustomerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		String radio = request.getParameter("radio");
-		System.out.println("radio : " +radio);
+		String searchContent = request.getParameter("searchContent");
+		String combo = request.getParameter("combo");
+		
+		if(combo == null) {
+			combo = "or_customerId";
+		}
+		if(searchContent == null) {
+			searchContent = "";
+		}
+		
 		CCustomerReviewListDao dao = new CCustomerReviewListDao();
-		ArrayList<CCustomerReviewListDto> dtos = dao.reviewList(radio);
+		ArrayList<CCustomerReviewListDto> dtos = dao.reviewList(radio, searchContent, combo);
 		
 		request.setAttribute("reviewList", dtos);
 		request.setAttribute("checkRadio", radio);

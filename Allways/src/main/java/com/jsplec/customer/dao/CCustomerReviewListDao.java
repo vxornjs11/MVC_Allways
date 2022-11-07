@@ -25,7 +25,7 @@ public class CCustomerReviewListDao {
 		}
 	}
 	
-	public ArrayList<CCustomerReviewListDto> reviewList(String radio) {
+	public ArrayList<CCustomerReviewListDto> reviewList(String radio, String searchContent, String combo) {
 		
 		ArrayList<CCustomerReviewListDto> dtos = new ArrayList<CCustomerReviewListDto>();
 		
@@ -36,11 +36,10 @@ public class CCustomerReviewListDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query1 = "select oreviewId, or_customerId, oreviewContent, oreviewInitdate from ordersreview order by " + radio + " desc";
+			String query1 = "select oreviewId, or_customerId, oreviewContent, oreviewInitdate from ordersreview where " + combo + " like '%" + searchContent + "%' ";
+			String query2 = "order by " + radio + " desc";
 			
-			System.out.println(query1);
-			
-			preparedStatement = connection.prepareStatement(query1);
+			preparedStatement = connection.prepareStatement(query1 + query2);
 			
 			rs = preparedStatement.executeQuery();
 			
