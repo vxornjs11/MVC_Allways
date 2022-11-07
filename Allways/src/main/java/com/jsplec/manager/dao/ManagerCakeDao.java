@@ -2,16 +2,10 @@ package com.jsplec.manager.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
-import com.jsplec.manager.dto.cakeListDto;
-import com.jsplec.manager.dto.salesDto;
 
 public class ManagerCakeDao {
 
@@ -53,43 +47,5 @@ public class ManagerCakeDao {
 				e2.printStackTrace();
 			}
 		}
-	}
-	
-	public ArrayList<cakeListDto> viewCakeList(String cakeName){
-		
-		ArrayList<cakeListDto> dtos=new ArrayList<cakeListDto>();
-		
-		Connection connection = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-
-		try {
-			connection = dataSource.getConnection();
-			String query = "select cakeId, cakeName, cakePrice from cake";
-			
-			ps = connection.prepareStatement(query);
-			rs = ps.executeQuery();
-			
-			while (rs.next()) {
-				int wkcakeId=rs.getInt(1);
-				String wkcakeName=rs.getString(2);
-				int wkcakePrice=rs.getInt(3);
-				
-				cakeListDto dto = new cakeListDto(wkcakeId, wkcakeName, wkcakePrice);
-				dtos.add(dto);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs!=null) rs.close();
-				if(ps!=null)ps.close();
-				if (connection!=null) connection.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		
-		return dtos;
 	}
 }
