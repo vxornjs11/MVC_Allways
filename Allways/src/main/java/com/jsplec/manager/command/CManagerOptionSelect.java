@@ -21,7 +21,6 @@ public class CManagerOptionSelect implements CManagerCommand {
 			Query = "";
 		}
 		
-		System.out.println("이거보이냐");
 		CManagerOrderListDao dao = new CManagerOrderListDao();
 		ArrayList<CManagerOptionListDto> dtos = dao.selectList(option,Query);
 		request.setAttribute("OptionList", dtos);

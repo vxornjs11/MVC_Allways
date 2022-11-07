@@ -8,7 +8,6 @@
 <title>옵션</title>
 </head>
 <body >
-<%@include file="managerHeader.jsp"%>
 <script type="text/javascript">
 function SELECT1() {
 	var Olist = document.Olist;
@@ -23,6 +22,9 @@ function Addoption(){
 		}
 		
 </script>
+
+<%@include file="managerHeader.jsp"%>
+
 <div style="text-align:center"><hr/><h1>옵션</h1><hr/></div>
 <div style="text-align:center">
 </div>
