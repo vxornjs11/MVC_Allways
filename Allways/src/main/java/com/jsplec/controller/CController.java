@@ -91,12 +91,13 @@ public class CController extends HttpServlet {
 			break;
 		
 		case("/Customer/customerMain.do"):
-		viewPage = "customerMain.jsp";
-		break;
+			viewPage = "customerMain.jsp";
+			break;
+		
 		
 		case("/Customer/customerJoin.do"):
-		viewPage = "customerLogin.jsp";
-		break;
+			viewPage = "customerJoin.jsp";
+			break;
 		
 //		한별
 		// 리뷰 리스트 출력
