@@ -23,7 +23,7 @@ public class CManagerAddCakeCommand implements CManagerCommand {
 		ManagerCakeDao dao=new ManagerCakeDao();
 		
 		try {
-			MultipartRequest multi = new MultipartRequest(request, context.getRealPath("/") + "\\Manager", maxSize, "utf-8", new DefaultFileRenamePolicy());
+			MultipartRequest multi = new MultipartRequest(request, context.getRealPath("/"), maxSize, "utf-8", new DefaultFileRenamePolicy());
 			String cakeName=multi.getParameter("cakeName");
 			int cakePrice=Integer.parseInt(multi.getParameter("cakePrice"));
 			String cakeDetail=multi.getParameter("cakeDetail");

@@ -16,6 +16,11 @@ import com.jsplec.customer.command.CCustomerReviewListCommand;
 import com.jsplec.manager.command.CManagerAddCakeCommand;
 import com.jsplec.manager.command.CManagerCommand;
 import com.jsplec.manager.command.CManagerMainCommand;
+import com.jsplec.manager.command.CManagerOptionAdd;
+import com.jsplec.manager.command.CManagerOptionListCommand;
+import com.jsplec.manager.command.CManagerOptionSelect;
+import com.jsplec.manager.command.CManagerOptionUpdate;
+import com.jsplec.manager.command.CManagerOptionView;
 
 /**
  * Servlet implementation class controller
@@ -110,6 +115,51 @@ public class CController extends HttpServlet {
 		case("/Manager/managerLogin.do"):
 		viewPage = "managerMain.do";
 		break;
+		
+		case("/Manager/Mlist.do"):
+			managercommand = new CManagerOptionListCommand();
+			managercommand.execute(request, response);
+			viewPage = "managerOptionList.jsp";
+		break;
+		
+		case("/Manager/addList.do"):
+			viewPage = "ManagerOptionAdd.jsp";
+		break;
+		
+		case("/Manager/addOption.do"):
+			managercommand = new CManagerOptionAdd();
+			managercommand.execute(request, response);
+			viewPage = "addList.do";
+			break;
+			
+		case("/Manager/return.do"):
+			viewPage = "Mlist.do";
+		break;
+		
+		case("/Manager/Mselect.do"):
+			managercommand = new CManagerOptionSelect();
+			managercommand.execute(request, response);
+			String Query = request.getParameter("Query");
+			if(Query == "") {
+				viewPage = "Mlist.do";
+			}else {
+				viewPage = "managerOptionList.jsp";
+			}
+			break;
+			
+		case("/Manager/optionId.do"):
+			managercommand = new CManagerOptionView();
+			managercommand.execute(request, response);
+			viewPage = "ManagerOptionAdd.jsp";
+			break;
+			
+		case("/Manager/Update.do"):
+			System.out.println("hoho");
+			managercommand = new CManagerOptionUpdate();
+			managercommand.execute(request, response);
+			viewPage = "Mlist.do";
+			break;
+
 		
 		
 		
