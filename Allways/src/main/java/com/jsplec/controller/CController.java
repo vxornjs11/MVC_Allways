@@ -27,9 +27,11 @@ import com.jsplec.manager.command.CManagerOptionSelect;
 import com.jsplec.manager.command.CManagerOptionUpdate;
 import com.jsplec.manager.command.CManagerOptionView;
 import com.jsplec.manager.command.CManagerSearchCakeCommand;
+import com.jsplec.manager.command.CManagerSearchGoodsCommand;
 import com.jsplec.manager.command.CManagerUpdateCakeCommand;
 import com.jsplec.manager.command.CManagerViewCakeDetailCommand;
 import com.jsplec.manager.command.CManagerViewCakeListCommand;
+import com.jsplec.manager.command.CManagerViewGoodsListCommand;
 
 /**
  * Servlet implementation class controller
@@ -168,6 +170,18 @@ public class CController extends HttpServlet {
 			managercommand=new CManagerDeleteCakeCommand();
 			managercommand.execute(request, response);
 			viewPage="viewCakeList.do";
+			break;
+			
+		case("/Manager/viewGoodsList.do"):
+			managercommand=new CManagerViewGoodsListCommand();
+			managercommand.execute(request, response);
+			viewPage="managerviewgoods.jsp";
+			break;
+			
+		case("/Manager/searchGoods.do"):
+			managercommand=new CManagerSearchGoodsCommand();
+			managercommand.execute(request, response);
+			viewPage="managerviewgoods.jsp";
 			break;
 			
 //		태권

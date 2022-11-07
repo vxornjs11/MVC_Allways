@@ -14,7 +14,7 @@
 <fmt:setLocale value="ko_kr"/>
 <div align="center">
 	<h1 style="margin-bottom:3%;margin-top:3%"><b>추가상품 리스트</b></h1>
-	<form action="#">
+	<form action="searchGoods.do">
 		<div align="center" style="margin-bottom:10px;padding:5px;width:90%">
 			<div style="width:20%;display:inline-block" align="left">
 				<input type="text" size="1" class="form-control" name="query" style="border-color:#a87878">
@@ -44,6 +44,9 @@
 				</tr>
 			</c:forEach>
 		</table>
+	</div>
+	<div class="tablediv" align="right">
+		<a href="managercreatecake.jsp" style="color:#a87878;text-decoration:none">추가</a>
 	</div>
 </div>
 </body>
