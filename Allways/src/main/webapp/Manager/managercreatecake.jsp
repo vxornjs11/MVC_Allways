@@ -35,7 +35,8 @@ div{
 	
 	function submitDo(){
 		var form=document.actionForm;
-		if (form.checkName.value==true){
+		console.log(form.checkName.value);
+		if (form.checkName.value=="true"){
 			alert("추가가 완료되었습니다");
 			form.submit();
 		} else{
@@ -66,7 +67,7 @@ div{
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:50%;display:inline-block">
-				<input type="hidden" name="checkName">
+				<input type="hidden" name="checkName" value="${check }">
 				<c:if test="${check==null }">
 					<input type="text" name="cakeName" class="form-control" style="border-color:#fdcdcd">
 				</c:if>

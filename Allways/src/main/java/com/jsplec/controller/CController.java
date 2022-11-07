@@ -138,6 +138,12 @@ public class CController extends HttpServlet {
 			viewPage="managermanagecake.jsp";
 			break;
 			
+		case("/Manager/addCake.do"):
+			managercommand=new CManagerAddCakeCommand();
+			managercommand.execute(request, response);
+			viewPage="viewCakeList.do";
+			break;
+			
 //		태권
 		
 		case("/Manager/managerLoginPage.do"):
@@ -197,10 +203,6 @@ public class CController extends HttpServlet {
 				viewPage = "managerMain.do";
 			}
 		break;
-
-		
-		
-		
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

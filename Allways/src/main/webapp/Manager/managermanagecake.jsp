@@ -101,7 +101,7 @@ div{
 			사진 미리보기
 		</div>
 		<div>
-			<img src="${DTO.cakeImage }" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
+			<img src="/Allways/${DTO.cakeImage }" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
 		</div>
 		<div>
 			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">

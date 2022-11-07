@@ -20,11 +20,10 @@ public class CManagerViewCakeDetailCommand implements CManagerCommand {
 		ServletContext context=session.getServletContext();
 		int maxSize = 1024 * 1024 * 1024;
 		cakeDetailDto dto=null;
-		
 		try {
 			String cakeName=request.getParameter("cakeName");
 			dto=dao.viewCakeDetail(cakeName);
-			dto.setCakeImage(context.getRealPath("/") + dto.getCakeImage());
+//			dto.setCakeImage(context.getRealPath("/") + dto.getCakeImage());
 			request.setAttribute("DTO", dto);
 		} catch (Exception e) {
 			// TODO: handle exception
