@@ -75,7 +75,7 @@ input::placeholder {
 				<div class="col">
 				</div>
 				<div class="col">
-				<img src="./LOGO.png"><br></img>
+				<img src="./images/LOGO.png"><br></img>
 				<input style="padding-left: 20px;" id="IDandPW" type="text" name="customerId" placeholder="ID"><br>
 				<input style="padding-left: 20px;" id="IDandPW" type="password" name="customerPw" placeholder="PASSWORD"><br>
 				<button id="LoginBtn" type="button" name="Login" onclick="loginAction()">
