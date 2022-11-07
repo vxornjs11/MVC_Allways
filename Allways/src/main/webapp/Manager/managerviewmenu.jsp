@@ -23,7 +23,7 @@
 				<input type="submit" class="btn btn-primary" style="background:#ffffff;border-color:#a87878;color:#a87878" value="검색">
 			</div>
 			<div style="width:50%;display:inline-block" align="right">
-				<span style="font-size:1.2em">총 7건</span>
+				<span style="font-size:1.2em">총 ${Size}건</span>
 			</div>
 		</div>
 	</form>
@@ -34,9 +34,9 @@
 				<th>이름</th>
 				<th>가격</th>
 			</tr>
-			<c:forEach var="cnt" begin="1" end="7">
+			<c:forEach var="cnt" items="${Dtos}">
 				<tr>
-					<td>${cnt }</td><td>치즈케이크</td><td><fmt:formatNumber value="5000" type="currency"/></td>
+					<td>${cnt.cakeId}</td><td>${cnt.cakeName}</td><td><fmt:formatNumber value="${cnt.cakePrice}" type="currency"/></td>
 				</tr>
 			</c:forEach>
 		</table>

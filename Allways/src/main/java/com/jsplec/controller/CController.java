@@ -21,6 +21,7 @@ import com.jsplec.manager.command.CManagerOptionListCommand;
 import com.jsplec.manager.command.CManagerOptionSelect;
 import com.jsplec.manager.command.CManagerOptionUpdate;
 import com.jsplec.manager.command.CManagerOptionView;
+import com.jsplec.manager.command.CManagerViewCakeListCommand;
 
 /**
  * Servlet implementation class controller
@@ -103,6 +104,12 @@ public class CController extends HttpServlet {
 		
 		case("/Manager/addCake.do"):
 			managercommand=new CManagerAddCakeCommand();
+			managercommand.execute(request, response);
+			viewPage="viewCakeList.do";
+			break;
+			
+		case("/Manager/viewCakeList.do"):
+			managercommand=new CManagerViewCakeListCommand();
 			managercommand.execute(request, response);
 			viewPage="managerviewmenu.jsp";
 			break;
