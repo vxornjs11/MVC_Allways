@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
 import com.jsplec.customer.command.CCustomerReviewListCommand;
+import com.jsplec.customer.command.CCustomerWriteReviewCommand;
 import com.jsplec.manager.command.CManagerAddCakeCommand;
 import com.jsplec.manager.command.CManagerCommand;
 import com.jsplec.manager.command.CManagerMainCommand;
@@ -92,6 +93,13 @@ public class CController extends HttpServlet {
 			customercommand.execute(request, response);
 			viewPage = "customerOrderReview.jsp";
 			break;
+			
+		// 리뷰 작성하기
+		case("/Customer/customerWriteReview.do"):
+			customercommand = new CCustomerWriteReviewCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerOrdersReview.do";
+			break;
 //		오수
 		
 //		유승
@@ -154,7 +162,6 @@ public class CController extends HttpServlet {
 			break;
 			
 		case("/Manager/Update.do"):
-			System.out.println("hoho");
 			managercommand = new CManagerOptionUpdate();
 			managercommand.execute(request, response);
 			viewPage = "Mlist.do";
