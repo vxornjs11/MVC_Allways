@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <head>
 <meta charset="UTF-8">
 
@@ -52,13 +52,10 @@
     
     </style>
     
-</head>
-<body>
+
 
 	 <div class="container" style="margin-left: 0px; padding-left: 0px; border-left-width: 0px;">
-        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand ml-lg-3">
-            </a>
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5" style="width: 1430px">
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -74,11 +71,11 @@
                     </div>
                     <a href="#" id="center" class="nav-item nav-link">CLASS</a>
                     <a href="#" id="center" class="nav-item nav-link">BOARD</a>
-                    <a href="#" id="center" class="nav-item nav-link" style="padding-rifgt: 30px;">LOCATION</a>
+                    <a href="#" id="center" class="nav-item nav-link" style="padding-right: 0px;">LOCATION</a>
                     
                 <img src="./images/HeaderLogo.png" style="padding-right: 278px; padding-left: 90px;"></img>
                 
-                    <a href="#" id="center" class="nav-item nav-link">ABOUT</a>
+                    <a href="customerAbout.do" id="center" class="nav-item nav-link">ABOUT</a>
                     <a href="#" id="center" class="nav-item nav-link">JOIN</a>
                     <a href="#" id="center" class="nav-item nav-link">LOGIN</a>
                 </div>
@@ -105,5 +102,4 @@
     <script src="../js/main.js"></script>
     
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+</head>
