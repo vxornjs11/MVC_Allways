@@ -9,9 +9,8 @@ public class goodsDto {
 	String goodsImage;
 	String goodsDetail;
 	
-	public goodsDto(int goodsId, String goodsName, String goodsCategory, int goodsPrice, String goodsImage, String goodsDetail) {
+	public goodsDto(String goodsName, String goodsCategory, int goodsPrice, String goodsImage, String goodsDetail) {
 		super();
-		this.goodsId = goodsId;
 		this.goodsName = goodsName;
 		this.goodsCategory=goodsCategory;
 		this.goodsPrice = goodsPrice;

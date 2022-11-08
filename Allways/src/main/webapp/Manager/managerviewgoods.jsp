@@ -38,7 +38,7 @@
 			<c:forEach var="cnt" items="${Dtos}" begin="${(index-1)*rowcount }" end="${(index)*rowcount-1}">
 				<tr>
 					<td>${cnt.goodsId}</td>
-					<td>${cnt.goodsName}</td>
+					<td><a href="viewGoodsDetail.do?goodsName=${cnt.goodsName }">${cnt.goodsName}</a></td>
 					<td>${cnt.goodsCategory}</td>
 					<td><fmt:formatNumber value="${cnt.goodsPrice}" type="currency"/></td>
 				</tr>

@@ -180,16 +180,17 @@ public class ManagerCakeDao {
 
 		return check;
 	}
-	
+
 	public cakeDetailDto viewCakeDetail(String cakeName) {
-		cakeDetailDto dto=null;
+		cakeDetailDto dto = null;
 		Connection connection = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "select cakeName, cakePrice, cakeDetail, cakeImage from cake where cakeName='" + cakeName + "' ";
+			String query = "select cakeName, cakePrice, cakeDetail, cakeImage from cake where cakeName='" + cakeName
+					+ "' ";
 			String query2 = "and cakeDeletedate is null";
 
 			ps = connection.prepareStatement(query + query2);
@@ -198,8 +199,8 @@ public class ManagerCakeDao {
 			while (rs.next()) {
 				String wkcakeName = rs.getString(1);
 				int wkcakePrice = rs.getInt(2);
-				String wkcakeDetail=rs.getString(3);
-				String wkcakeImage=rs.getString(4);
+				String wkcakeDetail = rs.getString(3);
+				String wkcakeImage = rs.getString(4);
 
 				dto = new cakeDetailDto(wkcakeName, wkcakePrice, wkcakeDetail, wkcakeImage);
 			}
@@ -219,7 +220,7 @@ public class ManagerCakeDao {
 		}
 		return dto;
 	}
-	
+
 	public void updateCake(int cakeId, String cakeName, int cakePrice, String cakeDetail, String cakeImage) {
 		Connection connection = null;
 		PreparedStatement ps = null;
@@ -251,10 +252,10 @@ public class ManagerCakeDao {
 			}
 		}
 	}
-	
+
 	public int findID(String cakeName) {
-		int cakeId=0;
-		
+		int cakeId = 0;
+
 		Connection connection = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -284,10 +285,10 @@ public class ManagerCakeDao {
 				e2.printStackTrace();
 			}
 		}
-		
+
 		return cakeId;
 	}
-	
+
 	public boolean checkName(String cakeOriginalName, String cakeNewName) {
 
 		boolean check = false;
@@ -295,41 +296,47 @@ public class ManagerCakeDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 
-		try {
-			connection = dataSource.getConnection();
-			String query = "select count(*) from cake where cakeName!='" + cakeOriginalName + "' and cakeName='" + cakeNewName + "';";
+		if (cakeOriginalName.equals(cakeNewName)) {
+			return true;
+		} else {
 
-			ps = connection.prepareStatement(query);
-			rs = ps.executeQuery();
-
-			while (rs.next()) {
-				int count = rs.getInt(1);
-
-				if (count == 0) {
-					check = true;
-				} else {
-					check = false;
-				}
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
 			try {
-				if (rs != null)
-					rs.close();
-				if (ps != null)
-					ps.close();
-				if (connection != null)
-					connection.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
+				connection = dataSource.getConnection();
+				String query = "select count(*) from cake where cakeName!='" + cakeOriginalName + "' and cakeName='"
+						+ cakeNewName + "';";
+
+				ps = connection.prepareStatement(query);
+				rs = ps.executeQuery();
+
+				while (rs.next()) {
+					int count = rs.getInt(1);
+
+					if (count == 0) {
+						check = true;
+					} else {
+						check = false;
+					}
+
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (ps != null)
+						ps.close();
+					if (connection != null)
+						connection.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
 			}
 		}
 
 		return check;
 	}
-	
+
 	public void deleteCake(int cakeId) {
 		Connection connection = null;
 		PreparedStatement ps = null;

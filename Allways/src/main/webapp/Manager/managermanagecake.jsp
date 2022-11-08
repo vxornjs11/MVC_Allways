@@ -118,7 +118,7 @@ div{
 				<input type="text" name="cakeName" class="form-control is-invalid" style="border-color:#fdcdcd" value="${cakeName }">
 				</c:if>
 				<input type="hidden" name="cakeOriginalName" class="form-control" style="border-color:#fdcdcd" value="${cakeOriginalName }">
-				<input type="hidden" name="check" class="form-control" style="border-color:#fdcdcd" value="${check }">
+				<input type="hidden" name="check" value="${check }">
 			</div>
 			<div style="display:inline-block">
 				<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="중복체크" onclick="nameCheck()">
@@ -142,7 +142,7 @@ div{
 			사진
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
-			<input type="file" name="cakeImage" onchange="previewFile(event)" value="${DTO.cakeImage }">
+			<input type="file" name="cakeImage" onchange="previewFile(event)">
 		</div>
 	</div>
 	<div style="display:inline-block;width:30%;height:50%" align="center">
@@ -151,6 +151,7 @@ div{
 		</div>
 		<div>
 			<img src="/Allways/${cakeImage }" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
+			<input type="hidden" name="cakeImage" value="${cakeImage }">
 		</div>
 		<div>
 			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">

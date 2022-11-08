@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>추가상품 추가</title>
+<title>추가상품 관리</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
 <style>
@@ -51,7 +51,7 @@ div{
 			alert("추가상품 이름을 입력하세요");
 			return;
 		} else{
-			form.action="checkGoodsName.do";
+			form.action="checkGoodsName2.do";
 			form.submit();
 		}
 	}
@@ -83,16 +83,17 @@ div{
 <body>
 <div align="center">
 <form action="addGoods.do" method="post" enctype="multipart/form-data" name="actionForm">
-	<h1 style="margin-bottom:3%;margin-top:3%"><b>추가상품 추가</b></h1>
+	<h1 style="margin-bottom:3%;margin-top:3%"><b>추가상품 관리</b></h1>
 	<div style="display: inline-block;width:60%">
 		<div align="left" style="width:20%;display:inline-block">
 			추가상품 이름
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:50%;display:inline-block">
-				<input type="hidden" name="goodsName" value="${check }">
+				<input type="hidden" name="check" value="${check }">
+				<input type="hidden" name="goodsOriginalName" value="${goodsOriginalName }">
 				<c:if test="${check==null }">
-					<input type="text" name="goodsName" class="form-control" style="border-color:#fdcdcd">
+					<input type="text" name="goodsName" class="form-control" style="border-color:#fdcdcd" value="${goodsName }">
 				</c:if>
 				<c:if test="${check==true }">
 					<script>alert("사용 가능한 이름입니다.");</script>
@@ -146,7 +147,8 @@ div{
 			사진 미리보기
 		</div>
 		<div>
-			<img src="" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
+			<img src="/Allways/${goodsImage }" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
+			<input type="hidden" name="goodsImage" value="${goodsImage }">
 		</div>
 		<div>
 			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">
