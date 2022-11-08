@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="managerHeader.jsp"%>
 <h1>주문 상태 변환</h1>
 	<form method="get" action="ADDR.do" name = "ADDR">
 	<table border="0">
