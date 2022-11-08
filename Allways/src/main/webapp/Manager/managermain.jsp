@@ -88,11 +88,13 @@
 				<tr>
 					<th>날짜</th>
 					<th>작성자</th>
-					<th>제목</th>
+					<th>별점</th>
 				</tr>
-				<c:forEach var="cnt" begin="1" end="10">
+				<c:forEach var="cnt" items="${REVIEWDTO }" begin="1" end="10">
 					<tr>
-						<td>2022-10-05</td><td>5</td><td>100000</td>
+						<td><fmt:formatDate value="${cnt.oreviewInitdate }" type="both" dateStyle="full"/></td>
+						<td>${cnt.or_customerId }</td>
+						<td>${cnt.oreviewStarrating }</td>
 					</tr>
 				</c:forEach>
 			</table>

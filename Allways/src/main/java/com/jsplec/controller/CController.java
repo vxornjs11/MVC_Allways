@@ -121,7 +121,7 @@ public class CController extends HttpServlet {
 		case("/Manager/managerMain.do"):
 			managercommand=new CManagerMainCommand();
 			managercommand.execute(request, response);
-			viewPage="viewCakeList.do";
+			viewPage="managermain.jsp";
 			break;
 			
 		case("/Manager/viewCakeList.do"):
