@@ -76,7 +76,7 @@ color: #766262;
 }
 
 #line{
-width: 500px;
+width: 1337px;
 height: 0px;
 border: 2px solid #FECACA;
 }
@@ -166,7 +166,7 @@ color: #766262;
 						style="padding-left: 100px; padding-top: 10px;">
 				</div><br>
 				<div id="cake_detail" align="left">
-					Cherry fruits cake is very good. Cherry fruits cake is very good. Cherry fruits cake is very good. Cherry fruits cake is very good. Cherry fruits cake is very good. Cherry fruits cake is very good. 
+					Cherry fruits cake is very good.
 				</div>
 			</div>
 			<div class="col"><br>
@@ -260,8 +260,10 @@ color: #766262;
 			</div>
 		</div>
 	</div>
-	
-<hr id="Line" style="right: 0px; left: 40px; margin-top: 0px;"><br>
+<div align="center">
+<hr id="line"><br>
+</div>
+
 <div align="center">
 	<input id="guidedetailbox" value="Review" disabled="disabled"
 		style="padding-left: 115px; padding-top: 10px;">
