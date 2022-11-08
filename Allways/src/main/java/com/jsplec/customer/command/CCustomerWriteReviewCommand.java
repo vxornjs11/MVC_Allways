@@ -16,22 +16,23 @@ public class CCustomerWriteReviewCommand implements CCustomerCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
-		HttpSession session=request.getSession();
-		ServletContext context=session.getServletContext();
+		HttpSession session = request.getSession();
+		ServletContext context = session.getServletContext();
 		
 		int maxSize = 1024 * 1024 * 1024;
 		
 		try {
 			MultipartRequest multi = new MultipartRequest(request, context.getRealPath("/"), maxSize, "utf-8", new DefaultFileRenamePolicy());
 			
+			int ordersId = Integer.parseInt(multi.getParameter("ordersId"));
 			String oreviewStarRating = multi.getParameter("oreviewStarRating");
 			String oreviewContent = multi.getParameter("oreviewContent");
 			String uploadFile = multi.getFilesystemName("cakeviews");
 			
 			CCustomerWriteReviewDao dao = new CCustomerWriteReviewDao();
-			boolean result = dao.writeReview(oreviewStarRating, oreviewContent, uploadFile);
 			
-			request.setAttribute("result", result);
+			dao.writeReview(ordersId, oreviewStarRating, oreviewContent, uploadFile);
+			dao.writeReviewUpdate(ordersId);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

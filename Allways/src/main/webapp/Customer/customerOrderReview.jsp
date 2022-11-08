@@ -70,9 +70,9 @@ function review() {
 	form.action = "customerOrdersReview.do";
 }
 
-function writerReview() {
+function ordersList() {
 	var form = document.myform;
-	form.action = "customerWriteReview.jsp";
+	form.action = "customerOrdersList.do";
 	form.submit();
 }
 
@@ -89,16 +89,16 @@ function searchList() {
 <body>
 
 <%@include file="customerHeader.jsp" %>
-
+	
 	<div align="center">
 		<%@include file = "includeButtons.jsp" %>
 	</div>
 	
 	<div style = "margin-left: 250px; margin-top: 100px;">
-	
+		
 		<form name = "myform" method = "get">
-		<button style = "margin-left: -160px;" id="write_button" onclick = "writerReview()">Write Review</button>
-	
+		<button style = "margin-left: -160px;" id="write_button" onclick = "ordersList()">Write Review</button>
+		
 		<div class="btn-group">
 		  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
 		    Sort
@@ -109,7 +109,7 @@ function searchList() {
 		  </ul>
 		</div>
 			
-			<select style = "margin-left: 620px;" name = "combo">
+			<select style = "margin-left: 720px;" name = "combo">
 				<option value = "or_customerId">작성자</option>
 				<option value = "oreviewContent">내용</option>
 			</select>
@@ -127,6 +127,7 @@ function searchList() {
 				<thead>
 					<tr>
 						<th>No</th>
+						<th>이미지</th>
 						<th>내용</th>
 						<th>작성자</th>
 						<th>작성일</th>
@@ -138,6 +139,7 @@ function searchList() {
 				<tbody>
 					<tr>
 						<td>${dto.oreviewId }</td>
+						<td><img name="img" src="${imageFile }"></td>
 						<td>${dto.oreviewContent }</td>
 						<td>${dto.or_customerId }</td>
 						<td>${dto.oreviewInitdate }</td>
@@ -152,7 +154,7 @@ function searchList() {
 	<div align="center">
 		<table>
 			<tr align="center" height="20">
-				<td colspan="5">
+				<td>
 				
 					<c:if test="${index <= 1}">
 						[이전] &nbsp;

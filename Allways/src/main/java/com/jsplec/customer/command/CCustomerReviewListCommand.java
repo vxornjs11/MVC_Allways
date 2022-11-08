@@ -2,8 +2,10 @@ package com.jsplec.customer.command;
 
 import java.util.ArrayList;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jsplec.customer.dao.CCustomerReviewListDao;
 import com.jsplec.customer.dto.CCustomerReviewListDto;
@@ -12,6 +14,9 @@ public class CCustomerReviewListCommand implements CCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		HttpSession session = request.getSession();
+		ServletContext context = session.getServletContext();
 		
 		String sort = request.getParameter("sort");
 		String searchContent = request.getParameter("searchContent");
@@ -44,6 +49,15 @@ public class CCustomerReviewListCommand implements CCustomerCommand {
 		int maxpage = (dtos.size() % rowcount) != 0 ? (dtos.size() / rowcount) + 1 : (dtos.size() / rowcount);
 		ArrayList<CCustomerReviewListDto> dtos2 = dao.reviewList2(sort, searchContent, combo, index, dtos.size());
 		
+		String fileSearch = "";
+		ArrayList<String> fileDto = new ArrayList<String>();
+		
+		for(int i = 0; i < dtos2.size(); i ++) {
+			
+			fileSearch = context.getRealPath("/") + dtos2.get(i).getOreviewImage();
+			fileDto.add(fileSearch);
+		}
+		
 		if (request.getParameter("index")!=null) {
 			index=(int)Float.parseFloat(request.getParameter("index"));
 		}
@@ -54,6 +68,7 @@ public class CCustomerReviewListCommand implements CCustomerCommand {
 			pagepage = index / pagecount;
 		}
 		
+		request.setAttribute("imageFile", fileDto);
 		request.setAttribute("maxpage", maxpage);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("reviewList", dtos2);

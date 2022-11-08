@@ -115,7 +115,7 @@ function previewFile() {
 </head>
 <body>
 
-	<form class="mb-3" name="myform" id="myform" method="post" enctype="multipart/form-data">
+	<form class="mb-3" name="myform" id="myform" method="get" enctype="multipart/form-data">
 	
 		<div>
 		
@@ -125,6 +125,8 @@ function previewFile() {
 			</div>
 			
 			<div class="right" style = "margin-top: -300px;">
+			
+				<input type = "hidden" name = "ordersId" value = "<%=request.getParameter("ordersId")%>">
 			
 				<fieldset>
 					<span class="text-bold">별점을 선택해주세요</span>

@@ -20,7 +20,7 @@ DataSource dataSource;
 		}
 	}
 	
-	public boolean writeReview(String oreviewStarRating, String oreviewContent, String uploadFile) {
+	public boolean writeReview(int ordersId, String oreviewStarRating, String oreviewContent, String uploadFile) {
 		//write
 		Connection connection = null;
 		PreparedStatement ps = null;
@@ -33,7 +33,7 @@ DataSource dataSource;
 			ps = connection.prepareStatement(query);
 			
 			ps.setString(1, "user");
-			ps.setInt(2, 1);
+			ps.setInt(2, ordersId);
 			ps.setString(3, "제작완료");
 			ps.setString(4, oreviewContent);
 			ps.setString(5, oreviewStarRating);
@@ -56,5 +56,33 @@ DataSource dataSource;
 		return result;
 		
 	}//write
+
+	
+	public void writeReviewUpdate(int ordersId) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "update orders set ordersReviewstatus = '작성완료' where ordersId = ? and ordersStatus = '제작완료';";
+			preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, ordersId);
+			
+			preparedStatement.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	} // writeReviewUpdate() --
+	
 	
 }
