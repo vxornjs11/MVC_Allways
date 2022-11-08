@@ -58,6 +58,7 @@ div{
 </script>
 </head>
 <body>
+<%@include file="managerHeader.jsp"%>
 <div align="center">
 <form action="addCake.do" method="post" enctype="multipart/form-data" name="actionForm">
 	<h1 style="margin-bottom:3%;margin-top:3%"><b>케이크 추가</b></h1>

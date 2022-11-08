@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="managerstyle.css">
 </head>
 <body>
+<%@include file="managerHeader.jsp"%>
 <fmt:setLocale value="ko_kr"/>
 <div align="center">
 	<h1 style="margin-bottom:3%;margin-top:3%"><b>추가상품 리스트</b></h1>

@@ -81,6 +81,7 @@ div{
 </script>
 </head>
 <body>
+<%@include file="managerHeader.jsp"%>
 <div align="center">
 <form action="addGoods.do" method="post" enctype="multipart/form-data" name="actionForm">
 	<h1 style="margin-bottom:3%;margin-top:3%"><b>추가상품 관리</b></h1>
