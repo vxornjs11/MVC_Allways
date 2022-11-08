@@ -99,19 +99,65 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@700&display=swap" rel="stylesheet">
+
+<style type="text/css">	
+	#Join{
+		font-family: 'Baloo Tammudu 2'; 
+		font-style: normal; 
+		font-weight: 700;
+		font-size: 34px;
+		color: #EE3838;
+	}
+	
+	/* Line 10 */
+	
+	#Line{
+		position: absolute;
+		width: 700px;
+		height: 0px;
+		border: 2px dashed #FF9191;
+		
+	}
+	
+	#input_box{
+		position: absolute;
+		width: 304px;
+		height: 38.58px;
+		left: 586px;
+		
+		box-sizing: border-box;
+		
+		position: absolute;
+		width: 304px;
+		height: 38.58px;
+		
+		background: #FFFFFF;
+		border: 3px solid #FCD5D5;
+	
+	}
+	
+
+
+</style>
 
 <title>ALLWAYS JOIN</title>
+<%@include file="customerHeader.jsp" %>
+
+
+</head>
+<body>
+	
 	<div align="center">
-		<br><h2>J O I N</h2><br>
+		<form action="customerJoin.do" name="customerJoin">
+		<img src="./images/Join.png" style="padding-top: 70px; padding-left: 35px; padding-bottom: 13px;">
+		<br><h2 id="Join">&nbsp;&nbsp;&nbsp;&nbsp;J O I N</h2><br>
 		
-		<hr></hr>
-		
-		<br>
-		
-		<form action="">
 			<cLif test="${CHECK==true }">
-			ID<br>
-			<input type="text" name="customerId" size="40" placeholder="영어 소문자와 숫자만 입력 가능"><br><br>
+			<label>ID</label><br>
+			<input id="input_box" type="text" name="customerId" size="40" placeholder="영어 소문자와 숫자만 입력 가능"><br><br>
 			
 			<c:if test="${CHECK==true }">
       <input type="text" class="form-control is-invalid" name="managerid" placeholder="영문 소문자와 숫자만 가능" value="${CHECKID }">
@@ -119,20 +165,20 @@
       </c:if>
 			
 			PASSWORD<br>
-			<input type="password" name="customerPw" placeholder=""><br><br>
+			<input id="input_box" type="password" name="customerPw" placeholder=""><br><br>
 			
 			PASSWORD CHECK<br>
-			<input type="password" name="customerPwCheck" placeholder="비밀번호 재입력"><br><br>
+			<input id="input_box" type="password" name="customerPwCheck" placeholder="비밀번호 재입력"><br><br>
 			
 			NAME<br>
-			<input type="text" name="customerName"><br><br>
+			<input id="input_box" type="text" name="customerName"><br><br>
 			
 			GENDER<br>
-			<input type="radio" name="customerGender" value="woman" checked="checked">WOMAN&nbsp;
-			<input type="radio" name="customerGender" value="man">MAN<br><br>
+			<input type="radio" name="customerGender" value="woman" checked="checked"> WOMAN&nbsp;
+			<input type="radio" name="customerGender" value="man"> MAN<br><br>
 			
 			PHONE<br>
-			<input type="text" name="customerPhone" placeholder="-를 제외하고 숫자만 입력해주세요"><br><br>
+			<input id="input_box" type="text" name="customerPhone" placeholder="-를 제외하고 숫자만 입력해주세요"><br><br>
 			
 			EMAIL<br>
 			<input type="text" name="customerEmail1">@<input type="text" name="customerEmail2" placeholder="직접 입력">
@@ -158,9 +204,6 @@
 		</form>
 	</div>
 	
-
-</head>
-<body>
 <script src="/assets/js/lib/jquery-ui.min.js"></script>
 <script src="/assets/js/lib/popper.min.js"></script>
 <script src="/assets/js/lib/bootstrap.min.js"></script>

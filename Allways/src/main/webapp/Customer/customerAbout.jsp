@@ -31,18 +31,14 @@
 	position: absolute;
 	width: 1428px;
 	height: 460px;
-	
 	font-family: 'EF_Diary';
 	font-style: normal;
 	font-weight: 400;
 	font-size: 26px;
 	line-height: 48px;
 	text-align: center;
-	
 	color: #4E4D4D;
-	
 }
-	
 	
 </style>
 </head>
@@ -80,8 +76,6 @@
 			</div>
 		</div>
 	</form>
-
-
 
 </body>
 </html>
