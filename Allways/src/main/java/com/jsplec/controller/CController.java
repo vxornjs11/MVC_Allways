@@ -15,6 +15,9 @@ import com.jsplec.customer.command.CCustomerLoginCommand;
 import com.jsplec.customer.command.CCustomerReviewListCommand;
 import com.jsplec.customer.command.CCustomerWriteReviewCommand;
 import com.jsplec.manager.command.CManagerAddCakeCommand;
+import com.jsplec.manager.command.CManagerAddGoodsCommand;
+import com.jsplec.manager.command.CManagerAddStatusCommand;
+import com.jsplec.manager.command.CManagerCheckGoodsNameCommand;
 import com.jsplec.manager.command.CManagerCheckNameCommand;
 import com.jsplec.manager.command.CManagerCheckNameCommand2;
 import com.jsplec.manager.command.CManagerCommand;
@@ -26,8 +29,10 @@ import com.jsplec.manager.command.CManagerOptionListCommand;
 import com.jsplec.manager.command.CManagerOptionSelect;
 import com.jsplec.manager.command.CManagerOptionUpdate;
 import com.jsplec.manager.command.CManagerOptionView;
+import com.jsplec.manager.command.CManagerOrderStatusCommand;
 import com.jsplec.manager.command.CManagerSearchCakeCommand;
 import com.jsplec.manager.command.CManagerSearchGoodsCommand;
+import com.jsplec.manager.command.CManagerStatusCommand;
 import com.jsplec.manager.command.CManagerUpdateCakeCommand;
 import com.jsplec.manager.command.CManagerViewCakeDetailCommand;
 import com.jsplec.manager.command.CManagerViewCakeListCommand;
@@ -184,6 +189,18 @@ public class CController extends HttpServlet {
 			viewPage="managerviewgoods.jsp";
 			break;
 			
+		case("/Manager/addGoods.do"):
+			managercommand=new CManagerAddGoodsCommand();
+			managercommand.execute(request, response);
+			viewPage="viewGoodsList.do";
+			break;
+			
+		case("/Manager/checkGoodsName.do"):
+			managercommand=new CManagerCheckGoodsNameCommand();
+			managercommand.execute(request, response);
+			viewPage="managercreategoods.jsp";
+			break;
+			
 //		태권
 		
 		case("/Manager/managerLoginPage.do"):
@@ -243,6 +260,22 @@ public class CController extends HttpServlet {
 				viewPage = "managerMain.do";
 			}
 		break;
+		
+		case("/Manager/MorderStatus.do"):
+			managercommand = new CManagerOrderStatusCommand();
+			managercommand.execute(request, response);
+			viewPage = "ManagerOrderStatus.jsp";
+			break;
+		case("/Manager/Status.do"):
+			managercommand = new CManagerStatusCommand();
+			managercommand.execute(request, response);
+			viewPage = "ManagerAddStatus.jsp";
+		break;
+		case("/Manager/ADDR.do"):
+			managercommand = new CManagerAddStatusCommand();
+			managercommand.execute(request, response);
+			viewPage = "MorderStatus.do";
+			break;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

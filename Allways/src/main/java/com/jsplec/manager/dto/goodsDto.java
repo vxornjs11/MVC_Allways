@@ -5,16 +5,16 @@ public class goodsDto {
 	int goodsId;
 	String goodsName;
 	String goodsCategory;
-	int goodPrice;
+	int goodsPrice;
 	String goodsImage;
 	String goodsDetail;
 	
-	public goodsDto(int goodsId, String goodsName, String goodsCategory, int goodPrice, String goodsImage, String goodsDetail) {
+	public goodsDto(int goodsId, String goodsName, String goodsCategory, int goodsPrice, String goodsImage, String goodsDetail) {
 		super();
 		this.goodsId = goodsId;
 		this.goodsName = goodsName;
 		this.goodsCategory=goodsCategory;
-		this.goodPrice = goodPrice;
+		this.goodsPrice = goodsPrice;
 		this.goodsImage = goodsImage;
 		this.goodsDetail = goodsDetail;
 	}
@@ -24,7 +24,7 @@ public class goodsDto {
 		this.goodsId = goodsId;
 		this.goodsName = goodsName;
 		this.goodsCategory = goodsCategory;
-		this.goodPrice = goodPrice;
+		this.goodsPrice = goodPrice;
 	}
 
 	public String getGoodsCategory() {
@@ -47,11 +47,11 @@ public class goodsDto {
 	public void setGoodsName(String goodsName) {
 		this.goodsName = goodsName;
 	}
-	public int getGoodPrice() {
-		return goodPrice;
+	public int getGoodsPrice() {
+		return goodsPrice;
 	}
-	public void setGoodPrice(int goodPrice) {
-		this.goodPrice = goodPrice;
+	public void setGoodPrice(int goodsPrice) {
+		this.goodsPrice = goodsPrice;
 	}
 	public String getGoodsImage() {
 		return goodsImage;

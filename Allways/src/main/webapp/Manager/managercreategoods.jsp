@@ -35,7 +35,6 @@ div{
 	
 	function submitDo(){
 		var form=document.actionForm;
-		console.log(form.checkName.value);
 		if (form.checkName.value=="true"){
 			alert("추가가 완료되었습니다");
 			form.submit();
@@ -47,7 +46,7 @@ div{
 	
 	function nameCheck(){
 		var form=document.actionForm;
-		if (form.cakeName.value==""){
+		if (form.goodsName.value==""){
 			alert("추가상품 이름을 입력하세요");
 			return;
 		} else{
@@ -67,7 +66,7 @@ div{
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:50%;display:inline-block">
-				<input type="hidden" name="goodsName" value="${check }">
+				<input type="hidden" name="checkName" value="${check }">
 				<c:if test="${check==null }">
 					<input type="text" name="goodsName" class="form-control" style="border-color:#fdcdcd">
 				</c:if>
@@ -90,10 +89,10 @@ div{
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:30%;display:inline-block">
 				<select name="goodsCategory" style="border-color:#fdcdcd;border-radius:10px;height:90%">
-					<option>초</option>
-					<option>풍선</option>
-					<option>폭죽</option>
-					<option>고깔모자</option>
+					<option value="초">초</option>
+					<option value="풍선">풍선</option>
+					<option value="폭죽">폭죽</option>
+					<option value="고깔모자">고깔모자</option>
 				</select>
 			</div>
 		</div>

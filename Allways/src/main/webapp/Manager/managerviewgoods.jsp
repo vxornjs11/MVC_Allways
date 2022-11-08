@@ -39,14 +39,14 @@
 				<tr>
 					<td>${cnt.goodsId}</td>
 					<td>${cnt.goodsName}</td>
-					<td>${cnt.goodCategory}</td>
+					<td>${cnt.goodsCategory}</td>
 					<td><fmt:formatNumber value="${cnt.goodsPrice}" type="currency"/></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
 	<div class="tablediv" align="right">
-		<a href="managercreatecake.jsp" style="color:#a87878;text-decoration:none">추가</a>
+		<a href="managercreategoods.jsp" style="color:#a87878;text-decoration:none">추가</a>
 	</div>
 	<!-- 페이지 분할: 검색 안했을 때 -->
 	<c:if test="${Query==null }">
