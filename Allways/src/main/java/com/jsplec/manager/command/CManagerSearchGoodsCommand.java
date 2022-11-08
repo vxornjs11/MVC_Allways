@@ -15,7 +15,7 @@ public class CManagerSearchGoodsCommand implements CManagerCommand {
 		// TODO Auto-generated method stub
 		String goodsName=request.getParameter("query");
 		CManagerGoodsDao dao=new CManagerGoodsDao();
-		ArrayList<goodsDto> dtos=dao.searchGoods(goodsName);
+		ArrayList<goodsDto> dtos=new ArrayList<goodsDto>();
 		int index=1;
 		int rowcount=7;
 		int pagecount=5;
@@ -29,6 +29,12 @@ public class CManagerSearchGoodsCommand implements CManagerCommand {
 			pagepage=index/pagecount-1;
 		} else {
 			pagepage=index/pagecount;
+		}
+		
+		if (goodsName==null) {
+			dtos=dao.viewGoodsList();
+		} else {
+			dtos=dao.searchGoods(goodsName);
 		}
 		
 		request.setAttribute("Dtos", dtos);
