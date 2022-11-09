@@ -40,28 +40,64 @@
 <style type="text/css">
 
   #center {
-	padding: 30px 15px;
-	font-weight: 400;
-	letter-spacing: 1px;
-	color: #FF8888;
-	outline: none;
-	font-family: 'Baloo Tammudu 2';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 19px;
-	line-height: 69px;
-	display: flex;
-  }
+		padding: 30px 15px;
+		font-weight: 400;
+		letter-spacing: 1px;
+		color: #FF8888;
+		outline: none;
+		font-family: 'Baloo Tammudu 2';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 19px;
+		line-height: 69px;
+		display: flex;
+   }
   
-	#Line{
-	position: absolute;
-	width: 1337px;
-	height: 0px;
-	border: 2px solid #FECACA;
+  #Line{
+		position: absolute;
+		width: 1337px;
+		height: 0px;
+		border: 2px solid #FECACA;
 
-}
+	}
   
+  .dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  margin-top: 25px;
+  border-top: 0.3em;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em transparent;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #F9A392;
+  text-decoration: none;
+  background-color: #f8f9fa;
+}
  
+.dropdown-menu {
+position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #757575;
+  text-align: center;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px rgba(0, 0, 0, 0.15);
+}
+
  
  </style>
 
@@ -95,11 +131,11 @@
 	        <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
 	            <div class="navbar-nav m-auto py-0">
 	                <a href="customerMain.do" id="center" class="nav-item nav-link active">HOME</a>
-	                <div class="dropdown">
-	                    <a href="#" id="center" class="dropdown-toggle" data-toggle="dropdown">CAKE</a>
-	                    <div class="dropdown-menu">
-	                        <a href="#" id="" class="dropdown-item">cake</a>
-	                        <a href="#" id="" class="dropdown-item">extras</a>
+	                <div class="dropdown show">
+	                    <a href="#" id="center" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="padding-bottom: 0px;">CAKE</a>
+	                    <div class="dropdown-menu" id=".dropdown-menu" style="width: 80px; height: 78px; right: 0px; left: 0px; top: 80px;">
+	                        <a href="#" id="" class="dropdown-item" style="width: 80px;">cake</a>
+	                        <a href="#" id="" class="dropdown-item" style="width: 80px;">extras</a>
 	                    </div>
 	                </div>
 	                <a href="#" id="center" class="nav-item nav-link">CLASS</a>

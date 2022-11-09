@@ -112,10 +112,13 @@
 		color: #EE3838;
 	}
 	
-	/* Line 10 */
+	#Join_image{
+		padding-top: 70px; 
+		padding-left: 0px; 
+		padding-bottom: 13px;
+	}	
 	
 	#Line{
-		position: absolute;
 		width: 700px;
 		height: 0px;
 		border: 2px dashed #FF9191;
@@ -123,22 +126,64 @@
 	}
 	
 	#input_box{
-		position: absolute;
-		width: 304px;
-		height: 38.58px;
-		left: 586px;
-		
 		box-sizing: border-box;
-		
-		position: absolute;
-		width: 304px;
-		height: 38.58px;
-		
+		left: 30px;
+		right: 0px;
+		width: 350px;
+		height: 45px;
 		background: #FFFFFF;
 		border: 3px solid #FCD5D5;
+		padding-left: 10px;
 	
 	}
 	
+	#email_first{
+		box-sizing: border-box;
+		left: 30px;
+		right: 0px;
+		width: 162.3px;
+		height: 45px;
+		background: #FFFFFF;
+		border: 3px solid #FCD5D5;
+		padding-left: 10px;
+	
+	}
+	
+	#label_design{
+		font-family: 'Baloo Tammudu 2';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 32px;
+		display: flex;
+		color: #766262;
+		margin-bottom: 0px;
+		height:25px;
+	}	
+	
+	#radio_design{
+		/* Vector */
+		width: 32.67px;
+		height: 32.67px;
+		color: #FCD5D5;
+
+		/* Vector */
+		width: 16.33px;
+		height: 16.33px;
+		color: #FCD5D5;
+		
+		/* WOMAN */
+		font-family: 'Baloo Tammudu 2';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 32px;
+		
+		color: #FCD5D5;
+
+		
+		
+	}
 
 
 </style>
@@ -150,59 +195,70 @@
 </head>
 <body>
 	
-	<div align="center">
-		<form action="customerJoin.do" name="customerJoin">
-		<img src="./images/Join.png" style="padding-top: 70px; padding-left: 35px; padding-bottom: 13px;">
-		<br><h2 id="Join">&nbsp;&nbsp;&nbsp;&nbsp;J O I N</h2><br>
-		
-			<cLif test="${CHECK==true }">
-			<label>ID</label><br>
-			<input id="input_box" type="text" name="customerId" size="40" placeholder="영어 소문자와 숫자만 입력 가능"><br><br>
+	<form action="customerJoin.do" name="customerJoin" method="post">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col">
+				</div>
+				<div class="col">
+					<img src="./images/Join.png" id="Join_image"><br>
+					<br><h2 id="Join">J O I N</h2><br>
+					
+					<label id="label_design">ID</label>
+					<input id="input_box" type="text" name="customerId" size="40" placeholder="영어 소문자와 숫자만 입력 가능"><br><br>
 			
-			<c:if test="${CHECK==true }">
-      <input type="text" class="form-control is-invalid" name="managerid" placeholder="영문 소문자와 숫자만 가능" value="${CHECKID }">
-      <script>alert("이미 존재하는 ID입니다.")</script>
-      </c:if>
+					<label id="label_design">PASSWORD</label>
+					<input id="input_box" type="password" name="customerPw" placeholder=""><br><br>
+					
+					<label id="label_design">PASSWORD CHECK</label>
+					<input id="input_box" type="password" name="customerPwCheck" placeholder="비밀번호 재입력"><br><br>
+					
+					<label id="label_design">NAME</label>
+					<input id="input_box" type="text" name="customerName"><br><br>
+					
+					<label id="label_design">GENDER</label>
+					<input id="radio_design" type="radio" name="customerGender" value="woman" checked="checked"> WOMAN&nbsp;
+					<input id="radio_design" type="radio" name="customerGender" value="man"> MAN<br><br>
+					
+					<label id="label_design">PHONE</label>
+					<input id="input_box" type="text" name="customerPhone" placeholder=" '-' 를 제외하고 숫자만 입력해주세요"><br><br>
+					
+					<label id="label_design">EMAIL</label>
+					<input id="email_first" type="text" name="customerEmail1"> @ <input id="email_first" type="text" name="customerEmail2" placeholder="직접 입력">
+						<select id="input_box" name="selectemail" style="margin-top: 5px;" onChange="selectEmail(this)">
+							<option value="" selected="selected">선택하세요</option>
+							<option value="naver.com">naver.com</option>
+							<option value="gmail.com">gmail.com</option>
+							<option value="gmail.com">daum.net</option>
+							<option value="1">직접 입력</option>
+						</select><br><br>
+					
+					<label id="label_design">BIRTHDAY</label>
+					<input id="input_box" type="date" name="customerBirth"><br><br>
+					
+					<label id="label_design">ADDRESS</label>
+					<input type="text" name="uzip" id="uzip" onclick="daum_zipcode()" /> 
+					<a href="javascript:daum_zipcode()" name="postcode">우편번호</a><br>
+					<input id="input_box" type="text" name="uaddr1" id="uaddr1" title="기본주소" maxlength="200" value="" readonly="" placeholder="기본주소" onclick="daum_zipcode()" /><br>
+					<input id="input_box" type="text" name="uaddr2" id="uaddr2" title="상세주소" maxlength="200" value="" readonly="" placeholder="상세주소 입력" /><br><br>
+					
+					<input type="submit" name="join" value="JOIN">			
+				</div>
+			<div class="col">
+			</div>
+			</div>
+		</div>
+	</form>
+	
+	
+	
+	
 			
-			PASSWORD<br>
-			<input id="input_box" type="password" name="customerPw" placeholder=""><br><br>
 			
-			PASSWORD CHECK<br>
-			<input id="input_box" type="password" name="customerPwCheck" placeholder="비밀번호 재입력"><br><br>
 			
-			NAME<br>
-			<input id="input_box" type="text" name="customerName"><br><br>
 			
-			GENDER<br>
-			<input type="radio" name="customerGender" value="woman" checked="checked"> WOMAN&nbsp;
-			<input type="radio" name="customerGender" value="man"> MAN<br><br>
 			
-			PHONE<br>
-			<input id="input_box" type="text" name="customerPhone" placeholder="-를 제외하고 숫자만 입력해주세요"><br><br>
-			
-			EMAIL<br>
-			<input type="text" name="customerEmail1">@<input type="text" name="customerEmail2" placeholder="직접 입력">
-			<select name="selectemail" onChange="selectEmail(this)">
-				<option value="" selected="selected">선택하세요</option>
-				<option value="naver.com">naver.com</option>
-				<option value="gmail.com">gmail.com</option>
-				<option value="gmail.com">daum.net</option>
-				<option value="1">직접 입력</option>
-			</select><br><br>
-			
-			BIRTHDAY<br>
-			<input type="date" name="customerBirth"><br><br>
-			
-			ADDRESS<br>
-			<input type="text" name="uzip" id="uzip" onclick="daum_zipcode()" /> 
-			<a href="javascript:daum_zipcode()" name="postcode">우편번호</a><br>
-			<input type="text" name="uaddr1" id="uaddr1" title="기본주소" maxlength="200" value="" readonly="" placeholder="기본주소" onclick="daum_zipcode()" /><br>
-			<input type="text" name="uaddr2" id="uaddr2" title="상세주소" maxlength="200" value="" readonly="" placeholder="상세주소 입력" /><br><br>
-			
-			<input type="submit" name="join" value="JOIN">			
-			
-		</form>
-	</div>
+	
 	
 <script src="/assets/js/lib/jquery-ui.min.js"></script>
 <script src="/assets/js/lib/popper.min.js"></script>

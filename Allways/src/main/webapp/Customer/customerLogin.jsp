@@ -53,8 +53,9 @@ input::placeholder {
 </style>
 
 <script type="text/javascript">
-	var form = document.login;
 	function loginAction(){
+		var form = document.customerLogin;
+		form.action="customerLogin.do";
 		form.submit();
 	}
 </script>
@@ -69,7 +70,7 @@ input::placeholder {
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 </head>
 <body style="background: #FFF1F1">
-	<form action="customerLogin.do" name="customerLogin" method="post">
+	<form name="customerLogin" method="post">
 		<div class="container text-center">
 			<div class="row">
 				<div class="col">
@@ -87,7 +88,7 @@ input::placeholder {
 				<a href="" id="TextColor">ID/PASSWORD를 잊어버리셨나요? ▶ ID찾기 / </a>
 				<a href="" id="TextColor">PASSWORD 찾기</a><br>
 				
-				<a href="" id="TextColor">GO HOME</a>
+				<a href="customerMain.do" id="TextColor">GO HOME</a>
 				</div>
 			<div class="col">
 			</div>
