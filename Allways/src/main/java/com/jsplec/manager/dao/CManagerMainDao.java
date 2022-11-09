@@ -35,7 +35,7 @@ public class CManagerMainDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "select date(ordersDate), sum(ordersSalePrice), sum(ordersQuantity) where ordersStatus='주문접수' group by date(ordersDate) order by date(ordersDate);";
+			String query = "select date(ordersDate), sum(ordersSalePrice), sum(ordersQuantity) from orders where ordersStatus='주문접수' group by date(ordersDate) order by date(ordersDate);";
 			ps = connection.prepareStatement(query);
 			rs = ps.executeQuery();
 

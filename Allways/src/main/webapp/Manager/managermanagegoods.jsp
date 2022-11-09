@@ -116,7 +116,7 @@ input[type=file]::file-selector-button{
 				</c:if>
 			</div>
 			<div style="display:inline-block">
-				<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="중복체크" onclick="nameCheck()">
+				<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="중복체크" onclick="nameCheck()">
 			</div>
 		</div>
 		<div align="left" style="width:20%;display:inline-block">

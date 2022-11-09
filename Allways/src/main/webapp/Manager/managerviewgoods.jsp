@@ -13,7 +13,9 @@
 <style>
 	a.tablebutton{
 		color:#000000;
+		font-size:1.4em;
 		text-decoration:none;
+		margin:10px;
 	}
 	a.tablebutton:hover{
 		color:#a87878;
@@ -34,7 +36,7 @@
 				<input type="submit" class="btn btn-primary" style="background:#ffffff;border-color:#a87878;color:#a87878" value="검색">
 			</div>
 			<div style="width:50%;display:inline-block" align="right">
-				<span style="font-size:1.2em">총 ${Size}건</span>
+				<span style="font-size:1.6em">총 ${Size}건</span>
 			</div>
 		</div>
 	</form>

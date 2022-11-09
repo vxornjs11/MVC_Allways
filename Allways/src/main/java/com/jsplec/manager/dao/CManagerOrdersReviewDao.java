@@ -35,8 +35,8 @@ public class CManagerOrdersReviewDao {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "select or_customerId, oreviewStarrating, oreviewInitdate from ordersreview order by oreviewInitdate desc; ";
-			String query2 = "where oreviewDeletedate is null";
+			String query = "select or_customerId, oreviewStarrating, oreviewInitdate from ordersreview where oreviewDeletedate is null ";
+			String query2 = "order by oreviewInitdate desc ;";
 
 			ps = connection.prepareStatement(query + query2);
 			rs = ps.executeQuery();

@@ -95,16 +95,6 @@ public class CController extends HttpServlet {
 		switch (com) {
 
 //		예진
-		case ("/Customer/customerLogin.do"):
-			customercommand = new CCustomerLoginCommand();
-			if (customercommand.execute2(request, response) == true) {
-				viewPage = "customerMain.do";
-			} else {
-				request.setAttribute("CHECK", customercommand.execute2(request, response));
-				viewPage = "customerLogin.jsp";
-			}
-			break;
-
 		case ("/Customer/customerAbout.do"):
 			viewPage = "customerAbout.jsp";
 			break;
@@ -115,6 +105,17 @@ public class CController extends HttpServlet {
 
 		case ("/Customer/customerJoin.do"):
 			viewPage = "customerJoin.jsp";
+			break;
+			
+		case ("/Customer/customerLogin.do"):
+			customercommand = new CCustomerLoginCommand();
+			boolean check = customercommand.execute2(request, response);
+			if (check == true) {
+				viewPage = "customerMain.do";
+			} else {
+				request.setAttribute("CHECK", check);
+				viewPage = "customerLogin.jsp";
+			}
 			break;
 
 //		한별
@@ -298,9 +299,9 @@ public class CController extends HttpServlet {
 
 		case ("/Manager/managerLogin.do"):
 			managercommand = new CManagerLoginCommand();
-			boolean check = managercommand.execute2(request, response);
-			if (check == false) {
-				request.setAttribute("CHECK", check);
+			boolean check2 = managercommand.execute2(request, response);
+			if (check2 == false) {
+				request.setAttribute("CHECK", check2);
 				viewPage = "managerLogin.jsp";
 			} else {
 				viewPage = "managerMain.do";
