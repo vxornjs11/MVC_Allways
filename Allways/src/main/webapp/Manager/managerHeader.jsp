@@ -10,7 +10,7 @@
 <nav class="navbar navbar-expand-xl bg-pink py-3 py-lg-0 px-lg-5" style="background-color: #FDCDCD;">
   <div class="container-fluid">
    <a class="navbar-brand" href="#">
-      <img src="./images/HeaderLogo2.png" style="padding-right: 60px; padding-left: 40px;"></img>
+      <img src="./images/HeaderLogo2.png" style="padding-right: 60px; padding-left: 40px;height:60px"></img>
     </a>
     <a class="navbar-brand" href="managerMain.do">ALLways</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,8 +30,8 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="Mlist.do">옵션 리스트 관리</a></li>
-            <li><a class="dropdown-item" href="viewCakeList.do">케이크 관리</a></li>
-            <li><a class="dropdown-item" href="viewGoodsList.do">추가 상품 관리</a></li>
+            <li><a class="dropdown-item" href="searchCake.do">케이크 관리</a></li>
+            <li><a class="dropdown-item" href="searchGoods.do">추가 상품 관리</a></li>
           </ul>
         </li>
           <li class="nav-item">
@@ -50,10 +50,7 @@
           <a class="nav-link" href="#">공지 사항</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      
     </div>
   </div>
 </nav>

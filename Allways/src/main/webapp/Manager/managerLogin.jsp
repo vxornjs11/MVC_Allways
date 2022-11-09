@@ -10,7 +10,6 @@
 <style>
 	div{
 		padding:10px;
-		
 	}
 	div.inlineblock{
 		display:inline-block;
@@ -25,8 +24,8 @@
 <div align="center">
 <form action="managerLogin.do" method="post">
 
-	<h1 style="margin-top:10%;width:50%">Manager Login</h1>
-	<div style="width:50%">
+	<h1 style="margin-top:10%;width:80%"><b>Manager Login</b></h1>
+	<div style="width:80%">
 		<div align="right" style="width:40%" class="inlineblock">
 			<div style="width:30%;height:10%;font-size:1.2em" align="right">
 				ID :
@@ -36,16 +35,16 @@
 			</div>
 		</div>
 		<div align="left" style="width:50%" class="inlineblock">
-			<div style="width:50%">
+			<div style="width:45%">
 				<input type="text" name="managerId" class="form-control" style="border-color:#fdcdcd">
 			</div>
-			<div style="width:50%;height:10%">
+			<div style="width:45%">
 				<input type="password" name="managerPw" class="form-control" style="border-color:#fdcdcd">
 			</div>
 		</div>
 	</div>
 	<c:if test="${CHECK==false }">
-			<p class="lead"style="color:red;"  style="font-size:0.8em;margin:10px" >ID 또는 비밀번호가 일치하지 않습니다.</p>
+			<p class="lead"	style="color:red;font-size:0.8em;margin:10px" >ID 또는 비밀번호가 일치하지 않습니다.</p>
 	</c:if>
 	<input type="submit" name="login" value="LOGIN" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878">
 	

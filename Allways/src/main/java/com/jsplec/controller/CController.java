@@ -157,102 +157,105 @@ public class CController extends HttpServlet {
 			viewPage = "customerCakeDetail.jsp";
 			break;
 //		유승
+		//메인 화면 출력
 		case ("/Manager/managerMain.do"):
 			managercommand = new CManagerMainCommand();
 			managercommand.execute(request, response);
 			viewPage = "managermain.jsp";
 			break;
 
-		case ("/Manager/viewCakeList.do"):
-			managercommand = new CManagerViewCakeListCommand();
-			managercommand.execute(request, response);
-			viewPage = "managerviewmenu.jsp";
-			break;
-
+		//케이크 검색
 		case ("/Manager/searchCake.do"):
 			managercommand = new CManagerSearchCakeCommand();
 			managercommand.execute(request, response);
 			viewPage = "managerviewmenu.jsp";
 			break;
 
+		//케이크 생성 시 이름 중복확인
 		case ("/Manager/checkName.do"):
 			managercommand = new CManagerCheckNameCommand();
 			managercommand.execute(request, response);
 			viewPage = "managercreatecake.jsp";
 			break;
 
+		//케이크 상세보기
 		case ("/Manager/cakeDetail.do"):
 			managercommand = new CManagerViewCakeDetailCommand();
 			managercommand.execute(request, response);
 			viewPage = "managermanagecake.jsp";
 			break;
 
+		//케이크 추가
 		case ("/Manager/addCake.do"):
 			managercommand = new CManagerAddCakeCommand();
 			managercommand.execute(request, response);
 			viewPage = "viewCakeList.do";
 			break;
 
+		//케이크 수정
 		case ("/Manager/updateCake.do"):
 			managercommand = new CManagerUpdateCakeCommand();
 			managercommand.execute(request, response);
 			viewPage = "viewCakeList.do";
 			break;
 
+		//케이크 수정 시 중복확인
 		case ("/Manager/checkName2.do"):
 			managercommand = new CManagerCheckNameCommand2();
 			managercommand.execute(request, response);
 			viewPage = "managermanagecake.jsp";
 			break;
 
+		//케이크 삭제
 		case ("/Manager/deleteCake.do"):
 			managercommand = new CManagerDeleteCakeCommand();
 			managercommand.execute(request, response);
 			viewPage = "viewCakeList.do";
 			break;
 
-		case ("/Manager/viewGoodsList.do"):
-			managercommand = new CManagerViewGoodsListCommand();
-			managercommand.execute(request, response);
-			viewPage = "managerviewgoods.jsp";
-			break;
-
+		//추가상품 검색
 		case ("/Manager/searchGoods.do"):
 			managercommand = new CManagerSearchGoodsCommand();
 			managercommand.execute(request, response);
 			viewPage = "managerviewgoods.jsp";
 			break;
 
+		//추가상품 추가
 		case ("/Manager/addGoods.do"):
 			managercommand = new CManagerAddGoodsCommand();
 			managercommand.execute(request, response);
 			viewPage = "viewGoodsList.do";
 			break;
 
+		//추가상품 생성 시 이름 중복확인
 		case ("/Manager/checkGoodsName.do"):
 			managercommand = new CManagerCheckGoodsNameCommand();
 			managercommand.execute(request, response);
 			viewPage = "managercreategoods.jsp";
 			break;
 
+		//추가상품 수정 시 이름 중복확인
 		case ("/Manager/checkGoodsName2.do"):
 			managercommand = new CManagerCheckGoodsNameCommand2();
 			managercommand.execute(request, response);
 			viewPage = "managermanagegoods.jsp";
 			break;
 
+		//추가상품 상세정보
 		case ("/Manager/viewGoodsDetail.do"):
 			managercommand = new CManagerviewGoodsDetailCommand();
 			managercommand.execute(request, response);
 			viewPage = "managermanagegoods.jsp";
 			break;
 
+		//추가상품 삭제
 		case ("/Manager/deleteGoods.do"):
 			managercommand = new CManagerDeleteGoodsCommand();
 			managercommand.execute(request, response);
 			viewPage = "viewGoodsList.do";
 			break;
 			
+		//추가상품 수정
 		case("/Manager/updateGoods.do"):
 			managercommand=new CManagerUpdateGoodsCommand();
 			managercommand.execute(request, response);
