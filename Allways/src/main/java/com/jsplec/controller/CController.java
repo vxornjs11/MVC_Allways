@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jsplec.customer.command.CCustomerCakeDetailCommand;
+import com.jsplec.customer.command.CCustomerCakeDetailReviewCommand;
 import com.jsplec.customer.command.CCustomerCakeListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
@@ -154,6 +155,12 @@ public class CController extends HttpServlet {
 			
 		case("/Customer/customerCakeDetail.do"):
 			customercommand = new CCustomerCakeDetailCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCakeDetail.jsp";
+			break;
+			
+		case("/Customer/customerCakeDetail1.do"):
+			customercommand = new CCustomerCakeDetailReviewCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerCakeDetail.jsp";
 			break;
