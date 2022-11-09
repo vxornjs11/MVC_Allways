@@ -107,7 +107,7 @@ input[type=file]::file-selector-button{
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:30%;display:inline-block">
-				<input type="text" name="cakePrice" class="form-control" style="border-color:#fdcdcd" value="${cakePrice }">
+				<input type="number" step="1000" name="cakePrice" class="form-control" style="border-color:#fdcdcd" value="${cakePrice }">
 			</div>원
 		</div>
 		<div align="left" style="width:20%;height:20%;display:inline-block">
