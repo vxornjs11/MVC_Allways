@@ -14,12 +14,12 @@
 	<h1> Login</h1>
 	ID :
 	<input type="text" name="managerId"><br>
-	<c:if test="${CHECK==false }">
-			<p class="lead"style="color:red;"  style="font-size:0.8em;margin:10px" >ID 또는 비밀번호가 일치하지 않습니다.</p>
-	</c:if>
 	
 	Password:
 	<input type="password" name="managerPw">
+	<c:if test="${CHECK==false }">
+			<p class="lead"style="color:red;"  style="font-size:0.8em;margin:10px" >ID 또는 비밀번호가 일치하지 않습니다.</p>
+	</c:if>
 	<input type="submit" name="login" value="LOGIN">
 	
 </form>

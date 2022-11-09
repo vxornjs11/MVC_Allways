@@ -14,10 +14,12 @@ public class CManagerOptionUpdate implements CManagerCommand {
 		String category = request.getParameter("option");
 		String value = request.getParameter("optionName");
 		String Price = request.getParameter("optionPrice");
+		String cakeoptionImage = request.getParameter("cakeoptionImage");
 		System.out.println(Price);
 		CManagerOrderListDao dao = new CManagerOrderListDao();
-		dao.contentUpdate(category, value,Price,optionId);
+		dao.contentUpdate(category, value,Price,optionId,cakeoptionImage);
 	}
+
 
 	@Override
 	public boolean execute2(HttpServletRequest request, HttpServletResponse response) {

@@ -40,51 +40,52 @@ public CManagerOrderListDao() {
 		ResultSet resultSet = null;
 		
 		try { 
-				connection = dataSource.getConnection();
+			connection = dataSource.getConnection();
+			
+			String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption order by cakeoptionCategory DESC";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				int cakeoptionId = resultSet.getInt("cakeoptionId");
+				String cakeoptionCategory = resultSet.getString("cakeoptionCategory");
+				String cakeoptionValue = resultSet.getString("cakeoptionValue");
+				int cakeoptionPrice = resultSet.getInt("cakeoptionPrice");
 				
-				String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption order by cakeoptionCategory DESC";
-				preparedStatement = connection.prepareStatement(query);
-				resultSet = preparedStatement.executeQuery();
-				
-				while(resultSet.next()) {
-					int cakeoptionId = resultSet.getInt("cakeoptionId");
-					String cakeoptionCategory = resultSet.getString("cakeoptionCategory");
-					String cakeoptionValue = resultSet.getString("cakeoptionValue");
-					String cakeoptionPrice = resultSet.getString("cakeoptionPrice");
-					
-					CManagerOptionListDto dto = new CManagerOptionListDto(cakeoptionId,cakeoptionCategory,cakeoptionValue,cakeoptionPrice);
-					dtos.add(dto);
-					}
+				CManagerOptionListDto dto = new CManagerOptionListDto(cakeoptionId,cakeoptionCategory,cakeoptionValue,cakeoptionPrice);
+				dtos.add(dto);
+				}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return dtos;
 }//option list
-	public void Addoption(String cakeoptionCategory, String cakeoptionValue, String cakeoptionprice) {
+	public void Addoption(String cakeoptionCategory, String cakeoptionValue, String cakeoptionprice, String cakeoptionImage) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			connection = dataSource.getConnection();
 			
-			Connection connection = null;
-			PreparedStatement preparedStatement = null;
-			try {
-				connection = dataSource.getConnection();
-				
-				String query = "insert into cakeoption (cakeoptionCategory, cakeoptionValue,cakeoptionprice,cakeoptionInitdate) values (?, ?, ?,now())";
-				preparedStatement = connection.prepareStatement(query);
-				preparedStatement.setString(1, cakeoptionCategory);
-				preparedStatement.setString(2, cakeoptionValue);
-				preparedStatement.setString(3, cakeoptionprice);
+			String query = "insert into cakeoption (cakeoptionCategory, cakeoptionValue,cakeoptionprice,cakeoptionImage,cakeoptionInitdate) values (?, ?, ?,?,now())";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, cakeoptionCategory);
+			preparedStatement.setString(2, cakeoptionValue);
+			preparedStatement.setInt(3, Integer.parseInt(cakeoptionprice));
+			preparedStatement.setString(4, cakeoptionImage);
 
-				preparedStatement.executeUpdate();
+			preparedStatement.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
 			} catch(Exception e) {
 				e.printStackTrace();
-			}finally {
-				try {
-					if(preparedStatement != null) preparedStatement.close();
-					if(connection != null) connection.close();
-				} catch(Exception e) {
-					e.printStackTrace();
-				}
 			}
-		} // add() --
+		}
+	} // add() --
 	
 
 	public ArrayList<CManagerOptionListDto> selectList(String option,String Query ){
@@ -95,22 +96,22 @@ public CManagerOrderListDao() {
 		
 		
 		try { 
-				connection = dataSource.getConnection();
+			connection = dataSource.getConnection();
+			
+			
+			String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption where " + option + "  Like '%" + Query+ "%' order by cakeoptionCategory DESC";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				int cakeoptionId = resultSet.getInt("cakeoptionId");
+				String cakeoptionCategory = resultSet.getString("cakeoptionCategory");
+				String cakeoptionValue = resultSet.getString("cakeoptionValue");
+				int cakeoptionPrice = resultSet.getInt("cakeoptionPrice");
 				
-				
-				String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption where " + option + "  Like '%" + Query+ "%' order by cakeoptionCategory DESC";
-				preparedStatement = connection.prepareStatement(query);
-				resultSet = preparedStatement.executeQuery();
-				
-				while(resultSet.next()) {
-					int cakeoptionId = resultSet.getInt("cakeoptionId");
-					String cakeoptionCategory = resultSet.getString("cakeoptionCategory");
-					String cakeoptionValue = resultSet.getString("cakeoptionValue");
-					String cakeoptionPrice = resultSet.getString("cakeoptionPrice");
-					
-					CManagerOptionListDto dto = new CManagerOptionListDto(cakeoptionId,cakeoptionCategory,cakeoptionValue,cakeoptionPrice);
-					dtos.add(dto);
-					}
+				CManagerOptionListDto dto = new CManagerOptionListDto(cakeoptionId,cakeoptionCategory,cakeoptionValue,cakeoptionPrice);
+				dtos.add(dto);
+				}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -135,11 +136,12 @@ public CManagerOrderListDao() {
 				int cakeoptionId = resultSet.getInt("cakeoptionId");
 				String cakeoptionCategory = resultSet.getString("cakeoptionCategory");
 				String cakeoptionValue = resultSet.getString("cakeoptionValue");
-				String cakeoptionPrice = resultSet.getString("cakeoptionPrice");
+				int cakeoptionPrice = resultSet.getInt("cakeoptionPrice");
+				String cakeoptionImage = resultSet.getString("cakeoptionImage");
 			
 			
 				
-				dto = new CManagerOptionListDto(cakeoptionId, cakeoptionCategory, cakeoptionValue, cakeoptionPrice);
+				dto = new CManagerOptionListDto(cakeoptionId, cakeoptionCategory, cakeoptionValue, cakeoptionPrice, cakeoptionImage);
 						
 				}
 			
@@ -158,7 +160,7 @@ public CManagerOrderListDao() {
 		
 		
 	}// content_view
-	public void contentUpdate(String cakeoptionCategory,String cakeoptionValue, String cakeoptionPrice, String cakeoptionId) {
+	public void contentUpdate(String cakeoptionCategory,String cakeoptionValue, String cakeoptionPrice, String cakeoptionImage, String cakeoptionId) {
 		//write
 				Connection connection = null;
 				PreparedStatement preparedStatement = null;
@@ -167,13 +169,14 @@ public CManagerOrderListDao() {
 				try {
 					connection = dataSource.getConnection();
 					
-					String query = "update cakeoption set cakeoptionCategory = ?, cakeoptionValue = ? , cakeoptionPrice= ?, cakeoptionUpdatedate = now() where cakeoptionId = ?";
+					String query = "update cakeoption set cakeoptionCategory = ?, cakeoptionValue = ? , cakeoptionPrice= ?,cakeoptionImage =? , cakeoptionUpdatedate = now() where cakeoptionId = ?";
 					preparedStatement = connection.prepareStatement(query);
 					
 					preparedStatement.setString(1, cakeoptionCategory);
 					preparedStatement.setString(2, cakeoptionValue);
-					preparedStatement.setString(3, cakeoptionPrice);
-					preparedStatement.setInt(4, Integer.parseInt(cakeoptionId));
+					preparedStatement.setInt(3, Integer.parseInt(cakeoptionPrice));
+					preparedStatement.setString(4, cakeoptionImage);
+					preparedStatement.setInt(5, Integer.parseInt(cakeoptionId));
 					
 					preparedStatement.executeUpdate();
 				

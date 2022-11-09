@@ -16,9 +16,19 @@ crossorigin="anonymous">
 <%@include file="managerHeader.jsp"%>
 <script type="text/javascript">
 function Return(){
-		var add = document.add;
-		add.action="return.do";
-		add.submit();
+		var upd = document.upd;
+		upd.action="return.do";
+		upd.submit();
+		}
+function Update(){
+		var upd = document.upd;
+		upd.action="Update.do";
+		upd.submit();
+		}
+function Delete(){
+		var upd = document.upd;
+		upd.action="Delete.do";
+		upd.submit();
 		}
 function previewFile() {
 	  var preview = document.querySelector('img#preview');
@@ -42,7 +52,7 @@ function previewFile() {
 
 <h1 align="center">옵션 관리</h1>
 
-	<form method="post" action="addOption.do" enctype="multipart/form-data" name = "add">
+	<form method="post"  enctype="multipart/form-data" name = "upd">
 	<div align="center">
 	<table border="0">
 	<tr>
@@ -58,24 +68,25 @@ function previewFile() {
 	</select></td>
 	<tr>
 		<td>CAKE ID :
-		<input type="text" name="optionId" readonly/>
+		<input type="text" name="optionId" value="${cake_option.cakeoptionId}" readonly/>
 		</td>
 	</tr>
 	
 	<tr>
 		<td>옵션 이름 :
-		<input type="text" name="optionName" >
+		<input type="text" name="optionName" value="${cake_option.cakeoptionValue}" >
 		</td>
 	</tr>
 	<tr>
 		<td>가격 이름 :
-		<input type="text" name="optionPrice"  >
+		<input type="text" name="optionPrice" value="${cake_option.cakeoptionPrice}" >
 		</td>
 	</tr>
 	<tr>
 		<td>
 			<input type="button" value="돌아가기" onclick="Return()">
-			<input type="submit" value="추가">
+			<input type="button" value="수정" onclick="Update()">
+			<input type="button" value="삭제" onclick="Delete()">
 		</td>
 	</tr>
 	</table>
@@ -88,7 +99,8 @@ function previewFile() {
 			사진 미리보기
 		</div>
 		<div>
-			<img src="" id="preview" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
+			<img src="/Allways/${cake_option.cakeoptionImage}" id="preview" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
+			<input type="hidden" name="cakeoptionImage" value="${cake_option.cakeoptionImage}">
 		</div>
 	</div>
 		

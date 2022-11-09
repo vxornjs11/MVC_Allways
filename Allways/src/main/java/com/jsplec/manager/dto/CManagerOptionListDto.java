@@ -5,16 +5,17 @@ public class CManagerOptionListDto {
 	int cakeoptionId;
 	String cakeoptionCategory;
 	String cakeoptionValue;
-	String cakeoptionPrice;
+	int cakeoptionPrice;
+	String cakeoptionImage;
 	
 	
 	
 	
 	
-	public String getCakeoptionPrice() {
+	public int getCakeoptionPrice() {
 		return cakeoptionPrice;
 	}
-	public void setCakeoptionPrice(String cakeoptionPrice) {
+	public void setCakeoptionPrice(int cakeoptionPrice) {
 		this.cakeoptionPrice = cakeoptionPrice;
 	}
 	public int getCakeoptionId() {
@@ -35,15 +36,30 @@ public class CManagerOptionListDto {
 	public void setCakeoptionValue(String cakeoptionValue) {
 		this.cakeoptionValue = cakeoptionValue;
 	}
+	public String getCakeoptionImage() {
+		return cakeoptionImage;
+	}
+	public void setCakeoptionImage(String cakeoptionImage) {
+		this.cakeoptionImage = cakeoptionImage;
+	}
 	
 	
-	
-	public CManagerOptionListDto(int cakeoptionId, String cakeoptionCategory, String cakeoptionValue, String cakeoptionPrice) {
+	public CManagerOptionListDto(int cakeoptionId, String cakeoptionCategory, String cakeoptionValue,
+			int cakeoptionPrice) {
 		super();
 		this.cakeoptionId = cakeoptionId;
 		this.cakeoptionCategory = cakeoptionCategory;
 		this.cakeoptionValue = cakeoptionValue;
 		this.cakeoptionPrice = cakeoptionPrice;
 	}
+	public CManagerOptionListDto(int cakeoptionId, String cakeoptionCategory, String cakeoptionValue, int cakeoptionPrice, String cakeoptionImage) {
+		super();
+		this.cakeoptionId = cakeoptionId;
+		this.cakeoptionCategory = cakeoptionCategory;
+		this.cakeoptionValue = cakeoptionValue;
+		this.cakeoptionPrice = cakeoptionPrice;
+		this.cakeoptionImage = cakeoptionImage;
+	}
+	
 	
 }
