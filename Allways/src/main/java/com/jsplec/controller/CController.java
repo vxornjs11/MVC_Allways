@@ -30,6 +30,7 @@ import com.jsplec.manager.command.CManagerDeleteGoodsCommand;
 import com.jsplec.manager.command.CManagerLoginCommand;
 import com.jsplec.manager.command.CManagerMainCommand;
 import com.jsplec.manager.command.CManagerOptionAdd;
+import com.jsplec.manager.command.CManagerOptionDeleteCommand;
 import com.jsplec.manager.command.CManagerOptionListCommand;
 import com.jsplec.manager.command.CManagerOptionSelect;
 import com.jsplec.manager.command.CManagerOptionUpdate;
@@ -338,7 +339,15 @@ public class CController extends HttpServlet {
 			viewPage = "Mlist.do";
 			break;
 			// 수정 버튼 누르면 반영됨
+			
+		case("/Manager/MO_Delete.do"):
+			managercommand = new CManagerOptionDeleteCommand();
+			managercommand.execute(request, response);
+			viewPage = "ManagerOptionUpdate.jsp";
+			break; 
 		}
+		
+		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

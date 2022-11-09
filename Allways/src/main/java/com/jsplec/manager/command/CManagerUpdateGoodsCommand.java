@@ -28,7 +28,12 @@ public class CManagerUpdateGoodsCommand implements CManagerCommand {
 			String goodsImage=multi.getFilesystemName("goodsImage");
 			String goodsOriginalname=multi.getParameter("goodsOriginalName");
 			
-			dao.updateGoods(goodsName, goodsCategory, goodsPrice, goodsDetail, goodsImage, goodsOriginalname);
+			if (goodsImage==null) {
+				dao.updateGoods(goodsName, goodsCategory, goodsPrice, goodsDetail, goodsOriginalname);
+			} else {
+				dao.updateGoods(goodsName, goodsCategory, goodsPrice, goodsDetail, goodsImage, goodsOriginalname);
+			}
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

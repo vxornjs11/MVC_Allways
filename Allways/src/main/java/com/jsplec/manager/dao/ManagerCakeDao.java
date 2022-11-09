@@ -55,6 +55,7 @@ public class ManagerCakeDao {
 			}
 		}
 	}
+	
 
 	public ArrayList<cakeListDto> viewCakeList() {
 
@@ -240,6 +241,37 @@ public class ManagerCakeDao {
 			ps.setString(3, cakeImage);
 			ps.setString(4, cakeDetail);
 			ps.setInt(5, cakeId);
+
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public void updateCake(int cakeId, String cakeName, int cakePrice, String cakeDetail) {
+		Connection connection = null;
+		PreparedStatement ps = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "update cake set cakeName=?, cakePrice=?, cakeDetail=?, cakeUpdatedate=now() where cakeId=?;";
+			ps = connection.prepareStatement(query);
+
+			ps.setString(1, cakeName);
+			ps.setInt(2, cakePrice);
+			ps.setString(3, cakeDetail);
+			ps.setInt(4, cakeId);
 
 			ps.executeUpdate();
 
