@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Cake List</title>
 <%@include file="customerHeader.jsp"%>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,16 +55,16 @@
 
 		<div class="row">
 			
-			<c:forEach items="${productList}" var="dto">
+			<c:forEach items="${cakeList}" var="dto">
 				<div class="col-lg-2 col-md-4">
 					<div class="card" style="width: 14rem;">
-					<a href="productDetail.do?productmodel=${dto.productmodel}">
-						<img src="./productListImage/${dto.productmodel}.png" class="card-img-top"
+					<a href="cakeDetail.do?cakeName=${dto.cakeName}">
+						<img src="./cakeListImage/${dto.cakeImage}" class="card-img-top"
 							alt="${dto.productmodel}">
 					</a>
 						<div class="card-body">
-							<p class="card-text" align="center">${dto.productbrand} ${dto.productmodel}</p>
-							<p class="card-text" align="center">${dto.productprice}</p>
+							<p class="card-text" align="center">${dto.cakePrice}</p>
+							<p class="card-text" align="center">${dto.cakeLike} ${dto.cakeViews}</p>
 						</div>
 					</div>
 				</div>

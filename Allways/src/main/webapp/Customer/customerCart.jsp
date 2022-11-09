@@ -32,12 +32,38 @@ height: 0px;
 border: 2px solid #FECACA;
 }
 
-delete_box{
+#delete_box{
 width: 136.55px;
 height: 41.63px;
-
 background: #EF8C8C;
 border: 2px solid #EF8C8C;
+
+font-family: 'Baloo Tammudu 2';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 50px;
+align-items: center;
+text-align: center;
+text-transform: capitalize;
+color: #FFFDFD;
+}
+
+#util_box{
+width: 160px;
+height: 41.63px;
+background: #EF8C8C;
+border: 2px solid #EF8C8C;
+
+font-family: 'Baloo Tammudu 2';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 50px;
+align-items: center;
+text-align: center;
+text-transform: capitalize;
+color: #FFFDFD;
 }
 </style>
 </head>
@@ -97,8 +123,8 @@ border: 2px solid #EF8C8C;
 			<td colspan="2"><hr id="line4"></td>
 		</tr>
 		<tr align="center">
-			<td><input type="button" value="Go Shopping" style="width: 150px;"></td>
-			<td><input type="button" value="Buy Now" style="width: 150px;"></td>
+			<td><input type="button" value="Go Shopping"" id="util_box"></td>
+			<td><input type="button" value="Buy Now" id="util_box"></td>
 		</tr>
 	</table>
 </div>
