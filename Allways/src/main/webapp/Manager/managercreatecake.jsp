@@ -68,7 +68,7 @@ input[type=file]::file-selector-button{
 	
 	function cancelDo(){
 		var form=document.actionForm;
-		form.action="viewCakeList.do";
+		form.action="searchCake.do";
 		form.submit();
 	}
 </script>

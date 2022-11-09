@@ -44,6 +44,38 @@
 				<input type="text" size="1" class="form-control" name="query" style="border-color:#a87878" value="${Query }">
 			</div>
 			<div style="width:25%;display:inline-block" align="left">
+				<select name="goodsCategory" style="border-color:#fdcdcd;border-radius:10px;height:90%">
+					<c:if test="${goodsCategory=='all' }">
+						<option selected value="all">전체보기</option>
+					</c:if>
+					<c:if test="${goodsCategory!='all' }">
+						<option selected value="all">전체보기</option>
+					</c:if>
+					<c:if test="${goodsCategory=='초' }">
+						<option selected value="초">초</option>
+					</c:if>
+					<c:if test="${goodsCategory!='초' }">
+						<option value="초">초</option>
+					</c:if>
+					<c:if test="${goodsCategory=='풍선' }">
+						<option selected value="풍선">풍선</option>
+					</c:if>
+					<c:if test="${goodsCategory!='풍선' }">
+						<option value="풍선">풍선</option>
+					</c:if>
+					<c:if test="${goodsCategory=='폭죽' }">
+						<option selected value="폭죽">폭죽</option>
+					</c:if>
+					<c:if test="${goodsCategory!='폭죽' }">
+						<option value="폭죽">폭죽</option>
+					</c:if>
+					<c:if test="${goodsCategory=='고깔모자' }">
+						<option selected value="고깔모자">고깔모자</option>
+					</c:if>
+					<c:if test="${goodsCategory!='고깔모자' }">
+						<option value="고깔모자">고깔모자</option>
+					</c:if>
+				</select>
 				<input type="submit" class="btn btn-primary" style="background:#ffffff;border-color:#a87878;color:#a87878" value="검색">
 			</div>
 			<div style="width:50%;display:inline-block" align="right">
@@ -62,8 +94,8 @@
 			<c:forEach var="cnt" items="${Dtos}" begin="${(index-1)*rowcount }" end="${(index)*rowcount-1}">
 				<tr>
 					<td>${cnt.goodsId}</td>
-					<td><a href="viewGoodsDetail.do?goodsName=${cnt.goodsName }" class="tablebutton">${cnt.goodsName}</a></td>
 					<td>${cnt.goodsCategory}</td>
+					<td><a href="viewGoodsDetail.do?goodsName=${cnt.goodsName }" class="tablebutton">${cnt.goodsName}</a></td>
 					<td><fmt:formatNumber value="${cnt.goodsPrice}" type="currency"/></td>
 				</tr>
 			</c:forEach>
@@ -75,26 +107,26 @@
 	
 	<c:if test="${true }">
 	<div class="tablediv" align="center">
-		<a href="searchGoods.do?index=1&query=${Query}" class="pagebutton">처음으로</a>
+		<a href="searchGoods.do?index=1&query=${Query}&goodsCategory=${goodsCategory}" class="pagebutton">처음으로</a>
 		<c:if test="${index!=1 }">
-			<a href="searchGoods.do?index=${index-1 }&query=${Query}" class="pagebutton">이전</a>
+			<a href="searchGoods.do?index=${index-1 }&query=${Query}&goodsCategory=${goodsCategory}" class="pagebutton">이전</a>
 		</c:if>
 		<c:forEach var="cnt" begin="${pagecount*pagepage+1}" end="${pagecount*(pagepage+1) }">
 			<c:if test="${cnt<=Math.ceil(Size/rowcount) }">
 				<c:if test="${cnt==index }">
 					<span style="display:inline">
-						<a href="searchGoods.do?index=${cnt }&query=${Query}" style="font-size:1.3em" class="pagebutton">${cnt }</a>
+						<a href="searchGoods.do?index=${cnt }&query=${Query}&goodsCategory=${goodsCategory}" style="font-size:1.3em" class="pagebutton">${cnt }</a>
 					</span>
 				</c:if>
 				<c:if test="${cnt!=index }">
-					<a href="searchGoods.do?index=${cnt }&query=${Query}" style="font-size:0.9em" class="pagebutton">${cnt }</a>
+					<a href="searchGoods.do?index=${cnt }&query=${Query}&goodsCategory=${goodsCategory}" style="font-size:0.9em" class="pagebutton">${cnt }</a>
 				</c:if>
 			</c:if>
 		</c:forEach>
 		<c:if test="${index<Math.ceil(Size/rowcount) }">
-			<a href="searchGoods.do?index=${index+1 }&query=${Query}" class="pagebutton">다음</a>
+			<a href="searchGoods.do?index=${index+1 }&query=${Query}&goodsCategory=${goodsCategory}" class="pagebutton">다음</a>
 		</c:if>
-		<a href="searchGoods.do?index=${Math.ceil(Size/rowcount) }&query=${Query}" class="pagebutton">끝으로</a>
+		<a href="searchGoods.do?index=${Math.ceil(Size/rowcount) }&query=${Query}&goodsCategory=${goodsCategory}" class="pagebutton">끝으로</a>
 	</div>
 	</c:if>
 </div>

@@ -189,14 +189,14 @@ public class CController extends HttpServlet {
 		case ("/Manager/addCake.do"):
 			managercommand = new CManagerAddCakeCommand();
 			managercommand.execute(request, response);
-			viewPage = "viewCakeList.do";
+			viewPage = "searchCake.do";
 			break;
 
 		//케이크 수정
 		case ("/Manager/updateCake.do"):
 			managercommand = new CManagerUpdateCakeCommand();
 			managercommand.execute(request, response);
-			viewPage = "viewCakeList.do";
+			viewPage = "searchCake.do";
 			break;
 
 		//케이크 수정 시 중복확인
@@ -210,7 +210,7 @@ public class CController extends HttpServlet {
 		case ("/Manager/deleteCake.do"):
 			managercommand = new CManagerDeleteCakeCommand();
 			managercommand.execute(request, response);
-			viewPage = "viewCakeList.do";
+			viewPage = "searchCake.do";
 			break;
 
 		//추가상품 검색
@@ -224,7 +224,7 @@ public class CController extends HttpServlet {
 		case ("/Manager/addGoods.do"):
 			managercommand = new CManagerAddGoodsCommand();
 			managercommand.execute(request, response);
-			viewPage = "viewGoodsList.do";
+			viewPage = "searchGoods.do";
 			break;
 
 		//추가상품 생성 시 이름 중복확인
@@ -252,14 +252,14 @@ public class CController extends HttpServlet {
 		case ("/Manager/deleteGoods.do"):
 			managercommand = new CManagerDeleteGoodsCommand();
 			managercommand.execute(request, response);
-			viewPage = "viewGoodsList.do";
+			viewPage = "searchGoods.do";
 			break;
 			
 		//추가상품 수정
 		case("/Manager/updateGoods.do"):
 			managercommand=new CManagerUpdateGoodsCommand();
 			managercommand.execute(request, response);
-			viewPage="viewGoodsList.do";
+			viewPage="searchGoods.do";
 			break;
 
 //		태권

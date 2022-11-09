@@ -66,7 +66,7 @@ input[type=file]::file-selector-button{
 	}
 	function cancelDo(){
 		var form=document.actionForm;
-		form.action="viewGoodsList.do";
+		form.action="searchGoods.do";
 		form.submit();
 	}
 	
@@ -125,10 +125,30 @@ input[type=file]::file-selector-button{
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:30%;display:inline-block">
 				<select name="goodsCategory" style="border-color:#fdcdcd;border-radius:10px;height:90%">
-					<option>초</option>
-					<option>풍선</option>
-					<option>폭죽</option>
-					<option>고깔모자</option>
+					<c:if test="${goodsCategory=='초' }">
+						<option selected value="초">초</option>
+					</c:if>
+					<c:if test="${goodsCategory!='초' }">
+						<option value="초">초</option>
+					</c:if>
+					<c:if test="${goodsCategory=='풍선' }">
+						<option selected value="풍선">풍선</option>
+					</c:if>
+					<c:if test="${goodsCategory!='풍선' }">
+						<option value="풍선">풍선</option>
+					</c:if>
+					<c:if test="${goodsCategory=='폭죽' }">
+						<option selected value="폭죽">폭죽</option>
+					</c:if>
+					<c:if test="${goodsCategory!='폭죽' }">
+						<option value="폭죽">폭죽</option>
+					</c:if>
+					<c:if test="${goodsCategory=='고깔모자' }">
+						<option selected value="고깔모자">고깔모자</option>
+					</c:if>
+					<c:if test="${goodsCategory!='고깔모자' }">
+						<option value="고깔모자">고깔모자</option>
+					</c:if>
 				</select>
 			</div>
 		</div>

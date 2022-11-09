@@ -67,6 +67,48 @@ public class CManagerGoodsDao {
 
 		return dtos;
 	}
+	
+	public ArrayList<goodsDto> viewGoodsList(String goodsCategory) {
+		ArrayList<goodsDto> dtos = new ArrayList<goodsDto>();
+
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "select goodsId, goodsName, goodsCategory, goodsPrice from goods ";
+			String query2 = "where goodsDeletedate is null and goodsCategory='" + goodsCategory + "';";
+
+			ps = connection.prepareStatement(query + query2);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int wkgoodsId = rs.getInt(1);
+				String wkgoodsName = rs.getString(2);
+				String wkgoodsCategory = rs.getString(3);
+				int wkgoodsPrice = rs.getInt(4);
+
+				goodsDto dto = new goodsDto(wkgoodsId, wkgoodsName, wkgoodsCategory, wkgoodsPrice);
+				dtos.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return dtos;
+	}
 
 	public ArrayList<goodsDto> searchGoods(String goodsName) {
 		ArrayList<goodsDto> dtos = new ArrayList<goodsDto>();
@@ -79,6 +121,48 @@ public class CManagerGoodsDao {
 			connection = dataSource.getConnection();
 			String query = "select goodsId, goodsName, goodsCategory, goodsPrice from goods ";
 			String query2 = "where goodsDeletedate is null and goodsName like '%" + goodsName + "%';";
+
+			ps = connection.prepareStatement(query + query2);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int wkgoodsId = rs.getInt(1);
+				String wkgoodsName = rs.getString(2);
+				String wkgoodsCategory = rs.getString(3);
+				int wkgoodsPrice = rs.getInt(4);
+
+				goodsDto dto = new goodsDto(wkgoodsId, wkgoodsName, wkgoodsCategory, wkgoodsPrice);
+				dtos.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return dtos;
+	}
+	
+	public ArrayList<goodsDto> searchGoods(String goodsName, String goodsCategory) {
+		ArrayList<goodsDto> dtos = new ArrayList<goodsDto>();
+
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "select goodsId, goodsName, goodsCategory, goodsPrice from goods ";
+			String query2 = "where goodsDeletedate is null and goodsName like '%" + goodsName + "%' and goodsCategory='" + goodsCategory + "';";
 
 			ps = connection.prepareStatement(query + query2);
 			rs = ps.executeQuery();

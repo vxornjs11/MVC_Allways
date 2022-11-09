@@ -14,6 +14,7 @@ public class CManagerSearchGoodsCommand implements CManagerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		String goodsName=request.getParameter("query");
+		String goodsCategory=request.getParameter("goodsCategory");
 		CManagerGoodsDao dao=new CManagerGoodsDao();
 		ArrayList<goodsDto> dtos=new ArrayList<goodsDto>();
 		int index=1;
@@ -32,12 +33,21 @@ public class CManagerSearchGoodsCommand implements CManagerCommand {
 		}
 		
 		if (goodsName==null) {
-			dtos=dao.viewGoodsList();
+			if (goodsCategory==null||goodsCategory.equals("all")) {
+				dtos=dao.viewGoodsList();
+			} else {
+				dtos=dao.viewGoodsList(goodsCategory);
+			}
 		} else {
-			dtos=dao.searchGoods(goodsName);
+			if (goodsCategory==null||goodsCategory.equals("all")) {
+				dtos=dao.searchGoods(goodsName);
+			} else {
+				dtos=dao.searchGoods(goodsName, goodsCategory);
+			}
 		}
 		
 		request.setAttribute("Dtos", dtos);
+		request.setAttribute("goodsCategory", goodsCategory);
 		request.setAttribute("Size", dtos.size());
 		request.setAttribute("Query", goodsName);
 		request.setAttribute("index", index);
