@@ -100,6 +100,7 @@ public class CController extends HttpServlet {
 			if (customercommand.execute2(request, response) == true) {
 				viewPage = "customerMain.do";
 			} else {
+				request.setAttribute("CHECK", customercommand.execute2(request, response));
 				viewPage = "customerLogin.jsp";
 			}
 			break;
