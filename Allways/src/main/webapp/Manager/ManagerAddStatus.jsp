@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>

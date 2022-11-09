@@ -160,7 +160,7 @@ public CManagerOrderListDao() {
 		
 		
 	}// content_view
-	public void contentUpdate(String cakeoptionCategory,String cakeoptionValue, String cakeoptionPrice, String cakeoptionImage, String cakeoptionId) {
+	public void contentUpdate(String cakeoptionCategory,String cakeoptionValue, int cakeoptionPrice, String cakeoptionImage, int cakeoptionId) {
 		//write
 				Connection connection = null;
 				PreparedStatement preparedStatement = null;
@@ -174,9 +174,9 @@ public CManagerOrderListDao() {
 					
 					preparedStatement.setString(1, cakeoptionCategory);
 					preparedStatement.setString(2, cakeoptionValue);
-					preparedStatement.setInt(3, Integer.parseInt(cakeoptionPrice));
+					preparedStatement.setInt(3, cakeoptionPrice);
 					preparedStatement.setString(4, cakeoptionImage);
-					preparedStatement.setInt(5, Integer.parseInt(cakeoptionId));
+					preparedStatement.setInt(5, cakeoptionId);
 					
 					preparedStatement.executeUpdate();
 				

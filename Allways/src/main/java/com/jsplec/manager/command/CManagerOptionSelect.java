@@ -23,8 +23,38 @@ public class CManagerOptionSelect implements CManagerCommand {
 		
 		CManagerOrderListDao dao = new CManagerOrderListDao();
 		ArrayList<CManagerOptionListDto> dtos = dao.selectList(option,Query);
+
+		int index=1;
+		int rowcount=7;
+		int pagecount=5;
+		int pagepage=0;
+		
+		if (request.getParameter("index")!=null) {
+			index=(int)Float.parseFloat(request.getParameter("index"));
+		}
+		
+		if (index%pagecount==0) {
+			pagepage=index/pagecount-1;
+		} else {
+			pagepage=index/pagecount;
+		}
+		
+		if (Query==null) {
+			dtos=dao.OptionList();
+		} else {
+			dtos=dao.selectList(option,Query);
+		}
+		
 		request.setAttribute("OptionList", dtos);
+		request.setAttribute("Dtos", dtos);
+		request.setAttribute("Size", dtos.size());
+		request.setAttribute("Query", Query);
+		request.setAttribute("index", index);
+		request.setAttribute("rowcount", rowcount);
+		request.setAttribute("pagecount", pagecount);
+		request.setAttribute("pagepage", pagepage);
 	}
+
 
 	@Override
 	public boolean execute2(HttpServletRequest request, HttpServletResponse response) {

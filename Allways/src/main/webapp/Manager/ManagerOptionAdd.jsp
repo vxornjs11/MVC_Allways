@@ -11,6 +11,7 @@
 rel="stylesheet" 
 integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
 crossorigin="anonymous">
+<link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>

@@ -11,6 +11,7 @@
 rel="stylesheet" 
 integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
 crossorigin="anonymous">
+<link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
@@ -18,11 +19,6 @@ crossorigin="anonymous">
 function Return(){
 		var upd = document.upd;
 		upd.action="return.do";
-		upd.submit();
-		}
-function Update(){
-		var upd = document.upd;
-		upd.action="Update.do";
 		upd.submit();
 		}
 function Delete(){
@@ -52,13 +48,13 @@ function previewFile() {
 
 <h1 align="center">옵션 관리</h1>
 
-	<form method="post"  enctype="multipart/form-data" name = "upd">
+	<form method="post"  action="Update.do" enctype="multipart/form-data" name = "upd">
 	<div align="center">
 	<table border="0">
 	<tr>
 	<td>
 카테고리 :
-	<select name="option">
+	<select name="option2">
 		<option value="size">size</option>
 		<option value="IcingColor">IcingColor</option>
 		<option value="BorderColor">BorderColor</option>
@@ -68,31 +64,28 @@ function previewFile() {
 	</select></td>
 	<tr>
 		<td>CAKE ID :
-		<input type="text" name="optionId" value="${cake_option.cakeoptionId}" readonly/>
+		<input type="text" name="optionId2" value="${cake_option.cakeoptionId}" readonly/>
 		</td>
 	</tr>
 	
 	<tr>
 		<td>옵션 이름 :
-		<input type="text" name="optionName" value="${cake_option.cakeoptionValue}" >
+		<input type="text" name="optionName2" value="${cake_option.cakeoptionValue}" >
 		</td>
 	</tr>
 	<tr>
 		<td>가격 이름 :
-		<input type="text" name="optionPrice" value="${cake_option.cakeoptionPrice}" >
+		<input type="text" name="optionPrice2" value="${cake_option.cakeoptionPrice}" >
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<input type="button" value="돌아가기" onclick="Return()">
-			<input type="button" value="수정" onclick="Update()">
-			<input type="button" value="삭제" onclick="Delete()">
 		</td>
 	</tr>
 	</table>
 	</div>
 	<div align="left" style="width:74%;display:inline-block">
-			<input type="file" name="cakeoptionImage" onchange="previewFile(event)">
+			<input type="file" name="cakeoptionImage2" onchange="previewFile(event)">
 		</div>
 		<div style="display:inline-block;width:30%;height:50%" align="center">
 		<div>
@@ -100,9 +93,12 @@ function previewFile() {
 		</div>
 		<div>
 			<img src="/Allways/${cake_option.cakeoptionImage}" id="preview" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
-			<input type="hidden" name="cakeoptionImage" value="${cake_option.cakeoptionImage}">
+			<input type="hidden" name="cakeoptionImage2" value="${cake_option.cakeoptionImage}">
 		</div>
 	</div>
+			<input type="button" value="돌아가기" onclick="Return()">
+			<input type="submit" value="수정">
+			<input type="button" value="삭제" onclick="Delete()">
 		
 	</form>
 		
