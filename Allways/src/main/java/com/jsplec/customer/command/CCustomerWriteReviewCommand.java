@@ -24,6 +24,7 @@ public class CCustomerWriteReviewCommand implements CCustomerCommand {
 		try {
 			MultipartRequest multi = new MultipartRequest(request, context.getRealPath("/"), maxSize, "utf-8", new DefaultFileRenamePolicy());
 			
+			String customerId = (String)session.getAttribute("ID");
 			int ordersId = Integer.parseInt(multi.getParameter("ordersId"));
 			String oreviewStarRating = multi.getParameter("oreviewStarRating");
 			String oreviewContent = multi.getParameter("oreviewContent");
@@ -31,7 +32,7 @@ public class CCustomerWriteReviewCommand implements CCustomerCommand {
 			
 			CCustomerWriteReviewDao dao = new CCustomerWriteReviewDao();
 			
-			dao.writeReview(ordersId, oreviewStarRating, oreviewContent, uploadFile);
+			dao.writeReview(customerId, ordersId, oreviewStarRating, oreviewContent, uploadFile);
 			dao.writeReviewUpdate(ordersId);
 			
 		} catch (IOException e) {

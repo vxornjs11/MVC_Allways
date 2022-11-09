@@ -4,11 +4,12 @@ import java.sql.Date;
 
 public class CCustomerReviewListDto {
 
-	int oreviewId;
+	int rowNum;
 	String or_customerId;
 	String oreviewContent;
 	Date oreviewInitdate;
 	String oreviewImage;
+	int oreviewStarrating;
 	
 	public CCustomerReviewListDto() {
 		// TODO Auto-generated constructor stub
@@ -17,36 +18,42 @@ public class CCustomerReviewListDto {
 	
 	
 	
-	public CCustomerReviewListDto(int oreviewId, String or_customerId, String oreviewContent, Date oreviewInitdate) {
+	
+
+
+
+
+	public CCustomerReviewListDto(int rowNum, String or_customerId, String oreviewContent, Date oreviewInitdate) {
 		super();
-		this.oreviewId = oreviewId;
+		this.rowNum = rowNum;
 		this.or_customerId = or_customerId;
 		this.oreviewContent = oreviewContent;
 		this.oreviewInitdate = oreviewInitdate;
 	}
 
 
-
-
-	public CCustomerReviewListDto(int oreviewId, String or_customerId, String oreviewContent, Date oreviewInitdate,
-			String oreviewImage) {
+	public CCustomerReviewListDto(int rowNum, String or_customerId, String oreviewContent, Date oreviewInitdate,
+			String oreviewImage, int oreviewStarrating) {
 		super();
-		this.oreviewId = oreviewId;
+		this.rowNum = rowNum;
 		this.or_customerId = or_customerId;
 		this.oreviewContent = oreviewContent;
 		this.oreviewInitdate = oreviewInitdate;
 		this.oreviewImage = oreviewImage;
+		this.oreviewStarrating = oreviewStarrating;
 	}
 
 
 
 
-	public int getOreviewId() {
-		return oreviewId;
+
+
+	public int getRowNum() {
+		return rowNum;
 	}
 
-	public void setOreviewId(int oreviewId) {
-		this.oreviewId = oreviewId;
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
 	}
 
 	public String getOr_customerId() {
@@ -79,6 +86,14 @@ public class CCustomerReviewListDto {
 
 	public void setOreviewImage(String oreviewImage) {
 		this.oreviewImage = oreviewImage;
+	}
+
+	public int getOreviewStarrating() {
+		return oreviewStarrating;
+	}
+
+	public void setOreviewStarrating(int oreviewStarrating) {
+		this.oreviewStarrating = oreviewStarrating;
 	}
 
 	

@@ -20,7 +20,7 @@ DataSource dataSource;
 		}
 	}
 	
-	public boolean writeReview(int ordersId, String oreviewStarRating, String oreviewContent, String uploadFile) {
+	public boolean writeReview(String customerId, int ordersId, String oreviewStarRating, String oreviewContent, String uploadFile) {
 		//write
 		Connection connection = null;
 		PreparedStatement ps = null;
@@ -32,7 +32,7 @@ DataSource dataSource;
 			String query = "insert into ordersreview (or_customerId, or_ordersId, or_ordersStatus, oreviewContent, oreviewStarRating, oreviewImage, oreviewInitdate) values (?, ?, ?, ?, ?, ?, now())";
 			ps = connection.prepareStatement(query);
 			
-			ps.setString(1, "user");
+			ps.setString(1, customerId);
 			ps.setInt(2, ordersId);
 			ps.setString(3, "제작완료");
 			ps.setString(4, oreviewContent);

@@ -13,7 +13,7 @@
 
 	<%@include file="customerHeader.jsp" %>
 	<div align="center" class="container text-center">
-		<form action = "" method = "get">
+		<form action = "" method = "post" name = "myform">
 			<table class="table">
 				<thead>
 					<tr>
@@ -28,7 +28,7 @@
 				
 				<c:forEach var = "dto" items = "${orderList}" begin = "${(index - 1) * rowcount }" end = "${(index) * rowcount - 1}">
 					<c:if test="${dto != null }">
-						<tbody>	
+						<tbody>
 							<tr>
 								<td>${dto.ROWNUM}</td>
 								<td>${dto.cakeName}</td>

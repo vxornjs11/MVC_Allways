@@ -96,7 +96,7 @@ function searchList() {
 	
 	<div style = "margin-left: 250px; margin-top: 100px;">
 		
-		<form name = "myform" method = "get">
+		<form name = "myform" method = "post">
 		<button style = "margin-left: -160px;" id="write_button" onclick = "ordersList()">Write Review</button>
 		
 		<div class="btn-group">
@@ -129,6 +129,7 @@ function searchList() {
 						<th>No</th>
 						<th>이미지</th>
 						<th>내용</th>
+						<th>별점</th>
 						<th>작성자</th>
 						<th>작성일</th>
 					</tr>
@@ -138,9 +139,14 @@ function searchList() {
 			<c:if test="${dto != null }">
 				<tbody>
 					<tr>
-						<td>${dto.oreviewId }</td>
+						<td>${dto.rowNum }</td>
 						<td><img name="img" src="${imageFile }"></td>
 						<td>${dto.oreviewContent }</td>
+						<td>
+							<c:forEach begin = "1" end = "${dto.oreviewStarrating }">
+								<label>★</label>
+							</c:forEach>
+						</td>
 						<td>${dto.or_customerId }</td>
 						<td>${dto.oreviewInitdate }</td>
 					</tr>

@@ -15,8 +15,8 @@ public class CCustomerOrderListCommand implements CCustomerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession();
-		String customerId = (String)session.getAttribute("CUSTOMERID");
-		
+		String customerId = (String)session.getAttribute("ID");
+		System.out.println(customerId);
 		int index = 1; // 시작 페이지 번호
 		int rowcount = 10; // 한 페이지에 출력할 리스트 개수
 		int pagecount = 10; // 한 페이지에 출력할 페이지 개수

@@ -115,7 +115,7 @@ function previewFile() {
 </head>
 <body>
 
-	<form class="mb-3" name="myform" id="myform" method="get" enctype="multipart/form-data">
+	<form class="mb-3" name="myform" id="myform" method="post" enctype="multipart/form-data">
 	
 		<div>
 		

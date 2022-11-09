@@ -49,12 +49,12 @@ public class CCustomerReviewListDao {
 			
 			while(rs.next()) {
 				
-				int oreviewId = rs.getInt(1);
+				int ROWNUM = rs.getInt(1);
 				String or_customerId = rs.getString(2);
 				String oreviewContent = rs.getString(3);
 				Date oreviewInitdate = rs.getDate(4);
 				
-				CCustomerReviewListDto dto = new CCustomerReviewListDto(oreviewId, or_customerId, oreviewContent, oreviewInitdate);
+				CCustomerReviewListDto dto = new CCustomerReviewListDto(ROWNUM, or_customerId, oreviewContent, oreviewInitdate);
 				dtos.add(dto);
 			}
 			
@@ -83,8 +83,8 @@ public class CCustomerReviewListDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query1 = "select * from (select row_number() over(order by oreviewId) "
-					+ "as rownum, or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating from ordersreview  order by oreviewId desc) o "
+			String query1 = "select * from (select row_number() over(order by oreviewId) as rownum, "
+					+ "or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating from ordersreview  order by oreviewId desc) o "
 					+ "where rownum between " + index + " and " + maxPage + " and " + combo + " like '%" + searchContent + "%' order by " + sort + " desc";
 			
 			preparedStatement = connection.prepareStatement(query1);
@@ -93,13 +93,14 @@ public class CCustomerReviewListDao {
 			
 			while(rs.next()) {
 
-				int oreviewId = rs.getInt(1);
+				int ROWNUM = rs.getInt(1);
 				String or_customerId = rs.getString(2);
 				String oreviewContent = rs.getString(3);
 				Date oreviewInitdate = rs.getDate(4);
 				String oreviewImage = rs.getString(5);
+				int oreviewStarrating = rs.getInt(6);
 				
-				CCustomerReviewListDto dto = new CCustomerReviewListDto(oreviewId, or_customerId, oreviewContent, oreviewInitdate, oreviewImage);
+				CCustomerReviewListDto dto = new CCustomerReviewListDto(ROWNUM, or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating);
 				dtos.add(dto);
 			}
 			
