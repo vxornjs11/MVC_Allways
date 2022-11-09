@@ -118,6 +118,10 @@ public class CController extends HttpServlet {
 				viewPage = "customerLogin.jsp";
 			}
 			break;
+			
+		case ("/Customer/customerLoginPage.do"):
+			viewPage = "customerLogin.jsp";
+			break;
 
 //		한별
 		// 리뷰 리스트 출력

@@ -17,7 +17,7 @@
 		margin:10px;
 	}
 	table tr.header{
-		background:#ffcfcf;
+		background:#ffefef;
 	}
 	a.tablebutton:hover{
 		color:#a87878;

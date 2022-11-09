@@ -20,7 +20,7 @@
 		color:#a87878;
 	}
 	table tr.header{
-		background:#ffcfcf;
+		background:#ffefef;
 	}
 	a.pagebutton{
 		color:#000000;
