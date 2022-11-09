@@ -193,6 +193,36 @@ public CManagerOrderListDao() {
 			
 				
 			}//update
+	public void contentDelete(String cakeoptionId) {
+		//write
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+			
+				
+				try {
+					connection = dataSource.getConnection();
+					
+					String query = "update cakeoption set cakeoptionDeletedate = now() where cakeoptionId = ?";
+					preparedStatement = connection.prepareStatement(query);
+					
+				
+					preparedStatement.setInt(1, Integer.parseInt(cakeoptionId));
+					
+					preparedStatement.executeUpdate();
+				
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						if(preparedStatement != null) preparedStatement.close();
+						if(connection != null) connection.close();
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+			
+				
+			}//delete update
 	
 	public CManagerOrderStautsDTo addStatus(String ordersIdd) {
 		CManagerOrderStautsDTo dto = null;

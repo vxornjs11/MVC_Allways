@@ -23,7 +23,7 @@ function Return(){
 		}
 function Delete(){
 		var upd = document.upd;
-		upd.action="Delete.do";
+		upd.action="MO_Delete.do";
 		upd.submit();
 		}
 function previewFile() {
