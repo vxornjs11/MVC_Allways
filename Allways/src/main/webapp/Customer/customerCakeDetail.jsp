@@ -149,32 +149,30 @@ color: #766262;
 </head>
 <body>
 
-	<div class="container text-center">
 		<div class="row">
-			<div class="col">
+		
+			<div class="col" align="center">
 				<div>
-					<img alt="" src="./images/About.png">
+					<img alt="" src="./cakeListImage/${cakeImage}" width="500px">
 				</div>
 				<div align="center">
 					<hr id="line2">
 				</div>
-				<!-- <div>
-					<input id="guidebox" value="13" disabled="disabled" type="text">
-				</div><br> -->
 				<div>
 					<input id="guidedetailbox" value="Cake Detail" disabled="disabled"
 						style="padding-left: 100px; padding-top: 10px;">
 				</div><br>
-				<div id="cake_detail" align="left">
-					Cherry fruits cake is very good.
+				<div id="cake_detail" align="left" style="margin-left: 60px;">
+					${cakeDetail }
 				</div>
 			</div>
-			<div class="col"><br>
+			
+			<div class="col" style="width: 768px;"><br>
 				<div id="cake_name" align="left">
-				Cherry Fruits Cake
+				${cakeName }
 				</div>
 				<div id="cake_name" align="left">
-				￦ 52,000
+				￦ ${cakePrice }
 				</div>
 				<div>
 					<hr id="line">
@@ -258,8 +256,9 @@ color: #766262;
 						style="padding-top: 8px;">
 				</div>
 			</div>
+			
 		</div>
-	</div>
+		
 <div align="center">
 <hr id="line"><br>
 </div>

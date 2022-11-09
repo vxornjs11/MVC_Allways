@@ -41,6 +41,18 @@
     background-color: #FBEAEA;
     color: #333;
 }
+
+#cakeList{
+font-family: 'Baloo Tammudu 2';
+font-style: normal;
+font-weight: 600;
+font-size: 17px;
+line-height: 32px;
+text-align: center;
+text-transform: capitalize;
+color: #766262;
+}
+
 </style>
 </head>
 <body>
@@ -53,18 +65,24 @@
      <input type="radio" id="select3" name="shop"><label for="select3">SORT3</label>
 </div>
 
-		<div class="row">
+		<div class="row" style="padding-left: 35px; margin-right: 0px;">
 			
 			<c:forEach items="${cakeList}" var="dto">
-				<div class="col-lg-2 col-md-4">
-					<div class="card" style="width: 14rem;">
-					<a href="cakeDetail.do?cakeName=${dto.cakeName}">
+				<div class="col-lg-3 col-md-6" style="padding-bottom: 20px;" id="cakeList">
+					<div class="card" style="width: 20rem;">
+					<a href="customerCakeDetail.do?cakeId=${dto.cakeId}">
 						<img src="./cakeListImage/${dto.cakeImage}" class="card-img-top"
-							alt="${dto.productmodel}">
+							alt="${dto.cakeName}">
 					</a>
 						<div class="card-body">
-							<p class="card-text" align="center">${dto.cakePrice}</p>
-							<p class="card-text" align="center">${dto.cakeLike} ${dto.cakeViews}</p>
+							<table>
+								<tr>
+									<td align="left" width="170px">${dto.cakeName}</td><td align="right" width="120px">￦ ${dto.cakePrice}</td>
+								</tr>
+								<tr>
+									<td align="left">&hearts; ${dto.cakeLike}</td><td align="right">Views ${dto.cakeViews}</td>
+								</tr>
+							</table> 						
 						</div>
 					</div>
 				</div>
