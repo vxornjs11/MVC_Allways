@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jsplec.customer.command.CCustomerCakeDetailCommand;
 import com.jsplec.customer.command.CCustomerCakeListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
@@ -145,6 +146,12 @@ public class CController extends HttpServlet {
 			customercommand.execute(request, response);
 			viewPage = "customerCakeList.jsp";
 			break;
+			
+		case("/Customer/customerCakeDetail.do"):
+			customercommand = new CCustomerCakeDetailCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCakeDetail.jsp";
+			break;
 //		유승
 		case ("/Manager/managerMain.do"):
 			managercommand = new CManagerMainCommand();
@@ -264,39 +271,6 @@ public class CController extends HttpServlet {
 			viewPage = "ManagerOptionAdd.jsp";
 			break;
 
-		case ("/Manager/addOption.do"):
-			managercommand = new CManagerOptionAdd();
-			managercommand.execute(request, response);
-			viewPage = "addList.do";
-			break;
-
-		case ("/Manager/return.do"):
-			viewPage = "Mlist.do";
-			break;
-
-		case ("/Manager/Mselect.do"):
-			managercommand = new CManagerOptionSelect();
-			managercommand.execute(request, response);
-			String Query = request.getParameter("Query");
-			if (Query == "") {
-				viewPage = "Mlist.do";
-			} else {
-				viewPage = "managerOptionList.jsp";
-			}
-			break;
-
-		case ("/Manager/optionId.do"):
-			managercommand = new CManagerOptionView();
-			managercommand.execute(request, response);
-			viewPage = "ManagerOptionAdd.jsp";
-			break;
-
-		case ("/Manager/Update.do"):
-			managercommand = new CManagerOptionUpdate();
-			managercommand.execute(request, response);
-			viewPage = "Mlist.do";
-			break;
-
 		case ("/Manager/managerLogin.do"):
 			managercommand = new CManagerLoginCommand();
 			boolean check2 = managercommand.execute2(request, response);
@@ -323,6 +297,40 @@ public class CController extends HttpServlet {
 			managercommand.execute(request, response);
 			viewPage = "MorderStatus.do";
 			break;
+			
+		case("/Manager/addOption.do"):
+			managercommand = new CManagerOptionAdd();
+			managercommand.execute(request, response);
+			viewPage = "Mlist.do";
+			break;
+			// 케이크 옵션 추
+		case("/Manager/return.do"):
+			viewPage = "Mlist.do";
+			// 리스트로 돌아가기
+		break;
+		case("/Manager/Mselect.do"):
+			managercommand = new CManagerOptionSelect();
+			managercommand.execute(request, response);
+			String Query = request.getParameter("Query");
+			if(Query == "") {
+				viewPage = "Mlist.do";
+			}else {
+				viewPage = "managerOptionList.jsp";
+			}
+			break;
+			// 옵션 검색 기능
+		case("/Manager/optionId.do"):
+			managercommand = new CManagerOptionView();
+			managercommand.execute(request, response);
+			viewPage = "ManagerOptionUpdate.jsp";
+			break;
+			// 항목 하나 선택해서 수정 화면 이동
+		case("/Manager/Update.do"):
+			managercommand = new CManagerOptionUpdate();
+			managercommand.execute(request, response);
+			viewPage = "Mlist.do";
+			break;
+			// 수정 버튼 누르면 반영됨
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
