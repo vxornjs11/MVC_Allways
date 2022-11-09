@@ -162,9 +162,9 @@ input[type=file]::file-selector-button{
 			<input type="hidden" name="goodsImage" value="${goodsImage }">
 		</div>
 		<div>
-			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">
-			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="수정" onclick="updateDo()">
-			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="삭제" onclick="deleteDo()">
+			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">
+			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="수정" onclick="updateDo()">
+			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="삭제" onclick="deleteDo()">
 		</div>
 	</div>
 </form>

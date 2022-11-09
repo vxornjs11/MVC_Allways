@@ -131,8 +131,8 @@ input[type=file]::file-selector-button{
 			<img src="" id="preview" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
 		</div>
 		<div>
-			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">
-			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="추가" onclick="submitDo()">
+			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">
+			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="추가" onclick="submitDo()">
 		</div>
 	</div>
 </form>

@@ -132,7 +132,7 @@ input[type=file]::file-selector-button{
 				<input type="hidden" name="check" value="${check }">
 			</div>
 			<div style="display:inline-block">
-				<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="중복체크" onclick="nameCheck()">
+				<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="중복체크" onclick="nameCheck()">
 			</div>
 		</div>
 		<div align="left" style="width:20%;display:inline-block">
@@ -153,7 +153,7 @@ input[type=file]::file-selector-button{
 			사진
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
-			<input type="file" class="form-control" name="cakeImage" onchange="previewFile(event)">
+			<input type="file" class="form-control" name="cakeImage" style="border-color:#fdcdcd" onchange="previewFile(event)">
 		</div>
 	</div>
 	<div style="display:inline-block;width:30%;height:50%" align="center">
@@ -165,9 +165,9 @@ input[type=file]::file-selector-button{
 			<input type="hidden" name="cakeImage" value="${cakeImage }">
 		</div>
 		<div>
-			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">
-			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="수정" onclick="updateDo()">
-			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="삭제" onclick="deleteDo()">
+			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">
+			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="수정" onclick="updateDo()">
+			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="삭제" onclick="deleteDo()">
 		</div>
 	</div>
 </form>
