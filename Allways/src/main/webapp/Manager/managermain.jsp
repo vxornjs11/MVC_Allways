@@ -9,6 +9,7 @@
 <title>관리자 메인페이지</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
+<link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>

@@ -66,7 +66,7 @@ public class ManagerCakeDao {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "select cakeId, cakeName, cakePrice from cake ";
+			String query = "select cakeId, cakeName, cakePrice, cakeViews, cakeLike from cake ";
 			String query2 = "where cakeDeletedate is null";
 
 			ps = connection.prepareStatement(query + query2);
@@ -76,8 +76,10 @@ public class ManagerCakeDao {
 				int wkcakeId = rs.getInt(1);
 				String wkcakeName = rs.getString(2);
 				int wkcakePrice = rs.getInt(3);
+				int wkcakeViews=rs.getInt(4);
+				int wkcakeLike=rs.getInt(5);
 
-				cakeListDto dto = new cakeListDto(wkcakeId, wkcakeName, wkcakePrice);
+				cakeListDto dto = new cakeListDto(wkcakeId, wkcakeName, wkcakePrice, wkcakeViews, wkcakeLike);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
@@ -107,7 +109,7 @@ public class ManagerCakeDao {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "select cakeId, cakeName, cakePrice from cake where cakeName like '%" + cakeName + "%' ";
+			String query = "select cakeId, cakeName, cakePrice, cakeViews, cakeLike from cake where cakeName like '%" + cakeName + "%' ";
 			String query2 = "and cakeDeletedate is null";
 
 			ps = connection.prepareStatement(query + query2);
@@ -117,8 +119,10 @@ public class ManagerCakeDao {
 				int wkcakeId = rs.getInt(1);
 				String wkcakeName = rs.getString(2);
 				int wkcakePrice = rs.getInt(3);
+				int wkcakeViews=rs.getInt(4);
+				int wkcakeLike=rs.getInt(5);
 
-				cakeListDto dto = new cakeListDto(wkcakeId, wkcakeName, wkcakePrice);
+				cakeListDto dto = new cakeListDto(wkcakeId, wkcakeName, wkcakePrice, wkcakeViews, wkcakeLike);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
@@ -148,7 +152,7 @@ public class ManagerCakeDao {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "select count(*) from cake where cakeName='" + cakeName + "';";
+			String query = "select count(*) from cake where cakeName='" + cakeName + "' and cakeDeleteDate is null;";
 
 			ps = connection.prepareStatement(query);
 			rs = ps.executeQuery();

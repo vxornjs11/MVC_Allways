@@ -5,7 +5,18 @@ public class cakeListDto {
 	int cakeId;
 	String cakeName;
 	int cakePrice;
+	int cakeViews;
+	int cakeLike;
 	
+	public cakeListDto(int cakeId, String cakeName, int cakePrice, int cakeViews, int cakeLike) {
+		super();
+		this.cakeId = cakeId;
+		this.cakeName = cakeName;
+		this.cakePrice = cakePrice;
+		this.cakeViews = cakeViews;
+		this.cakeLike = cakeLike;
+	}
+
 	public cakeListDto(int cakeId, String cakeName, int cakePrice) {
 		super();
 		this.cakeId = cakeId;
@@ -13,6 +24,22 @@ public class cakeListDto {
 		this.cakePrice = cakePrice;
 	}
 	
+	public int getCakeViews() {
+		return cakeViews;
+	}
+
+	public void setCakeViews(int cakeViews) {
+		this.cakeViews = cakeViews;
+	}
+
+	public int getCakeLike() {
+		return cakeLike;
+	}
+
+	public void setCakeLike(int cakeLike) {
+		this.cakeLike = cakeLike;
+	}
+
 	public int getCakeId() {
 		return cakeId;
 	}

@@ -9,9 +9,18 @@
 <title>케이크 관리</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
+<link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 <style>
 div{
 	padding:1%;
+}
+input[type=file]::file-selector-button{
+	background-color:#ffffff;
+	border-color:#fdcdcd;
+	border-radius:10px;
+	hover:{
+		background:#fdcdcd;
+	}
 }
 </style>
 <script>
@@ -100,6 +109,7 @@ div{
 <%@include file="managerHeader.jsp"%>
 <div align="center">
 <form action="addCake.do" method="post" enctype="multipart/form-data" name="actionForm">
+	<input type="hidden" name="index" value="${index }">
 	<h1 style="margin-bottom:3%;margin-top:3%"><b>케이크 관리</b></h1>
 	<div style="display: inline-block;width:60%">
 		<div align="left" style="width:20%;display:inline-block">
@@ -143,7 +153,7 @@ div{
 			사진
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
-			<input type="file" name="cakeImage" onchange="previewFile(event)">
+			<input type="file" class="form-control" name="cakeImage" onchange="previewFile(event)">
 		</div>
 	</div>
 	<div style="display:inline-block;width:30%;height:50%" align="center">

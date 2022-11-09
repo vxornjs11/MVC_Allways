@@ -13,6 +13,14 @@
 div{
 	padding:1%;
 }
+input[type=file]::file-selector-button{
+	background-color:#ffffff;
+	border-color:#fdcdcd;
+	border-radius:10px;
+	hover:{
+		background:#fdcdcd;
+	}
+}
 </style>
 <script>
 	function previewFile() {
@@ -54,12 +62,21 @@ div{
 			form.submit();
 		}
 	}
+	
+	function cancelDo(){
+		var form=document.actionForm;
+		form.action="viewGoodsList.do";
+		form.submit();
+	}
 </script>
+
+<link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
 <div align="center">
 <form action="addGoods.do" method="post" enctype="multipart/form-data" name="actionForm">
+	<input type="hidden" name="index" value="${index }">
 	<h1 style="margin-bottom:3%;margin-top:3%"><b>추가상품 추가</b></h1>
 	<div style="display: inline-block;width:60%">
 		<div align="left" style="width:20%;display:inline-block">
@@ -115,7 +132,7 @@ div{
 			사진
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
-			<input type="file" name="goodsImage" onchange="previewFile(event)">
+			<input type="file" class="form-control" style="border-color:#fdcdcd" name="goodsImage" onchange="previewFile(event)">
 		</div>
 	</div>
 	<div style="display:inline-block;width:30%;height:50%" align="center">
@@ -126,7 +143,7 @@ div{
 			<img src="" height="200" id="preview" width="200" style="display:block;margin:20px;border-radius:10px;">
 		</div>
 		<div>
-			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="취소">
+			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">
 			<input type="button" class="btn" style="background:#ffcfcf;border-color:#a87878;color:#a87878" value="추가" onclick="submitDo()">
 		</div>
 	</div>

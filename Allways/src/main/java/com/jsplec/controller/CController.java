@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jsplec.customer.command.CCustomerCakeListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
 import com.jsplec.customer.command.CCustomerOrderListCommand;
@@ -137,7 +138,11 @@ public class CController extends HttpServlet {
 			viewPage = "customerOrdersReview.do";
 			break;
 //		오수
-
+		case("/Customer/customerCakeList.do"):
+			customercommand = new CCustomerCakeListCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCakeList.jsp";
+			break;
 //		유승
 		case ("/Manager/managerMain.do"):
 			managercommand = new CManagerMainCommand();

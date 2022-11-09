@@ -45,3 +45,8 @@ a.viewall{
 table.hover{
 	background:#fdcdcd;
 }
+
+a.tablebutton{
+	color:#000000;
+	text-decoration:none;
+}

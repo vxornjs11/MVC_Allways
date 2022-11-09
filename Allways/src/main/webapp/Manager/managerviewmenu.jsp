@@ -9,6 +9,16 @@
 <title>케이크 리스트 보기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
+<link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
+<style>
+	a.tablebutton{
+		color:#000000;
+		text-decoration:none;
+	}
+	a.tablebutton:hover{
+		color:#a87878;
+	}
+</style>
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
@@ -34,12 +44,16 @@
 				<th>메뉴번호</th>
 				<th>이름</th>
 				<th>가격</th>
+				<th>조회수</th>
+				<th>좋아요</th>
 			</tr>
 			<c:forEach var="cnt" items="${Dtos}" begin="${(index-1)*rowcount }" end="${(index)*rowcount-1}">
 				<tr>
 					<td>${cnt.cakeId}</td>
-					<td><a href="cakeDetail.do?cakeName=${cnt.cakeName}">${cnt.cakeName}</a></td>
+					<td><a href="cakeDetail.do?cakeName=${cnt.cakeName}" class="tablebutton">${cnt.cakeName}</a></td>
 					<td><fmt:formatNumber value="${cnt.cakePrice}" type="currency"/></td>
+					<td>${cnt.cakeViews }</td>
+					<td>${cnt.cakeLike }</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -51,51 +65,51 @@
 	<!-- 페이지 분할: 검색 안했을 때 -->
 	<c:if test="${Query==null }">
 	<div class="tablediv" align="center">
-		<a href="viewCakeList.do?index=1">처음으로</a>
+		<a href="viewCakeList.do?index=1" class="tablebutton">처음으로</a>
 		<c:if test="${index!=1 }">
-			<a href="viewCakeList.do?index=${index-1 }">이전</a>
+			<a href="viewCakeList.do?index=${index-1 }" class="tablebutton">이전</a>
 		</c:if>
 		<c:forEach var="cnt" begin="${pagecount*pagepage+1}" end="${pagecount*(pagepage+1) }">
 			<c:if test="${cnt<=Math.ceil(Size/rowcount) }">
 				<c:if test="${cnt==index }">
 					<span style="display:inline">
-						<a href="viewCakeList.do?index=${cnt }" style="font-size:1.3em">${cnt }</a>
+						<a href="viewCakeList.do?index=${cnt }" style="font-size:1.3em" class="tablebutton">${cnt }</a>
 					</span>
 				</c:if>
 				<c:if test="${cnt!=index }">
-					<a href="viewCakeList.do?index=${cnt }" style="font-size:0.9em">${cnt }</a>
+					<a href="viewCakeList.do?index=${cnt }" style="font-size:0.9em" class="tablebutton">${cnt }</a>
 				</c:if>
 			</c:if>
 		</c:forEach>
 		<c:if test="${index<Math.ceil(Size/rowcount) }">
-			<a href="viewCakeList.do?index=${index+1 }">다음</a>
+			<a href="viewCakeList.do?index=${index+1 }" class="tablebutton">다음</a>
 		</c:if>
-		<a href="viewCakeList.do?index=${Math.ceil(Size/rowcount) }">끝으로</a>
+		<a href="viewCakeList.do?index=${Math.ceil(Size/rowcount) }" class="tablebutton">끝으로</a>
 	</div>
 	</c:if>
 	
 	<c:if test="${Query!=null }">
 	<div class="tablediv" align="center">
-		<a href="searchCake.do?index=1&query=${Query}">처음으로</a>
+		<a href="searchCake.do?index=1&query=${Query}" class="tablebutton">처음으로</a>
 		<c:if test="${index!=1 }">
-			<a href="searchCake.do?index=${index-1 }&query=${Query}">이전</a>
+			<a href="searchCake.do?index=${index-1 }&query=${Query}" class="tablebutton">이전</a>
 		</c:if>
 		<c:forEach var="cnt" begin="${pagecount*pagepage+1}" end="${pagecount*(pagepage+1) }">
 			<c:if test="${cnt<=Math.ceil(Size/rowcount) }">
 				<c:if test="${cnt==index }">
 					<span style="display:inline">
-						<a href="searchCake.do?index=${cnt }&query=${Query}" style="font-size:1.3em">${cnt }</a>
+						<a href="searchCake.do?index=${cnt }&query=${Query}" style="font-size:1.3em" class="tablebutton">${cnt }</a>
 					</span>
 				</c:if>
 				<c:if test="${cnt!=index }">
-					<a href="searchCake.do?index=${cnt }&query=${Query}" style="font-size:0.9em">${cnt }</a>
+					<a href="searchCake.do?index=${cnt }&query=${Query}" style="font-size:0.9em" class="tablebutton">${cnt }</a>
 				</c:if>
 			</c:if>
 		</c:forEach>
 		<c:if test="${index<Math.ceil(Size/rowcount) }">
-			<a href="searchCake.do?index=${index+1 }&query=${Query}">다음</a>
+			<a href="searchCake.do?index=${index+1 }&query=${Query}" class="tablebutton">다음</a>
 		</c:if>
-		<a href="searchCake.do?index=${Math.ceil(Size/rowcount) }&query=${Query}">끝으로</a>
+		<a href="searchCake.do?index=${Math.ceil(Size/rowcount) }&query=${Query}" class="tablebutton">끝으로</a>
 	</div>
 	</c:if>
 </div>
