@@ -140,11 +140,12 @@ position: absolute;
 	                </div>
 	                <a href="#" id="center" class="nav-item nav-link">CLASS</a>
 	                <a href="#" id="center" class="nav-item nav-link">BOARD</a>
-	                <a href="#" id="center" class="nav-item nav-link" style="padding-right: 0px;">LOCATION</a>
+	                <a href="customerLocation.do" id="center" class="nav-item nav-link" style="padding-right: 20px;">LOCATION</a>
 	                
 	           		 <img src="./images/HeaderLogo.png" style="padding-right: 278px; padding-left: 90px;"></img>
 	            
 	                <a href="customerAbout.do" id="center" class="nav-item nav-link">ABOUT</a>
+	                <a href="customerCart.do" id="center" class="nav-item nav-link">CART</a>
 	                <a href="customerJoin.do" id="center" class="nav-item nav-link">JOIN</a>
 	                <a href="customerLogin.do" id="center" class="nav-item nav-link">LOGIN</a>
 	                

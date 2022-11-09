@@ -19,20 +19,19 @@ public class CCustomerLoginCommand implements CCustomerCommand {
 		// TODO Auto-generated method stub
 		String customerId = request.getParameter("customerId");
 		String customerPw = request.getParameter("customerPw");
-		
+		HttpSession session = request.getSession();
+		String chk = "";
 		CCustomerLoginDao dao = new CCustomerLoginDao();
-		String name = dao.login(customerId, customerPw);
+		boolean check = dao.userCheck(customerId, customerPw);
+		String username = dao.userName(customerId, customerPw);
 		
-		if(!(name==null)) {
-			HttpSession session = request.getSession();
-			session.setAttribute("ID", customerId);
-			session.setAttribute("NAME", name);
-			return true;
-		}else {
-			request.setAttribute("FAIL", "아이디와 비밀번호를 확인해주세요!");
-			return false;
+		if(check = false) {
+			chk = null;
 		}
-
+		
+		session.setAttribute("ID", customerId);
+		session.setAttribute("NAME", username);
+		return check;
 	}
 
 }

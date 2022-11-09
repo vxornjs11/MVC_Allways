@@ -3,7 +3,7 @@ package com.jsplec.customer.dto;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class CCustomerJoinDto {
+public class CCustomerUserinfoDto {
 
 	// F
 	String customerId;
@@ -21,7 +21,7 @@ public class CCustomerJoinDto {
 	Timestamp customerDeletedate;
 	
 	// C
-	public CCustomerJoinDto() {
+	public CCustomerUserinfoDto() {
 		// TODO Auto-generated constructor stub
 	}
 

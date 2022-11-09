@@ -27,7 +27,7 @@ public class CCustomerJoinDao {
 	}
 	
 	// M
-	public boolean idCheck(String customerid) {
+	public boolean idCheck(String customerId) {
 		Connection connection = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -36,9 +36,9 @@ public class CCustomerJoinDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "select count(*) from customer where customerId=? and customerDeletedate is null";
+			String query = "select count(*) from customer where customerId='" + customerId + "' and customerDeletedate is null";
 			ps = connection.prepareStatement(query);
-			ps.setString(1, customerid);
+			ps.setString(1, customerId);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
@@ -62,6 +62,8 @@ public class CCustomerJoinDao {
 			return false;
 		}
 	} // idCheck
+	
+	
 	
 	
 	

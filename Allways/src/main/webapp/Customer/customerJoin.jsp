@@ -137,6 +137,18 @@
 	
 	}
 	
+	#address_box{
+		box-sizing: border-box;
+		left: 30px;
+		right: 0px;
+		width: 289px;
+		height: 45px;
+		background: #FFFFFF;
+		border: 3px solid #FCD5D5;
+		padding-left: 10px;
+	
+	}
+	
 	#email_first{
 		box-sizing: border-box;
 		left: 30px;
@@ -180,11 +192,21 @@
 		line-height: 32px;
 		
 		color: #FCD5D5;
-
-		
 		
 	}
 
+	#join_button {
+		width: 136.55px;
+		height: 41.63px;
+		background: #FCD5D5;
+		border: 2px solid #FCD5D5;
+		font-family: 'Baloo Tammudu 2';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 20px;
+		color: #FFFDFD;
+		line-height: 46px;
+	}
 
 </style>
 
@@ -195,7 +217,7 @@
 </head>
 <body>
 	
-	<form action="customerJoin.do" name="customerJoin" method="post">
+	<form action="customerJoin.do" name="customerJoin" method="post" style="height: 1400px;">
 		<div class="container text-center">
 			<div class="row">
 				<div class="col">
@@ -237,12 +259,12 @@
 					<input id="input_box" type="date" name="customerBirth"><br><br>
 					
 					<label id="label_design">ADDRESS</label>
-					<input type="text" name="uzip" id="uzip" onclick="daum_zipcode()" /> 
+					<input type="text" id="address_box" name="uzip" id="uzip" onclick="daum_zipcode()" /> 
 					<a href="javascript:daum_zipcode()" name="postcode">우편번호</a><br>
-					<input id="input_box" type="text" name="uaddr1" id="uaddr1" title="기본주소" maxlength="200" value="" readonly="" placeholder="기본주소" onclick="daum_zipcode()" /><br>
-					<input id="input_box" type="text" name="uaddr2" id="uaddr2" title="상세주소" maxlength="200" value="" readonly="" placeholder="상세주소 입력" /><br><br>
+					<input id="input_box" style="margin-top: 5px;" type="text" name="uaddr1" id="uaddr1" title="기본주소" maxlength="200" value="" readonly="" placeholder="기본주소" onclick="daum_zipcode()" /><br>
+					<input id="input_box" style="margin-top: 5px;" type="text" name="uaddr2" id="uaddr2" title="상세주소" maxlength="200" value="" readonly="" placeholder="상세주소 입력" /><br><br>
 					
-					<input type="submit" name="join" value="JOIN">			
+					<input id="join_button" style="margin-top: 30px" type="button" name="join" value="JOIN">			
 				</div>
 			<div class="col">
 			</div>

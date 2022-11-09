@@ -79,10 +79,15 @@ input::placeholder {
 				<img src="./images/LOGO.png"><br></img>
 				<input style="padding-left: 20px;" id="IDandPW" type="text" name="customerId" placeholder="ID"><br>
 				<input style="padding-left: 20px;" id="IDandPW" type="password" name="customerPw" placeholder="PASSWORD"><br>
-				<button id="LoginBtn" type="button" name="Login" onclick="loginAction()">
+				<button id="LoginBtn" type="submit" name="Login" onclick="loginAction()">
 				<p id="pSet" style="padding-top: 11px;">LOGIN</p></button><br>
 				
-				<label style="color:blue">${FAIL}</label> <br>
+					<%-- <c:if test="${CHECK eq 'false'}"> --%>
+					<%if((Boolean)session.getAttribute("check") == false) {%>
+						<p class="danger-text" style="color:blue; margin-top: 5px;">아이디 또는 비밀번호를 확인해주세요!</p>
+					<%} else if((Boolean)session.getAttribute("check") == null) { %>
+					<%} %>
+					<%-- </c:if> --%>
 				
 				<a href="" id="TextColor">ALLWAYS 첫 방문이신가요? ▶ JOIN</a><br>
 				<a href="" id="TextColor">ID/PASSWORD를 잊어버리셨나요? ▶ ID찾기 / </a>
@@ -96,7 +101,6 @@ input::placeholder {
 		</div>
 	</form>
 	
-
 
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
