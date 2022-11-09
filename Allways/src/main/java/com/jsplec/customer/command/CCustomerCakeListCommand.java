@@ -23,7 +23,7 @@ public class CCustomerCakeListCommand implements CCustomerCommand {
 		}
 
 		CCustomerCakeListDao dao = new CCustomerCakeListDao();
-		ArrayList<CCustomerCakeListDto> dtos = dao.productList(queryName, content);
+		ArrayList<CCustomerCakeListDto> dtos = dao.cakeList(queryName, content);
 		request.setAttribute("cakeList", dtos);
 	}
 

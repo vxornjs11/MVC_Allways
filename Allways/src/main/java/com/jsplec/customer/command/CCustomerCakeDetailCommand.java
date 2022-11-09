@@ -1,11 +1,10 @@
 package com.jsplec.customer.command;
 
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jsplec.customer.dao.CCustomerCakeListDao;
+import com.jsplec.customer.dao.CCustomerCakeDetailDao;
 import com.jsplec.customer.dto.CCustomerCakeListDto;
 
 public class CCustomerCakeDetailCommand implements CCustomerCommand {
@@ -13,19 +12,14 @@ public class CCustomerCakeDetailCommand implements CCustomerCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-
 		
-		String queryName = request.getParameter("query");
-		String content = request.getParameter("content");
+		int cakeId = Integer.parseInt(request.getParameter("cakeId"));
+		
+		CCustomerCakeDetailDao dao = new CCustomerCakeDetailDao();
 
-		if (queryName == null) {
-			queryName = "cakeId";
-			content = "";
-		}
-
-		CCustomerCakeListDao dao = new CCustomerCakeListDao();
-		ArrayList<CCustomerCakeListDto> dtos = dao.productList(queryName, content);
-		request.setAttribute("cakeDetail", dtos);
+		CCustomerCakeListDto dto = dao.cakeDetail(cakeId);
+		
+		request.setAttribute("cakeInfo", dto);
 	}
 
 	@Override

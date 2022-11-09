@@ -31,7 +31,7 @@ public class CCustomerCakeListDao {
 	// Method
 	
 	// product 전체 리스트 출력
-	public ArrayList<CCustomerCakeListDto> productList(String queryName, String content) {
+	public ArrayList<CCustomerCakeListDto> cakeList(String queryName, String content) {
 		ArrayList<CCustomerCakeListDto> dtos = new ArrayList<CCustomerCakeListDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -75,51 +75,6 @@ public class CCustomerCakeListDao {
 		return dtos;
 
 	}
-	
-	// product detail
-	public ArrayList<CCustomerCakeListDto> productDetail(String queryName, String content) {
-		ArrayList<CCustomerCakeListDto> dtos = new ArrayList<CCustomerCakeListDto>();
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
 
-		try {
-			connection = dataSource.getConnection();
-
-			String query1 = "select cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews from cake ";
-			String query2 = "where cakeId =  " + content;
-
-			preparedStatement = connection.prepareStatement(query1 + query2);
-			resultSet = preparedStatement.executeQuery();
-
-			while (resultSet.next()) {
-				int cakeId = resultSet.getInt("cakeId");
-				String cakeName = resultSet.getString("cakeName");
-				int cakePrice = resultSet.getInt("cakePrice");
-				String cakeImage= resultSet.getString("cakeImage");
-				int cakeLike = resultSet.getInt("cakeLike");
-				int cakeViews = resultSet.getInt("cakeViews");
-
-				CCustomerCakeListDto dto = new CCustomerCakeListDto(cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews);
-				dtos.add(dto);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (resultSet != null)
-					resultSet.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (connection != null)
-					connection.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return dtos;
-
-	}
 	
 }

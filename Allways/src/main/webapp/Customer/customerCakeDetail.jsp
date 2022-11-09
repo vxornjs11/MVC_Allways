@@ -153,7 +153,7 @@ color: #766262;
 		
 			<div class="col" align="center">
 				<div>
-					<img alt="" src="./cakeListImage/${cakeImage}" width="500px">
+					<img alt="" src="./cakeListImage/${cakeInfo.cakeImage}" width="500px">
 				</div>
 				<div align="center">
 					<hr id="line2">
@@ -163,16 +163,16 @@ color: #766262;
 						style="padding-left: 100px; padding-top: 10px;">
 				</div><br>
 				<div id="cake_detail" align="left" style="margin-left: 60px;">
-					${cakeDetail }
+				${cakeInfo.cakeDetail }
 				</div>
 			</div>
 			
 			<div class="col" style="width: 768px;"><br>
 				<div id="cake_name" align="left">
-				${cakeName }
+				${cakeInfo.cakeName }
 				</div>
 				<div id="cake_name" align="left">
-				￦ ${cakePrice }
+				￦ ${cakeInfo.cakePrice }
 				</div>
 				<div>
 					<hr id="line">
@@ -267,6 +267,88 @@ color: #766262;
 	<input id="guidedetailbox" value="Review" disabled="disabled"
 		style="padding-left: 115px; padding-top: 10px;">
 </div>
+
+<!--  -->
+
+<div align="center" class="container text-center">
+		<form action = "" name = "list" method = "post">
+			<table class="table">
+				
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>이미지</th>
+						<th>내용</th>
+						<th>별점</th>
+						<th>작성자</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				
+		<c:forEach var = "dto" items="${reviewList }" begin="${(index - 1) * rowcount }" end="${(index) * rowcount - 1}">
+			<c:if test="${dto != null }">
+				<tbody>
+					<tr>
+						<td>${dto.rowNum }</td>
+						<td><img name="img" src="${imageFile }"></td>
+						<td>${dto.oreviewContent }</td>
+						<td>
+							<c:forEach begin = "1" end = "${dto.oreviewStarrating }">
+								<label>★</label>
+							</c:forEach>
+						</td>
+						<td>${dto.or_customerId }</td>
+						<td>${dto.oreviewInitdate }</td>
+					</tr>
+				</tbody>
+			</c:if>
+		</c:forEach>
+				
+			</table>
+		</form>
+		
+	<div align="center">
+		<table>
+			<tr align="center" height="20">
+				<td>
+				
+					<c:if test="${index <= 1}">
+						[이전] &nbsp;
+					</c:if>
+				
+					<c:if test="${index != 1 }">
+						<a href="customerOrdersReview.do?index=${index-1 }&sort=${sort }">이전</a>&nbsp;
+					</c:if> 
+			
+					<c:forEach var="cnt" begin="${pagecount * pagepage + 1}" end="${pagecount * (pagepage + 1)}">
+						<c:if test="${cnt <= Math.ceil(arrsize / rowcount)}">
+						
+							<c:if test="${cnt == index }">
+								<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:1.3em">[${cnt }]</a>
+							</c:if>
+					
+							<c:if test = "${cnt != index }">
+								<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:0.9em">[${cnt }]</a>&nbsp;
+							</c:if>
+							
+						</c:if>
+					</c:forEach>
+			
+					<c:if test="${index >= maxpage }">
+						[다음]
+					</c:if>
+					
+					<c:if test="${index < Math.ceil(arrsize / rowcount)}">
+						<a href="customerOrdersReview.do?index=${index+1 }&sort=${sort }">다음</a>&nbsp;
+					</c:if>
+					
+				</td>
+			</tr>
+		</table>
+	</div>
+	</div>
+	
+	<!--  -->
 
 	<script src="/docs/5.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"

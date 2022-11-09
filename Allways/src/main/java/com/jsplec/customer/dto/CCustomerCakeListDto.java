@@ -10,6 +10,7 @@ public class CCustomerCakeListDto {
 	String cakeImage;
 	int cakeLike;
 	int cakeViews;
+	String cakeDetail;
 	
 	// Constructor
 	
@@ -28,6 +29,20 @@ public class CCustomerCakeListDto {
 		this.cakeViews = cakeViews;
 	}
 	
+	
+	
+	public CCustomerCakeListDto(int cakeId, String cakeName, int cakePrice, String cakeImage, int cakeLike,
+			int cakeViews, String cakeDetail) {
+		super();
+		this.cakeId = cakeId;
+		this.cakeName = cakeName;
+		this.cakePrice = cakePrice;
+		this.cakeImage = cakeImage;
+		this.cakeLike = cakeLike;
+		this.cakeViews = cakeViews;
+		this.cakeDetail = cakeDetail;
+	}
+
 	// Method
 
 	public int getCakeId() {
@@ -76,6 +91,14 @@ public class CCustomerCakeListDto {
 
 	public void setCakeViews(int cakeViews) {
 		this.cakeViews = cakeViews;
+	}
+
+	public String getCakeDetail() {
+		return cakeDetail;
+	}
+
+	public void setCakeDetail(String cakeDetail) {
+		this.cakeDetail = cakeDetail;
 	}
 	
 	

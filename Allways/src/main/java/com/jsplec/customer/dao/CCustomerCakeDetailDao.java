@@ -32,31 +32,33 @@ public class CCustomerCakeDetailDao {
 	// Method
 	
 	// product detail
-	public ArrayList<CCustomerCakeListDto> productDetail(String queryName, String content) {
-		ArrayList<CCustomerCakeListDto> dtos = new ArrayList<CCustomerCakeListDto>();
+	public CCustomerCakeListDto cakeDetail(int CAKEID) {
+		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
+		CCustomerCakeListDto dto = null;
 
 		try {
 			connection = dataSource.getConnection();
 
-			String query1 = "select cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews from cake ";
-			String query2 = "where cakeId =  " + content;
+			String query1 = "select cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews, cakeDetail from cake ";
+			String query2 = "where cakeId = " + CAKEID;
 
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
+			
+			if (resultSet.next()) {
 
-			while (resultSet.next()) {
-				int cakeId = resultSet.getInt("cakeId");
-				String cakeName = resultSet.getString("cakeName");
-				int cakePrice = resultSet.getInt("cakePrice");
-				String cakeImage= resultSet.getString("cakeImage");
-				int cakeLike = resultSet.getInt("cakeLike");
-				int cakeViews = resultSet.getInt("cakeViews");
+				int cakeId = resultSet.getInt(1);
+				String cakeName = resultSet.getString(2);
+				int cakePrice = resultSet.getInt(3);
+				String cakeImage= resultSet.getString(4);
+				int cakeLike = resultSet.getInt(5);
+				int cakeViews = resultSet.getInt(6);
+				String cakeDetail = resultSet.getString(7);
 
-				CCustomerCakeListDto dto = new CCustomerCakeListDto(cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews);
-				dtos.add(dto);
+				dto = new CCustomerCakeListDto(cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews, cakeDetail);
 			}
 
 		} catch (Exception e) {
@@ -73,7 +75,7 @@ public class CCustomerCakeDetailDao {
 				e.printStackTrace();
 			}
 		}
-		return dtos;
+		return dto;
 
 	}
 	

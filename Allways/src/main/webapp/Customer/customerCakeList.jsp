@@ -72,7 +72,7 @@ color: #766262;
 					<div class="card" style="width: 20rem;">
 					<a href="customerCakeDetail.do?cakeId=${dto.cakeId}">
 						<img src="./cakeListImage/${dto.cakeImage}" class="card-img-top"
-							alt="${dto.cakeName}">
+							alt="${dto.cakeId}">
 					</a>
 						<div class="card-body">
 							<table>
