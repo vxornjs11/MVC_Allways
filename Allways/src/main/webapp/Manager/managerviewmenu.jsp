@@ -35,7 +35,7 @@
 				<th>이름</th>
 				<th>가격</th>
 			</tr>
-			<c:forEach var="cnt" items="${Dtos}">
+			<c:forEach var="cnt" items="${Dtos}" begin="${(index-1)*rowcount }" end="${(index)*rowcount-1}">
 				<tr>
 					<td>${cnt.cakeId}</td>
 					<td><a href="cakeDetail.do?cakeName=${cnt.cakeName}">${cnt.cakeName}</a></td>

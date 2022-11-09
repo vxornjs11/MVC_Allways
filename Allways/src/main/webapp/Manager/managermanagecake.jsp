@@ -16,7 +16,7 @@ div{
 </style>
 <script>
 	function previewFile() {
-		  var preview = document.querySelector('img');
+		  var preview = document.querySelector('img#preview');
 		  var file = document.querySelector('input[type=file]').files[0];
 		  var reader = new FileReader();
 
@@ -151,7 +151,7 @@ div{
 			사진 미리보기
 		</div>
 		<div>
-			<img src="/Allways/${cakeImage }" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
+			<img src="/Allways/${cakeImage }" id="preview" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
 			<input type="hidden" name="cakeImage" value="${cakeImage }">
 		</div>
 		<div>
