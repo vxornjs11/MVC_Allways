@@ -227,8 +227,21 @@
 					<br><h2 id="Join">J O I N</h2><br>
 					
 					<label id="label_design">ID</label>
-					<input id="input_box" type="text" name="customerId" size="40" placeholder="영어 소문자와 숫자만 입력 가능"><br><br>
-			
+					 <c:if test="${CHECK==true }">
+				      <input type="text" class="form-control is-invalid" name="customerId" placeholder="영문 소문자와 숫자만 가능" value="${CUSTOMERID }">
+				      <script>alert("이미 존재하는 ID입니다.")</script>
+				      </c:if>
+				      <c:if test="${CHECK==false }">
+				      <input type="text" class="form-control is-valid" name="customerId" placeholder="영문 소문자와 숫자만 가능" value="${CUSTOMERID }">
+				      <input type="hidden" class="form-control is-valid" name="idcheck" value="${CHECK }">
+				      <script>alert("사용 가능한 ID입니다.")</script>
+				      </c:if>
+				      <c:if test="${CHECK==null }">
+				      <input type="text" class="form-control" name="customerId" placeholder="영문 소문자와 숫자만 가능" value="${CHECKID }">
+				      </c:if>
+					<input class="input_id" id="input_box" type="text" name="customerId" size="40" placeholder="영어 소문자와 숫자만 입력 가능" ><br><br>
+					
+					
 					<label id="label_design">PASSWORD</label>
 					<input id="input_box" type="password" name="customerPw" placeholder=""><br><br>
 					
@@ -259,10 +272,10 @@
 					<input id="input_box" type="date" name="customerBirth"><br><br>
 					
 					<label id="label_design">ADDRESS</label>
-					<input type="text" id="address_box" name="uzip" id="uzip" onclick="daum_zipcode()" /> 
-					<a href="javascript:daum_zipcode()" name="postcode">우편번호</a><br>
-					<input id="input_box" style="margin-top: 5px;" type="text" name="uaddr1" id="uaddr1" title="기본주소" maxlength="200" value="" readonly="" placeholder="기본주소" onclick="daum_zipcode()" /><br>
-					<input id="input_box" style="margin-top: 5px;" type="text" name="uaddr2" id="uaddr2" title="상세주소" maxlength="200" value="" readonly="" placeholder="상세주소 입력" /><br><br>
+					<input type="text" id="address_box" name="customerPostcode" id="uzip" onclick="daum_zipcode()" /> 
+					<a href="javascript:daum_zipcode()" name="customerPostcode">우편번호</a><br>
+					<input id="input_box" style="margin-top: 5px;" type="text" name="customerAddress" id="uaddr1" title="기본주소" maxlength="200" value="" readonly="" placeholder="기본주소" onclick="daum_zipcode()" /><br>
+					<input id="input_box" style="margin-top: 5px;" type="text" name="customerAddressDetail" id="uaddr2" title="상세주소" maxlength="200" value="" readonly="" placeholder="상세주소 입력" /><br><br>
 					
 					<input id="join_button" style="margin-top: 30px" type="button" name="join" value="JOIN">			
 				</div>
@@ -272,7 +285,32 @@
 		</div>
 	</form>
 	
-	
+	<script src = "js/jquery-3.6.0.min.js"></script>
+	<script>
+		$('.input_id').focusout(function(){
+			let userId = $('.input_id').val(); // input_id에 입력되는 값
+			
+			$.ajax({
+				url : "IdCheckService",
+				type : "post",
+				data : {userId: userId},
+				dataType : 'json',
+				success : function(result){
+					if(result == 0){
+						$("#checkId").html('사용할 수 없는 아이디입니다.');
+						$("#checkId").attr('color','red');
+					} else{
+						$("#checkId").html('사용할 수 있는 아이디입니다.');
+						$("#checkId").attr('color','green');
+					} 
+				},
+				error : function(){
+					alert("서버요청실패");
+				}
+			})
+			 
+		})
+	 </script>
 	
 	
 			

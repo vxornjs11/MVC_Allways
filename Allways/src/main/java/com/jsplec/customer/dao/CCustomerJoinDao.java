@@ -42,8 +42,9 @@ public class CCustomerJoinDao {
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				count=rs.getInt(1);
+				count = rs.getInt(1);
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -56,14 +57,54 @@ public class CCustomerJoinDao {
 			}
 		}
 		
-		if (count==1) {
+		if(count==1) {
+			return false;			
+		}else {
 			return true;
-		} else {
-			return false;
 		}
+		
 	} // idCheck
 	
-	
+	public int insertAction(String customerId, String customerPw, String customerName, String customerGender, String customerPhone, String customerEmail, String customerBirthday, String customerPostcode, String customerAddress, String customerAddressDetail) {
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "insert into customer (customerId, customerPw, customerName, customerGender, customerPhone, customerEmail, customerBirthday, customerPostcode, customerAddress, customerAddressDetail, customerInitdate) ";
+			String query1 = "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())";
+			ps = connection.prepareStatement(query + query1);
+			ps.executeUpdate();
+			
+			ps.setString(1, customerId);
+			ps.setString(2, customerPw);
+			ps.setString(3, customerName);
+			ps.setString(4, customerGender);
+			ps.setString(5, customerPhone);
+			ps.setString(6, customerEmail);
+			ps.setString(7, customerBirthday);
+			ps.setString(8, customerPostcode);
+			ps.setString(9, customerAddress);
+			ps.setString(10, customerAddressDetail);
+			
+			result = ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if(ps!=null)ps.close();
+				if (connection!=null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}
 	
 	
 	

@@ -134,12 +134,12 @@ position: absolute;
 	                <div class="dropdown show">
 	                    <a href="#" id="center" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="padding-bottom: 0px;">CAKE</a>
 	                    <div class="dropdown-menu" id=".dropdown-menu" style="width: 80px; height: 78px; right: 0px; left: 0px; top: 80px;">
-	                        <a href="#" id="" class="dropdown-item" style="width: 80px;">cake</a>
+	                        <a href="customerCakeList.do" id="" class="dropdown-item" style="width: 80px;">cake</a>
 	                        <a href="#" id="" class="dropdown-item" style="width: 80px;">extras</a>
 	                    </div>
 	                </div>
 	                <a href="#" id="center" class="nav-item nav-link">CLASS</a>
-	                <a href="#" id="center" class="nav-item nav-link">BOARD</a>
+	                <a href="customerWrite.do" id="center" class="nav-item nav-link">BOARD</a>
 	                <a href="customerLocation.do" id="center" class="nav-item nav-link" style="padding-right: 20px;">LOCATION</a>
 	                
 	           		 <img src="./images/HeaderLogo.png" style="padding-right: 278px; padding-left: 90px;"></img>
@@ -147,7 +147,7 @@ position: absolute;
 	                <a href="customerAbout.do" id="center" class="nav-item nav-link">ABOUT</a>
 	                <a href="customerCart.do" id="center" class="nav-item nav-link">CART</a>
 	                <a href="customerJoin.do" id="center" class="nav-item nav-link">JOIN</a>
-	                <a href="customerLogin.do" id="center" class="nav-item nav-link">LOGIN</a>
+	                <a href="customerLoginPage.do" id="center" class="nav-item nav-link">LOGIN</a>
 	                
 	            </div>
 	        </div>

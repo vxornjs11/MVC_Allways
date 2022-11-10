@@ -79,21 +79,23 @@ input::placeholder {
 				<img src="./images/LOGO.png"><br></img>
 				<input style="padding-left: 20px;" id="IDandPW" type="text" name="customerId" placeholder="ID"><br>
 				<input style="padding-left: 20px;" id="IDandPW" type="password" name="customerPw" placeholder="PASSWORD"><br>
-				<button id="LoginBtn" type="submit" name="Login" onclick="loginAction()">
+				<button id="LoginBtn" type="button" name="Login" onclick="loginAction()">
 				<p id="pSet" style="padding-top: 11px;">LOGIN</p></button><br>
 				
-					<%-- <c:if test="${CHECK eq 'false'}"> --%>
-					<%if((Boolean)session.getAttribute("check") == false) {%>
+				<c:choose> 
+					<c:when test="${CHECK == false}">
 						<p class="danger-text" style="color:blue; margin-top: 5px;">아이디 또는 비밀번호를 확인해주세요!</p>
-					<%} else if((Boolean)session.getAttribute("check") == null) { %>
-					<%} %>
-					<%-- </c:if> --%>
-				
+					</c:when>
+					<c:otherwise>
+						<p class="danger-text" style="color:blue; margin-top: 5px;"></p>
+					</c:otherwise> 
+				</c:choose>
+								
 				<a href="" id="TextColor">ALLWAYS 첫 방문이신가요? ▶ JOIN</a><br>
 				<a href="" id="TextColor">ID/PASSWORD를 잊어버리셨나요? ▶ ID찾기 / </a>
 				<a href="" id="TextColor">PASSWORD 찾기</a><br>
 				
-				<a href="customerMain.do" id="TextColor">GO HOME</a>
+				<a href="customerMain.do" id="TextColor" style="font-size: 21px;">GO HOME</a>
 				</div>
 			<div class="col">
 			</div>
