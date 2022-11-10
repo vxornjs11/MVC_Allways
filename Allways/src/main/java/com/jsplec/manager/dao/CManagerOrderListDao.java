@@ -32,6 +32,40 @@ public CManagerOrderListDao() {
 	}
 }
 
+	public boolean CheckOption(String optionName, String option, String optionPrice, String optionId, String cakeoptionImage){
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+	ResultSet resultSet = null;
+	int checked =0;
+	
+			
+			String query = "select count(cakeoptionValue) from cakeoption where cakeoptionValue = '" + optionName + "' and cakeoptionCategory = '" + option + "' and cakeoptionDeletedate is null ";
+			
+			
+			try {connection = dataSource.getConnection();
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+				if (resultSet.next()) { // true값일때만 가져온다
+					checked = resultSet.getInt(1);
+					
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(resultSet != null) resultSet.close();
+					if(preparedStatement != null) preparedStatement.close();
+					if(connection != null) connection.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(checked == 1) {
+				return true;
+			}else{
+				return false;
+			}
+		}
 
 	public ArrayList<CManagerOptionListDto> OptionList(){
 		ArrayList<CManagerOptionListDto> dtos = new ArrayList<CManagerOptionListDto>();
