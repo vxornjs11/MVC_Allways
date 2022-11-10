@@ -83,7 +83,7 @@ function getGender(event) {
 	</div><br><br><br><br><br><br>
 	
 	<div align="center">
-		<h2 id="page_name">Best Cake!</h2>
+		<h2 id="page_name">Best Cake</h2>
 	</div>
   
 <div id="testbox" style="width: 1497px;">
