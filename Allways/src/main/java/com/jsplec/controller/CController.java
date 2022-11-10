@@ -10,14 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jsplec.customer.command.CCustomerAnswerCommand;
 import com.jsplec.customer.command.CCustomerBestCakeListCommand;
+import com.jsplec.customer.command.CCustomerBoardWriteCommand;
 import com.jsplec.customer.command.CCustomerCakeDetailCommand;
 import com.jsplec.customer.command.CCustomerCakeDetailReviewCommand;
 import com.jsplec.customer.command.CCustomerCakeListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
 import com.jsplec.customer.command.CCustomerOrderListCommand;
+import com.jsplec.customer.command.CCustomerQuestionCommand;
 import com.jsplec.customer.command.CCustomerReviewListCommand;
+import com.jsplec.customer.command.CCustomerWriteListCommand;
 import com.jsplec.customer.command.CCustomerWriteReviewCommand;
 import com.jsplec.manager.command.CManagerAddCakeCommand;
 import com.jsplec.manager.command.CManagerAddGoodsCommand;
@@ -154,6 +158,39 @@ public class CController extends HttpServlet {
 			customercommand = new CCustomerWriteReviewCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerOrdersReview.do";
+			break;
+
+		// Q&A 리스트
+		case ("/Customer/customerQuestionList.do"):
+			customercommand = new CCustomerQuestionCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerQuestionList.jsp";
+			break;
+
+		// Q&A 리스트
+		case ("/Customer/customerAnswerList.do"):
+			customercommand = new CCustomerAnswerCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerAnswer.jsp";
+			break;
+
+		// 게시판 리스트 출력
+		case ("/Customer/customerWriteList.do"):
+			customercommand = new CCustomerWriteListCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerWriteList.jsp";
+			break;
+
+		// 게시판 작성페이지
+		case ("/Customer/customerBoardWritePage.do"):
+			viewPage = "customerBoardWrite.jsp";
+			break;
+
+		// 게시판 작성페이지
+		case ("/Customer/customerBoardWrite.do"):
+			customercommand = new CCustomerBoardWriteCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerBoardWrite.jsp";
 			break;
 //		오수
 		case ("/Customer/customerCakeList.do"):
