@@ -46,7 +46,7 @@ public class CCustomerCakeDetailCommand implements CCustomerCommand {
 		if (request.getParameter("index")!=null) {
 			index=(int)Float.parseFloat(request.getParameter("index"));
 		}
-		
+		 
 		if (index % pagecount == 0) {
 			pagepage = index / pagecount - 1;
 		} else {

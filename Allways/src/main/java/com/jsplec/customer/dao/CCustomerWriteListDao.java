@@ -75,7 +75,6 @@ public class CCustomerWriteListDao {
 	
 	
 	public CCustomerWriteListDto boardDetail(int WRITEID) {
-		
 		CCustomerWriteListDto dto = null;
 		
 		Connection connection = null;

@@ -59,26 +59,24 @@ public class CCustomerBoardWriteDao {
 	} // selectWriteId() --
 	
 	
-	public boolean boardWrite(int writeId, String customerId, String writeTitle, String writeContent) {
+	public void boardWrite(int writeId, String customerId, String writeTitle, String writeContent) {
 		//write
 		Connection connection = null;
 		PreparedStatement ps = null;
-		boolean result = false;
 		
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "insert into `write` (w_customerId, commentId, recommentId, writeTitle, writeContent, writeInitdate) values (?, ?, ?, ?, ?, now())";
+			String query = "insert into `write` (w_customerId, commentId, distinguish, writeTitle, writeContent, writeInitdate) values (?, ?, ?, ?, ?, now())";
 			ps = connection.prepareStatement(query);
 			
 			ps.setString(1, customerId);
-			ps.setInt(2, writeId);
+			ps.setInt(2, writeId + 1);
 			ps.setInt(3, 0);
 			ps.setString(4, writeTitle);
 			ps.setString(5, writeContent);
 			
 			ps.executeUpdate();
-			result = true;
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -91,7 +89,6 @@ public class CCustomerBoardWriteDao {
 				
 			}
 		}
-		return result;
 		
 	}//write
 	

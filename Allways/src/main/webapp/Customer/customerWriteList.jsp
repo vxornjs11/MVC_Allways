@@ -33,7 +33,7 @@
 <script type="text/javascript">
 
 function login() {
-	
+	alert('게시글 작성은 로그인 후 이용 가능합니다.');
 	var form = document.myform;
 	form.action = "customerLoginPage.do";
 	form.submit();
@@ -75,26 +75,27 @@ function login() {
 		
 		<form name = "myform" method = "post">
 			
-			<c:choose>
-				<c:when test="${CUSTOMERID != null }">
-					<a href = "customerBoardWritePage.do"><button type = "button" style = "margin-left: -130px;" id="write_button">Write Board</button></a>
-				</c:when>
-				<c:otherwise>
-					<button style = "margin-left: -130px;" id="write_button" onclick = "login()">Login</button>
-				</c:otherwise>
-			</c:choose>
-		
-			<select style = "margin-left: 720px;" name = "combo">
-				<option value = "or_customerId">작성자</option>
-				<option value = "oreviewContent">내용</option>
-			</select>
-			
-			<input type = "text" name = "searchContent" size = "20"> &nbsp;
-			<button id="search_button" onclick = "searchList()">Search</button>
-			
+			<div>
+				<c:choose>
+					<c:when test="${CUSTOMERID != null }">
+						<a href = "customerBoardWritePage.do"><button type = "button" style = "margin-left: -90px;" id="write_button">Write Board</button></a>
+					</c:when>
+					<c:otherwise>
+						<button style = "margin-left: -90px;" id="write_button" onclick = "login()">Write Board</button>
+					</c:otherwise>
+				</c:choose>
+	
+				<select style = "margin-left: 720px;" name = "combo">
+					<option value = "or_customerId">작성자</option>
+					<option value = "oreviewContent">내용</option>
+				</select>
+				
+				<input type = "text" name = "searchContent" size = "20"> &nbsp;
+				<button id="search_button" onclick = "searchList()">Search</button>
+			</div>
 		</form>
 	</div>
-	
+	<br>
 	<div align="center" class="container text-center">
 		<form action = "" name = "list" method = "post">
 			<table class="table">
@@ -147,18 +148,18 @@ function login() {
 					</c:if>
 				
 					<c:if test="${index != 1 }">
-						<a href="customerOrdersReview.do?index=${index-1 }&sort=${sort }">이전</a>&nbsp;
+						<a href="customerWriteList.do?index=${index-1 }">이전</a>&nbsp;
 					</c:if> 
 			
 					<c:forEach var="cnt" begin="${pagecount * pagepage + 1}" end="${pagecount * (pagepage + 1)}">
 						<c:if test="${cnt <= Math.ceil(arrsize / rowcount)}">
 						
 							<c:if test="${cnt == index }">
-								<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:1.3em">[${cnt }]</a>
+								<a href="customerWriteList.do?index=${cnt }" style="font-size:1.3em">[${cnt }]</a>
 							</c:if>
 					
 							<c:if test = "${cnt != index }">
-								<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:0.9em">[${cnt }]</a>&nbsp;
+								<a href="customerWriteList.do?index=${cnt }" style="font-size:0.9em">[${cnt }]</a>&nbsp;
 							</c:if>
 							
 						</c:if>
@@ -169,7 +170,7 @@ function login() {
 					</c:if>
 					
 					<c:if test="${index < Math.ceil(arrsize / rowcount)}">
-						<a href="customerOrdersReview.do?index=${index+1 }&sort=${sort }">다음</a>&nbsp;
+						<a href="customerWriteList.do?index=${index+1 }">다음</a>&nbsp;
 					</c:if>
 					
 				</td>

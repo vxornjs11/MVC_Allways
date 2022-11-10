@@ -12,7 +12,6 @@ public class customerBoardDetailCommand implements CCustomerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		int writeId = Integer.parseInt(request.getParameter("writeId"));
-		
 		CCustomerWriteListDao dao = new CCustomerWriteListDao();
 		CCustomerWriteListDto dto = dao.boardDetail(writeId);
 		

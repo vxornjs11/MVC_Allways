@@ -12,31 +12,24 @@
 	<%@include file="customerHeader.jsp" %>
 	
 	<div align="center">
-		<table border="1">
+		<table>
 		
-			<thead>
+			<tbody>
 				<tr>
-					<th>No</th>
-					<th>작성자</th>
-					<th>제목</th>
-					<th>내용</th>
-					<th>작성일자</th>
+					<td>${boardDetail.writeId}</td>
+					<td>${boardDetail.w_customerId}</td>
+					<td>${boardDetail.writeTitle}</td>
+					<td>${boardDetail.writeInitdate}</td>
 				</tr>
-			</thead>
-			
-		
-			<c:forEach var = "dto" items="${boardDetail }">
-				<tbody>
-					<tr>
-						<td>${dto.writeId}</td>
-						<td>${dto.w_customerId}</td>
-						<td>${dto.writeTitle}</td>
-						<td>${dto.writeContent}</td>
-						<td>${dto.writeInitdate}</td>
-					</tr>
-				</tbody>
-			</c:forEach>
+			</tbody>
+			<tbody>
+				<tr>
+					<td><textarea rows="7" cols="55">${boardDetail.writeContent}</textarea></td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
+	
+	
 </body>
 </html>

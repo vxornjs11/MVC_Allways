@@ -15,7 +15,6 @@ import com.jsplec.customer.command.CCustomerBestCakeListCommand;
 import com.jsplec.customer.command.CCustomerBoardWriteCommand;
 import com.jsplec.customer.command.CCustomerCakeCartCommand;
 import com.jsplec.customer.command.CCustomerCakeDetailCommand;
-import com.jsplec.customer.command.CCustomerCakeDetailReviewCommand;
 import com.jsplec.customer.command.CCustomerCakeListCommand;
 import com.jsplec.customer.command.CCustomerCartListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
@@ -26,6 +25,7 @@ import com.jsplec.customer.command.CCustomerQuestionCommand;
 import com.jsplec.customer.command.CCustomerReviewListCommand;
 import com.jsplec.customer.command.CCustomerWriteListCommand;
 import com.jsplec.customer.command.CCustomerWriteReviewCommand;
+import com.jsplec.customer.command.customerBoardDetailCommand;
 import com.jsplec.manager.command.CManagerAddCakeCommand;
 import com.jsplec.manager.command.CManagerAddGoodsCommand;
 import com.jsplec.manager.command.CManagerAddStatusCommand;
@@ -52,8 +52,6 @@ import com.jsplec.manager.command.CManagerStatusCommand;
 import com.jsplec.manager.command.CManagerUpdateCakeCommand;
 import com.jsplec.manager.command.CManagerUpdateGoodsCommand;
 import com.jsplec.manager.command.CManagerViewCakeDetailCommand;
-import com.jsplec.manager.command.CManagerViewCakeListCommand;
-import com.jsplec.manager.command.CManagerViewGoodsListCommand;
 import com.jsplec.manager.command.CManagerViewOrdersReviewDetailCommand;
 import com.jsplec.manager.command.CManagerViewReviewsListCommand;
 import com.jsplec.manager.command.CManagerviewGoodsDetailCommand;
@@ -205,7 +203,7 @@ public class CController extends HttpServlet {
 			
 		// 게시판 작성페이지
 		case ("/Customer/customerBoardDetail.do"):
-			customercommand = new CCustomerBoardWriteCommand();
+			customercommand = new customerBoardDetailCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerBoardDetail.jsp";
 			break;
