@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.jsplec.customer.command.CCustomerAnswerCommand;
 import com.jsplec.customer.command.CCustomerBestCakeListCommand;
 import com.jsplec.customer.command.CCustomerBoardWriteCommand;
+import com.jsplec.customer.command.CCustomerCakeCartCommand;
 import com.jsplec.customer.command.CCustomerCakeDetailCommand;
 import com.jsplec.customer.command.CCustomerCakeDetailReviewCommand;
 import com.jsplec.customer.command.CCustomerCakeListCommand;
@@ -205,10 +206,10 @@ public class CController extends HttpServlet {
 			viewPage = "customerCakeDetail.jsp";
 			break;
 
-		case ("/Customer/customerCakeDetail1.do"):
-			customercommand = new CCustomerCakeDetailReviewCommand();
+		case ("/Customer/customerCakeCart.do"):
+			customercommand = new CCustomerCakeCartCommand();
 			customercommand.execute(request, response);
-			viewPage = "customerCakeDetail.jsp";
+			viewPage = "customerMain.jsp";
 			break;
 //		유승
 		// 메인 화면 출력
