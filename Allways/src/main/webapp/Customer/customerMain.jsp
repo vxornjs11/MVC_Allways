@@ -100,7 +100,8 @@ function getGender(event) {
 		<c:forEach items="${bestCakeList}" var="dto">
 			<div><a href="customerCakeDetail.do?cakeId=${dto.cakeId}"><img src="./cakeListImage/${dto.cakeImage}" style="padding-left: 20px;"></a></div>
 		</c:forEach>
-      <!--   clone     -->
+		
+     <!--  clone  -->
       
 		<c:forEach items="${bestCakeList}" var="dto">
 			<div class="clone"><a href="customerCakeDetail.do?cakeId=${dto.cakeId}"><img src="./cakeListImage/${dto.cakeImage}"></a></div>

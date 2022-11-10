@@ -3,7 +3,7 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<title>cakeName</title>
+<title>${cakeInfo.cakeName}</title>
 <head>
 
 <script type="text/javascript">
@@ -219,11 +219,11 @@ color: #FFFDFD;
 			</div>
 			
 		<form action="" style="width: 768px;" name="detail" method = "get">
-			<div class="col" style="width: 768px;"><br>
-				<div id="cake_name" align="left">
+			<div class="col" style="width: 768px;"><br><input type="hidden" name="cakeId" value="${cakeInfo.cakeId }">
+				<div id="cake_name" align="left"><input type="hidden" name="cakeName" value="${cakeInfo.cakeName }">
 				${cakeInfo.cakeName }
 				</div>
-				<div id="cake_name" align="left">
+				<div id="cake_name" align="left"><input type="hidden" name="cakePrice" value="${cakeInfo.cakePrice }">
 				￦ ${cakeInfo.cakePrice }
 				</div>
 				<div>
@@ -238,75 +238,32 @@ color: #FFFDFD;
 					<input type="date" name="pickupdate"><br><br>
 				</div> -->
 				
-				
-				<c:forEach var="dto" items="${cakeOption}">
-					<c:if test="${dto.cakeoptionCategory eq shape} ">
-						<input type="radio" id="shape1" name="shape" value="1"><label for="shape1">Circle</label>
-					</c:if>
-				</c:forEach>
-				
 				<div id="cake_option" align="left">
 				Shape
 				</div>
-				<div class="select" align="left">
-					<input type="radio" id="shape1" name="shape" value="1"><label for="shape1">Circle</label>
-					&nbsp;
-					<input type="radio" id="shape2" name="shape" value="2"><label for="shape2">Rectangle</label>
-					&nbsp;
-					<input type="radio" id="shape3" name="shape" value="3"><label for="shape3">Heart</label>
-					&nbsp;
-					<input type="radio" id="shape4" name="shape" value="4"><label for="shape4">Star</label>
-				</div>
+					<div class="select" align="left">
+						<c:forEach var="dto" items="${shapeList}">
+							<c:set var="i" value="${i+1 }"/>
+								<input type="radio" id="shape${i}" name="shape" value="${dto.cakeoptionId }"><label for="shape${i}">${dto.cakeoptionValue}</label>
+								&nbsp;
+						</c:forEach>
+					</div>
+				
+				
 				<div id="cake_option" align="left">
 				Size
 				</div>
-				<div class="select" align="left">
-					<input type="radio" id="size1" name="size" value="5"><label for="size1">Size1</label>
-					&nbsp;
-					<input type="radio" id="size2" name="size" value="6"><label for="size2">Size2</label>
-					&nbsp;
-					<input type="radio" id="size3" name="size" value="7"><label for="size3">Size3</label>
-				</div>
-				<div id="cake_option" align="left">
-				Flavor
-				</div>
-				<div class="select" align="left">
-					<input type="radio" id="flavor1" name="flavor" value="8"><label for="flavor1">Chocolate</label>
-					&nbsp;
-					<input type="radio" id="flavor2" name="flavor" value="9"><label for="flavor2">Strawberry</label>
-					&nbsp;
-					<input type="radio" id="flavor3" name="flavor" value="10"><label for="flavor3">Cheese</label>
-				</div>
-				<div id="cake_option" align="left">
-				Icing Color
-				</div>
-				<div class="select" align="left">
-					<input type="radio" id="icingcolor1" name="icingcolor" value="11"><label for="icingcolor1">Red</label>
-					&nbsp;
-					<input type="radio" id="icingcolor2" name="icingcolor" value="12"><label for="icingcolor2">Blue</label>
-					&nbsp;
-					<input type="radio" id="icingcolor3" name="icingcolor" value="13"><label for="icingcolor3">Green</label>
-				</div>
-				<div id="cake_option" align="left">
-				Border Color
-				</div>
-				<div class="select" align="left">
-					<input type="radio" id="bordercolor1" name="bordercolor" value="14"><label for="bordercolor1">Red</label>
-					&nbsp;
-					<input type="radio" id="bordercolor2" name="bordercolor" value="15"><label for="bordercolor2">Blue</label>
-					&nbsp;
-					<input type="radio" id="bordercolor3" name="bordercolor" value="16"><label for="bordercolor3">Green</label>
-				</div>
-				<div id="cake_option" align="left">
-				Lettering Color
-				</div>
-				<div class="select" align="left">
-					<input type="radio" id="letteringcolor1" name="letteringcolor" value="17"><label for="letteringcolor1">Red</label>
-					&nbsp;
-					<input type="radio" id="letteringcolor2" name="letteringcolor" value="18"><label for="letteringcolor2">Blue</label>
-					&nbsp;
-					<input type="radio" id="letteringcolor3" name="letteringcolor" value="19"><label for="letteringcolor3">Green</label>
-				</div>
+					<div class="select" align="left">
+						<c:forEach var="dto" items="${sizeList}">
+							<c:set var="i" value="${i+1 }"/>
+								<input type="radio" id="size${i}" name="size" value="${dto.cakeoptionId}"><label for="size${i}">${dto.cakeoptionValue}</label>
+								&nbsp;
+						</c:forEach>
+					</div>
+				
+				
+				
+				
 				<div id="cake_option" align="left">
 				Lettering
 				</div>
@@ -315,14 +272,15 @@ color: #FFFDFD;
 						placeholder="Handwritten In Icing. 30 Char. Max."
 						style="padding-top: 8px;">
 				</div><br>
-				<div align="left">
-				</div>
+				<div id="cake_option" align="left">
+					<input type="text" name = "ordersQuantity">
+				</div><input type="hidden" name = "ordersSalePrice" value="">
 				
 				<hr id="line4">
 				
 				<div align="left" id="cake_option">
 					<table>
-						<tr align="center">
+						<!-- <tr align="center">
 							<td style="width: 150px;">
 								Total Quantity
 							</td>
@@ -337,7 +295,7 @@ color: #FFFDFD;
 							<td style="width: 100px;">
 								￦52,000
 							</td>
-						</tr>
+						</tr> -->
 						<tr align="center">
 							<td colspan="2"><hr id="line4"></td>
 						</tr>

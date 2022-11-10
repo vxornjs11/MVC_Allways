@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jsplec.customer.dao.CCustomerCakeDetailDao;
 import com.jsplec.customer.dao.CCustomerCakeDetailReviewDao;
+import com.jsplec.customer.dao.CCustomerCakeOptionListDao;
 import com.jsplec.customer.dto.CCustomerCakeDetailReviewDto;
 import com.jsplec.customer.dto.CCustomerCakeListDto;
+import com.jsplec.customer.dto.CCustomerCakeOptionListDto;
 
 public class CCustomerCakeDetailCommand implements CCustomerCommand {
 
@@ -61,6 +63,15 @@ public class CCustomerCakeDetailCommand implements CCustomerCommand {
 		request.setAttribute("rowcount", rowcount);
 		request.setAttribute("pagecount", pagecount);
 		request.setAttribute("pagepage", pagepage);
+		
+		
+		CCustomerCakeOptionListDao dao3 = new CCustomerCakeOptionListDao();
+		ArrayList<CCustomerCakeOptionListDto> dtos3 = dao3.shapeList();
+		request.setAttribute("shapeList", dtos3);
+		
+		CCustomerCakeOptionListDao dao4 = new CCustomerCakeOptionListDao();
+		ArrayList<CCustomerCakeOptionListDto> dtos4 = dao4.sizeList();
+		request.setAttribute("sizeList", dtos4);
 		
 	}
 
