@@ -3,23 +3,22 @@
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="utf-8">
+  <title>Main</title>
 <head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="CSS/style.css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<%@include file="customerHeader.jsp" %>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="CSS/style.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>슬라이드</title>
   
   <style type="text/css">	
 	/* banner */
-	.banner {position: relative; width: 1000px; height: 500px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
+	.banner {position: relative; width: 1500px; height: 1000px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-	.banner ul li {float: left; width: 1000px; height: 500px; margin:0; padding:0;}
+	.banner ul li {float: left; width: 1500px; height: 1000px; margin:0; padding:0;}
 
 #page_name{
 font-family: 'Baloo Tammudu 2';
@@ -30,6 +29,7 @@ line-height: 115px;
 color: #E75151;
 }
 </style>
+<%@include file="customerHeader.jsp" %>
 
 <script type="text/javascript">
 	$(document).ready(function() {

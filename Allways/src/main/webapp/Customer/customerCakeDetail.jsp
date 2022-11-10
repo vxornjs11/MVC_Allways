@@ -274,7 +274,7 @@ color: #FFFDFD;
 				</div><br>
 				<div id="cake_option" align="left">
 					<input type="text" name = "ordersQuantity">
-				</div><input type="hidden" name = "ordersSalePrice" value="">
+				</div>
 				
 				<hr id="line4">
 				
@@ -321,7 +321,7 @@ color: #FFFDFD;
 
 <!--  -->
 
- <div align="center" class="container text-center">
+<%--  <div align="center" class="container text-center">
 		<form action = "" name = "list" method = "post">
 			<table class="table">
 				
@@ -395,7 +395,7 @@ color: #FFFDFD;
 			</tr>
 		</table>
 	</div>
-	</div> 
+	</div>  --%>
 	
 	<!--  -->
 

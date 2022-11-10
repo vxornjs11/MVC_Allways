@@ -2,15 +2,12 @@ package com.jsplec.customer.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
-
-import com.jsplec.customer.dto.CCustomerCakeCartDto;
 
 public class CCustomerCakeCartDao {
 
@@ -25,7 +22,7 @@ public class CCustomerCakeCartDao {
 		}
 	}
 
-	public void cartInsert(String CUSTOMERID, int CAKEID, String CAKENAME, int CAKEPRICE, int ORDERSQUANTITY) {
+	public void cartInsert(String CUSTOMERID, int CAKEID, int CAKEPRICE, int ORDERSQUANTITY) {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -41,10 +38,9 @@ public class CCustomerCakeCartDao {
 			
 			preparedStatement.setString(1, CUSTOMERID);
 			preparedStatement.setInt(2, CAKEID);
-			preparedStatement.setString(3, CAKENAME);
-			preparedStatement.setInt(4, CAKEPRICE * ORDERSQUANTITY);
-			preparedStatement.setInt(5, ORDERSQUANTITY);
-			preparedStatement.setInt(6, (int)((CAKEPRICE * ORDERSQUANTITY) *  0.02));
+			preparedStatement.setInt(3, CAKEPRICE * ORDERSQUANTITY);
+			preparedStatement.setInt(4, ORDERSQUANTITY);
+			preparedStatement.setInt(5, (int)((CAKEPRICE * ORDERSQUANTITY) *  0.05));
 
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
@@ -59,5 +55,5 @@ public class CCustomerCakeCartDao {
 				e.printStackTrace();
 			}
 		}
-	} // cartInsert() --
+	}
 }

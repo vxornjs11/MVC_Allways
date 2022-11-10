@@ -83,17 +83,19 @@ color: #FFFDFD;
 			<th width="350px">An Optional Feature</th>
 			<th width="100px">Quantity</th>
 			<th width="120px">Price</th>
-			<th width="120px">Date</th>
 			<th>Delete</th>
 		</tr>
+		
+<c:forEach items="${cartList }">
 		<tr align="center">
 			<td><input type="checkbox"></td>
-			<td>Cherry Fruits Cake</td>
-			<td>1</td>
-			<td>￦52,000</td>
-			<td>2022-11-11</td>
+			<td>${dto.cakeName }</td>
+			<td>${dto.ordersQuantity }</td>
+			<td>￦${dto.ordersSalePrice }</td>
 			<td>X</td>
 		</tr>
+</c:forEach>
+
 	</table>
 </div><br>
 

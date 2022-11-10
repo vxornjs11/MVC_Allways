@@ -1,29 +1,29 @@
 package com.jsplec.customer.command;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.jsplec.customer.dao.CCustomerCakeCartDao;
+import com.jsplec.customer.dao.CCustomerCakeListDao;
+import com.jsplec.customer.dao.CCustomerCartListDao;
+import com.jsplec.customer.dto.CCustomerCakeListDto;
+import com.jsplec.customer.dto.CCustomerCartListDto;
 
-public class CCustomerCakeCartCommand implements CCustomerCommand {
+public class CCustomerCartListCommand implements CCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		
-		CCustomerCakeCartDao dao = new CCustomerCakeCartDao();
+		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession();
 		String customerId = (String) session.getAttribute("ID");
+
+		CCustomerCartListDao dao = new CCustomerCartListDao();
+		ArrayList<CCustomerCartListDto> dtos = dao.cartList(customerId);
 		
-		String cakeName = request.getParameter("cakeName");
-		
-		
-		int cakeId = Integer.parseInt(request.getParameter("cakeId"));
-		int cakePrice = Integer.parseInt(request.getParameter("cakePrice"));
-		int ordersQuantity = Integer.parseInt(request.getParameter("ordersQuantity"));
-		
-		dao.cartInsert(customerId, cakeId, cakePrice, ordersQuantity);
+		request.setAttribute("cartList", dtos);
 
 	}
 
