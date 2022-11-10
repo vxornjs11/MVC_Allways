@@ -14,125 +14,69 @@
 div{
 	padding:1%;
 }
-
-input[type=file]::file-selector-button{
-	background-color:#ffffff;
-	border-color:#fdcdcd;
-	border-radius:10px;
-	hover:{
-		background:#fdcdcd;
-	}
-}
 </style>
 <script>
-	function previewFile() {
-		  var preview = document.querySelector('img#preview');
-		  var file = document.querySelector('input[type=file]').files[0];
-		  var reader = new FileReader();
-
-		  reader.addEventListener(
-		    'load',
-		    function () {
-		      preview.src = reader.result;
-		    },
-		    false
-		  );
-
-		  if (file) {
-		    reader.readAsDataURL(file);
-		  }
-		}
-	
-	function submitDo(){
-		var form=document.actionForm;
-		console.log(form.checkName.value);
-		if (form.checkName.value=="true"){
-			alert("추가가 완료되었습니다");
-			form.submit();
-		} else{
-			alert("이름 중복체크를 해 주세요.");
-			return;
-		}
-	}
-	
-	function nameCheck(){
-		var form=document.actionForm;
-		if (form.cakeName.value==""){
-			alert("케이크 이름을 입력하세요");
-			return;
-		} else{
-			form.action="checkName.do";
-			form.submit();
-		}
-	}
-	
 	function cancelDo(){
 		var form=document.actionForm;
-		form.action="searchCake.do";
+		form.action="searchReview.do";
 		form.submit();
 	}
 </script>
 </head>
 <body>
+<fmt:setLocale value="ko_kr"/>
 <%@include file="managerHeader.jsp"%>
 <div align="center">
 <form action="addCake.do" method="post" enctype="multipart/form-data" name="actionForm">
-	<input type="hidden" name="index" value="${index }">
-	<h1 style="margin-bottom:3%;margin-top:3%"><b>케이크 추가</b></h1>
+	<h1 style="margin-bottom:3%;margin-top:3%"><b>리뷰 상세</b></h1>
 	<div style="display: inline-block;width:60%">
 		<div align="left" style="width:20%;display:inline-block">
-			케이크 이름
+			제품 이름: 
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:50%;display:inline-block">
-				<input type="hidden" name="checkName" value="${check }">
-				<c:if test="${check==null }">
-					<input type="text" name="cakeName" class="form-control" style="border-color:#fdcdcd">
+				<c:if test="${DTO.or_cakeName==null }">
+					${DTO.or_goodsName }
 				</c:if>
-				<c:if test="${check==true }">
-					<script>alert("사용 가능한 이름입니다.");</script>
-					<input type="text" name="cakeName" class="form-control is-valid" style="border-color:#fdcdcd" value="${cakeName }">
-				</c:if>
-				<c:if test="${check==false }">
-					<script>alert("이미 사용중인 이름입니다.");</script>
-					<input type="text" name="cakeName" class="form-control is-invalid" style="border-color:#fdcdcd" value="${cakeName }">
+				<c:if test="${DTO.or_goodsName==null }">
+					${DTO.or_cakeName }
 				</c:if>
 			</div>
 			<div style="display:inline-block">
-				<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="중복체크" onclick="nameCheck()">
+				작성자: 
+			</div>
+			<div style="display:inline-block">
+				${DTO.or_customerId }
 			</div>
 		</div>
 		<div align="left" style="width:20%;display:inline-block">
-			가격
+			작성일: 
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
-			<div style="width:30%;display:inline-block">
-				<input type="number" step="1000" name="cakePrice" class="form-control" style="border-color:#fdcdcd" value="${cakePrice }">
-			</div>원
+			<fmt:formatDate value="${DTO.oreviewInitdate }" type="both" dateStyle="full" timeStyle="full"/>
 		</div>
 		<div align="left" style="width:20%;height:20%;display:inline-block">
-			메뉴설명
+			리뷰내용
 		</div>
 		<div align="left" style="width:74%;height:20%;display:inline-block">
-			<textarea style="width:100%;margin-top:20px;border-color:#fdcdcd" class="form-control" name="cakeDetail">${cakeDetail }</textarea>
+			<textarea style="width:100%;margin-top:20px;border-color:#fdcdcd" class="form-control" name="cakeDetail" readonly>${DTO.oreviewContent }</textarea>
 		</div>
 		<div align="left" style="width:20%;display:inline-block">
-			사진
+			별점
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
-			<input type="file" class="form-control" style="border-color:#fdcdcd" name="cakeImage" onchange="previewFile(event)">
+			${DTO.oreviewStarrating }
 		</div>
 	</div>
 	<div style="display:inline-block;width:30%;height:50%" align="center">
 		<div>
-			사진 미리보기
+			사진
 		</div>
 		<div>
-			<img src="" id="preview" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
+			<img src="Allways/${DTO.oreviewImage }" id="preview" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
 		</div>
 		<div>
-			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="취소" onclick="cancelDo()">
-			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="추가" onclick="submitDo()">
+			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="뒤로" onclick="cancelDo()">
 		</div>
 	</div>
 </form>
