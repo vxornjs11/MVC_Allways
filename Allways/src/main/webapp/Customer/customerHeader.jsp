@@ -228,7 +228,7 @@ function signup() {
 	            	</a>
 	            
 	                <a href="customerAbout.do" id="center" class="nav-item nav-link">ABOUT</a>
-	                <a href="customerCart.do" id="center" class="nav-item nav-link">CART</a>
+	                <a href="customerCartList.do" id="center" class="nav-item nav-link">CART</a>
 	                
 						<%-- <%if (session.getAttribute("ID") == null) { %>
 							<form name="loginbtn" method="post">
