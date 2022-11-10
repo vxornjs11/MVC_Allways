@@ -17,9 +17,9 @@
   
   <style type="text/css">	
 	/* banner */
-	.banner {position: relative; width: 1500px; height: 1000px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
+	.banner {position: relative; width: 1000px; height: 500px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-	.banner ul li {float: left; width: 1500px; height: 1000px; margin:0; padding:0;}
+	.banner ul li {float: left; width: 1000px; height: 500px; margin:0; padding:0;}
 
 #page_name{
 font-family: 'Baloo Tammudu 2';
@@ -48,7 +48,7 @@ color: #E75151;
 			$banner.css("height", $bannerHeight + "px");
 			//alert(bannerHeight);
 			//배너의 좌측 위치를 옮겨 준다.
-			$banner.animate({left: - $bannerWidth + "px"}, 1500, function() { //숫자는 롤링 진행되는 시간이다.
+			$banner.animate({left: - $bannerWidth + "px"}, 3000, function() { //숫자는 롤링 진행되는 시간이다.
 				//첫번째 이미지를 마지막 끝에 복사(이동이 아니라 복사)해서 추가한다.
 				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
 				//뒤로 복사된 첫번재 이미지는 필요 없으니 삭제한다.
@@ -73,11 +73,11 @@ function getGender(event) {
 	<div class="contents">
 		<div class="banner">
 			<ul>
-				<li><img src="./mainImage/mainImage1.png" width="340" height="210px"></li>
-				<li><img src="./images/airjordan.png" width="340" height="210px"></li>
-				<li><img src="./images/airjordan77.png" width="340" height="210px"></li>
-				<li><img src="./images/centennial.png" width="340" height="210px"></li>
-				<li><img src="./images/curry9.png" width="340" height="210px"></li>
+				<li><img src="./mainImage/mainImage1.png"></li>
+				<li><img src="./cakeListImage/allcake02.png"></li>
+				<li><img src="./cakeListImage/allcake05.png"></li>
+				<li><img src="./cakeListImage/allcake09.png"></li>
+				<li><img src="./cakeListImage/allcake19.png"></li>
 			</ul>
 		</div>
 	</div><br><br><br><br><br><br>
@@ -86,25 +86,26 @@ function getGender(event) {
 		<h2 id="page_name">Best Cake!</h2>
 	</div>
   
-<div id="testbox">
-   <div class="test">
-      <div><a href="https://google.com"><img src="./images/airforce.png" /></a></div>
-      <div><img src="./images/airjordan.png" /></div>
-      <div><a href="https://google.com"><img src="./images/airjordan77.png" /></a></div>
-      <div><img src="./images/centennial.png" /></div>
-      <div><img src="./images/curry9.png" /></div>
-      <div><img src="./images/hovrsonic.png" /></div>
-      <div><img src="./images/projectrock.png" /></div>
-      <div><img src="./images/superstar.png" /></div>
+<div id="testbox" style="width: 1497px;">
+	<div class="test">
+		<c:forEach items="${bestCakeList}" var="dto">
+			<div><a href="customerCakeDetail.do?cakeId=${dto.cakeId}"><img src="./cakeListImage/${dto.cakeImage}" style="padding-left: 20px;"></a></div>
+		</c:forEach>
+		<c:forEach items="${bestCakeList}" var="dto">
+			<div><a href="customerCakeDetail.do?cakeId=${dto.cakeId}"><img src="./cakeListImage/${dto.cakeImage}" style="padding-left: 20px;"></a></div>
+		</c:forEach>
+		<c:forEach items="${bestCakeList}" var="dto">
+			<div><a href="customerCakeDetail.do?cakeId=${dto.cakeId}"><img src="./cakeListImage/${dto.cakeImage}" style="padding-left: 20px;"></a></div>
+		</c:forEach>
+		<c:forEach items="${bestCakeList}" var="dto">
+			<div><a href="customerCakeDetail.do?cakeId=${dto.cakeId}"><img src="./cakeListImage/${dto.cakeImage}" style="padding-left: 20px;"></a></div>
+		</c:forEach>
       <!--   clone     -->
-      <div class="clone"><img src="./images/airforce.png" /></div>
-      <div class="clone"><img src="./images/airjordan.png" /></div>
-      <div class="clone"><img src="./images/airjordan77.png" /></div>
-      <div class="clone"><img src="./images/centennial.png" /></div>
-      <div class="clone"><img src="./images/curry9.png" /></div>
-      <div class="clone"><img src="./images/hovrsonic.png" /></div>
-      <div class="clone"><img src="./images/projectrock.png" /></div>
-      <div class="clone"><img src="./images/superstar.png" /></div>
+      
+		<c:forEach items="${bestCakeList}" var="dto">
+			<div class="clone"><a href="customerCakeDetail.do?cakeId=${dto.cakeId}"><img src="./cakeListImage/${dto.cakeImage}"></a></div>
+		</c:forEach>
+      
    </div>
 </div>
 </body>

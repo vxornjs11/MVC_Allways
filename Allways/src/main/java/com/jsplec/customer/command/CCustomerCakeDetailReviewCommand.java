@@ -30,7 +30,7 @@ public class CCustomerCakeDetailReviewCommand implements CCustomerCommand {
 		ArrayList<CCustomerCakeDetailReviewDto> dtos = new ArrayList<CCustomerCakeDetailReviewDto>();
 		
 		int maxpage = (dtos.size() % rowcount) != 0 ? (dtos.size() / rowcount) + 1 : (dtos.size() / rowcount);
-		dtos = dao.detailReview(cakeId, index, dtos.size());
+		dtos = dao.detailReview(cakeId);
 		
 		
 		request.setAttribute("reviewList", dtos);

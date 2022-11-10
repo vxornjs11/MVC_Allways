@@ -25,7 +25,7 @@ public class CCustomerCakeDetailReviewDao {
 		}
 	}
 	
-	public ArrayList<CCustomerCakeDetailReviewDto> detailReview(int CAKEID, int index, int maxPage) {
+	public ArrayList<CCustomerCakeDetailReviewDto> detailReview(int CAKEID) {
 		
 		ArrayList<CCustomerCakeDetailReviewDto> dtos = new ArrayList<CCustomerCakeDetailReviewDto>();
 		
@@ -37,8 +37,8 @@ public class CCustomerCakeDetailReviewDao {
 			connection = dataSource.getConnection();
 			
 			String query1 = "select * from (select row_number() over(order by oreviewId) as rownum, "
-					+ "or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating from ordersreview  order by oreviewId desc) o "
-					+ "where rownum between " + index + " and " + maxPage + " and or_cakeId = " + CAKEID + " order by o.or_customerId desc";
+					+ "or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating, or_cakeId from ordersreview  order by oreviewId desc) o "
+					+ "where or_cakeId = " + CAKEID + " order by o.oreviewInitdate desc";
 			
 			preparedStatement = connection.prepareStatement(query1);
 			

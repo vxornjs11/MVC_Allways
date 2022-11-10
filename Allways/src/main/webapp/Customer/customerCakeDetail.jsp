@@ -5,6 +5,18 @@
 <html>
 <title>cakeName</title>
 <head>
+
+<script type="text/javascript">
+
+function cartInsert(){
+	var form = document.detail;
+					
+		form.action = "customerCakeCart.do";
+		form.submit();
+}
+
+</script>
+
 <%@include file="customerHeader.jsp"%>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,13 +88,19 @@ color: #766262;
 }
 
 #line{
-width: 1337px;
+width: 600px;
 height: 0px;
 border: 2px solid #FECACA;
 }
 
 #line2{
 width: 650px;
+height: 0px;
+border: 2px solid #FECACA;
+}
+
+#line4{
+width: 400px;
 height: 0px;
 border: 2px solid #FECACA;
 }
@@ -138,6 +156,39 @@ align-items: center;
 color: #766262;
 }
 
+#util_box{
+width: 160px;
+height: 41.63px;
+background: #EF8C8C;
+border: 2px solid #EF8C8C;
+
+font-family: 'Baloo Tammudu 2';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 50px;
+align-items: center;
+text-align: center;
+text-transform: capitalize;
+color: #FFFDFD;
+}
+
+#checkout_box{
+width: 400px;
+height: 41.63px;
+background: #EF8C8C;
+border: 2px solid #EF8C8C;
+
+font-family: 'Baloo Tammudu 2';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 50px;
+align-items: center;
+text-align: center;
+text-transform: capitalize;
+color: #FFFDFD;
+}
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -150,8 +201,8 @@ color: #766262;
 <body>
 
 		<div class="row">
-		
 			<div class="col" align="center">
+			<br>
 				<div>
 					<img alt="" src="./cakeListImage/${cakeInfo.cakeImage}" width="500px">
 				</div>
@@ -167,6 +218,7 @@ color: #766262;
 				</div>
 			</div>
 			
+		<form action="" style="width: 768px;" name="detail" method = "get">
 			<div class="col" style="width: 768px;"><br>
 				<div id="cake_name" align="left">
 				${cakeInfo.cakeName }
@@ -175,77 +227,85 @@ color: #766262;
 				￦ ${cakeInfo.cakePrice }
 				</div>
 				<div>
-					<hr id="line">
+					<hr id="line4">
 				</div>
-				<div id="cake_option" align="left">
+				<!-- <div id="cake_option" align="left">
 				Pickup Date
 				</div>
 				<div id="cake_option" align="left">
 				</div>
 				<div align="left">
 					<input type="date" name="pickupdate"><br><br>
-				</div>
+				</div> -->
+				
+				
+				<c:forEach var="dto" items="${cakeOption}">
+					<c:if test="${dto.cakeoptionCategory eq shape} ">
+						<input type="radio" id="shape1" name="shape" value="1"><label for="shape1">Circle</label>
+					</c:if>
+				</c:forEach>
+				
 				<div id="cake_option" align="left">
 				Shape
 				</div>
 				<div class="select" align="left">
-					<input type="radio" id="shape1" name="shape"><label for="shape1">Circle</label>
+					<input type="radio" id="shape1" name="shape" value="1"><label for="shape1">Circle</label>
 					&nbsp;
-					<input type="radio" id="shape2" name="shape"><label for="shape2">Rectangle</label>
+					<input type="radio" id="shape2" name="shape" value="2"><label for="shape2">Rectangle</label>
 					&nbsp;
-					<input type="radio" id="shape3" name="shape"><label for="shape3">Heart</label>
+					<input type="radio" id="shape3" name="shape" value="3"><label for="shape3">Heart</label>
 					&nbsp;
-					<input type="radio" id="shape4" name="shape"><label for="shape4">Star</label>
+					<input type="radio" id="shape4" name="shape" value="4"><label for="shape4">Star</label>
 				</div>
 				<div id="cake_option" align="left">
 				Size
 				</div>
 				<div class="select" align="left">
-					<input type="radio" id="size1" name="size"><label for="size1">Size1</label>
+					<input type="radio" id="size1" name="size" value="5"><label for="size1">Size1</label>
 					&nbsp;
-					<input type="radio" id="size2" name="size"><label for="size2">Size2</label>
+					<input type="radio" id="size2" name="size" value="6"><label for="size2">Size2</label>
 					&nbsp;
-					<input type="radio" id="size3" name="size"><label for="size3">Size3</label>
+					<input type="radio" id="size3" name="size" value="7"><label for="size3">Size3</label>
 				</div>
 				<div id="cake_option" align="left">
 				Flavor
 				</div>
 				<div class="select" align="left">
-					<input type="radio" id="flavor1" name="flavor"><label for="flavor1">Chocolate</label>
+					<input type="radio" id="flavor1" name="flavor" value="8"><label for="flavor1">Chocolate</label>
 					&nbsp;
-					<input type="radio" id="flavor2" name="flavor"><label for="flavor2">Strawberry</label>
+					<input type="radio" id="flavor2" name="flavor" value="9"><label for="flavor2">Strawberry</label>
 					&nbsp;
-					<input type="radio" id="flavor3" name="flavor"><label for="flavor3">Cheese</label>
+					<input type="radio" id="flavor3" name="flavor" value="10"><label for="flavor3">Cheese</label>
 				</div>
 				<div id="cake_option" align="left">
 				Icing Color
 				</div>
 				<div class="select" align="left">
-					<input type="radio" id="icingcolor1" name="icingcolor"><label for="icingcolor1">Red</label>
+					<input type="radio" id="icingcolor1" name="icingcolor" value="11"><label for="icingcolor1">Red</label>
 					&nbsp;
-					<input type="radio" id="icingcolor2" name="icingcolor"><label for="icingcolor2">Blue</label>
+					<input type="radio" id="icingcolor2" name="icingcolor" value="12"><label for="icingcolor2">Blue</label>
 					&nbsp;
-					<input type="radio" id="icingcolor3" name="icingcolor"><label for="icingcolor3">Green</label>
+					<input type="radio" id="icingcolor3" name="icingcolor" value="13"><label for="icingcolor3">Green</label>
 				</div>
 				<div id="cake_option" align="left">
 				Border Color
 				</div>
 				<div class="select" align="left">
-					<input type="radio" id="bordercolor1" name="bordercolor"><label for="bordercolor1">Red</label>
+					<input type="radio" id="bordercolor1" name="bordercolor" value="14"><label for="bordercolor1">Red</label>
 					&nbsp;
-					<input type="radio" id="bordercolor2" name="bordercolor"><label for="bordercolor2">Blue</label>
+					<input type="radio" id="bordercolor2" name="bordercolor" value="15"><label for="bordercolor2">Blue</label>
 					&nbsp;
-					<input type="radio" id="bordercolor3" name="bordercolor"><label for="bordercolor3">Green</label>
+					<input type="radio" id="bordercolor3" name="bordercolor" value="16"><label for="bordercolor3">Green</label>
 				</div>
 				<div id="cake_option" align="left">
 				Lettering Color
 				</div>
 				<div class="select" align="left">
-					<input type="radio" id="letteringcolor1" name="letteringcolor"><label for="letteringcolor1">Red</label>
+					<input type="radio" id="letteringcolor1" name="letteringcolor" value="17"><label for="letteringcolor1">Red</label>
 					&nbsp;
-					<input type="radio" id="letteringcolor2" name="letteringcolor"><label for="letteringcolor2">Blue</label>
+					<input type="radio" id="letteringcolor2" name="letteringcolor" value="18"><label for="letteringcolor2">Blue</label>
 					&nbsp;
-					<input type="radio" id="letteringcolor3" name="letteringcolor"><label for="letteringcolor3">Green</label>
+					<input type="radio" id="letteringcolor3" name="letteringcolor" value="19"><label for="letteringcolor3">Green</label>
 				</div>
 				<div id="cake_option" align="left">
 				Lettering
@@ -254,8 +314,41 @@ color: #766262;
 					<input type="text" id="lettering"
 						placeholder="Handwritten In Icing. 30 Char. Max."
 						style="padding-top: 8px;">
+				</div><br>
+				<div align="left">
+				</div>
+				
+				<hr id="line4">
+				
+				<div align="left" id="cake_option">
+					<table>
+						<tr align="center">
+							<td style="width: 150px;">
+								Total Quantity
+							</td>
+							<td style="width: 50px;">
+								3
+							</td>
+						</tr>
+						<tr align="center">
+							<td style="width: 150px;" height="50px">
+								Total Price
+							</td>
+							<td style="width: 100px;">
+								￦52,000
+							</td>
+						</tr>
+						<tr align="center">
+							<td colspan="2"><hr id="line4"></td>
+						</tr>
+						<tr align="center">
+							<td><input type="button" value="Cart" id="util_box" onclick="cartInsert()"></td>
+							<td><input type="button" value="Buy Now" id="util_box"></td>
+						</tr>
+					</table>
 				</div>
 			</div>
+			</form>
 			
 		</div>
 		
@@ -266,18 +359,17 @@ color: #766262;
 <div align="center">
 	<input id="guidedetailbox" value="Review" disabled="disabled"
 		style="padding-left: 115px; padding-top: 10px;">
-</div>
+</div><br>
 
 <!--  -->
 
-<div align="center" class="container text-center">
+ <div align="center" class="container text-center">
 		<form action = "" name = "list" method = "post">
 			<table class="table">
 				
 				<thead>
 					<tr>
 						<th>No</th>
-						<th>이미지</th>
 						<th>내용</th>
 						<th>별점</th>
 						<th>작성자</th>
@@ -290,7 +382,6 @@ color: #766262;
 				<tbody>
 					<tr>
 						<td>${dto.rowNum }</td>
-						<td><img name="img" src="${imageFile }"></td>
 						<td>${dto.oreviewContent }</td>
 						<td>
 							<c:forEach begin = "1" end = "${dto.oreviewStarrating }">
@@ -317,18 +408,18 @@ color: #766262;
 					</c:if>
 				
 					<c:if test="${index != 1 }">
-						<a href="customerOrdersReview.do?index=${index-1 }&sort=${sort }">이전</a>&nbsp;
+						<a href="customerCakeDetail.do?index=${index-1 }">이전</a>&nbsp;
 					</c:if> 
 			
 					<c:forEach var="cnt" begin="${pagecount * pagepage + 1}" end="${pagecount * (pagepage + 1)}">
 						<c:if test="${cnt <= Math.ceil(arrsize / rowcount)}">
 						
 							<c:if test="${cnt == index }">
-								<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:1.3em">[${cnt }]</a>
+								<a href="customerOrdersReview.do?index=${cnt }" style="font-size:1.3em">[${cnt }]</a>
 							</c:if>
 					
 							<c:if test = "${cnt != index }">
-								<a href="customerOrdersReview.do?index=${cnt }&sort=${sort }" style="font-size:0.9em">[${cnt }]</a>&nbsp;
+								<a href="customerOrdersReview.do?index=${cnt }" style="font-size:0.9em">[${cnt }]</a>&nbsp;
 							</c:if>
 							
 						</c:if>
@@ -339,14 +430,14 @@ color: #766262;
 					</c:if>
 					
 					<c:if test="${index < Math.ceil(arrsize / rowcount)}">
-						<a href="customerOrdersReview.do?index=${index+1 }&sort=${sort }">다음</a>&nbsp;
+						<a href="customerCakeDetail.do?index=${index+1 }">다음</a>&nbsp;
 					</c:if>
 					
 				</td>
 			</tr>
 		</table>
 	</div>
-	</div>
+	</div> 
 	
 	<!--  -->
 
