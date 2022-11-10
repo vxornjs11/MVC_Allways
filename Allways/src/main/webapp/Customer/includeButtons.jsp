@@ -11,16 +11,6 @@ rel="stylesheet"
 integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 crossorigin="anonymous">
 
-<script type="text/javascript">
-
-function review(){
-	var form = document.list;
-					
-		form.action = "customerOrdersReview.do";
-		form.submit();
-}
-
-</script>
 
 <style>
 
@@ -44,23 +34,51 @@ function review(){
 	background: #FFFFFF;
 	border: 3px solid #FBEAEA;
 	border-radius: 70px;
-	}
+}
 
 </style>
 
 </head>
 <body>
 
+<script type="text/javascript">
+
+function reviewList() {
+	var form = document.list;
+	form.action = "customerOrdersReview.do";
+	form.submit();
+}
+
+function board() {
+	var form = document.list;
+	form.action = "customerWriteList.do";
+	form.submit();
+}
+
+function QNA() {
+	var form = document.list;
+	form.action = "customerQuestionList.do";
+	form.submit();
+}
+
+</script>
+
 	<div align="center" style = "margin-top: 110px">
-		<form action = "#" name = "list" method = "post">
+		<form name = "list" method = "post">
 			<table>
 				
 				<tr>
 					<td>
-						<button id="button_group" onclick = "review()">NOTICE</button>&nbsp;
-						<button id="button_group">REVIEW</button>&nbsp;
-						<button id="button_group">FAQ</button>&nbsp;
-						<button id="button_group">Q&A</button>
+						<button type = "button" name = "buttons" id="button_group" onclick = "board();">BOARD</button>&nbsp;
+					</td>
+					<td>
+						<button type = "button" name = "buttons" id="button_group" onclick = "reviewList();">REVIEW</button>&nbsp;
+					</td>
+					<td>
+						<button type = "button" name = "buttons" id="button_group">FAQ</button>&nbsp;
+					</td>
+					<td>
+						<button type = "button" name = "buttons" id="button_group" onclick = "QNA();">Q&A</button>
 					</td>
 				</tr>
 				
@@ -71,5 +89,3 @@ function review(){
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 crossorigin="anonymous"></script>
-</body>
-</html>

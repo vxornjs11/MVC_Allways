@@ -109,7 +109,7 @@ function previewFile() {
 	  if (file) {
 	    reader.readAsDataURL(file);
 	  }
-	}
+}
 
 </script>
 </head>

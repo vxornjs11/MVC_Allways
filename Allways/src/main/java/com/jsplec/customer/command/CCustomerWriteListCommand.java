@@ -6,24 +6,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.jsplec.customer.dao.CCustomerOrderListDao;
-import com.jsplec.customer.dto.CCustomerOrderListDto;
+import com.jsplec.customer.dao.CCustomerWriteListDao;
+import com.jsplec.customer.dto.CCustomerWriteListDto;
 
-public class CCustomerOrderListCommand implements CCustomerCommand {
+public class CCustomerWriteListCommand implements CCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-
+		
 		HttpSession session = request.getSession();
-		String customerId = (String)session.getAttribute("ID");
-
+		
+		CCustomerWriteListDao dao = new CCustomerWriteListDao();
+		ArrayList<CCustomerWriteListDto> dtos = dao.writeList();
+		
 		int index = 1; // 시작 페이지 번호
 		int rowcount = 10; // 한 페이지에 출력할 리스트 개수
 		int pagecount = 10; // 한 페이지에 출력할 페이지 개수
 		int pagepage = 0; // ??
-		
-		CCustomerOrderListDao dao = new CCustomerOrderListDao();
-		ArrayList<CCustomerOrderListDto> dtos = dao.orderList(customerId);
 		
 		int maxpage = (dtos.size() % rowcount) != 0 ? (dtos.size() / rowcount) + 1 : (dtos.size() / rowcount);
 
@@ -37,7 +36,8 @@ public class CCustomerOrderListCommand implements CCustomerCommand {
 			pagepage = index / pagecount;
 		}
 		
-		request.setAttribute("orderList", dtos);
+		request.setAttribute("CUSTOMERID", session.getAttribute("ID"));
+		request.setAttribute("writeList", dtos);
 		request.setAttribute("maxpage", maxpage);
 		request.setAttribute("arrsize", dtos.size());
 		request.setAttribute("index", index);
