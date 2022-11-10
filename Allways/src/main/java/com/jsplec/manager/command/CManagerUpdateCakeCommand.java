@@ -29,7 +29,7 @@ public class CManagerUpdateCakeCommand implements CManagerCommand {
 			String cakeDetail=multi.getParameter("cakeDetail");
 			String cakeImage = multi.getFilesystemName("cakeImage");
 			if (cakeImage==null) {
-				dao.updateCake(dao.findID(cakeName), cakeName, cakePrice, cakeDetail);
+				dao.updateCake(dao.findID(cakeOriginalName), cakeName, cakePrice, cakeDetail);
 			} else {
 				dao.updateCake(dao.findID(cakeOriginalName), cakeName, cakePrice, cakeImage, cakeDetail);
 			}

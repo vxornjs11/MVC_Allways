@@ -119,7 +119,7 @@
 					</span>
 				</c:if>
 				<c:if test="${cnt!=index }">
-					<a href="searchGoods.do?index=${cnt }&query=${Query}&goodsCategory=${goodsCategory}" style="font-size:0.9em" class="pagebutton">${cnt }</a>
+					<a href="searchGoods.do?index=${cnt }&query=${Query}&goodsCategory=${goodsCategory}" class="pagebutton">${cnt }</a>
 				</c:if>
 			</c:if>
 		</c:forEach>

@@ -127,6 +127,10 @@ public class CController extends HttpServlet {
 		case ("/Customer/customerLoginPage.do"):
 			viewPage = "customerLogin.jsp";
 			break;
+			
+		case ("/Customer/customerLocation.do"):
+			viewPage = "customerLocation.jsp";
+			break;
 
 //		한별
 		// 리뷰 리스트 출력
@@ -271,6 +275,11 @@ public class CController extends HttpServlet {
 			managercommand=new CManagerUpdateGoodsCommand();
 			managercommand.execute(request, response);
 			viewPage="searchGoods.do";
+			break;
+			
+		//리뷰 리스트 출력
+		case("/Manager/searchReview.do"):
+			viewPage="managerviewreview.jsp";
 			break;
 
 //		태권

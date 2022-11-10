@@ -23,6 +23,17 @@ public class ordersReviewDto {
 		this.oreviewInitdate = oreviewInitdate;
 	}
 	
+	public ordersReviewDto(int oreviewId, String or_customerId, String or_cakeName, String or_goodsName,
+			int oreviewStarrating, Timestamp oreviewInitdate) {
+		super();
+		this.oreviewId = oreviewId;
+		this.or_customerId = or_customerId;
+		this.or_cakeName = or_cakeName;
+		this.or_goodsName = or_goodsName;
+		this.oreviewStarrating = oreviewStarrating;
+		this.oreviewInitdate = oreviewInitdate;
+	}
+
 	public int getOreviewId() {
 		return oreviewId;
 	}

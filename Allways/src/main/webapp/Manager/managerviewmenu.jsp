@@ -90,7 +90,7 @@
 					</span>
 				</c:if>
 				<c:if test="${cnt!=index }">
-					<a href="searchCake.do?index=${cnt }&query=${Query}" style="font-size:0.9em" class="pagebutton">${cnt }</a>
+					<a href="searchCake.do?index=${cnt }&query=${Query}" class="pagebutton">${cnt }</a>
 				</c:if>
 			</c:if>
 		</c:forEach>
