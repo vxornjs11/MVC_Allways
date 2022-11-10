@@ -11,11 +11,27 @@ public class ordersReviewDto {
 	String or_goodsName;
 	String oreviewContent;
 	int oreviewStarrating;
+	String oreviewImage;
 	
 	Timestamp oreviewInitdate;
 	Timestamp oreviewUpadatedate;
 	
-	
+	public ordersReviewDto(int oreviewId, String or_customerId, String or_customerName, String or_cakeName,
+			String or_goodsName, String oreviewContent, int oreviewStarrating, String oreviewImage,
+			Timestamp oreviewInitdate, Timestamp oreviewUpadatedate) {
+		super();
+		this.oreviewId = oreviewId;
+		this.or_customerId = or_customerId;
+		this.or_customerName = or_customerName;
+		this.or_cakeName = or_cakeName;
+		this.or_goodsName = or_goodsName;
+		this.oreviewContent = oreviewContent;
+		this.oreviewStarrating = oreviewStarrating;
+		this.oreviewImage = oreviewImage;
+		this.oreviewInitdate = oreviewInitdate;
+		this.oreviewUpadatedate = oreviewUpadatedate;
+	}
+
 	public ordersReviewDto(String or_customerId, int oreviewStarrating, Timestamp oreviewInitdate) {
 		super();
 		this.or_customerId = or_customerId;
