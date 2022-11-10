@@ -51,8 +51,8 @@
 					<img src="./images/Amap.png" style="width:80px;height:80px; margin-top: 50px; margin-bottom: 5px;">
 					<h1 align="center" id="title"> LOCATION </h1>
 						<p id="address">서울 강남구 강남대로 78길 8 한국빌딩 4F</p>
-				<div id="map" style="width:600px;height:500px; margin-top:3px; margin-left: 30px;"></div>
-						<p id="address" style="height:50px;">강남역 4번출구에서 133m</p>
+				<div id="map" style="width:600px;height:500px; margin-top:3px; margin-left: 30px; margin-bottom: 40px;"></div>
+						<p id="address" style="height:70px;">강남역 4번출구에서 133m</p>
 				</div>
 				<div class="col"></div>
 			</div>

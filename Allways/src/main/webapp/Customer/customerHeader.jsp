@@ -121,8 +121,34 @@ position: absolute;
 <script src="../js/main.js"></script>
     
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	function logout() {
+		var form = document.loginokay;
+		form.action = "customerMain.do";
+		sessionStorage.clear();
+		form.submit();
+		
+	}
+	
+	function mypage(){
+		var form=document.loginokay;
+		form.action="customerMypage.do";
+		form.submit();
+	}
+</script>
+
+<script type="text/javascript">
+function signup() {
+	var form=document.loginbtn;
+	form.action="http://localhost:8080/Allways/Customer/customerJoin.jsp";
+	form.submit();
+}</script>
+
+
 </head>
 <body>
+	<c:if test="${ID eq null}">
 	<div class="container" style="margin-left: 0px; padding-left: 0px; border-left-width: 0px;">
 	    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5" style="width: 1430px; height: 150px;">
 	        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -139,13 +165,34 @@ position: absolute;
 	                    </div>
 	                </div>
 	                <a href="#" id="center" class="nav-item nav-link">CLASS</a>
-	                <a href="customerWrite.do" id="center" class="nav-item nav-link">BOARD</a>
+	                <a href="customerWriteList.do" id="center" class="nav-item nav-link">BOARD</a>
 	                <a href="customerLocation.do" id="center" class="nav-item nav-link" style="padding-right: 20px;">LOCATION</a>
 	                
-	           		 <img src="./images/HeaderLogo.png" style="padding-right: 278px; padding-left: 90px;"></img>
+	                <a href="customerMain.do">
+	           		 <img src="./images/HeaderLogo.png" style="padding-right: 230px; padding-left: 90px;"></img>
+	            	</a>
 	            
 	                <a href="customerAbout.do" id="center" class="nav-item nav-link">ABOUT</a>
 	                <a href="customerCart.do" id="center" class="nav-item nav-link">CART</a>
+	                
+	               <%--  <div class="col-md-4 text-end" style="margin-right: 30px;">
+						<%if (session.getAttribute("ID") == null) { %>
+							<form name="loginbtn" method="post">
+								<input id="center" type="button" class="nav-item nav-link" onclick="login()" value="LOGIN"> 
+								<input id="center" type="button" class="nav-item nav-link" onclick="signup()" value="JOIN">
+							</form>
+						<%} %>
+						
+						<%if (session.getAttribute("ID") != null) { %>
+							<form name="loginokay" method="post" style="position: absolute; right: 0px; top: 30px;">
+								<%=session.getAttribute("NAME") %>님, 안녕하세요! 
+								<input id="center" type="submit" class="nav-item nav-link" onclick="mypage()" value="마이페이지">
+								<input id="center" type="submit" class="nav-item nav-link" onclick="javascript: form.action='CustomerMain.do'" value="로그아웃">
+							</form>
+						<%} %>
+					</div>
+	                 --%>
+	                	
 	                <a href="customerJoin.do" id="center" class="nav-item nav-link">JOIN</a>
 	                <a href="customerLoginPage.do" id="center" class="nav-item nav-link">LOGIN</a>
 	                
@@ -154,5 +201,58 @@ position: absolute;
 	    </nav>
 					 <hr id="Line" style="right: 0px; left: 40px; margin-top: 0px;">
 	</div>
+	</c:if>
+	
+	<c:if test="${ID!=null}">
+	<div class="container" style="margin-left: 0px; padding-left: 0px; border-left-width: 0px;">
+	    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5" style="width: 1430px; height: 150px;">
+	        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	        <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+	            <div class="navbar-nav m-auto py-0">
+	                <a href="customerMain.do" id="center" class="nav-item nav-link active">HOME</a>
+	                <div class="dropdown show">
+	                    <a href="#" id="center" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="padding-bottom: 0px;">CAKE</a>
+	                    <div class="dropdown-menu" id=".dropdown-menu" style="width: 80px; height: 78px; right: 0px; left: 0px; top: 80px;">
+	                        <a href="customerCakeList.do" id="" class="dropdown-item" style="width: 80px;">cake</a>
+	                        <a href="#" id="" class="dropdown-item" style="width: 80px;">extras</a>
+	                    </div>
+	                </div>
+	                <a href="#" id="center" class="nav-item nav-link">CLASS</a>
+	                <a href="customerWriteList.do" id="center" class="nav-item nav-link">BOARD</a>
+	                <a href="customerLocation.do" id="center" class="nav-item nav-link" style="padding-right: 20px;">LOCATION</a>
+	                
+	                <a href="customerMain.do">
+	           		 <img src="./images/HeaderLogo.png" style="padding-right: 250px; padding-left: 90px;"></img>
+	            	</a>
+	            
+	                <a href="customerAbout.do" id="center" class="nav-item nav-link">ABOUT</a>
+	                <a href="customerCart.do" id="center" class="nav-item nav-link">CART</a>
+	                
+						<%-- <%if (session.getAttribute("ID") == null) { %>
+							<form name="loginbtn" method="post">
+								<input id="center" type="button" class="nav-item nav-link" onclick="login()" value="LOGIN"> 
+								<input id="center" type="button" class="nav-item nav-link" onclick="signup()" value="JOIN">
+							</form>
+						<%} %>
+						 --%>
+					<%-- <%=session.getAttribute("NAME") %>님, 안녕하세요!  --%>
+					
+					<a href="customerMypage.do" id="center" class="nav-item nav-link" onclick="mypage()">MYPAGE</a>
+                	<a href="customerLogout.do" id="center" class="nav-item nav-link" onclick="logout()">LOGOUT</a>
+	                
+	                
+			               <!--  <a href="customerJoin.do" id="center" class="nav-item nav-link">JOIN</a>
+			                <a href="customerLoginPage.do" id="center" class="nav-item nav-link">LOGIN</a> -->
+	                
+	            </div>
+	        </div>
+	    </nav>
+					 <hr id="Line" style="right: 0px; left: 40px; margin-top: 0px;">
+	</div>
+	
+	</c:if>
+
 
 </body>

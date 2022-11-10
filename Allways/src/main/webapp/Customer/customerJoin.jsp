@@ -8,61 +8,6 @@
 <head>
 <meta charset="UTF-8">
 
-<script type="text/javascript">
-	function selectEmail(ele) {
-		var $ele = $(ele);
-	    var $email2 = $('input[name=email2]');
-	    // '1'인 경우 직접입력
-	    if($ele.val() == "1"){
-	        $email2.attr('readonly', false);
-	        $email2.val('');
-	    } else {
-	        $email2.attr('readonly', true);
-	        $email2.val($ele.val());
-	    }
-	}
-</script>
-
-<script>
-    function daum_zipcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var fullAddr = ''; // 최종 주소 변수
-                var extraAddr = ''; // 조합형 주소 변수
-                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    fullAddr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    fullAddr = data.jibunAddress;
-                }
-                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
-                if(data.userSelectedType === 'R'){
-                    //법정동명이 있을 경우 추가한다.
-                    if(data.bname !== ''){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있을 경우 추가한다.
-                    if(data.buildingName !== ''){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
-                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
-                }
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                //document.getElementById("uzip1").value = data.postcode1; //6자리 우편번호 사용
-                //document.getElementById("uzip2").value = data.postcode2; //6자리 우편번호 사용
-                document.getElementById("uzip").value = data.zonecode; //5자리 기초구역번호 사용
-                document.getElementById("uaddr1").value = fullAddr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("uaddr2").focus();
-            }
-        }).open();
-    }
-</script>
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <!-- Viewport -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -130,6 +75,18 @@
 		left: 30px;
 		right: 0px;
 		width: 350px;
+		height: 45px;
+		background: #FFFFFF;
+		border: 3px solid #FCD5D5;
+		padding-left: 10px;
+	
+	}
+	
+	#id_box{
+		box-sizing: border-box;
+		left: 0px;
+		right: 0px;
+		width: 270px;
 		height: 45px;
 		background: #FFFFFF;
 		border: 3px solid #FCD5D5;
@@ -207,11 +164,59 @@
 		color: #FFFDFD;
 		line-height: 46px;
 	}
+	
+	
+	#check_box{
+		box-sizing: border-box;
+		width: 72px;
+		height: 41.74px;
+		background: #FCD5D5;
+		border: 2px solid #FCD5D5;
+		color: #FFFFFF;
+	}
 
 </style>
 
 <title>ALLWAYS JOIN</title>
 <%@include file="customerHeader.jsp" %>
+
+<script type="text/javascript">
+
+
+	function CheckId(){
+		var joinForm = document.customerJoin;
+		var id = form.customerId.value;
+		
+		var regExId=/^[a-z|0-9]+$/;
+		
+		if(!regExId.test(id)){
+			alert("ID는 영어 소문자와 숫자만 입력 가능합니다.");
+			return;
+		}else{
+			joinForm.action="idcheck.do";
+			joinForm.submit();
+		}
+	}
+	
+	function snedCheckVAlue(){
+		var joinForm = document.joinForm;
+		
+		var idCheckValue = joinForm.idDuplication.value;
+		console.log(idCheckValue);
+		
+		if(idCheckValue == 1){
+			joinForm.action = "Sighup.do";
+			joinForm.method = "post";
+			joinForm.submit();
+			return;
+		}
+		else{
+			alert("아이디 중복체크를 해주세요.")
+			return;
+		}
+	}
+
+</script>
 
 
 </head>
@@ -227,29 +232,20 @@
 					<br><h2 id="Join">J O I N</h2><br>
 					
 					<label id="label_design">ID</label>
-					 <c:if test="${CHECK==true }">
-				      <input type="text" class="form-control is-invalid" name="customerId" placeholder="영문 소문자와 숫자만 가능" value="${CUSTOMERID }">
-				      <script>alert("이미 존재하는 ID입니다.")</script>
-				      </c:if>
-				      <c:if test="${CHECK==false }">
-				      <input type="text" class="form-control is-valid" name="customerId" placeholder="영문 소문자와 숫자만 가능" value="${CUSTOMERID }">
-				      <input type="hidden" class="form-control is-valid" name="idcheck" value="${CHECK }">
-				      <script>alert("사용 가능한 ID입니다.")</script>
-				      </c:if>
-				      <c:if test="${CHECK==null }">
-				      <input type="text" class="form-control" name="customerId" placeholder="영문 소문자와 숫자만 가능" value="${CHECKID }">
-				      </c:if>
-					<input class="input_id" id="input_box" type="text" name="customerId" size="40" placeholder="영어 소문자와 숫자만 입력 가능" ><br><br>
-					
+					<input class="input_id" id="id_box" type="text" name="customerId" placeholder="영어 소문자와 숫자만 입력 가능">
+					<input type="button" name="btnIdCheck" id="check_box" value="중복체크" onclick="CheckId()"><br>
+					<c:if test="${CHECK==true }">이미 존재하는 ID입니다.</c:if>
+					<c:if test="${CHECK==false }">사용 가능한 ID입니다.
+					<td><input type="hidden" name="idDuplication" value="1"/></td></c:if><br>
 					
 					<label id="label_design">PASSWORD</label>
-					<input id="input_box" type="password" name="customerPw" placeholder=""><br><br>
+					<input id="input_box" type="password" name="customerPw" placeholder="비밀번호 입력"><br><br>
 					
 					<label id="label_design">PASSWORD CHECK</label>
 					<input id="input_box" type="password" name="customerPwCheck" placeholder="비밀번호 재입력"><br><br>
 					
 					<label id="label_design">NAME</label>
-					<input id="input_box" type="text" name="customerName"><br><br>
+					<input id="input_box" type="text" name="customerName" placeholder="이름을 입력해주세요"><br><br>
 					
 					<label id="label_design">GENDER</label>
 					<input id="radio_design" type="radio" name="customerGender" value="woman" checked="checked"> WOMAN&nbsp;
@@ -259,7 +255,7 @@
 					<input id="input_box" type="text" name="customerPhone" placeholder=" '-' 를 제외하고 숫자만 입력해주세요"><br><br>
 					
 					<label id="label_design">EMAIL</label>
-					<input id="email_first" type="text" name="customerEmail1"> @ <input id="email_first" type="text" name="customerEmail2" placeholder="직접 입력">
+					<input id="email_first" type="text" name="email1"> @ <input id="email_first" type="text" name="email2" placeholder="직접 입력">
 						<select id="input_box" name="selectemail" style="margin-top: 5px;" onChange="selectEmail(this)">
 							<option value="" selected="selected">선택하세요</option>
 							<option value="naver.com">naver.com</option>
@@ -269,13 +265,46 @@
 						</select><br><br>
 					
 					<label id="label_design">BIRTHDAY</label>
-					<input id="input_box" type="date" name="customerBirth"><br><br>
+					<input id="input_box" type="date" name="customerBirth" style="padding-right: 10px;"><br><br>
 					
 					<label id="label_design">ADDRESS</label>
-					<input type="text" id="address_box" name="customerPostcode" id="uzip" onclick="daum_zipcode()" /> 
-					<a href="javascript:daum_zipcode()" name="customerPostcode">우편번호</a><br>
-					<input id="input_box" style="margin-top: 5px;" type="text" name="customerAddress" id="uaddr1" title="기본주소" maxlength="200" value="" readonly="" placeholder="기본주소" onclick="daum_zipcode()" /><br>
-					<input id="input_box" style="margin-top: 5px;" type="text" name="customerAddressDetail" id="uaddr2" title="상세주소" maxlength="200" value="" readonly="" placeholder="상세주소 입력" /><br><br>
+					<input type="text" 
+					style="box-sizing: border-box;
+					left: 30px;
+					right: 0px;
+					width: 289px;
+					height: 45px;
+					background: #FFFFFF;
+					border: 3px solid #FCD5D5;
+					padding-left: 10px;" 
+					id="customerPostcode" readonly="true" placeholder="우편번호" onclick="daum_zipcode()" /> 
+					<a href="javascript:daum_zipcode()">우편번호</a><br>
+					<input style="box-sizing: border-box;
+						left: 30px;
+						right: 0px;
+						width: 350px;
+						height: 45px;
+						background: #FFFFFF;
+						border: 3px solid #FCD5D5;
+						padding-left: 10px;
+						margin-top: 5px;" 
+						type="text" id="customerAddress" title="기본주소" maxlength="200" value="" readonly="true" placeholder="기본주소" onclick="daum_zipcode()" /><br>
+					<input style="box-sizing: border-box;
+						left: 30px;
+						right: 0px;
+						width: 350px;
+						height: 45px;
+						background: #FFFFFF;
+						border: 3px solid #FCD5D5;
+						padding-left: 10px;
+						margin-top: 5px;" type="text" id="customerAddressDetail" title="상세주소" maxlength="200" value="" placeholder="상세주소 입력" /><br><br>
+					
+					<!-- <input type="text" id="sample4_postcode" readonly="true" placeholder="우편번호">
+					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+					<input type="text" id="sample4_roadAddress" readonly="true" placeholder="도로명주소">
+					<input type="text" id="sample4_jibunAddress" readonly="true" placeholder="지번주소">
+					<span id="guide" style="color:#999;display:none"></span>
+					<input type="text" id="sample4_detailAddress" placeholder="상세주소"> -->
 					
 					<input id="join_button" style="margin-top: 30px" type="button" name="join" value="JOIN">			
 				</div>
@@ -286,7 +315,24 @@
 	</form>
 	
 	<script src = "js/jquery-3.6.0.min.js"></script>
-	<script>
+	
+	<script type="text/javascript">
+	function selectEmail(ele) {
+		var $ele = $(ele);
+	    var $email2 = $('input[name=email2]');
+	    // '1'인 경우 직접입력
+	    if($ele.val() == "1"){
+	        $email2.attr('readonly', false);
+	        $email2.val('');
+	    } else {
+	        $email2.attr('readonly', true);
+	        $email2.val($ele.val());
+	    }
+	}
+</script>
+	
+	
+<!-- 	<script>
 		$('.input_id').focusout(function(){
 			let userId = $('.input_id').val(); // input_id에 입력되는 값
 			
@@ -310,15 +356,88 @@
 			})
 			 
 		})
-	 </script>
+	 </script> -->
 	
-	
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- <script>
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+                
+ 
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+            }
+        }).open();
+    }
+</script> -->
 			
-			
-			
-			
-			
-	
+<script>
+    function daum_zipcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    fullAddr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    fullAddr = data.jibunAddress;
+                }
+                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                if(data.userSelectedType === 'R'){
+                    //법정동명이 있을 경우 추가한다.
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있을 경우 추가한다.
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                //document.getElementById("uzip1").value = data.postcode1; //6자리 우편번호 사용
+                //document.getElementById("uzip2").value = data.postcode2; //6자리 우편번호 사용
+                document.getElementById("customerPostcode").value = data.zonecode; //5자리 기초구역번호 사용
+                document.getElementById("customerAddress").value = fullAddr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("cutomerAddressDetail").focus();
+            }
+        }).open();
+    }
+</script>			
 	
 <script src="/assets/js/lib/jquery-ui.min.js"></script>
 <script src="/assets/js/lib/popper.min.js"></script>
