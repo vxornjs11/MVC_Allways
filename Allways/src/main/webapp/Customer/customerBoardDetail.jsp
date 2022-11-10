@@ -6,28 +6,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+#title {
+	text-align: left;
+}
+
+</style>
 </head>
 <body>
 
 	<%@include file="customerHeader.jsp" %>
-	
-	<div align="center">
+	<%-- <h6>No.${boardDetail.writeId}</h6>&nbsp;&nbsp;
+	<h6>작성자: ${boardDetail.w_customerId}</h6>&nbsp;&nbsp;
+	<h6>제목: ${boardDetail.writeTitle}</h6>&nbsp;&nbsp;
+	<h6>작성일자: ${boardDetail.writeInitdate}</h6> --%>
+	<div>
 		<table>
-		
-			<tbody>
-				<tr>
-					<td>${boardDetail.writeId}</td>
-					<td>${boardDetail.w_customerId}</td>
-					<td>${boardDetail.writeTitle}</td>
-					<td>${boardDetail.writeInitdate}</td>
-				</tr>
-			</tbody>
-			<tbody>
-				<tr>
-					<td><textarea rows="7" cols="55">${boardDetail.writeContent}</textarea></td>
-				</tr>
-			</tbody>
+			<tr>
+				<th width="100" style = "text-align: left"><h6>No.${boardDetail.writeId}</h6>&nbsp;&nbsp;</th>
+				<th width="100" style = "text-align: left"><h6>작성자: ${boardDetail.w_customerId}</h6>&nbsp;&nbsp;</th>
+				<th width="100" style = "text-align: left"><h6>제목: ${boardDetail.writeTitle}</h6>&nbsp;&nbsp;</th>
+				<th width="100" style = "text-align: right"><h6>작성일자: ${boardDetail.writeInitdate}</h6></th>
+			</tr>
 		</table>
+		
+		<textarea rows="7" cols="55">${boardDetail.writeContent}</textarea>
+		
 	</div>
 	
 	
