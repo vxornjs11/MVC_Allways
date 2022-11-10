@@ -86,7 +86,7 @@ color: #FFFDFD;
 			<th>Delete</th>
 		</tr>
 		
-<c:forEach items="${cartList }">
+<c:forEach var = "dto" items="${cartList }">
 		<tr align="center">
 			<td><input type="checkbox"></td>
 			<td>${dto.cakeName }</td>
@@ -125,7 +125,7 @@ color: #FFFDFD;
 			<td colspan="2"><hr id="line4"></td>
 		</tr>
 		<tr align="center">
-			<td><input type="button" value="Go Shopping"" id="util_box"></td>
+			<td><input type="button" value="Go Shopping" id="util_box"></td>
 			<td><input type="button" value="Buy Now" id="util_box"></td>
 		</tr>
 	</table>

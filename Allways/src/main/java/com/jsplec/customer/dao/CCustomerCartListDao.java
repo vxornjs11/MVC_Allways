@@ -44,7 +44,7 @@ public class CCustomerCartListDao {
 			connection = dataSource.getConnection();
 
 			String query1 = "select c.cakeName, o.ordersQuantity, o.ordersSalePrice from cake c, orders o ";
-			String query2 = "where o.o_cakeId = c.cakeId and ordersStatus = '장바구니' and o_customerid = " + CUSTOMERID;
+			String query2 = "where o.o_cakeId = c.cakeId and ordersStatus = '장바구니' and o_customerid = '" + CUSTOMERID + "'";
 
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
