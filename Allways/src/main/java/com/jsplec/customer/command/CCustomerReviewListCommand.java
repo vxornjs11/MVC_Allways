@@ -28,6 +28,9 @@ public class CCustomerReviewListCommand implements CCustomerCommand {
 		int pagecount = 10; // 한 페이지에 출력할 페이지 개수
 		int pagepage = 0; // ??
 		
+		if(sort == null) {
+			sort = "oreviewInitdate";
+		}
 		if(pageNum == null) {
 			pageNum = "1";
 		}

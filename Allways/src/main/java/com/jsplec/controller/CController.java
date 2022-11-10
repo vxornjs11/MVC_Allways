@@ -17,6 +17,7 @@ import com.jsplec.customer.command.CCustomerCakeCartCommand;
 import com.jsplec.customer.command.CCustomerCakeDetailCommand;
 import com.jsplec.customer.command.CCustomerCakeDetailReviewCommand;
 import com.jsplec.customer.command.CCustomerCakeListCommand;
+import com.jsplec.customer.command.CCustomerCartListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerIdCheckCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
@@ -195,11 +196,18 @@ public class CController extends HttpServlet {
 			viewPage = "customerBoardWrite.jsp";
 			break;
 
-		// 게시판 작성페이지
+		// 게시판 작성
 		case ("/Customer/customerBoardWrite.do"):
 			customercommand = new CCustomerBoardWriteCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerWriteList.do";
+			break;
+			
+		// 게시판 작성페이지
+		case ("/Customer/customerBoardDetail.do"):
+			customercommand = new CCustomerBoardWriteCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerBoardDetail.jsp";
 			break;
 			
 //----------------------- 오수 --------------------------------
@@ -219,6 +227,12 @@ public class CController extends HttpServlet {
 			customercommand = new CCustomerCakeCartCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerMain.jsp";
+			break;
+			
+		case ("/Customer/customerCartList.do"):
+			customercommand = new CCustomerCartListCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCart.jsp";
 			break;
 //-------------------------------- 유승 --------------------------------
 		// 메인 화면 출력

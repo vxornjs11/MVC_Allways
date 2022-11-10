@@ -10,13 +10,14 @@ public class CCustomerWriteListDto {
 	String w_customerId;
 	Date writeInitdate;
 	int recommentId;
+	int writeId;
 	
 	public CCustomerWriteListDto() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public CCustomerWriteListDto(int rowNum, String writeTitle, String writeContent, String w_customerId, Date writeInitdate,
-			int recommentId) {
+			int recommentId, int writeId) {
 		super();
 		this.rowNum = rowNum;
 		this.writeTitle = writeTitle;
@@ -24,6 +25,18 @@ public class CCustomerWriteListDto {
 		this.w_customerId = w_customerId;
 		this.writeInitdate = writeInitdate;
 		this.recommentId = recommentId;
+		this.writeId = writeId;
+	}
+	
+
+	public CCustomerWriteListDto(int writeId, String w_customerId, String writeTitle, String writeContent,
+			Date writeInitdate) {
+		super();
+		this.writeId = writeId;
+		this.w_customerId = w_customerId;
+		this.writeTitle = writeTitle;
+		this.writeContent = writeContent;
+		this.writeInitdate = writeInitdate;
 	}
 
 	public int getRowNum() {
@@ -72,6 +85,14 @@ public class CCustomerWriteListDto {
 
 	public void setRecommentId(int recommentId) {
 		this.recommentId = recommentId;
+	}
+
+	public int getWriteId() {
+		return writeId;
+	}
+
+	public void setWriteId(int writeId) {
+		this.writeId = writeId;
 	}
 	
 	

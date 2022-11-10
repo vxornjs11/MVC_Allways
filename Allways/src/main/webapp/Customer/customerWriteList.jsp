@@ -114,7 +114,7 @@ function login() {
 							<tbody>
 								<tr>
 									<td>${dto.rowNum }</td>
-									<td style = "text-align: left"><a href = "">${dto.writeTitle }</a></td>
+									<td style = "text-align: left"><a href = "customerBoardDetail.do?writeId=${dto.writeId }">${dto.writeTitle }</a></td>
 									<td>${dto.w_customerId }</td>
 									<td>${dto.writeInitdate }</td>
 								</tr>
