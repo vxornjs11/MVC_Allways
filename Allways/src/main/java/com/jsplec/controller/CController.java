@@ -46,6 +46,7 @@ import com.jsplec.manager.command.CManagerUpdateGoodsCommand;
 import com.jsplec.manager.command.CManagerViewCakeDetailCommand;
 import com.jsplec.manager.command.CManagerViewCakeListCommand;
 import com.jsplec.manager.command.CManagerViewGoodsListCommand;
+import com.jsplec.manager.command.CManagerViewReviewsListCommand;
 import com.jsplec.manager.command.CManagerviewGoodsDetailCommand;
 
 /**
@@ -279,7 +280,9 @@ public class CController extends HttpServlet {
 			
 		//리뷰 리스트 출력
 		case("/Manager/searchReview.do"):
-			viewPage="managerviewreview.jsp";
+			managercommand=new CManagerViewReviewsListCommand();
+			managercommand.execute(request, response);
+			viewPage="managerviewreviews.jsp";
 			break;
 
 //		태권

@@ -9,6 +9,7 @@
 <title>리뷰 리스트 보기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
+<link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
@@ -21,24 +22,24 @@
 				<input type="text" size="1" class="form-control" name="query" style="border-color:#a87878" value="${Query }">
 			</div>
 			<div style="width:25%;display:inline-block" align="left">
-				<select name="goodsCategory" style="border-color:#fdcdcd;border-radius:10px;height:90%">
-					<c:if test="${goodsCategory=='all' }">
-						<option selected value="all">전체보기</option>
+				<select name="condition" style="border-color:#fdcdcd;border-radius:10px;height:90%">
+					<c:if test="${condition=='or_customerId' }">
+						<option selected value="or_customerId">사용자 ID로 검색</option>
 					</c:if>
-					<c:if test="${goodsCategory!='all' }">
-						<option selected value="all">전체보기</option>
+					<c:if test="${condition!='or_customerId' }">
+						<option value="or_customerId">사용자 ID로 검색</option>
 					</c:if>
-					<c:if test="${goodsCategory=='초' }">
-						<option selected value="초">초</option>
+					<c:if test="${condition=='cakeName' }">
+						<option selected value="cakeName">케이크 이름으로 검색</option>
 					</c:if>
-					<c:if test="${goodsCategory!='초' }">
-						<option value="초">초</option>
+					<c:if test="${condition!='cakeName' }">
+						<option value="cakeName">케이크 이름으로 검색</option>
 					</c:if>
-					<c:if test="${goodsCategory=='풍선' }">
-						<option selected value="풍선">풍선</option>
+					<c:if test="${condition=='goodsName' }">
+						<option selected value="goodsName">추가상품 이름으로 검색</option>
 					</c:if>
-					<c:if test="${goodsCategory!='풍선' }">
-						<option value="풍선">풍선</option>
+					<c:if test="${condition!='goodsName' }">
+						<option value="goodsName">추가상품 이름으로 검색</option>
 					</c:if>
 				</select>
 				<input type="submit" class="btn btn-primary" style="background:#ffffff;border-color:#a87878;color:#a87878" value="검색">
@@ -74,26 +75,26 @@
 	</div>
 	
 	<div class="tablediv" align="center">
-		<a href="searchReview.do?index=1&query=${Query}">처음으로</a>
+		<a href="searchReview.do?index=1&query=${Query}&condition=${condition}">처음으로</a>
 		<c:if test="${index!=1 }">
-			<a href="searchReview.do?index=${index-1 }&query=${Query}">이전</a>
+			<a href="searchReview.do?index=${index-1 }&query=${Query}&condition=${condition}">이전</a>
 		</c:if>
 		<c:forEach var="cnt" begin="${pagecount*pagepage+1}" end="${pagecount*(pagepage+1) }">
 			<c:if test="${cnt<=Math.ceil(Size/rowcount) }">
 				<c:if test="${cnt==index }">
 					<span style="display:inline">
-						<a href="searchReview.do?index=${cnt }&query=${Query}" style="font-size:1.3em">${cnt }</a>
+						<a href="searchReview.do?index=${cnt }&query=${Query}&condition=${condition}" style="font-size:1.3em">${cnt }</a>
 					</span>
 				</c:if>
 				<c:if test="${cnt!=index }">
-					<a href="searchReview.do?index=${cnt }&query=${Query}">${cnt }</a>
+					<a href="searchReview.do?index=${cnt }&query=${Query}&condition=${condition}">${cnt }</a>
 				</c:if>
 			</c:if>
 		</c:forEach>
 		<c:if test="${index<Math.ceil(Size/rowcount) }">
-			<a href="searchReview.do?index=${index+1 }&query=${Query}">다음</a>
+			<a href="searchReview.do?index=${index+1 }&query=${Query}&condition=${condition}">다음</a>
 		</c:if>
-		<a href="searchReview.do?index=${Math.ceil(Size/rowcount) }&query=${Query}">끝으로</a>
+		<a href="searchReview.do?index=${Math.ceil(Size/rowcount) }&query=${Query}&condition=${condition}">끝으로</a>
 	</div>
 </div>
 </body>

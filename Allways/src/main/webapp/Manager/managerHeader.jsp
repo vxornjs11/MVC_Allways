@@ -35,7 +35,7 @@
           </ul>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="#">리뷰 관리</a>
+          <a class="nav-link" href="searchReview.do">리뷰 관리</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
