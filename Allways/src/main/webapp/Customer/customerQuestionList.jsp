@@ -53,8 +53,28 @@
 	border: 0.7px solid #000000;
 	border-radius: 30px;
 }
-}
 
+#button_group {
+	width: 115px;
+	height: 45px;
+	
+	font-family: 'Baloo Tammudu 2';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 32px;
+	align-items: center;
+	text-align: center;
+	
+	color: #766262;
+
+	width: 145px;
+	height: 55px;
+	
+	background: #FFFFFF;
+	border: 3px solid #FBEAEA;
+	border-radius: 70px;
+}
 </style>
 
 <script type="text/javascript">
@@ -85,8 +105,27 @@ function searchList() {
 
 <%@include file="customerHeader.jsp" %>
 	
-	<div align="center">
-		<%@include file = "includeButtons.jsp" %>
+	<div align="center" style = "margin-top: 110px">
+		<form name = "list" method = "post">
+			<table>
+				
+				<tr>
+					<td>
+						<a href = "customerWriteList.do"><button type = "button" name = "buttons" id="button_group">BOARD</button></a>&nbsp;
+					</td>
+					<td>
+						<a href = "customerOrdersReview.do"><button type = "button" name = "buttons" id="button_group" onclick = "reviewList();">REVIEW</button></a>&nbsp;
+					</td>
+					<td>
+						<a><button type = "button" name = "buttons" id="button_group">FAQ</button></a>&nbsp;
+					</td>
+					<td>
+						<a href = "customerQuestionList.do"><button type = "button" name = "buttons" id="button_group" onclick = "QNA();">Q&A</button></a>
+					</td>
+				</tr>
+				
+			</table>
+		</form>
 	</div>
 	
 	<div style = "margin-left: 250px; margin-top: 100px;">

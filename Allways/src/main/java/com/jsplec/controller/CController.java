@@ -18,6 +18,7 @@ import com.jsplec.customer.command.CCustomerCakeDetailCommand;
 import com.jsplec.customer.command.CCustomerCakeDetailReviewCommand;
 import com.jsplec.customer.command.CCustomerCakeListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
+import com.jsplec.customer.command.CCustomerIdCheckCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
 import com.jsplec.customer.command.CCustomerOrderListCommand;
 import com.jsplec.customer.command.CCustomerQuestionCommand;
@@ -106,7 +107,7 @@ public class CController extends HttpServlet {
 
 		switch (com) {
 
-//		예진
+//-------------------------------- 예진 --------------------------------
 		case ("/Customer/customerAbout.do"):
 			viewPage = "customerAbout.jsp";
 			break;
@@ -139,8 +140,14 @@ public class CController extends HttpServlet {
 		case ("/Customer/customerLocation.do"):
 			viewPage = "customerLocation.jsp";
 			break;
+			
+		case("/Customer/idcheck.do"):
+			customercommand=new CCustomerIdCheckCommand();
+			customercommand.execute(request, response);
+	        viewPage="customerJoin.jsp";
+	        break;
 
-//		한별
+//-------------------------------- 한별 --------------------------------
 		// 리뷰 리스트 출력
 		case ("/Customer/customerOrdersReview.do"):
 			customercommand = new CCustomerReviewListCommand();
@@ -192,9 +199,10 @@ public class CController extends HttpServlet {
 		case ("/Customer/customerBoardWrite.do"):
 			customercommand = new CCustomerBoardWriteCommand();
 			customercommand.execute(request, response);
-			viewPage = "customerBoardWrite.jsp";
+			viewPage = "customerWriteList.do";
 			break;
-//		오수
+			
+//----------------------- 오수 --------------------------------
 		case ("/Customer/customerCakeList.do"):
 			customercommand = new CCustomerCakeListCommand();
 			customercommand.execute(request, response);
@@ -212,7 +220,7 @@ public class CController extends HttpServlet {
 			customercommand.execute(request, response);
 			viewPage = "customerMain.jsp";
 			break;
-//		유승
+//-------------------------------- 유승 --------------------------------
 		// 메인 화면 출력
 		case ("/Manager/managerMain.do"):
 			managercommand = new CManagerMainCommand();
@@ -332,7 +340,7 @@ public class CController extends HttpServlet {
 			viewPage="maangerviewordersreviewdetail.jsp";
 			break;
 
-//		태권
+//-------------------------------- 태권 --------------------------------
 
 		case ("/Manager/managerLoginPage.do"):
 			viewPage = "managerLogin.jsp";

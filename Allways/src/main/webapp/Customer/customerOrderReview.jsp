@@ -6,12 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Review Page</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-rel="stylesheet"
-integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-crossorigin="anonymous">
 
 <style>
 
@@ -59,8 +53,33 @@ crossorigin="anonymous">
 	border-radius: 30px;
 
 }
+#button_group {
+	width: 115px;
+	height: 45px;
+	
+	font-family: 'Baloo Tammudu 2';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 32px;
+	align-items: center;
+	text-align: center;
+	
+	color: #766262;
+
+	width: 145px;
+	height: 55px;
+	
+	background: #FFFFFF;
+	border: 3px solid #FBEAEA;
+	border-radius: 70px;
+}
+
 
 </style>
+
+</head>
+<body>
 
 <script type="text/javascript">
 
@@ -82,19 +101,33 @@ function searchList() {
 	form.submit();
 }
 
-
 </script>
-
-</head>
-<body>
-
 <%@include file="customerHeader.jsp" %>
 	
-	<div align="center">
-		<%@include file = "includeButtons.jsp" %>
+	<div align="center" style = "margin-top: 110px">
+		<form name = "list" method = "post">
+			<table>
+				
+				<tr>
+					<td>
+						<a href = "customerWriteList.do"><button type = "button" name = "buttons" id="button_group">BOARD</button></a>&nbsp;
+					</td>
+					<td>
+						<a href = "customerOrdersReview.do"><button type = "button" name = "buttons" id="button_group" onclick = "reviewList();">REVIEW</button></a>&nbsp;
+					</td>
+					<td>
+						<a><button type = "button" name = "buttons" id="button_group">FAQ</button></a>&nbsp;
+					</td>
+					<td>
+						<a href = "customerQuestionList.do"><button type = "button" name = "buttons" id="button_group" onclick = "QNA();">Q&A</button></a>
+					</td>
+				</tr>
+				
+			</table>
+		</form>
 	</div>
 	
-	<div style = "margin-left: 250px; margin-top: 100px;">
+	<div style = "margin-left: 300px; margin-top: 70px;">
 		
 		<form name = "myform" method = "post">
 		<button style = "margin-left: -160px;" id="write_button" onclick = "ordersList()">Write Review</button>
@@ -109,7 +142,7 @@ function searchList() {
 		  </ul>
 		</div>
 			
-			<select style = "margin-left: 720px;" name = "combo">
+			<select style = "margin-left: 600px;" name = "combo">
 				<option value = "or_customerId">작성자</option>
 				<option value = "oreviewContent">내용</option>
 			</select>
@@ -198,10 +231,5 @@ function searchList() {
 	</div>
 	</div>
 	
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-crossorigin="anonymous"></script>
 </body>
 </html>

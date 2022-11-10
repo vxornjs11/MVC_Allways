@@ -5,21 +5,37 @@
 <head>
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<style>
 
-<script type="text/javascript">
+#button_group {
+	width: 115px;
+	height: 45px;
+	
+	font-family: 'Baloo Tammudu 2';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 32px;
+	align-items: center;
+	text-align: center;
+	
+	color: #766262;
 
-function write() {
+	width: 145px;
+	height: 55px;
 	
-	var form = document.myform;
-	form.action = "customerBoardWritePage.do";
-	form.submit();
-	
+	background: #FFFFFF;
+	border: 3px solid #FBEAEA;
+	border-radius: 70px;
 }
+
+</style>
+<script type="text/javascript">
 
 function login() {
 	
 	var form = document.myform;
-	form.action = "customerLogin.do";
+	form.action = "customerLoginPage.do";
 	form.submit();
 	
 }
@@ -32,8 +48,27 @@ function login() {
 
 	<%@include file="customerHeader.jsp" %>
 	
-	<div align="center">
-		<%@include file = "includeButtons.jsp" %>
+	<div align="center" style = "margin-top: 110px">
+		<form name = "list" method = "post">
+			<table>
+				
+				<tr>
+					<td>
+						<a href = "customerWriteList.do"><button type = "button" name = "buttons" id="button_group">BOARD</button></a>&nbsp;
+					</td>
+					<td>
+						<a href = "customerOrdersReview.do"><button type = "button" name = "buttons" id="button_group" onclick = "reviewList();">REVIEW</button></a>&nbsp;
+					</td>
+					<td>
+						<a href = ""><button type = "button" name = "buttons" id="button_group">FAQ</button></a>&nbsp;
+					</td>
+					<td>
+						<a href = "customerQuestionList.do"><button type = "button" name = "buttons" id="button_group" onclick = "QNA();">Q&A</button></a>
+					</td>
+				</tr>
+				
+			</table>
+		</form>
 	</div>
 
 	<div style = "margin-left: 250px; margin-top: 100px;">
@@ -42,10 +77,10 @@ function login() {
 			
 			<c:choose>
 				<c:when test="${CUSTOMERID != null }">
-					<button style = "margin-left: -160px;" id="write_button" onclick = "write()">Write Board</button>
+					<a href = "customerBoardWritePage.do"><button type = "button" style = "margin-left: -130px;" id="write_button">Write Board</button></a>
 				</c:when>
 				<c:otherwise>
-					<button style = "margin-left: -160px;" id="write_button" onclick = "login()">Login</button>
+					<button style = "margin-left: -130px;" id="write_button" onclick = "login()">Login</button>
 				</c:otherwise>
 			</c:choose>
 		

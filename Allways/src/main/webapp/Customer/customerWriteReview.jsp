@@ -66,20 +66,23 @@
 	border-radius: 70px;
 
 }
-div {
+/* div {
     width: 100%;
     height: 300px;
-}
+} */
 div.left {
-    width: 50%;
+    width: 40%;
     float: left;
     
 }
 div.right {
     width: 50%;
     float: right;
+    margin-top: 100px;
     
 }
+
+
 </style>
 
 
@@ -94,7 +97,7 @@ function writeReview() {
 }
 
 function previewFile() {
-	  var preview = document.querySelector('img');
+	  var preview = document.querySelector('img#cakeImage');
 	  var file = document.querySelector('input[type=file]').files[0];
 	  var reader = new FileReader();
 
@@ -115,16 +118,18 @@ function previewFile() {
 </head>
 <body>
 
+	<%@include file="customerHeader.jsp" %>
+
 	<form class="mb-3" name="myform" id="myform" method="post" enctype="multipart/form-data">
 	
 		<div>
 		
-			<div class="left" style = "margin-left:200px; margin-top: 100px;">
-				<img src="" height="400" alt="이미지 미리보기..."><br>
+			<div class="left" style = "margin-left:140px; margin-top: 70px;">
+				<img src="" id = "cakeImage" height="400" alt="이미지 미리보기..." ><br>
 				<input type="file" name="cakeviews" onchange="previewFile(event)">
 			</div>
 			
-			<div class="right" style = "margin-top: -300px;">
+			<div class="right">
 			
 				<input type = "hidden" name = "ordersId" value = "<%=request.getParameter("ordersId")%>">
 			
@@ -139,11 +144,11 @@ function previewFile() {
 				
 				<textarea class="col-auto form-control" id="reviewContents" name = "oreviewContent"
 						  placeholder="리뷰 내용을 작성하세요."></textarea>
+				<button style = "margin-left:100px; margin-top: 20px;" id="writeButton" onclick = "writeReview()">Writer Review</button>
 			</div>
 			
 		</div>
 		
-		<button style = "margin-left:800px; margin-top: 20px;" id="writeButton" onclick = "writeReview()">Writer Review</button>
 		
 			
 	</form>
