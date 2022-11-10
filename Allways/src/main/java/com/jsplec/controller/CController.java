@@ -103,6 +103,8 @@ public class CController extends HttpServlet {
 			break;
 
 		case ("/Customer/customerMain.do"):
+			customercommand = new CCustomerBestCakeListCommand();
+			customercommand.execute(request, response);
 			viewPage = "customerMain.jsp";
 			break;
 
