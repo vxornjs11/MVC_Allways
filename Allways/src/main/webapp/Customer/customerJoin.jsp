@@ -198,13 +198,83 @@
 		}
 	}
 	
-	function snedCheckVAlue(){
-		var joinForm = document.joinForm;
+	function joinAction(){
 		
-		var idCheckValue = joinForm.idDuplication.value;
+		var regExId=/^[a-z|0-9]+$/; //영문 소문자와 숫자만 한 글자 이상
+		var regExPw=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/; //영문 대문자와 소문자, 특수문자, 숫자 모두 포함하여 8글자 이상
+		var regExPhone=/^[0-9].{9,11}$/; //숫자만 9글자 이상 11글자 이하
+		
+		if(document.customerJoin.customerId.value.length==0){
+			alert("아이디를 입력해주세요.");
+			customerJoin.customerId.focus();
+			return;
+		}
+		
+		
+		if(!regExId.test(document.customerJoin.customerId.value)){
+			alert("ID는 영문과 숫자만 입력 가능합니다.");
+			customerJoin.customerId.focus();
+			return;
+		}
+		
+		if(document.customerJoin.customerPw.value.length == 0) {
+			alert("비밀번호를 입력해 주세요.");
+			customerJoin.customerPw.focus();
+			return;
+		}
+		
+		if(!regExPw.test(document.customerJoin.customerPw.value)){
+			alert("비밀번호는 영문 대소문자, 숫자, 특수문자를 모두 포함하여 8글자 이상 작성해야 합니다.");
+			customerJoin.customerPw.focus();
+			return;
+		}
+		
+		if(document.customerJoin.customerPw.value != document.customerJoin.customerPwCheck.value) {
+			alert("비밀번호가 일치하지 않습니다.");
+			customerJoin.customerPw.focus();
+			return;
+		}
+		
+		if(document.customerJoin.customerName.value.length == 0) {
+			alert("이름을 입력해주세요.");
+			customerJoin.customerName.focus();
+			return;
+		}
+		
+		if(!regExPhone.test(document.customerJoin.customerPhone.value)){
+			alert("전화번호는 숫자만 입력 가능합니다.");
+			customerJoin.customerPhone.focus();
+			return;
+		}
+		
+		if(document.customerJoin.email1.value.length == 0) {
+			alert("메일을 입력해 주세요.");
+			customerJoin.email1.focus();
+			return;
+		}
+		
+		if(document.customerJoin.email2.value.length == 0) {
+			alert("메일주소를 선택해 주세요.");
+			customerJoin.email2.focus();
+			return;
+		}
+		
+		if(document.customerJoin.customerBirth.value.length == 0){
+			alert("생년월일을 선택해 주세요");
+			return;
+		}
+		
+		if(document.customerJoin.customerBirth.value.length == 0){
+			alert("생년월일을 선택해 주세요");
+			return;
+		}
+		
+		
+		
+		var idCheckResult = joinForm.idcheck.value;
 		console.log(idCheckValue);
 		
-		if(idCheckValue == 1){
+		if(idCheckResult == 1){
 			joinForm.action = "Sighup.do";
 			joinForm.method = "post";
 			joinForm.submit();
@@ -216,6 +286,14 @@
 		}
 	}
 
+	if(idcheck==false){
+		alert("계정이 생성되었습니다.");
+		form.submit();
+	} else{
+		alert("ID 중복체크를 해 주세요.");
+		return;
+	}
+	
 </script>
 
 
@@ -232,11 +310,11 @@
 					<br><h2 id="Join">J O I N</h2><br>
 					
 					<label id="label_design">ID</label>
-					<input class="input_id" id="id_box" type="text" name="customerId" placeholder="영어 소문자와 숫자만 입력 가능">
+					<input class="input_id" id="id_box" type="text" name="customerId" placeholder="영어 소문자와 숫자만 입력 가능" value="${CHECKID}">
 					<input type="button" name="btnIdCheck" id="check_box" value="중복체크" onclick="CheckId()"><br>
 					<c:if test="${CHECK==true }">이미 존재하는 ID입니다.</c:if>
 					<c:if test="${CHECK==false }">사용 가능한 ID입니다.
-					<td><input type="hidden" name="idDuplication" value="1"/></td></c:if><br>
+					<td><input type="hidden" name="idcheck" value="1"/></td></c:if><br>
 					
 					<label id="label_design">PASSWORD</label>
 					<input id="input_box" type="password" name="customerPw" placeholder="비밀번호 입력"><br><br>
@@ -277,7 +355,7 @@
 					background: #FFFFFF;
 					border: 3px solid #FCD5D5;
 					padding-left: 10px;" 
-					id="customerPostcode" readonly="true" placeholder="우편번호" onclick="daum_zipcode()" /> 
+					id="customerPostcode" name="postcode" readonly="true" placeholder="우편번호" onclick="daum_zipcode()" /> 
 					<a href="javascript:daum_zipcode()">우편번호</a><br>
 					<input style="box-sizing: border-box;
 						left: 30px;
@@ -288,7 +366,7 @@
 						border: 3px solid #FCD5D5;
 						padding-left: 10px;
 						margin-top: 5px;" 
-						type="text" id="customerAddress" title="기본주소" maxlength="200" value="" readonly="true" placeholder="기본주소" onclick="daum_zipcode()" /><br>
+						type="text" id="customerAddress" name="address" title="기본주소" maxlength="200" value="" readonly="true" placeholder="기본주소" onclick="daum_zipcode()" /><br>
 					<input style="box-sizing: border-box;
 						left: 30px;
 						right: 0px;
@@ -297,7 +375,7 @@
 						background: #FFFFFF;
 						border: 3px solid #FCD5D5;
 						padding-left: 10px;
-						margin-top: 5px;" type="text" id="customerAddressDetail" title="상세주소" maxlength="200" value="" placeholder="상세주소 입력" /><br><br>
+						margin-top: 5px;" type="text" name="addressDetail" id="customerAddressDetail" title="상세주소" maxlength="200" value="" placeholder="상세주소 입력" /><br><br>
 					
 					<!-- <input type="text" id="sample4_postcode" readonly="true" placeholder="우편번호">
 					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
@@ -306,7 +384,7 @@
 					<span id="guide" style="color:#999;display:none"></span>
 					<input type="text" id="sample4_detailAddress" placeholder="상세주소"> -->
 					
-					<input id="join_button" style="margin-top: 30px" type="button" name="join" value="JOIN">			
+					<input id="join_button" style="margin-top: 30px" type="button" name="join" value="JOIN" onclick="joinAction()">			
 				</div>
 			<div class="col">
 			</div>

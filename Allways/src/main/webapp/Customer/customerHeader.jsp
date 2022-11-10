@@ -173,7 +173,7 @@ function signup() {
 	            	</a>
 	            
 	                <a href="customerAbout.do" id="center" class="nav-item nav-link">ABOUT</a>
-	                <a href="customerCart.do" id="center" class="nav-item nav-link">CART</a>
+	                <a href="customerCartList.do" id="center" class="nav-item nav-link">CART</a>
 	                
 	               <%--  <div class="col-md-4 text-end" style="margin-right: 30px;">
 						<%if (session.getAttribute("ID") == null) { %>
