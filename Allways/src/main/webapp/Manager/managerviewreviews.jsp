@@ -10,6 +10,22 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
+<style>
+a.tablebutton{
+		color:#000000;
+		text-decoration:none;
+		margin:10px;
+	}
+a.pagebutton{
+		color:#000000;
+		font-size:1.2em;
+		text-decoration:none;
+		margin:10px;
+	}
+a.pagebutton:hover{
+	color:#a87878;
+}
+</style>
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
@@ -62,10 +78,10 @@
 				<tr>
 					<td>${cnt.oreviewId}</td>
 					<c:if test="${cnt.or_cakeName==null }">
-						<td>${cnt.or_goodsName }</td>
+						<td><a href="reviewDetail.do?oreviewId=${cnt.oreviewId }" class="tablebutton">${cnt.or_goodsName }</a></td>
 					</c:if>
 					<c:if test="${cnt.or_goodsName==null }">
-						<td>${cnt.or_cakeName }
+						<td><a href="reviewDetail.do?oreviewId=${cnt.oreviewId }" class="tablebutton">${cnt.or_cakeName }</a></td>
 					</c:if>
 					<td>${cnt.oreviewStarrating}</td>
 					<td><fmt:formatDate value="${cnt.goodsPrice}"/></td>
@@ -75,26 +91,26 @@
 	</div>
 	
 	<div class="tablediv" align="center">
-		<a href="searchReview.do?index=1&query=${Query}&condition=${condition}">처음으로</a>
+		<a href="searchReview.do?index=1&query=${Query}&condition=${condition}" class="pagebutton">처음으로</a>
 		<c:if test="${index!=1 }">
-			<a href="searchReview.do?index=${index-1 }&query=${Query}&condition=${condition}">이전</a>
+			<a href="searchReview.do?index=${index-1 }&query=${Query}&condition=${condition}" class="pagebutton">이전</a>
 		</c:if>
 		<c:forEach var="cnt" begin="${pagecount*pagepage+1}" end="${pagecount*(pagepage+1) }">
 			<c:if test="${cnt<=Math.ceil(Size/rowcount) }">
 				<c:if test="${cnt==index }">
 					<span style="display:inline">
-						<a href="searchReview.do?index=${cnt }&query=${Query}&condition=${condition}" style="font-size:1.3em">${cnt }</a>
+						<a href="searchReview.do?index=${cnt }&query=${Query}&condition=${condition}" style="font-size:1.3em" class="pagebutton">${cnt }</a>
 					</span>
 				</c:if>
 				<c:if test="${cnt!=index }">
-					<a href="searchReview.do?index=${cnt }&query=${Query}&condition=${condition}">${cnt }</a>
+					<a href="searchReview.do?index=${cnt }&query=${Query}&condition=${condition}" class="pagebutton">${cnt }</a>
 				</c:if>
 			</c:if>
 		</c:forEach>
 		<c:if test="${index<Math.ceil(Size/rowcount) }">
-			<a href="searchReview.do?index=${index+1 }&query=${Query}&condition=${condition}">다음</a>
+			<a href="searchReview.do?index=${index+1 }&query=${Query}&condition=${condition}" class="pagebutton">다음</a>
 		</c:if>
-		<a href="searchReview.do?index=${Math.ceil(Size/rowcount) }&query=${Query}&condition=${condition}">끝으로</a>
+		<a href="searchReview.do?index=${Math.ceil(Size/rowcount) }&query=${Query}&condition=${condition}" class="pagebutton">끝으로</a>
 	</div>
 </div>
 </body>

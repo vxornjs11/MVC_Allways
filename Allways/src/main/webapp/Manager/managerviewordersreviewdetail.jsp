@@ -65,7 +65,12 @@ div{
 			별점
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
-			${DTO.oreviewStarrating }
+			<c:forEach var="cnt" begin="1" end="${DTO.oreviewStarrating }">
+				★
+			</c:forEach>
+			<c:forEach var="cnt" begin="${DTO.oreviewStarrating+1 }" end="5">
+				☆
+			</c:forEach>
 		</div>
 	</div>
 	<div style="display:inline-block;width:30%;height:50%" align="center">
