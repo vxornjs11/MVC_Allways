@@ -128,7 +128,7 @@ public class CController extends HttpServlet {
 			customercommand = new CCustomerLoginCommand();
 			boolean check = customercommand.execute2(request, response);
 			if (check == true) {
-				viewPage = "customerMain.do";
+				viewPage = "customerAbout.do";
 			} else {
 				request.setAttribute("CHECK", check);
 				viewPage = "customerLogin.jsp";
@@ -209,13 +209,20 @@ public class CController extends HttpServlet {
 			viewPage = "customerWriteList.do";
 			break;
 			
-		// 게시판 작성페이지
+		// 게시판 클릭
 		case ("/Customer/customerBoardDetail.do"):
 			customercommand = new customerBoardDetailCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerBoardDetail.jsp";
 			break;
 			
+		// 게시판 답글달기
+		case ("/Customer/customerWriteComment.do"):
+			customercommand = new customerBoardDetailCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerBoardDetail.jsp";
+			break;
+		
 //----------------------- 오수 --------------------------------
 		case ("/Customer/customerCakeList.do"):
 			customercommand = new CCustomerCakeListCommand();
