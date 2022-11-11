@@ -76,7 +76,12 @@
 				
 			</c:choose>
 			
+				
 		</table>
+		<br>
+		<input type = "text" name = "writeComment" size = "65" placeholder="답글 작성란">
+		<button type = "button" >OK</button>
+		
 	</div>
 </body>
 </html>

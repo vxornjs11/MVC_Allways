@@ -36,10 +36,10 @@ public class CCustomerWriteListDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select * from (select row_number() over(order by commentId desc) as rownum, "
-					+ "writeTitle, writeContent, w_customerId, writeInitdate, recommentId, writeId from `write` order by commentId desc) w";
-			
-//			String query = "select w_customerId, writeTitle, writeContent, writeInitdate from `write` ";
+			String query = "select * from ( "
+					+ "	select row_number() over(order by commentId) as rownum, writeTitle, writeContent, w_customerId, writeInitdate, recommentId, writeId "
+					+ "	from `write` "
+					+ " order by commentId desc) w";
 			
 			preparedStatement = connection.prepareStatement(query);
 			
@@ -136,7 +136,6 @@ public class CCustomerWriteListDao {
 							+ " order by writeInitdate desc) a";
 			
 			preparedStatement = connection.prepareStatement(query);
-			
 			rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {

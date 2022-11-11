@@ -148,6 +148,11 @@ public class CController extends HttpServlet {
 			customercommand.execute(request, response);
 	        viewPage="customerJoin.jsp";
 	        break;
+	        
+	    // 회원가입 페이지로 이동
+		case ("/Customer/customerJoinPage.do"):
+			viewPage = "customerJoin.jsp";
+			break;
 
 //-------------------------------- 한별 --------------------------------
 		// 리뷰 리스트 출력
