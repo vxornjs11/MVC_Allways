@@ -3,6 +3,7 @@ package com.jsplec.customer.dto;
 public class CCustomerCakeOrderDto {
 
 	int ordersId;
+	int cakeId;
 	int ordersSalePrice;
 	int ordersQuantity;
 	String cakeName;
@@ -18,9 +19,18 @@ public class CCustomerCakeOrderDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CCustomerCakeOrderDto(int ordersId, int ordersSalePrice, int ordersQuantity, String cakeName) {
+	public int getCakeId() {
+		return cakeId;
+	}
+
+	public void setCakeId(int cakeId) {
+		this.cakeId = cakeId;
+	}
+
+	public CCustomerCakeOrderDto(int ordersId, int cakeId, int ordersSalePrice, int ordersQuantity, String cakeName) {
 		super();
 		this.ordersId = ordersId;
+		this.cakeId = cakeId;
 		this.ordersSalePrice = ordersSalePrice;
 		this.ordersQuantity = ordersQuantity;
 		this.cakeName = cakeName;

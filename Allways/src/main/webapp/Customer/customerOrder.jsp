@@ -70,9 +70,10 @@ border: 2px solid #FECACA;
 		</tr>
 		<c:forEach items="${orderList}" var="dto">
 		<tr align="center">
-			<td>${dto.cakeName }<input type="hidden" name="ordersId" value="${dto.ordersId}"></td>
+		<td><input type = "hidden" name = "ordersSize" value ="${ordersSize }"></td>
+			<td>${dto.cakeName }<input type="hidden" name="ordersId" value="${dto.ordersId}"><input type="hidden" name="cakeId" value="${dto.cakeId}"></td>
 			<td>${dto.ordersQuantity }<input type="hidden" name="ordersQuantity" value="${dto.ordersQuantity }"></td>
-			<td>￦ ${dto.ordersSalePrice }<input type="hidden" name="ordersQuantity" value="${dto.ordersSalePrice }"></td>
+			<td>￦ ${dto.ordersSalePrice }<input type="hidden" name="ordersSalePrice" value="${dto.ordersSalePrice }"></td>
 			<!-- <td>2022-11-11</td> -->
 		</tr>
 		</c:forEach>

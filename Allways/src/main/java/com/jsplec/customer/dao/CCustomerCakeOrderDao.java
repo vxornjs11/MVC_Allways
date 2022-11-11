@@ -35,7 +35,7 @@ public class CCustomerCakeOrderDao {
 			connection = dataSource.getConnection();
 
 			for (int i = 0; i < ORDERSID.length; i++) {
-				String query1 = "select o.ordersId, o.ordersQuantity, o.ordersSalePrice, c.cakeName from cake c, orders o ";
+				String query1 = "select o.ordersId, o.o_cakeId, o.ordersQuantity, o.ordersSalePrice, c.cakeName from cake c, orders o ";
 				String query2 = "where o.o_cakeId = c.cakeId and ordersStatus = '장바구니' and o.o_customerId = '"
 						+ CUSTOMERID + "' and ordersId = '" + ORDERSID[i] + "'";
 
@@ -45,12 +45,13 @@ public class CCustomerCakeOrderDao {
 				while (resultSet.next()) {
 
 					int ordersId = resultSet.getInt(1);
-					int ordersQuantity = resultSet.getInt(2);
-					int ordersSalePrice = resultSet.getInt(3);
-					String cakeName = resultSet.getString(4);
+					int cakeId = resultSet.getInt(2);
+					int ordersQuantity = resultSet.getInt(3);
+					int ordersSalePrice = resultSet.getInt(4);
+					String cakeName = resultSet.getString(5);
 
-					CCustomerCakeOrderDto dto = new CCustomerCakeOrderDto(ordersId, ordersSalePrice, ordersQuantity,
-							cakeName);
+					CCustomerCakeOrderDto dto = new CCustomerCakeOrderDto(ordersId, cakeId, ordersSalePrice,
+							ordersQuantity, cakeName);
 					dtos.add(dto);
 				}
 
@@ -122,29 +123,32 @@ public class CCustomerCakeOrderDao {
 
 	}
 
-	public void orderInsert(String CUSTOMERID, int CAKEID, int CAKEPRICE, int ORDERSQUANTITY, int ORDERSID) {
+	public void orderInsert(String[] ORDERSID, String CUSTOMERID, String[] CAKEID, String[] ORDERSSALEPRICE,
+			String[] ORDERSQUANTITY) {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		try {
 			connection = dataSource.getConnection();
-			
-				
 
-			String query1 = "insert into orders (ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity, ordersDate, ordersPoint) ";
-			String query2 = "values ('구매', ?, ?, 1, ?, ?, now(), ?, " + ORDERSID + ")";
+			for (int i = 0; i < ORDERSID.length; i++) {
 
-			preparedStatement = connection.prepareStatement(query1 + query2);
+				String query1 = "insert into orders (ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity, ordersDate, ordersPoint) ";
+				String query2 = "values (?, '구매', ?, ?, '1', ?, ?, now(), ?)";
 
-			preparedStatement.setString(1, CUSTOMERID);
-			preparedStatement.setInt(2, CAKEID);
-			preparedStatement.setInt(3, CAKEPRICE * ORDERSQUANTITY);
-			preparedStatement.setInt(4, ORDERSQUANTITY);
-			preparedStatement.setInt(5, (int) ((CAKEPRICE * ORDERSQUANTITY) * 0.05));
-			preparedStatement.setInt(6, ORDERSID);
+				preparedStatement = connection.prepareStatement(query1 + query2);
 
-			preparedStatement.executeUpdate();
+				preparedStatement.setString(1, ORDERSID[i]);
+				preparedStatement.setString(2, CUSTOMERID);
+				preparedStatement.setString(3, CAKEID[i]);
+				preparedStatement.setInt(4, Integer.parseInt(ORDERSSALEPRICE[i]) * Integer.parseInt(ORDERSQUANTITY[i]));
+				preparedStatement.setString(5, ORDERSQUANTITY[i]);
+				preparedStatement.setInt(6,
+						(int) (Integer.parseInt(ORDERSSALEPRICE[i]) * Integer.parseInt(ORDERSQUANTITY[i]) * 0.05));
+
+				preparedStatement.executeUpdate();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -158,4 +162,5 @@ public class CCustomerCakeOrderDao {
 			}
 		}
 	}
+
 }

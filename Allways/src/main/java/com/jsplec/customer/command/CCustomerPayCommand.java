@@ -14,14 +14,15 @@ public class CCustomerPayCommand implements CCustomerCommand {
 		HttpSession session = request.getSession();
 		
 		String customerId = (String) session.getAttribute("ID");
-		int cakeId = Integer.parseInt(request.getParameter("cakeId"));
-		int cakePrice = Integer.parseInt(request.getParameter("cakePrice"));
-		int ordersQuantity = Integer.parseInt(request.getParameter("ordersQuantity"));
-		int ordersId = Integer.parseInt(request.getParameter("ordersId"));
+		
+		String[] ordersId = request.getParameterValues("ordersId");
+		String[] cakeId = request.getParameterValues("cakeId");
+		String[] ordersSalePrice = request.getParameterValues("ordersSalePrice");
+		String[] ordersQuantity = request.getParameterValues("ordersQuantity");
 		
 		
 		CCustomerCakeOrderDao dao = new CCustomerCakeOrderDao();
-		dao.orderInsert(customerId, cakeId, cakePrice, ordersQuantity, ordersId);
+		dao.orderInsert(ordersId, customerId, cakeId, ordersSalePrice, ordersQuantity);
 	}
 
 	@Override
