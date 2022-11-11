@@ -16,7 +16,7 @@ function mySubmit(index){
 		form.action = "customerCakeList.do";
 	}
 	if (index == 3) {
-		form.action = "customerCakeOrder.do";
+		form.action = "customerOrderPage.do";
 	}
 		form.submit();
 }

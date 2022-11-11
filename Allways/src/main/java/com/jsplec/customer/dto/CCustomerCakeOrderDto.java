@@ -109,4 +109,12 @@ public class CCustomerCakeOrderDto {
 		this.customerAddressDetail = customerAddressDetail;
 	}
 
+	public String getCakeName() {
+		return cakeName;
+	}
+
+	public void setCakeName(String cakeName) {
+		this.cakeName = cakeName;
+	}
+
 }

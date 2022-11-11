@@ -4,6 +4,22 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+
+<script type="text/javascript">
+
+function order(index){
+	var form = document.detail;
+	if (index == 1) {
+		form.action = "customerCartList.do";
+	}
+	if (index == 2) {
+		form.action = "customerOrder123.do";
+	}
+		form.submit();
+}
+
+</script>
+
 <%@include file="customerHeader.jsp"%>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,6 +60,7 @@ border: 2px solid #FECACA;
 </div>
 
 <div align="center">
+<form action="" name ="detail" method="get">
 	<table>
 		<tr align="center">
 			<th width="220px">An Optional Feature</th>
@@ -51,33 +68,39 @@ border: 2px solid #FECACA;
 			<th width="120px">Price</th>
 			<!-- <th width="120px">Date</th> -->
 		</tr>
+		<c:forEach items="${orderList}" var="dto">
 		<tr align="center">
-			<td>Cherry Fruits Cake</td>
-			<td>1</td>
-			<td>￦52,000</td>
+			<td>${dto.cakeName }<input type="hidden" name="ordersId" value="${dto.ordersId}2"></td>
+			<td>${dto.ordersQuantity }</td>
+			<td>￦ ${dto.ordersSalePrice }</td>
 			<!-- <td>2022-11-11</td> -->
 		</tr>
+		</c:forEach>
 	</table>
+</form>
 </div><br>
 
 <div align="center" style="padding-right: 190px;">
 	<table>
+	<c:forEach items="${customerInfo }" var="dto">
 		<tr>
-			<td>Orderer Name</td>
-			<td><input type="text"></td>
+			<td></td>
+			<td width="150px;">Orderer Name</td>
+			<td>${dto.customerName }</td>
 		</tr>
 		<tr>
 			<td>Orderer Phone</td>
-			<td><input type="text"></td>
+			<td>${dto.customerPhone }</td>
 		</tr>
 		<tr>
 			<td>Orderer Email</td>
-			<td><input type="text"></td>
+			<td>${dto.customerEmail }</td>
 		</tr>
 		<tr>
 			<td>Orderer Address</td>
-			<td><input type="text"></td>
+			<td>${dto.customerPostcode} ${dto.customerAddress} ${dto.customerAddressDetail}</td>
 		</tr>
+	</c:forEach>
 	</table>
 </div><br>
 
@@ -133,8 +156,8 @@ border: 2px solid #FECACA;
 			<td colspan="2"><hr id="line4"></td>
 		</tr>
 		<tr align="center">
-			<td><input type="button" value="Go Shopping" style="width: 150px;"></td>
-			<td><input type="button" value="Buy Now" style="width: 150px;"></td>
+			<td><input type="button" value="Cancle" style="width: 150px;" onclick="order(1)"></td>
+			<td><input type="button" value="Buy Now" style="width: 150px;" onclick="order(2)"></td>
 		</tr>
 	</table>
 </div>
