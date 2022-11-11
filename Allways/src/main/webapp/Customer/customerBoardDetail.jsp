@@ -36,14 +36,18 @@
 		<textarea rows="10" cols="70">${boardDetail.writeContent}</textarea>
 
 		<table>
+		
 			<c:choose>
+			
 				<c:when test="${boardlength == 0 }">
 					<h5>작성한 답글이 없습니다.</h5>
 				</c:when>
 				
 				<c:otherwise>
 					<c:forEach var = "dto" items="${boardComment }">
+					
 						<c:choose>
+						
 							<c:when test="${CUSTOMERID == dto.w_customerId }">
 								<tbody>
 							        <tr>
@@ -66,9 +70,12 @@
 							</c:otherwise> 	
 							
 						</c:choose>
+						
 					</c:forEach>
 				</c:otherwise>
+				
 			</c:choose>
+			
 		</table>
 	</div>
 </body>
