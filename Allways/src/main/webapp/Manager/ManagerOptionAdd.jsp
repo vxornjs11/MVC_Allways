@@ -11,6 +11,7 @@
 rel="stylesheet" 
 integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
 crossorigin="anonymous">
+<link rel="stylesheet" href="css/Table22.css">
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
@@ -79,8 +80,9 @@ function previewFile() {
 	<form method="post" enctype="multipart/form-data" name = "add">
 	<div align="center">
 	<table border="0">
+	<thead>
 	<tr>
-	<td>
+	<th>
 	카테고리 :
 	<select name="option">
 		<option value="size">size</option>
@@ -89,40 +91,41 @@ function previewFile() {
 		<option value="Flavor">Flavor</option>
 		<option value="MassageColor">MassageColor</option>
 		<option value="Box">Box</option>
-	</select></td>
+	</select></th>
 	<tr>
-		<td>CAKE ID :
+		<th>CAKE ID :
 		<input type="text" name="optionId" placeholder="자동으로 입력 됩니다." readonly/>
-		</td>
+		</th>
 	</tr>
 	
 	<tr>
-		<td>옵션 이름 :
+		<th>옵션 이름 :
 			<input type="text" name="optionName" value="${optionName}" >
 		<c:if test="${check == null }">
-			<td><input type="hidden" name="ko" value="0"/></td></c:if>
+			<th><input type="hidden" name="ko" value="0"/></th></c:if>
 		<c:if test="${check == true }"> 
 		<br>
 				<span style = " font-size:1.0em;  color: red;"> 사용 불가능한 이름 입니다</span>
-			<td><input type="hidden" name="ko" value="2"/></td></c:if>
+			<th><input type="hidden" name="ko" value="2"/></th></c:if>
 		<c:if test="${check == false }"> 
 		<br>
 				<span style = " font-size:1.0em;  color:  blue;"> 사용 가능한 이름 입니다</span>
-			<td><input type="hidden" name="ko" value="1"/></td></c:if>
-		</td>
+			<th><input type="hidden" name="ko" value="1"/></th></c:if>
+		</th>
 	</tr>
 	<tr>
-		<td>가격 이름 :
+		<th>가격 이름 :
 			<input type="text" name="optionPrice"  value="${optionPrice}" >
-		</td>
+		</th>
 	</tr>
 	<tr>
-		<td>
+		<th>
 			<input type="button" value="돌아가기" onclick="Return()">
 			<input type="button" value="중복체크" onclick="CHECKOPTION()">
 			<input type="button" value="추가" onclick="ADDOPTION()">
-		</td>
+		</th>
 	</tr>
+	</thead>
 	</table>
 	</div>
 	<div align="left" style="width:74%;display:inline-block">

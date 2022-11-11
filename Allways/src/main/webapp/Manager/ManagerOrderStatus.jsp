@@ -9,95 +9,109 @@
 <meta charset="UTF-8">
 <title>주문현황</title>
 <%@include file="managerHeader.jsp"%>
+<link rel="stylesheet" href="css/Table22.css">
 </head>
 <body>
 <script type="text/javascript">
-function Produce(){
-		var orderList = document.orderList;
-		orderList.action="GGp.do";
-		orderList.submit();
-		}
+	function Final(){
+			RET.action = "MorderStatus.do";
+			RET.method = "post";
+			RET.submit();
+			
+			}
 		
 </script>
-<h1>주문접수</h1>
+<hr/><h1>주문접수</h1><hr/>
 <form name="orderList" method="get">
 <table border="1" >
+<thead>
 		<tr>
-			<td>주문번호</td>
-			<td>주문상태</td>
-			<td>구매자</td>
-			<td>케이크번호</td>
-			<td>추가상품번호</td>
-			<td>주문가격</td>
-			<td>주문개수</td>
+			<th>주문번호</th>
+			<th>주문상태</th>
+			<th>구매자</th>
+			<th>케이크번호</th>
+			<th>추가상품번호</th>
+			<th>주문가격</th>
+			<th>주문개수</th>
+			<th>제작선택</th>
+			<th>주문취소</th>
 		</tr>	
+		</thead>
 			<c:forEach items = "${OrdersList}" var = "dto">
 		<tr>
-			<td><a href="Status.do?ordersId=${dto.ordersId}">${dto.ordersId}</a></td>
+			<td>${dto.ordersId}</td>
 			<td>${dto.ordersStatus}</td>
 			<td>${dto.o_customerId}</td>
 			<td>${dto.o_cakeId}</td>
 			<td>${dto.o_goodsId}</td>
 			<td>${dto.ordersSalePrice}</td>
 			<td>${dto.ordersQuantity}</td>
+			<td><a href="Status.do?ordersId=${dto.ordersId}"><input type="button" value="선택"></a></td>
+			<td><a href="deleteOrder.do?ordersId=${dto.ordersId}"><input type="button" value="취소"></a></td>
 		</tr>
 			</c:forEach>
-			<tr>
-			<td><input type="button" value="제작" name="produce" onclick="Produce()"></td>
-			</tr>
+			
 </table>
 </form>
 
-<h1>제작중</h1>
+<hr/><h1>제작중</h1>
 <table border="1" >
+<thead>
 		<tr>
-			<td>주문번호</td>
-			<td>주문상태</td>
-			<td>구매자</td>
-			<td>케이크번호</td>
-			<td>추가상품번호</td>
-			<td>주문가격</td>
-			<td>주문개수</td>
+			<th>주문번호</th>
+			<th>주문상태</th>
+			<th>구매자</th>
+			<th>케이크번호</th>
+			<th>추가상품번호</th>
+			<th>주문가격</th>
+			<th>주문개수</th>
+			<th>제작선택</th>
+			<th>주문취소</th>
 		</tr>	
+		</thead>
 			<c:forEach items = "${OrdersList2}" var = "dto2">
 		<tr>
-			<td><a href="Status.do?ordersId=${dto2.ordersId}">${dto2.ordersId}</a></td>
+			<td>${dto2.ordersId}</td>
 			<td>${dto2.ordersStatus}</td>
 			<td>${dto2.o_customerId}</td>
 			<td>${dto2.o_cakeId}</td>
 			<td>${dto2.o_goodsId}</td>
 			<td>${dto2.ordersSalePrice}</td>
 			<td>${dto2.ordersQuantity}</td>
+			<td><a href="Status.do?ordersId=${dto.ordersId}"><input type="button" value="선택"></a></td>
+			<td><a href="deleteOrder.do?ordersId=${dto.ordersId}"><input type="button" value="취소"></a></td>
 		</tr>
 			</c:forEach>
-			<tr>
-			<td><input type="button" value="완료" name="Final" onclick="Final()"></td>
-			</tr>
+			
 </table>
-<h1>제작완료</h1>
+<hr/><h1>제작완료</h1>
 <table border="1" >
+<thead>
 		<tr>
-			<td>주문번호</td>
-			<td>주문상태</td>
-			<td>구매자</td>
-			<td>케이크번호</td>
-			<td>추가상품번호</td>
-			<td>주문가격</td>
-			<td>주문개수</td>
+			<th>주문번호</th>
+			<th>주문상태</th>
+			<th>구매자</th>
+			<th>케이크번호</th>
+			<th>추가상품번호</th>
+			<th>주문가격</th>
+			<th>주문개수</th>
+			<th>처리완료</th>
 		</tr>	
+		</thead>
 			<c:forEach items = "${OrdersList3}" var = "dto3">
 		<tr>
-			<td><a href="Status.do?ordersId=${dto3.ordersId}">${dto3.ordersId}</a></td>
+			<td>${dto3.ordersId}</td>
 			<td>${dto3.ordersStatus}</td>
 			<td>${dto3.o_customerId}</td>
 			<td>${dto3.o_cakeId}</td>
 			<td>${dto3.o_goodsId}</td>
 			<td>${dto3.ordersSalePrice}</td>
 			<td>${dto3.ordersQuantity}</td>
+			<td><a href="Sold.do?ordersId=${dto3.ordersId}"><input type="button" value="선택"></a></td>
 		</tr>
 			</c:forEach>
 			<tr>
-			<td><input type="button" value="돌아가기" name="Final" onclick="Final()"></td>
+			<td><input type="button" value="처리완료" name="Final" onclick="Final()"></td>
 			</tr>
 </table>
 </body>

@@ -11,6 +11,7 @@
 rel="stylesheet" 
 integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
 crossorigin="anonymous">
+<link rel="stylesheet" href="css/Table22.css">
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
@@ -75,8 +76,9 @@ function previewFile() {
 	<form method="post"  enctype="multipart/form-data" name ="upd">
 	<div align="center">
 	<table border="0">
+	<thead>
 	<tr>
-	<td>
+	<th>
 카테고리 :
 	<select name="option" >
 	<c:if test="${check == null }">
@@ -94,9 +96,9 @@ function previewFile() {
 		<option value="Flavor">Flavor</option>
 		<option value="MassageColor">MassageColor</option>
 		<option value="Box">Box</option>
-	</select></td>
+	</select></th>
 	<tr>
-		<td>CAKE ID :
+		<th>CAKE ID :
 		<input type="hidden" name="optionId" value="${cake_option.cakeoptionId}" readonly/>
 		<c:if test="${check == null }">
 		<input type="text" name="optionId" value="${cake_option.cakeoptionId}" readonly/></c:if>
@@ -104,11 +106,11 @@ function previewFile() {
 		<input type="text" name="optionId" value="${optionId}" readonly/></c:if>
 		<c:if test="${check == false }">
 		<input type="text" name="optionId" value="${optionId}" readonly/></c:if>
-		</td>
+		</th>
 	</tr>
 	
 	<tr>
-		<td>옵션 이름 :
+		<th>옵션 이름 :
 			<input type="hidden" name="optionName" value="${cake_option.cakeoptionValue}" >
 		<c:if test="${check == null }">
 			<input type="hidden" name="ko" value="0"/>
@@ -123,10 +125,10 @@ function previewFile() {
 			<input type="text" name="optionName" value="${optionName}" >
 		 		<br>
 		 		<span style = " font-size:1.0em;  color: blue;"> 사용 가능한 이름 입니다</span></c:if>
-		</td>
+		</th>
 	</tr>
 	<tr>
-		<td>가격 이름 :
+		<th>가격 이름 :
 		<input type="hidden" name="optionPrice" value="${cake_option.cakeoptionPrice}" >
 		<c:if test="${check == null }">
 		<input type="text" name="optionPrice" value="${cake_option.cakeoptionPrice}" ></c:if>
@@ -134,7 +136,7 @@ function previewFile() {
 		<input type="text" name="optionPrice" value="${optionPrice}" ></c:if>
 		<c:if test="${check == false }"> 
 		<input type="text" name="optionPrice" value="${optionPrice}" ></c:if>
-		</td>
+		</th>
 	</tr>
 	<tr>
 		<td>
@@ -144,6 +146,7 @@ function previewFile() {
 			<input type="button" value="삭제" onclick="Delete()">
 		</td>
 	</tr>
+	</thead>
 	</table>
 	</div>
 	<div align="left" style="width:74%;display:inline-block">

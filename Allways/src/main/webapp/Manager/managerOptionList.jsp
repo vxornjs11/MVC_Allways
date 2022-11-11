@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
+<link rel="stylesheet" href="css/Table22.css">
 </head>
 <body >
 <%@include file="managerHeader.jsp"%>
@@ -52,6 +53,7 @@ function Addoption(){
 총 ${Size}건
 <div class="tablediv">
 	<table border="1" align="center" >
+	<thead>
 		<tr>
 			<th>번호</th>
 			<th>카테고리</th>
@@ -67,6 +69,7 @@ function Addoption(){
 			<td><fmt:formatNumber value="${dto.cakeoptionPrice}" type="currency"/></td>
 		</tr>
 			</c:forEach>
+			</thead>
 </table>
 </div>
 <c:if test="${Query==null }">

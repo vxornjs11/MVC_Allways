@@ -1,57 +1,80 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<%@include file="managerHeader.jsp"%>
 <title>Insert title here</title>
-<link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
+<link rel="stylesheet" href="css/Table22.css">
+<script>
+
+	function Return(){
+		var RET = document.ADDR;
+		RET.action = "MorderStatus.do";
+		RET.method = "post";
+		RET.submit();
+	}
+
+		function Delete2() {
+			var DEL = document.ADDR;
+			DEL.action = "DeleteOrder.do";
+			DEL.method = "post";
+			DEL.submit();
+		}
+	</script>
 </head>
 <body>
-<%@include file="managerHeader.jsp"%>
 <h1>주문 상태 변환</h1>
 	<form method="get" action="ADDR.do" name = "ADDR">
 	<table border="0">
+<thead>
 	<tr>
 	<td>
 	<tr>
-		<td>주문 번호 :
+		<th>주문 번호 :
 		<input type="text" name=ordersId value="${add_Order.ordersId}" readonly/>
-		</td>
+		</th>
 	</tr>
 	
 	<tr>
-		<td>주문 상태 :
-		<input type="text" name="ordersStatus" value="${add_Order.ordersStatus}" >
-		</td>
+		<th>
+	주문 상태 :
+	<select name="ordersStatus">
+		<option value="주문접수">주문접수</option>
+		<option value="제작중">제작중</option>
+		<option value="제작완료">제작완료</option>
+	</select></th>
 	</tr>
 	<tr>
-		<td>구매자 :
-		<input type="text" name="o_customerId" value="${add_Order.o_customerId}" >
-		</td>
-	</tr>
-	
-	<tr>
-		<td>케이크번호 :
-		<input type="text" name="o_cakeId" value="${add_Order.o_cakeId}" >
-		</td>
+		<th>구매자 :
+		<input type="text" name="o_customerId" value="${add_Order.o_customerId}" readonly="readonly" >
+		</th>
 	</tr>
 	
 	<tr>
-		<td>추가상품번호:
-		<input type="text" name="o_goodsId" value="${add_Order.o_goodsId}" >
-		</td>
+		<th>케이크번호 :
+		<input type="text" name="o_cakeId" value="${add_Order.o_cakeId}" readonly="readonly">
+		</th>
 	</tr>
 	
 	<tr>
-		<td>주문가격 :
-		<input type="text" name="ordersSalePrice" value="${add_Order.ordersSalePrice}" >
-		</td>
+		<th>추가상품번호:
+		<input type="text" name="o_goodsId" value="${add_Order.o_goodsId}" readonly="readonly">
+		</th>
+	</tr>
+	
+	<tr>
+		<th>주문가격 :
+		<input type="text" name="ordersSalePrice" value="${add_Order.ordersSalePrice}" readonly="readonly">
+		</th>
 	</tr>
 	<tr>
-		<td>주문개수 :
-		<input type="text" name="ordersQuantity" value="${add_Order.ordersQuantity}" >
-		</td>
+		<th>주문개수 :
+		<input type="text" name="ordersQuantity" value="${add_Order.ordersQuantity}" readonly="readonly">
+		</th>
 	</tr>
 	
 	<tr>

@@ -117,5 +117,66 @@ public CManagerOrderStausDao() {
 		return dtos;
 }//option list3
 	
+	public void OrderDelete(String ordersId) {
+		//write
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+			
+				
+				try {
+					connection = dataSource.getConnection();
+					
+					String query = "update orders set orderDeleteDate = now() where ordersId = ?";
+					preparedStatement = connection.prepareStatement(query);
+					
+				
+					preparedStatement.setInt(1, Integer.parseInt(ordersId));
+					
+					preparedStatement.executeUpdate();
+				
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						if(preparedStatement != null) preparedStatement.close();
+						if(connection != null) connection.close();
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+			
+				
+			}//delete update
+	public void OrderSoldOut(String ordersId) {
+		//write
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+			
+				
+				try {
+					connection = dataSource.getConnection();
+					
+					String query = "update orders set orderSoldOutDate = now() where ordersId = ?";
+					preparedStatement = connection.prepareStatement(query);
+					
+				
+					preparedStatement.setInt(1, Integer.parseInt(ordersId));
+					
+					preparedStatement.executeUpdate();
+				
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						if(preparedStatement != null) preparedStatement.close();
+						if(connection != null) connection.close();
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+			
+				
+			}//SOLDOUT update
+	
 
 }
