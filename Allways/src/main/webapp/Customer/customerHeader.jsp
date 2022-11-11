@@ -125,17 +125,11 @@ position: absolute;
 <script type="text/javascript">
 	function logout() {
 		var form = document.loginokay;
-		form.action = "customerMain.do";
-		sessionStorage.clear();
+		form.action = "customerAbout.do";
+		session.invalidate();
 		form.submit();
-		
 	}
 	
-	function mypage(){
-		var form=document.loginokay;
-		form.action="customerMypage.do";
-		form.submit();
-	}
 </script>
 
 <script type="text/javascript">
@@ -149,14 +143,41 @@ function signup() {
 </head>
 <body>
 	<c:if test="${ID eq null}">
-	<div class="container" style="margin-left: 0px; padding-left: 0px; border-left-width: 0px;">
-	    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5" style="width: 1430px; height: 150px;">
-	        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+	<form name="nullcustomer">
+	  <div class="container-fluid bg-light d-none d-lg-block">
+        <div class="row py-2 px-lg-5">
+            <div class="col-lg-6 text-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <small><i class="fa fa-phone-alt mr-2"></i>0507 1234 5678</small>
+                    <small class="px-3">|</small>
+                    <small><i class="fa fa-envelope mr-2"></i>allwayscake@example.com</small>
+                </div>
+            </div>
+            <div class="col-lg-6 text-right">
+                <div class="d-inline-flex align-items-center">
+                	<a class="text-primary pl-2" href="customerJoinPage.do">
+                        <i class="text-primary pl-2">JOIN</i>
+                    </a>
+                	<a class="text-primary pl-2" href="customerLoginPage.do">
+                        <i class="text-primary pl-2">LOGIN</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	
+	<div class="container-fluid p-0">
+	    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+	       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 	            <span class="navbar-toggler-icon"></span>
 	        </button>
 	        <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
 	            <div class="navbar-nav m-auto py-0">
-	                <a href="customerMain.do" id="center" class="nav-item nav-link active">HOME</a>
+		            <a href="customerAbout.do" class="navbar-brand ml-lg-3">
+		       			 <img src="./images/HeaderLogo.png"><!-- style="padding-left: 90px;" -->
+		        	</a>
+	                <a href="customerAbout.do" id="center" class="nav-item nav-link active">HOME</a>
 	                <div class="dropdown show">
 	                    <a href="#" id="center" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="padding-bottom: 0px;">CAKE</a>
 	                    <div class="dropdown-menu" id=".dropdown-menu" style="width: 80px; height: 78px; right: 0px; left: 0px; top: 80px;">
@@ -164,15 +185,9 @@ function signup() {
 	                        <a href="#" id="" class="dropdown-item" style="width: 80px;">extras</a>
 	                    </div>
 	                </div>
-	                <a href="#" id="center" class="nav-item nav-link">CLASS</a>
 	                <a href="customerWriteList.do" id="center" class="nav-item nav-link">BOARD</a>
-	                <a href="customerLocation.do" id="center" class="nav-item nav-link" style="padding-right: 20px;">LOCATION</a>
-	                
-	                <a href="customerMain.do">
-	           		 <img src="./images/HeaderLogo.png" style="padding-right: 230px; padding-left: 90px;"></img>
-	            	</a>
-	            
-	                <a href="customerAbout.do" id="center" class="nav-item nav-link">ABOUT</a>
+	                <a href="customerLocation.do" id="center" class="nav-item nav-link">LOCATION</a>
+	          		<!--   <a href="" id="center" class="nav-item nav-link" style="width: 300px;"></a> -->
 	                <a href="customerCartList.do" id="center" class="nav-item nav-link">CART</a>
 	                
 	               <%--  <div class="col-md-4 text-end" style="margin-right: 30px;">
@@ -193,25 +208,52 @@ function signup() {
 					</div>
 	                 --%>
 	                	
-	                <a href="customerJoin.do" id="center" class="nav-item nav-link">JOIN</a>
-	                <a href="customerLoginPage.do" id="center" class="nav-item nav-link">LOGIN</a>
+	               <!--  <a href="customerJoin.do" id="center" class="nav-item nav-link">JOIN</a>
+	                <a href="customerLoginPage.do" id="center" class="nav-item nav-link">LOGIN</a> -->
 	                
 	            </div>
+	            	<!-- <a href="" class="btn btn-primary d-none d-lg-block">Book Now</a> -->
 	        </div>
 	    </nav>
 					 <hr id="Line" style="right: 0px; left: 40px; margin-top: 0px;">
 	</div>
+	</form>
 	</c:if>
 	
 	<c:if test="${ID!=null}">
-	<div class="container" style="margin-left: 0px; padding-left: 0px; border-left-width: 0px;">
-	    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5" style="width: 1430px; height: 150px;">
-	        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+	<form name="loginokay">
+	  <div class="container-fluid bg-light d-none d-lg-block">
+        <div class="row py-2 px-lg-5">
+            <div class="col-lg-6 text-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <small><i class="fa fa-phone-alt mr-2"></i>0507 1234 5678</small>
+                    <small class="px-3">|</small>
+                    <small><i class="fa fa-envelope mr-2"></i>allwayscake@example.com</small>
+                </div>
+            </div>
+            <div class="col-lg-6 text-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-primary pl-2" href="customerMypage.do">
+                        <i class="">${NAME}님 환영합니다!</i>
+                    </a>
+                    <input type="submit" class="text-primary pl-2" onclick="logout()" value="LOGOUT">
+                       <!--  <i class="text-primary pl-2" >LOGOUT</i> -->
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<div class="container-fluid p-0">
+	    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+	       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 	            <span class="navbar-toggler-icon"></span>
 	        </button>
-	        <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+	       	 	<div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
 	            <div class="navbar-nav m-auto py-0">
-	                <a href="customerMain.do" id="center" class="nav-item nav-link active">HOME</a>
+		            <a href="customerAbout.do" class="navbar-brand ml-lg-3">
+		       			 <img src="./images/HeaderLogo.png"><!--  style="padding-left: 90px;"></img> -->
+		        	</a>
+	                <a href="customerAbout.do" id="center" class="nav-item nav-link active">HOME</a>
 	                <div class="dropdown show">
 	                    <a href="#" id="center" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="padding-bottom: 0px;">CAKE</a>
 	                    <div class="dropdown-menu" id=".dropdown-menu" style="width: 80px; height: 78px; right: 0px; left: 0px; top: 80px;">
@@ -219,15 +261,9 @@ function signup() {
 	                        <a href="#" id="" class="dropdown-item" style="width: 80px;">extras</a>
 	                    </div>
 	                </div>
-	                <a href="#" id="center" class="nav-item nav-link">CLASS</a>
 	                <a href="customerWriteList.do" id="center" class="nav-item nav-link">BOARD</a>
-	                <a href="customerLocation.do" id="center" class="nav-item nav-link" style="padding-right: 20px;">LOCATION</a>
-	                
-	                <a href="customerMain.do">
-	           		 <img src="./images/HeaderLogo.png" style="padding-right: 250px; padding-left: 90px;"></img>
-	            	</a>
-	            
-	                <a href="customerAbout.do" id="center" class="nav-item nav-link">ABOUT</a>
+	                <a href="customerLocation.do" id="center" class="nav-item nav-link" >LOCATION</a>
+	                <!-- <a href="" id="center" class="nav-item nav-link" style="width: 300px;"></a> -->
 	                <a href="customerCartList.do" id="center" class="nav-item nav-link">CART</a>
 	                
 						<%-- <%if (session.getAttribute("ID") == null) { %>
@@ -239,19 +275,18 @@ function signup() {
 						 --%>
 					<%-- <%=session.getAttribute("NAME") %>님, 안녕하세요!  --%>
 					
-					<a href="customerMypage.do" id="center" class="nav-item nav-link" onclick="mypage()">MYPAGE</a>
-                	<a href="customerLogout.do" id="center" class="nav-item nav-link" onclick="logout()">LOGOUT</a>
-	                
+<!-- 					<a href="customerMypage.do" id="center" class="nav-item nav-link" onclick="mypage()">MYPAGE</a>
+ -->                	<!-- <a href="customerLogout.do" id="center" class="nav-item nav-link" onclick="logout()">LOGOUT</a> -->
 	                
 			               <!--  <a href="customerJoin.do" id="center" class="nav-item nav-link">JOIN</a>
 			                <a href="customerLoginPage.do" id="center" class="nav-item nav-link">LOGIN</a> -->
-	                
 	            </div>
+	            	<!-- <a href="" class="btn btn-primary d-none d-lg-block">Book Now</a> -->
 	        </div>
 	    </nav>
 					 <hr id="Line" style="right: 0px; left: 40px; margin-top: 0px;">
 	</div>
-	
+	</form>
 	</c:if>
 
 

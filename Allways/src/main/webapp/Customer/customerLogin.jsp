@@ -58,6 +58,30 @@ input::placeholder {
 		form.action="customerLogin.do";
 		form.submit();
 	}
+	/* 
+	function backtomain(){
+		var form=document.login;
+		form.action="http://localhost:8080/All100Shoes/Customer/main.jsp";
+		form.submit();
+	}
+	
+	function findid(){
+		var form=document.login;
+		form.action="managerFindId.jsp";
+		form.submit();
+	}
+	
+	function findpw(){
+		var form=document.login;
+		form.action="managerFindPw.jsp";
+		form.submit();
+	}
+	
+	function makeaccount(){
+		var form=document.login;
+		form.action="managerAdd.jsp";
+		form.submit();
+	} */
 </script>
 
 <title>Login</title>
@@ -91,11 +115,12 @@ input::placeholder {
 					</c:otherwise> 
 				</c:choose>
 								
-				<a href="" id="TextColor">ALLWAYS 첫 방문이신가요? ▶ JOIN</a><br>
-				<a href="" id="TextColor">ID/PASSWORD를 잊어버리셨나요? ▶ ID찾기 / </a>
-				<a href="" id="TextColor">PASSWORD 찾기</a><br>
+				<a href="customerJoin.jsp" id="TextColor">ALLWAYS 첫 방문이신가요? ▶ JOIN</a><br>
+				<a href="customerFindid.jsp" id="TextColor">ID/PASSWORD를 잊어버리셨나요? ▶ ID찾기 / </a>
+				<a href="customerFindpw.jsp" id="TextColor">PASSWORD 찾기</a><br>
 				
-				<a href="customerMain.do" id="TextColor" style="font-size: 21px;">GO HOME</a>
+				<a href="customerAbout.jsp" id="TextColor" style="font-size: 21px;">GO HOME</a>
+				
 				</div>
 			<div class="col">
 			</div>

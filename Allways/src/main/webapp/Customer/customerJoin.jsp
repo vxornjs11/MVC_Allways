@@ -264,36 +264,21 @@
 			return;
 		}
 		
-		if(document.customerJoin.customerBirth.value.length == 0){
-			alert("생년월일을 선택해 주세요");
+		if(document.customerJoin.postcode.value.length == 0 || document.customerJoin.address.value.length == 0){
+			alert("주소를 입력해 주세요");
 			return;
 		}
 		
-		
-		
-		var idCheckResult = joinForm.idcheck.value;
-		console.log(idCheckValue);
-		
-		if(idCheckResult == 1){
-			joinForm.action = "Sighup.do";
-			joinForm.method = "post";
-			joinForm.submit();
+		if(document.customerJoin.idcheck.value == 1){
+			alert("회원가입이 완료되었습니다.");
+			form.submit();
+		} else{
+			alert("ID 중복체크를 해 주세요.");
 			return;
 		}
-		else{
-			alert("아이디 중복체크를 해주세요.")
-			return;
-		}
+		
 	}
 
-	if(idcheck==false){
-		alert("계정이 생성되었습니다.");
-		form.submit();
-	} else{
-		alert("ID 중복체크를 해 주세요.");
-		return;
-	}
-	
 </script>
 
 
