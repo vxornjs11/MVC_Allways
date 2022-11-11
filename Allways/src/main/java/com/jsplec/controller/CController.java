@@ -17,6 +17,7 @@ import com.jsplec.customer.command.CCustomerCakeCartCommand;
 import com.jsplec.customer.command.CCustomerCakeDetailCommand;
 import com.jsplec.customer.command.CCustomerCakeListCommand;
 import com.jsplec.customer.command.CCustomerCakeOrderCommand;
+import com.jsplec.customer.command.CCustomerCakeQuickOrderCommand;
 import com.jsplec.customer.command.CCustomerCartListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerIdCheckCommand;
@@ -260,6 +261,12 @@ public class CController extends HttpServlet {
 		// 결제
 		case ("/Customer/customerOrder.do"):
 			customercommand = new CCustomerPayCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerMain.jsp";
+			break;
+			// 결제
+		case ("/Customer/customerCakeQuickOrder.do.do"):
+			customercommand = new CCustomerCakeQuickOrderCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerMain.jsp";
 			break;

@@ -14,7 +14,7 @@ function mySubmit(index){
 		form.action = "customerCakeCart.do";
 	}
 	if (index == 2) {
-		form.action = "customerCakeOrder.do";
+		form.action = "customerCakeQuickOrder.do";
 	}
 		form.submit();
 }
