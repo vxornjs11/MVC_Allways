@@ -84,7 +84,9 @@ public class CCustomerWriteListDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select writeId, w_customerId, writeTitle, writeContent, writeInitdate from `write` where writeId = " + WRITEID;
+			String query = "select w.writeId, c.customerName, w.writeTitle, w.writeContent, w.writeInitdate "
+					+ "from `write` w, customer c "
+					+ "where w.w_customerId = c.customerId and w.writeId = " + WRITEID;
 			
 			preparedStatement = connection.prepareStatement(query);
 			
@@ -93,12 +95,12 @@ public class CCustomerWriteListDao {
 			while(rs.next()) {
 				
 				int writeId = rs.getInt(1);
-				String w_customerId = rs.getString(2);
+				String customerName = rs.getString(2);
 				String writeTitle = rs.getString(3);
 				String writeContent = rs.getString(4);
 				Date writeInitdate = rs.getDate(5);
 				
-				dto = new CCustomerWriteListDto(writeId, w_customerId, writeTitle, writeContent, writeInitdate);
+				dto = new CCustomerWriteListDto(writeId, customerName, writeTitle, writeContent, writeInitdate);
 			}
 			
 		} catch(Exception e) {
@@ -114,5 +116,53 @@ public class CCustomerWriteListDao {
 		}
 		return dto;
 	} // boardDetail() --
+	
+	
+	public ArrayList<CCustomerWriteListDto> boardComment(int writeId) {
+		
+		ArrayList<CCustomerWriteListDto> dtos = new ArrayList<CCustomerWriteListDto>();
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "select * from ( "
+							+ "	select row_number() over(order by commentId) as rownum, c.customerName, w.writeContent, w.writeInitdate, w.w_customerId "
+							+ "	from `write` w, customer c "
+							+ " where w.w_customerId = c.customerId and distinguish = 1 and commentId = " + writeId
+							+ " order by writeInitdate desc) a";
+			
+			preparedStatement = connection.prepareStatement(query);
+			
+			rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				
+				String customerName = rs.getString(2);
+				String writeContent = rs.getString(3);
+				Date writeInitdate = rs.getDate(4);
+				String w_customerId = rs.getString(5);
+				
+				CCustomerWriteListDto dto = new CCustomerWriteListDto(customerName, writeContent, writeInitdate, w_customerId);
+				dtos.add(dto);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	} // boardComment() --
+	
 	
 }

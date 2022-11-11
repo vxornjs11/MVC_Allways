@@ -8,9 +8,11 @@ public class CCustomerWriteListDto {
 	String writeTitle;
 	String writeContent;
 	String w_customerId;
+	String customerName;
 	Date writeInitdate;
 	int recommentId;
 	int writeId;
+	
 	
 	public CCustomerWriteListDto() {
 		// TODO Auto-generated constructor stub
@@ -29,14 +31,24 @@ public class CCustomerWriteListDto {
 	}
 	
 
-	public CCustomerWriteListDto(int writeId, String w_customerId, String writeTitle, String writeContent,
+	public CCustomerWriteListDto(int writeId, String customerName, String writeTitle, String writeContent,
 			Date writeInitdate) {
 		super();
 		this.writeId = writeId;
-		this.w_customerId = w_customerId;
+		this.customerName = customerName;
 		this.writeTitle = writeTitle;
 		this.writeContent = writeContent;
 		this.writeInitdate = writeInitdate;
+	}
+
+	
+	
+	public CCustomerWriteListDto(String customerName, String writeContent, Date writeInitdate, String w_customerId) {
+		super();
+		this.customerName = customerName;
+		this.writeContent = writeContent;
+		this.writeInitdate = writeInitdate;
+		this.w_customerId = w_customerId;
 	}
 
 	public int getRowNum() {
@@ -93,6 +105,14 @@ public class CCustomerWriteListDto {
 
 	public void setWriteId(int writeId) {
 		this.writeId = writeId;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 	
 	

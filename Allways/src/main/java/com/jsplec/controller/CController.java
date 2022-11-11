@@ -16,6 +16,7 @@ import com.jsplec.customer.command.CCustomerBoardWriteCommand;
 import com.jsplec.customer.command.CCustomerCakeCartCommand;
 import com.jsplec.customer.command.CCustomerCakeDetailCommand;
 import com.jsplec.customer.command.CCustomerCakeListCommand;
+import com.jsplec.customer.command.CCustomerCakeOrderCommand;
 import com.jsplec.customer.command.CCustomerCartListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerIdCheckCommand;
@@ -45,9 +46,11 @@ import com.jsplec.manager.command.CManagerOptionListCommand;
 import com.jsplec.manager.command.CManagerOptionSelect;
 import com.jsplec.manager.command.CManagerOptionUpdate;
 import com.jsplec.manager.command.CManagerOptionView;
+import com.jsplec.manager.command.CManagerOrderDeleteCommand;
 import com.jsplec.manager.command.CManagerOrderStatusCommand;
 import com.jsplec.manager.command.CManagerSearchCakeCommand;
 import com.jsplec.manager.command.CManagerSearchGoodsCommand;
+import com.jsplec.manager.command.CManagerSoldoutCommand;
 import com.jsplec.manager.command.CManagerStatusCommand;
 import com.jsplec.manager.command.CManagerUpdateCakeCommand;
 import com.jsplec.manager.command.CManagerUpdateGoodsCommand;
@@ -232,6 +235,13 @@ public class CController extends HttpServlet {
 			customercommand.execute(request, response);
 			viewPage = "customerCart.jsp";
 			break;
+			
+		case ("/Customer/customerOrder.do"):
+			customercommand = new CCustomerCakeOrderCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerOrder.jsp";
+			break;
+		
 //-------------------------------- 유승 --------------------------------
 		// 메인 화면 출력
 		case ("/Manager/managerMain.do"):
@@ -445,6 +455,17 @@ public class CController extends HttpServlet {
 			managercommand = new CManagerOptionCheck();
 			managercommand.execute(request, response);
 			viewPage = "ManagerOptionUpdate.jsp";
+			break;
+			
+		case("/Manager/deleteOrder.do"):
+			managercommand = new CManagerOrderDeleteCommand();
+			managercommand.execute(request, response);
+			viewPage = "MorderStatus.do";
+			break;
+		case("/Manager/Sold.do"):
+			managercommand = new CManagerSoldoutCommand();
+			managercommand.execute(request, response);
+			viewPage = "MorderStatus.do";
 			break;
 		}
 
