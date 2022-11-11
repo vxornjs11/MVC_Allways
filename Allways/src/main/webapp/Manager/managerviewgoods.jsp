@@ -19,9 +19,6 @@
 	a.tablebutton:hover{
 		color:#a87878;
 	}
-	table tr.header{
-		background:#ffefef;
-	}
 	a.pagebutton{
 		color:#000000;
 		font-size:1.2em;
@@ -31,7 +28,11 @@
 	a.pagebutton:hover{
 		color:#a87878;
 	}
+	table tr.header{
+		background:#fdcdcd;
+	}
 </style>
+<link rel="stylesheet" href="css/Table22.css">
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
@@ -84,7 +85,7 @@
 		</div>
 	</form>
 	<div class="tablediv">
-		<table class="table">
+		<table>
 			<tr class="header">
 				<th>메뉴번호</th>
 				<th>카테고리</th>

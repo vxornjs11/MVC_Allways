@@ -9,6 +9,7 @@
 <title>케이크 리스트 보기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
+<link rel="stylesheet" href="css/Table22.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 <style>
 	a.tablebutton{
@@ -17,7 +18,7 @@
 		margin:10px;
 	}
 	table tr.header{
-		background:#ffefef;
+		background:#fdcdcd;
 	}
 	a.tablebutton:hover{
 		color:#a87878;
@@ -53,7 +54,7 @@
 		</div>
 	</form>
 	<div class="tablediv">
-		<table class="table">
+		<table>
 			<tr class="header">
 				<th>메뉴번호</th>
 				<th>이름</th>

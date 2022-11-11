@@ -9,6 +9,7 @@
 <title>리뷰 리스트 보기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
+<link rel="stylesheet" href="css/Table22.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 <style>
 a.tablebutton{
@@ -24,6 +25,9 @@ a.pagebutton{
 	}
 a.pagebutton:hover{
 	color:#a87878;
+}
+table tr.header{
+	background:#fdcdcd;
 }
 </style>
 </head>
@@ -66,7 +70,7 @@ a.pagebutton:hover{
 		</div>
 	</form>
 	<div class="tablediv">
-		<table class="table">
+		<table>
 			<tr>
 				<th>일련번호</th>
 				<th>작성자</th>
