@@ -92,10 +92,10 @@ function writeComment(index) {
 				
 		</table>
 		<br>
-		<form name = "myform" method = "get">
+		<form action = "customerWriteComment.do" name = "myform" method = "get">
 			<input type = "hidden" name = "writeId" value = "${boardDetail.writeId}">
-			<input type = "text" name = "writeComment" size = "65" placeholder="답글 작성란">
-			<button type = "button" onclick = "writeComment(1)">OK</button>
+			<input type = "text" name = "writeContent" size = "65" placeholder="답글 작성란">
+			<button type = "submit">OK</button>
 		</form>
 		
 	</div>

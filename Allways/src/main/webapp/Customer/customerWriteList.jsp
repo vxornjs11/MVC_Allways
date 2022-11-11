@@ -111,7 +111,7 @@ function login() {
 				
 				<c:forEach var = "dto" items="${writeList }" begin="${(index - 1) * rowcount }" end="${(index) * rowcount - 1}">
 					<c:if test="${dto != null }">
-						<c:if test="${dto.recommentId == 0 }">
+						<c:if test="${dto.distinguish == 0 }">
 							<tbody>
 								<tr>
 									<td>${dto.rowNum }</td>
@@ -122,7 +122,7 @@ function login() {
 							</tbody>
 						</c:if>
 						
-						<c:if test="${dto.recommentId == 1 }">
+						<c:if test="${dto.distinguish == 1 }">
 							<tbody>
 								<tr>
 									<td>&nbsp;&nbsp;&nbsp;↳</td>

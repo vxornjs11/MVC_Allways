@@ -10,7 +10,7 @@ public class CCustomerWriteListDto {
 	String w_customerId;
 	String customerName;
 	Date writeInitdate;
-	int recommentId;
+	int distinguish;
 	int writeId;
 	
 	
@@ -19,14 +19,14 @@ public class CCustomerWriteListDto {
 	}
 
 	public CCustomerWriteListDto(int rowNum, String writeTitle, String writeContent, String w_customerId, Date writeInitdate,
-			int recommentId, int writeId) {
+			int distinguish, int writeId) {
 		super();
 		this.rowNum = rowNum;
 		this.writeTitle = writeTitle;
 		this.writeContent = writeContent;
 		this.w_customerId = w_customerId;
 		this.writeInitdate = writeInitdate;
-		this.recommentId = recommentId;
+		this.distinguish = distinguish;
 		this.writeId = writeId;
 	}
 	
@@ -91,14 +91,6 @@ public class CCustomerWriteListDto {
 		this.writeContent = writeContent;
 	}
 
-	public int getRecommentId() {
-		return recommentId;
-	}
-
-	public void setRecommentId(int recommentId) {
-		this.recommentId = recommentId;
-	}
-
 	public int getWriteId() {
 		return writeId;
 	}
@@ -113,6 +105,14 @@ public class CCustomerWriteListDto {
 
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
+	}
+
+	public int getDistinguish() {
+		return distinguish;
+	}
+
+	public void setDistinguish(int distinguish) {
+		this.distinguish = distinguish;
 	}
 	
 	
