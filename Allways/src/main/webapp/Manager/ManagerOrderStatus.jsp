@@ -78,8 +78,8 @@
 			<td>${dto2.o_goodsId}</td>
 			<td>${dto2.ordersSalePrice}</td>
 			<td>${dto2.ordersQuantity}</td>
-			<td><a href="Status.do?ordersId=${dto.ordersId}"><input type="button" value="선택"></a></td>
-			<td><a href="deleteOrder.do?ordersId=${dto.ordersId}"><input type="button" value="취소"></a></td>
+			<td><a href="Status.do?ordersId=${dto2.ordersId}"><input type="button" value="선택"></a></td>
+			<td><a href="deleteOrder.do?ordersId=${dto2.ordersId}"><input type="button" value="취소"></a></td>
 		</tr>
 			</c:forEach>
 			

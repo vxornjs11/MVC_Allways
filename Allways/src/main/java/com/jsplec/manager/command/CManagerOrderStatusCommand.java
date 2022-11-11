@@ -16,7 +16,7 @@ public class CManagerOrderStatusCommand implements CManagerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		CManagerOrderStausDao dao = new CManagerOrderStausDao();
-		ArrayList<CManagerOrderStautsDTo> dtos = dao.orderStautsList();
+			ArrayList<CManagerOrderStautsDTo> dtos = dao.orderStautsList();
 			request.setAttribute("OrdersList", dtos);
 			ArrayList<CManagerOrderStautsDTo> dtos2 = dao.orderStautsList2();
 			request.setAttribute("OrdersList2", dtos2);

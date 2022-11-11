@@ -29,92 +29,92 @@ public CManagerOrderStausDao() {
 }
 
 
-	public ArrayList<CManagerOrderStautsDTo> orderStautsList(){
-		ArrayList<CManagerOrderStautsDTo> dtos = new ArrayList<CManagerOrderStautsDTo>();
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		
-		try { 
-				connection = dataSource.getConnection();
+public ArrayList<CManagerOrderStautsDTo> orderStautsList(){
+	ArrayList<CManagerOrderStautsDTo> dtos = new ArrayList<CManagerOrderStautsDTo>();
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+	ResultSet resultSet = null;
+	
+	try { 
+			connection = dataSource.getConnection();
+			
+			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity from orders where ordersStatus = '주문접수' and orderDeleteDate is null and orderSoldOutDate is null and ordersMakeDate is null";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
 				
-				String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity from orders where ordersStatus =0";
-				preparedStatement = connection.prepareStatement(query);
-				resultSet = preparedStatement.executeQuery();
-					
-				while(resultSet.next()) {
-					int ordersId = resultSet.getInt("ordersId");
-					String ordersStatus = resultSet.getString("ordersStatus");
-					String o_customerId = resultSet.getString("o_customerId");
-					int o_cakeId = resultSet.getInt("o_cakeId");
-					int o_goodsId = resultSet.getInt("o_goodsId");
-					int ordersSalePrice = resultSet.getInt("ordersSalePrice");
-					int ordersQuantity = resultSet.getInt("ordersQuantity");
-					CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity);
-					dtos.add(dto);
-					}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return dtos;
+			while(resultSet.next()) {
+				int ordersId = resultSet.getInt("ordersId");
+				String ordersStatus = resultSet.getString("ordersStatus");
+				String o_customerId = resultSet.getString("o_customerId");
+				int o_cakeId = resultSet.getInt("o_cakeId");
+				int o_goodsId = resultSet.getInt("o_goodsId");
+				int ordersSalePrice = resultSet.getInt("ordersSalePrice");
+				int ordersQuantity = resultSet.getInt("ordersQuantity");
+				CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity);
+				dtos.add(dto);
+				}
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+	return dtos;
 }//option list
-	public ArrayList<CManagerOrderStautsDTo> orderStautsList2(){
-		ArrayList<CManagerOrderStautsDTo> dtos = new ArrayList<CManagerOrderStautsDTo>();
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		
-		try { 
-				connection = dataSource.getConnection();
+public ArrayList<CManagerOrderStautsDTo> orderStautsList2(){
+	ArrayList<CManagerOrderStautsDTo> dtos = new ArrayList<CManagerOrderStautsDTo>();
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+	ResultSet resultSet = null;
+	
+	try { 
+			connection = dataSource.getConnection();
+			
+			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity from orders where ordersStatus = '제작중' and orderDeleteDate is null and orderSoldOutDate is null ";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
 				
-				String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity from orders where ordersStatus =1";
-				preparedStatement = connection.prepareStatement(query);
-				resultSet = preparedStatement.executeQuery();
-					
-				while(resultSet.next()) {
-					int ordersId = resultSet.getInt("ordersId");
-					String ordersStatus = resultSet.getString("ordersStatus");
-					String o_customerId = resultSet.getString("o_customerId");
-					int o_cakeId = resultSet.getInt("o_cakeId");
-					int o_goodsId = resultSet.getInt("o_goodsId");
-					int ordersSalePrice = resultSet.getInt("ordersSalePrice");
-					int ordersQuantity = resultSet.getInt("ordersQuantity");
-					CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity);
-					dtos.add(dto);
-					}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return dtos;
+			while(resultSet.next()) {
+				int ordersId = resultSet.getInt("ordersId");
+				String ordersStatus = resultSet.getString("ordersStatus");
+				String o_customerId = resultSet.getString("o_customerId");
+				int o_cakeId = resultSet.getInt("o_cakeId");
+				int o_goodsId = resultSet.getInt("o_goodsId");
+				int ordersSalePrice = resultSet.getInt("ordersSalePrice");
+				int ordersQuantity = resultSet.getInt("ordersQuantity");
+				CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity);
+				dtos.add(dto);
+				}
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+	return dtos;
 }//option list2
-	public ArrayList<CManagerOrderStautsDTo> orderStautsList3(){
-		ArrayList<CManagerOrderStautsDTo> dtos = new ArrayList<CManagerOrderStautsDTo>();
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		
-		try { 
-				connection = dataSource.getConnection();
+public ArrayList<CManagerOrderStautsDTo> orderStautsList3(){
+	ArrayList<CManagerOrderStautsDTo> dtos = new ArrayList<CManagerOrderStautsDTo>();
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+	ResultSet resultSet = null;
+	
+	try { 
+			connection = dataSource.getConnection();
+			
+			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity from orders where ordersStatus = '제작완료' and orderDeleteDate is null ";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
 				
-				String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity from orders where ordersStatus =2";
-				preparedStatement = connection.prepareStatement(query);
-				resultSet = preparedStatement.executeQuery();
-					
-				while(resultSet.next()) {
-					int ordersId = resultSet.getInt("ordersId");
-					String ordersStatus = resultSet.getString("ordersStatus");
-					String o_customerId = resultSet.getString("o_customerId");
-					int o_cakeId = resultSet.getInt("o_cakeId");
-					int o_goodsId = resultSet.getInt("o_goodsId");
-					int ordersSalePrice = resultSet.getInt("ordersSalePrice");
-					int ordersQuantity = resultSet.getInt("ordersQuantity");
-					CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity);
-					dtos.add(dto);
-					}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return dtos;
+			while(resultSet.next()) {
+				int ordersId = resultSet.getInt("ordersId");
+				String ordersStatus = resultSet.getString("ordersStatus");
+				String o_customerId = resultSet.getString("o_customerId");
+				int o_cakeId = resultSet.getInt("o_cakeId");
+				int o_goodsId = resultSet.getInt("o_goodsId");
+				int ordersSalePrice = resultSet.getInt("ordersSalePrice");
+				int ordersQuantity = resultSet.getInt("ordersQuantity");
+				CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity);
+				dtos.add(dto);
+				}
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+	return dtos;
 }//option list3
 	
 	public void OrderDelete(String ordersId) {
