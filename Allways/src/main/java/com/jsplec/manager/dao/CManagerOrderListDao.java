@@ -266,7 +266,8 @@ public CManagerOrderListDao() {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select * from orders where ordersId=?";
+			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,cakeName,o_goodsId,goodsName,ordersSalePrice,ordersQuantity from orders as o, goods as g, cake as c where o.o_cakeId = c.cakeId and g.goodsId = o.o_goodsId and ordersId=?";
+			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, Integer.parseInt(ordersIdd));
 			resultSet = preparedStatement.executeQuery();
@@ -276,13 +277,15 @@ public CManagerOrderListDao() {
 				String ordersStatus = resultSet.getString("ordersStatus");
 				String o_customerId = resultSet.getString("o_customerId");
 				int o_cakeId = resultSet.getInt("o_cakeId");
+				String cakeName = resultSet.getString("cakeName");
 				int o_goodsId = resultSet.getInt("o_goodsId");
+				String goodsName = resultSet.getString("goodsName");
 				int ordersSalePrice = resultSet.getInt("ordersSalePrice");
 				int ordersQuantity = resultSet.getInt("ordersQuantity");
 			
 			
 				
-				dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity);
+				dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId,cakeName, o_goodsId,goodsName, ordersSalePrice, ordersQuantity);
 						
 				}
 			
@@ -303,36 +306,6 @@ public CManagerOrderListDao() {
 	public void Addstatus(String ordersId, String ordersStatus,String o_customerId,String o_cakeId,String o_goodsId, String ordersSalePrice ,String ordersQuantity) {
 		
 		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		try {
-			connection = dataSource.getConnection();
-			
-			String query = "insert into orders (ordersId, ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity) values (?,?,?,?,?,?,?)";
-			preparedStatement = connection.prepareStatement(query);
-
-			preparedStatement.setInt(1, Integer.parseInt(ordersId));
-			preparedStatement.setString(2, ordersStatus);
-			preparedStatement.setString(3, o_customerId);
-			preparedStatement.setInt(4, Integer.parseInt(o_cakeId));
-			preparedStatement.setInt(5, Integer.parseInt(o_goodsId));
-			preparedStatement.setInt(6, Integer.parseInt(ordersSalePrice));
-			preparedStatement.setInt(7, Integer.parseInt(ordersQuantity));
-
-			preparedStatement.executeUpdate();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(preparedStatement != null) preparedStatement.close();
-				if(connection != null) connection.close();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-	} // orderstatusAdd;
-	
-	public void Addstatus2(String ordersId, String ordersStatus,String o_customerId,String o_cakeId,String o_goodsId, String ordersSalePrice ,String ordersQuantity) {
-		Connection connection = null;
 		Connection connection2 = null;
 		PreparedStatement preparedStatement = null;
 		PreparedStatement preparedStatement2 = null;
@@ -341,7 +314,7 @@ public CManagerOrderListDao() {
 			connection2 = dataSource.getConnection();
 			
 			String query = "insert into orders (ordersId, ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity) values (?,?,?,?,?,?,?) ";
-			String query2 = "update orders set orderSoldOutDate = now() where ordersId = ?";
+			String query2 = "update orders set ordersMakeDate = now() where ordersId = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement2 = connection2.prepareStatement(query2);
 
@@ -369,6 +342,45 @@ public CManagerOrderListDao() {
 			}
 		}
 	} // orderstatusAdd;
+	
+	public void Addstatus2(String ordersId, String ordersStatus,String o_customerId,String o_cakeId,String o_goodsId, String ordersSalePrice ,String ordersQuantity) {
+			Connection connection = null;
+			Connection connection2 = null;
+			PreparedStatement preparedStatement = null;
+			PreparedStatement preparedStatement2 = null;
+			try {
+				connection = dataSource.getConnection();
+				connection2 = dataSource.getConnection();
+				
+				String query = "insert into orders (ordersId, ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity) values (?,?,?,?,?,?,?) ";
+				String query2 = "update orders set orderSoldOutDate = now() where ordersId = ?";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement2 = connection2.prepareStatement(query2);
+	
+				preparedStatement.setInt(1, Integer.parseInt(ordersId));
+				preparedStatement.setString(2, ordersStatus);
+				preparedStatement.setString(3, o_customerId);
+				preparedStatement.setInt(4, Integer.parseInt(o_cakeId));
+				preparedStatement.setInt(5, Integer.parseInt(o_goodsId));
+				preparedStatement.setInt(6, Integer.parseInt(ordersSalePrice));
+				preparedStatement.setInt(7, Integer.parseInt(ordersQuantity));
+				preparedStatement2.setInt(1, Integer.parseInt(ordersId));
+				
+				preparedStatement.executeUpdate();
+				preparedStatement2.executeUpdate();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(preparedStatement != null) preparedStatement.close();
+					if(preparedStatement2 != null) preparedStatement2.close();
+					if(connection != null) connection.close();
+					if(connection2 != null) connection.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} // orderstatusAdd;
 	
 	
 }

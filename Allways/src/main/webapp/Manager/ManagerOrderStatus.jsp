@@ -30,7 +30,9 @@
 			<th>주문상태</th>
 			<th>구매자</th>
 			<th>케이크번호</th>
+			<th>케이크이름</th>
 			<th>추가상품번호</th>
+			<th>추가상품이름</th>
 			<th>주문가격</th>
 			<th>주문개수</th>
 			<th>제작선택</th>
@@ -43,7 +45,9 @@
 			<td>${dto.ordersStatus}</td>
 			<td>${dto.o_customerId}</td>
 			<td>${dto.o_cakeId}</td>
+			<td>${dto.cakeName}</td>
 			<td>${dto.o_goodsId}</td>
+			<td>${dto.goodsName}</td>
 			<td>${dto.ordersSalePrice}</td>
 			<td>${dto.ordersQuantity}</td>
 			<td><a href="Status.do?ordersId=${dto.ordersId}"><input type="button" value="선택"></a></td>
@@ -62,7 +66,9 @@
 			<th>주문상태</th>
 			<th>구매자</th>
 			<th>케이크번호</th>
+			<th>케이크이름</th>
 			<th>추가상품번호</th>
+			<th>추가상품이름</th>
 			<th>주문가격</th>
 			<th>주문개수</th>
 			<th>제작선택</th>
@@ -75,7 +81,9 @@
 			<td>${dto2.ordersStatus}</td>
 			<td>${dto2.o_customerId}</td>
 			<td>${dto2.o_cakeId}</td>
+			<td>${dto2.cakeName}</td>
 			<td>${dto2.o_goodsId}</td>
+			<td>${dto2.goodsName}</td>
 			<td>${dto2.ordersSalePrice}</td>
 			<td>${dto2.ordersQuantity}</td>
 			<td><a href="Status.do?ordersId=${dto2.ordersId}"><input type="button" value="선택"></a></td>
@@ -92,10 +100,13 @@
 			<th>주문상태</th>
 			<th>구매자</th>
 			<th>케이크번호</th>
+			<th>케이크이름</th>
 			<th>추가상품번호</th>
+			<th>추가상품이름</th>
 			<th>주문가격</th>
 			<th>주문개수</th>
-			<th>처리완료</th>
+			<th>제작선택</th>
+			<th>주문취소</th>
 		</tr>	
 		</thead>
 			<c:forEach items = "${OrdersList3}" var = "dto3">
@@ -104,7 +115,9 @@
 			<td>${dto3.ordersStatus}</td>
 			<td>${dto3.o_customerId}</td>
 			<td>${dto3.o_cakeId}</td>
+			<td>${dto3.cakeName}</td>
 			<td>${dto3.o_goodsId}</td>
+			<td>${dto3.goodsName}</td>
 			<td>${dto3.ordersSalePrice}</td>
 			<td>${dto3.ordersQuantity}</td>
 			<td><a href="Sold.do?ordersId=${dto3.ordersId}"><input type="button" value="선택"></a></td>

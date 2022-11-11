@@ -59,10 +59,20 @@
 		<input type="text" name="o_cakeId" value="${add_Order.o_cakeId}" readonly="readonly">
 		</th>
 	</tr>
+	<tr>
+		<th>케이크이름 :
+		<input type="text" name="cakeName" value="${add_Order.cakeName}" readonly="readonly">
+		</th>
+	</tr>
 	
 	<tr>
 		<th>추가상품번호:
 		<input type="text" name="o_goodsId" value="${add_Order.o_goodsId}" readonly="readonly">
+		</th>
+	</tr>
+	<tr>
+		<th>추가상품이름:
+		<input type="text" name="goodsName" value="${add_Order.goodsName}" readonly="readonly">
 		</th>
 	</tr>
 	
@@ -76,14 +86,13 @@
 		<input type="text" name="ordersQuantity" value="${add_Order.ordersQuantity}" readonly="readonly">
 		</th>
 	</tr>
-	
 	<tr>
-		<td>
+		<th>
 			<input type="button" value="돌아가기" onclick="Return()">
 			<input type="button" value="수정" onclick="Update()">
 			<input type="button" value="삭제" onclick="Delete()">
 			<input type="submit" value="추가">
-		</td>
+		</th>
 	</tr>
 	</table>
 		

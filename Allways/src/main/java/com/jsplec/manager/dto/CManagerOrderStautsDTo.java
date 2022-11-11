@@ -5,12 +5,11 @@ public class CManagerOrderStautsDTo {
 	String ordersStatus;
 	String o_customerId;
 	int o_cakeId;
+	String cakeName;
 	int o_goodsId;
+	String goodsName;
 	int ordersSalePrice;
 	int ordersQuantity;
-	
-	
-	
 	public int getOrdersId() {
 		return ordersId;
 	}
@@ -35,11 +34,23 @@ public class CManagerOrderStautsDTo {
 	public void setO_cakeId(int o_cakeId) {
 		this.o_cakeId = o_cakeId;
 	}
+	public String getCakeName() {
+		return cakeName;
+	}
+	public void setCakeName(String cakeName) {
+		this.cakeName = cakeName;
+	}
 	public int getO_goodsId() {
 		return o_goodsId;
 	}
 	public void setO_goodsId(int o_goodsId) {
 		this.o_goodsId = o_goodsId;
+	}
+	public String getGoodsName() {
+		return goodsName;
+	}
+	public void setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
 	}
 	public int getOrdersSalePrice() {
 		return ordersSalePrice;
@@ -53,16 +64,16 @@ public class CManagerOrderStautsDTo {
 	public void setOrdersQuantity(int ordersQuantity) {
 		this.ordersQuantity = ordersQuantity;
 	}
-	
-	
-	public CManagerOrderStautsDTo(int ordersId, String ordersStatus, String o_customerId, int o_cakeId, int o_goodsId,
-			int ordersSalePrice, int ordersQuantity) {
+	public CManagerOrderStautsDTo(int ordersId, String ordersStatus, String o_customerId, int o_cakeId, String cakeName,
+			int o_goodsId, String goodsName, int ordersSalePrice, int ordersQuantity) {
 		super();
 		this.ordersId = ordersId;
 		this.ordersStatus = ordersStatus;
 		this.o_customerId = o_customerId;
 		this.o_cakeId = o_cakeId;
+		this.cakeName = cakeName;
 		this.o_goodsId = o_goodsId;
+		this.goodsName = goodsName;
 		this.ordersSalePrice = ordersSalePrice;
 		this.ordersQuantity = ordersQuantity;
 	}
