@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -34,9 +35,6 @@ public class CCustomerCakeOrderDao {
 			connection = dataSource.getConnection();
 
 			for (int i = 0; i < ORDERSID.length; i++) {
-				System.out.println(ORDERSID.length);
-				System.out.println(i);
-				System.out.println("ordersId : " + ORDERSID[i]);
 				String query1 = "select o.ordersId, o.ordersQuantity, o.ordersSalePrice, c.cakeName from cake c, orders o ";
 				String query2 = "where o.o_cakeId = c.cakeId and ordersStatus = '장바구니' and o.o_customerId = '"
 						+ CUSTOMERID + "' and ordersId = '" + ORDERSID[i] + "'";
@@ -131,6 +129,8 @@ public class CCustomerCakeOrderDao {
 
 		try {
 			connection = dataSource.getConnection();
+			
+				
 
 			String query1 = "insert into orders (ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity, ordersDate, ordersPoint) ";
 			String query2 = "values ('구매', ?, ?, 1, ?, ?, now(), ?, " + ORDERSID + ")";
