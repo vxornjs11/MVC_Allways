@@ -4,6 +4,25 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+
+<script type="text/javascript">
+
+function mySubmit(index){
+	var form = document.detail;
+	if (index == 1) {
+		form.action = "customerCakeList.do";
+	}
+	if (index == 2) {
+		form.action = "customerCakeList.do";
+	}
+	if (index == 3) {
+		form.action = "customerCakeOrder.do";
+	}
+		form.submit();
+}
+
+</script>
+
 <%@include file="customerHeader.jsp"%>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,6 +96,8 @@ color: #FFFDFD;
 </div>
 
 <div align="center">
+<form action="" name ="detail" method="get">
+
 	<table>
 		<tr align="center">
 			<th width="50px">cb</th>
@@ -86,26 +107,27 @@ color: #FFFDFD;
 			<th>Delete</th>
 		</tr>
 		
-<c:forEach var = "dto" items="${cartList }">
+	<c:forEach var = "dto" items="${cartList }">
 		<tr align="center">
-			<td><input type="checkbox"></td>
+			<td><input type="checkbox" name="ordersId" value="${dto.ordersId }"></td>
 			<td>${dto.cakeName }</td>
 			<td>${dto.ordersQuantity }</td>
 			<td>￦${dto.ordersSalePrice }</td>
 			<td>X</td>
 		</tr>
-</c:forEach>
-
+	</c:forEach>
+		<tr align="center">
+			<td><button type = "button" id="util_box" onclick = "mySubmit(1)">Delete</button></td>
+			<td><button type = "button" id="util_box" onclick = "mySubmit(2)">Go Shopping</button></td>
+			<td><button type = "button" id="util_box" onclick = "mySubmit(3)">Buy Now</button></td>
+		</tr>
 	</table>
+</form>
 </div><br>
 
-<div align="center" style="width: 850px;">
-<input type="button" value="Delete" id="delete_box">
-</div>
-
-<div align="center" style="padding-left: 350px;">
+<!-- <div align="center" style="padding-left: 350px;">
 	<table>
-		<tr align="center">
+ 		<tr align="center">
 			<td style="width: 150px;">
 				Total Quantity
 			</td>
@@ -123,13 +145,9 @@ color: #FFFDFD;
 		</tr>
 		<tr align="center">
 			<td colspan="2"><hr id="line4"></td>
-		</tr>
-		<tr align="center">
-			<td><input type="button" value="Go Shopping" id="util_box"></td>
-			<td><input type="button" value="Buy Now" id="util_box"></td>
-		</tr>
+		</tr> 
 	</table>
-</div>
+</div> -->
 
 </body>
 </html>

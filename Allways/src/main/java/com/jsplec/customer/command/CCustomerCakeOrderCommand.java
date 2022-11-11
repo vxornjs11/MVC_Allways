@@ -6,22 +6,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.jsplec.customer.dao.CCustomerCartListDao;
-import com.jsplec.customer.dto.CCustomerCartListDto;
+import com.jsplec.customer.dao.CCustomerCakeOrderDao;
+import com.jsplec.customer.dto.CCustomerCakeOrderDto;
 
-public class CCustomerCartListCommand implements CCustomerCommand {
+public class CCustomerCakeOrderCommand implements CCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-		HttpSession session = request.getSession();
-		String customerId = (String) session.getAttribute("ID");
 
-		CCustomerCartListDao dao = new CCustomerCartListDao();
-		ArrayList<CCustomerCartListDto> dtos = dao.cartList(customerId);
-		
-		request.setAttribute("cartList", dtos);
+		CCustomerCakeOrderDao dao = new CCustomerCakeOrderDao();
+
+		HttpSession session = request.getSession();
+
+		String customerId = (String) session.getAttribute("ID");
+		String[] ordersId = request.getParameterValues("ordersId");
+
+		ArrayList<CCustomerCakeOrderDto> dtos = dao.orderList(customerId, ordersId);
+		request.setAttribute("orderList", dtos);
 
 	}
 

@@ -30,8 +30,8 @@ public class CCustomerCakeCartDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query1 = "insert into orders (ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity, ordersDate, ordersPoint) ";
-			String query2 = "values ('장바구니', ?, ?, 1, ?, ?, now(), ?)";
+			String query1 = "insert into orders (ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity, ordersDate) ";
+			String query2 = "values ('장바구니', ?, ?, 1, ?, ?, now())";
 			
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			
@@ -40,7 +40,7 @@ public class CCustomerCakeCartDao {
 			preparedStatement.setInt(2, CAKEID);
 			preparedStatement.setInt(3, CAKEPRICE * ORDERSQUANTITY);
 			preparedStatement.setInt(4, ORDERSQUANTITY);
-			preparedStatement.setInt(5, (int)((CAKEPRICE * ORDERSQUANTITY) *  0.05));
+//			preparedStatement.setInt(5, (int)((CAKEPRICE * ORDERSQUANTITY) *  0.05));
 
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {

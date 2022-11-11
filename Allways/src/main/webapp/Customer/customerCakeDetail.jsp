@@ -8,10 +8,14 @@
 
 <script type="text/javascript">
 
-function cartInsert(){
+function mySubmit(index){
 	var form = document.detail;
-					
+	if (index == 1) {
 		form.action = "customerCakeCart.do";
+	}
+	if (index == 2) {
+		form.action = "customerCakeOrder.do";
+	}
 		form.submit();
 }
 
@@ -300,8 +304,8 @@ color: #FFFDFD;
 							<td colspan="2"><hr id="line4"></td>
 						</tr>
 						<tr align="center">
-							<td><input type="button" value="Cart" id="util_box" onclick="cartInsert()"></td>
-							<td><input type="button" value="Buy Now" id="util_box"></td>
+							<td><button type = "button" id="util_box" onclick = "mySubmit(1)">Cart</button></td>
+							<td><button type = "button" id="util_box" onclick = "mySubmit(2)">Buy Now</button></td>
 						</tr>
 					</table>
 				</div>
@@ -321,7 +325,7 @@ color: #FFFDFD;
 
 <!--  -->
 
-<%--  <div align="center" class="container text-center">
+  <div align="center" class="container text-center">
 		<form action = "" name = "list" method = "post">
 			<table class="table">
 				
@@ -395,7 +399,7 @@ color: #FFFDFD;
 			</tr>
 		</table>
 	</div>
-	</div>  --%>
+	</div>
 	
 	<!--  -->
 

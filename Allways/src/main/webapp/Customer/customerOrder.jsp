@@ -49,13 +49,13 @@ border: 2px solid #FECACA;
 			<th width="220px">An Optional Feature</th>
 			<th width="100px">Quantity</th>
 			<th width="120px">Price</th>
-			<th width="120px">Date</th>
+			<!-- <th width="120px">Date</th> -->
 		</tr>
 		<tr align="center">
 			<td>Cherry Fruits Cake</td>
 			<td>1</td>
 			<td>￦52,000</td>
-			<td>2022-11-11</td>
+			<!-- <td>2022-11-11</td> -->
 		</tr>
 	</table>
 </div><br>

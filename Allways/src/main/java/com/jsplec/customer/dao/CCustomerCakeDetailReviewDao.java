@@ -38,7 +38,7 @@ public class CCustomerCakeDetailReviewDao {
 			
 			String query1 = "select * from (select row_number() over(order by oreviewId) as rownum, "
 					+ "or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating, or_cakeId from ordersreview  order by oreviewId desc) o "
-					+ "where or_cakeId = " + CAKEID + " order by o.oreviewInitdate desc";
+					+ "where o.or_cakeId = " + CAKEID + " order by o.oreviewInitdate desc";
 			
 			preparedStatement = connection.prepareStatement(query1);
 			

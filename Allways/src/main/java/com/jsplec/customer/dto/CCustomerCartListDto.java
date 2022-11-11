@@ -1,7 +1,8 @@
 package com.jsplec.customer.dto;
 
 public class CCustomerCartListDto {
-
+	
+	int ordersId;
 	String cakeName;
 	int ordersSalePrice;
 	int ordersQuantity;
@@ -10,11 +11,20 @@ public class CCustomerCartListDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CCustomerCartListDto(String cakeName, int ordersSalePrice, int ordersQuantity) {
+	public CCustomerCartListDto(int ordersId, String cakeName, int ordersSalePrice, int ordersQuantity) {
 		super();
+		this.ordersId = ordersId;
 		this.cakeName = cakeName;
 		this.ordersSalePrice = ordersSalePrice;
 		this.ordersQuantity = ordersQuantity;
+	}
+
+	public int getOrdersId() {
+		return ordersId;
+	}
+
+	public void setOrdersId(int ordersId) {
+		this.ordersId = ordersId;
 	}
 
 	public String getCakeName() {
@@ -40,5 +50,6 @@ public class CCustomerCartListDto {
 	public void setOrdersQuantity(int ordersQuantity) {
 		this.ordersQuantity = ordersQuantity;
 	}
+
 
 }

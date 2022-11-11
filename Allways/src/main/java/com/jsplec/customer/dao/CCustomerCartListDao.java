@@ -9,7 +9,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.jsplec.customer.dto.CCustomerCakeListDto;
 import com.jsplec.customer.dto.CCustomerCartListDto;
 
 public class CCustomerCartListDao {
@@ -43,18 +42,19 @@ public class CCustomerCartListDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query1 = "select c.cakeName, o.ordersQuantity, o.ordersSalePrice from cake c, orders o ";
-			String query2 = "where o.o_cakeId = c.cakeId and ordersStatus = '장바구니' and o_customerid = '" + CUSTOMERID + "'";
+			String query1 = "select o.ordersId, c.cakeName, o.ordersQuantity, o.ordersSalePrice from cake c, orders o ";
+			String query2 = "where o.o_cakeId = c.cakeId and ordersStatus = '장바구니' and o.o_customerId = '" + CUSTOMERID + "'";
 
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
+				int ordersId = resultSet.getInt("ordersId");
 				String cakeName = resultSet.getString("cakeName");
 				int ordersSalePrice = resultSet.getInt("ordersSalePrice");
 				int ordersQuantity = resultSet.getInt("ordersQuantity");
 
-				CCustomerCartListDto dto = new CCustomerCartListDto(cakeName, ordersSalePrice, ordersQuantity);
+				CCustomerCartListDto dto = new CCustomerCartListDto(ordersId, cakeName, ordersSalePrice, ordersQuantity);
 				dtos.add(dto);
 			}
 

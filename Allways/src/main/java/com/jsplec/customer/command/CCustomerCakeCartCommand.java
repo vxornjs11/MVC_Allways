@@ -18,7 +18,6 @@ public class CCustomerCakeCartCommand implements CCustomerCommand {
 		
 		String cakeName = request.getParameter("cakeName");
 		
-		
 		int cakeId = Integer.parseInt(request.getParameter("cakeId"));
 		int cakePrice = Integer.parseInt(request.getParameter("cakePrice"));
 		int ordersQuantity = Integer.parseInt(request.getParameter("ordersQuantity"));
