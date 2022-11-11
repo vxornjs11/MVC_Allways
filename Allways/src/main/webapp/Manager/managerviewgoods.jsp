@@ -92,6 +92,11 @@
 				<th>이름</th>
 				<th>가격</th>
 			</tr>
+			<c:if test="${Size==0 }">
+				<tr>
+					<td colspan="4" align="center">검색 결과가 없습니다.</td>
+				</tr>
+			</c:if>
 			<c:forEach var="cnt" items="${Dtos}" begin="${(index-1)*rowcount }" end="${(index)*rowcount-1}">
 				<tr>
 					<td>${cnt.goodsId}</td>

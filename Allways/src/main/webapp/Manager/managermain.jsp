@@ -19,7 +19,7 @@
 	<div class="main">
 		<h2 class="inner">최근 매출</h2>
 		<div align="right" style="margin:1px">
-			<a href="#" class="viewall">전체보기</a>
+			<a href="MorderStatus.do" class="viewall">전체보기</a>
 		</div>
 		<div class="inner">
 			<table class="table">
@@ -61,7 +61,7 @@
 	<div class="main">
 		<h2 class="inner">최근 주문 건수</h2>
 		<div align="right" style="margin:1px">
-			<a href="#" class="viewall">전체보기</a>
+			<a href="MorderStatus.do" class="viewall">전체보기</a>
 		</div>
 		<div class="inner">
 			<table class="table">
@@ -83,7 +83,7 @@
 	<div class="main">
 		<h2 class="inner">최근 리뷰</h2>
 		<div align="right" style="margin:1px">
-			<a href="#" class="viewall">전체보기</a>
+			<a href="searchReview.do" class="viewall">전체보기</a>
 		</div>
 		<div class="inner">
 			<table class="table">

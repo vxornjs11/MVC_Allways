@@ -62,6 +62,11 @@
 				<th>조회수</th>
 				<th>좋아요</th>
 			</tr>
+			<c:if test="${Size==0 }">
+				<tr>
+					<td colspan="5" align="center">검색 결과가 없습니다.</td>
+				</tr>
+			</c:if>
 			<c:forEach var="cnt" items="${Dtos}" begin="${(index-1)*rowcount }" end="${(index)*rowcount-1}">
 				<tr>
 					<td>${cnt.cakeId}</td>

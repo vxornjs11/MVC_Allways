@@ -23,6 +23,9 @@ a.pagebutton{
 		text-decoration:none;
 		margin:10px;
 	}
+table tr.header{
+		background:#fdcdcd;
+	}
 a.pagebutton:hover{
 	color:#a87878;
 }
@@ -71,13 +74,18 @@ table tr.header{
 	</form>
 	<div class="tablediv">
 		<table>
-			<tr>
+			<tr class="header">
 				<th>일련번호</th>
 				<th>작성자</th>
 				<th>리뷰 상품명</th>
 				<th>별점</th>
 				<th>작성일</th>
 			</tr>
+			<c:if test="${Size==0 }">
+				<tr>
+					<td colspan="5" align="center">검색 결과가 없습니다.</td>
+				</tr>
+			</c:if>
 			<c:forEach var="cnt" items="${Dtos}" begin="${(index-1)*rowcount }" end="${(index)*rowcount-1}">
 				<tr>
 					<td>${cnt.oreviewId}</td>
