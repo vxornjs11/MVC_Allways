@@ -6,7 +6,10 @@ public class CCustomerCakeOptionListDto {
 	String cakeoptionCategory;
 	String cakeoptionValue;
 	int cakeoptionPrice;
-
+	int ordersId;
+	String ordersStatus;
+	
+	
 	public CCustomerCakeOptionListDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -18,6 +21,15 @@ public class CCustomerCakeOptionListDto {
 		this.cakeoptionCategory = cakeoptionCategory;
 		this.cakeoptionValue = cakeoptionValue;
 		this.cakeoptionPrice = cakeoptionPrice;
+	}
+	
+	
+	
+
+	public CCustomerCakeOptionListDto(int ordersId, String ordersStatus) {
+		super();
+		this.ordersId = ordersId;
+		this.ordersStatus = ordersStatus;
 	}
 
 	public String getCakeoptionCategory() {
@@ -50,6 +62,22 @@ public class CCustomerCakeOptionListDto {
 
 	public void setCakeoptionId(int cakeoptionId) {
 		this.cakeoptionId = cakeoptionId;
+	}
+
+	public int getOrdersId() {
+		return ordersId;
+	}
+
+	public void setOrdersId(int ordersId) {
+		this.ordersId = ordersId;
+	}
+
+	public String getOrdersStatus() {
+		return ordersStatus;
+	}
+
+	public void setOrdersStatus(String ordersStatus) {
+		this.ordersStatus = ordersStatus;
 	}
 
 }

@@ -218,17 +218,17 @@ color: #FFFDFD;
 						style="padding-left: 100px; padding-top: 10px;">
 				</div><br>
 				<div id="cake_detail" align="left" style="margin-left: 60px;">
-				${cakeInfo.cakeDetail }
+					${cakeInfo.cakeDetail }
 				</div>
 			</div>
 			
 		<form action="" style="width: 768px;" name="detail" method = "get">
 			<div class="col" style="width: 768px;"><br><input type="hidden" name="cakeId" value="${cakeInfo.cakeId }">
 				<div id="cake_name" align="left"><input type="hidden" name="cakeName" value="${cakeInfo.cakeName }">
-				${cakeInfo.cakeName }
+					${cakeInfo.cakeName }
 				</div>
 				<div id="cake_name" align="left"><input type="hidden" name="cakePrice" value="${cakeInfo.cakePrice }">
-				￦ ${cakeInfo.cakePrice }
+					￦ ${cakeInfo.cakePrice }
 				</div>
 				<div>
 					<hr id="line4">
@@ -245,37 +245,39 @@ color: #FFFDFD;
 				<div id="cake_option" align="left">
 				Shape
 				</div>
-					<div class="select" align="left">
-						<c:forEach var="dto" items="${shapeList}">
-							<c:set var="i" value="${i+1 }"/>
-								<input type="radio" id="shape${i}" name="shape" value="${dto.cakeoptionId }"><label for="shape${i}">${dto.cakeoptionValue}</label>
-								&nbsp;
-						</c:forEach>
-					</div>
+				
+				<div class="select" align="left">
+					<c:forEach var="dto" items="${shapeList}">
+						<c:set var="i" value="${i+1 }"/>
+							<input type="radio" id="shape${i}" name="shape" value="${dto.cakeoptionId }"><label for="shape${i}">${dto.cakeoptionValue}</label>
+							&nbsp;
+					</c:forEach>
+				</div>
+			
+			
+				<div id="cake_option" align="left">
+					Size
+				</div>
+				
+				<div class="select" align="left">
+					<c:forEach var="dto" items="${sizeList}">
+						<c:set var="i" value="${i+1 }"/>
+							<input type="radio" id="size${i}" name="size" value="${dto.cakeoptionId}"><label for="size${i}">${dto.cakeoptionValue}</label>
+							&nbsp;
+					</c:forEach>
+				</div>
+				
+				
 				
 				
 				<div id="cake_option" align="left">
-				Size
+					Lettering
 				</div>
-					<div class="select" align="left">
-						<c:forEach var="dto" items="${sizeList}">
-							<c:set var="i" value="${i+1 }"/>
-								<input type="radio" id="size${i}" name="size" value="${dto.cakeoptionId}"><label for="size${i}">${dto.cakeoptionValue}</label>
-								&nbsp;
-						</c:forEach>
-					</div>
 				
-				
-				
-				
-				<div id="cake_option" align="left">
-				Lettering
-				</div>
 				<div align="left">
-					<input type="text" id="lettering"
-						placeholder="Handwritten In Icing. 30 Char. Max."
-						style="padding-top: 8px;">
+					<input type="text" id="lettering" name = "detailoptionLattering" placeholder="Handwritten In Icing. 30 Char. Max." style="padding-top: 8px;">
 				</div><br>
+				
 				<div id="cake_option" align="left">
 					<input type="text" name = "ordersQuantity">
 				</div>

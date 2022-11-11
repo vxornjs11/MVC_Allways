@@ -1,10 +1,13 @@
 package com.jsplec.customer.command;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jsplec.customer.dao.CCustomerCakeCartDao;
+import com.jsplec.customer.dto.CCustomerCakeOptionListDto;
 
 public class CCustomerCakeCartCommand implements CCustomerCommand {
 
@@ -21,9 +24,16 @@ public class CCustomerCakeCartCommand implements CCustomerCommand {
 		int cakeId = Integer.parseInt(request.getParameter("cakeId"));
 		int cakePrice = Integer.parseInt(request.getParameter("cakePrice"));
 		int ordersQuantity = Integer.parseInt(request.getParameter("ordersQuantity"));
+		int shape = Integer.parseInt(request.getParameter("shape"));
+		int size = Integer.parseInt(request.getParameter("size"));
+		int[] option = {shape, size};
+		String detailoptionLattering = request.getParameter("detailoptionLattering");
 		
 		dao.cartInsert(customerId, cakeId, cakePrice, ordersQuantity);
-
+		
+		ArrayList<CCustomerCakeOptionListDto> dtos = dao.selectOrdersInfo(customerId);
+		dao.detailOptionInsert(dtos.get(0).getOrdersId(), dtos.get(0).getOrdersStatus(), option, customerId, cakeId, detailoptionLattering);
+		
 	}
 
 	@Override
