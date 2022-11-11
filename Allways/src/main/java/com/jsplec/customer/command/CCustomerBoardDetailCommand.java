@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import com.jsplec.customer.dao.CCustomerWriteListDao;
 import com.jsplec.customer.dto.CCustomerWriteListDto;
 
-public class customerBoardDetailCommand implements CCustomerCommand {
+public class CCustomerBoardDetailCommand implements CCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

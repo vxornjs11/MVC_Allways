@@ -16,6 +16,19 @@
 </head>
 <body>
 
+<script type="text/javascript">
+
+function writeComment(index) {
+	var form = document.myform;
+	if (index == 1) {
+		form.method = "get";
+		form.action = "customerWriteComment.do";
+	}
+	form.submit();
+}
+
+</script>
+
 	<%@include file="customerHeader.jsp" %>
 
 	<br>
@@ -79,8 +92,11 @@
 				
 		</table>
 		<br>
-		<input type = "text" name = "writeComment" size = "65" placeholder="답글 작성란">
-		<button type = "button" >OK</button>
+		<form name = "myform" method = "get">
+			<input type = "hidden" name = "writeId" value = "${boardDetail.writeId}">
+			<input type = "text" name = "writeComment" size = "65" placeholder="답글 작성란">
+			<button type = "button" onclick = "writeComment(1)">OK</button>
+		</form>
 		
 	</div>
 </body>

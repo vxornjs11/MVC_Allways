@@ -26,7 +26,8 @@ import com.jsplec.customer.command.CCustomerQuestionCommand;
 import com.jsplec.customer.command.CCustomerReviewListCommand;
 import com.jsplec.customer.command.CCustomerWriteListCommand;
 import com.jsplec.customer.command.CCustomerWriteReviewCommand;
-import com.jsplec.customer.command.customerBoardDetailCommand;
+import com.jsplec.customer.command.CCustomerBoardDetailCommand;
+import com.jsplec.customer.command.CCustomerWriteCommentCommand;
 import com.jsplec.manager.command.CManagerAddCakeCommand;
 import com.jsplec.manager.command.CManagerAddGoodsCommand;
 import com.jsplec.manager.command.CManagerAddStatusCommand;
@@ -211,16 +212,17 @@ public class CController extends HttpServlet {
 			
 		// 게시판 클릭
 		case ("/Customer/customerBoardDetail.do"):
-			customercommand = new customerBoardDetailCommand();
+			customercommand = new CCustomerBoardDetailCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerBoardDetail.jsp";
 			break;
 			
 		// 게시판 답글달기
 		case ("/Customer/customerWriteComment.do"):
-			customercommand = new customerBoardDetailCommand();
+			System.out.println("얍!!");
+			customercommand = new CCustomerWriteCommentCommand();
 			customercommand.execute(request, response);
-			viewPage = "customerBoardDetail.jsp";
+			viewPage = "customerBoardDetail.do";
 			break;
 		
 //----------------------- 오수 --------------------------------
@@ -248,7 +250,7 @@ public class CController extends HttpServlet {
 			viewPage = "customerCart.jsp";
 			break;
 			
-		case ("/Customer/customerOrder.do"):
+		case ("/Customer/customerOrderPage.do"):
 			customercommand = new CCustomerCakeOrderCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerOrder.jsp";
