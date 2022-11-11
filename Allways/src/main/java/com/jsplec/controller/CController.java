@@ -113,6 +113,7 @@ public class CController extends HttpServlet {
 
 //-------------------------------- 예진 --------------------------------
 		case ("/Customer/customerAbout.do"):
+			session.invalidate();
 			viewPage = "customerAbout.jsp";
 			break;
 
@@ -130,7 +131,7 @@ public class CController extends HttpServlet {
 			customercommand = new CCustomerLoginCommand();
 			boolean check = customercommand.execute2(request, response);
 			if (check == true) {
-				viewPage = "customerAbout.do";
+				viewPage = "customerAbout.jsp";
 			} else {
 				request.setAttribute("CHECK", check);
 				viewPage = "customerLogin.jsp";
