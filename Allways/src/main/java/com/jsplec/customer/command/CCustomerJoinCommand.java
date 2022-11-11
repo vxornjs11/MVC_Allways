@@ -23,6 +23,8 @@ public class CCustomerJoinCommand implements CCustomerCommand {
 		
 		CCustomerJoinDao dao = new CCustomerJoinDao();
 		boolean check = dao.idCheck(customerId);
+		dao.insertAction(customerId, customerPw, customerName, customerGender, customerPhone, customerEmail, customerBirthday, customerPostcode, customerAddress, customerAddressDetail);
+		
 		
 		request.setAttribute("CHECK", check);
 		request.setAttribute("CUSTOMERID", customerId);

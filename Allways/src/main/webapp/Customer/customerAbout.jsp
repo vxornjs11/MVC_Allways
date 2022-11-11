@@ -44,7 +44,7 @@
 </head>
 <body style="background: #FFF1F1">
 <%@include file="customerHeader.jsp" %>
-	<form action="customerAbout.do" name="customerAbout" method="post">
+	<form action="customerAbout2.do" name="customerAbout" method="post">
 		<div class="container text-center">
 			<div class="row">
 				<div class="col">

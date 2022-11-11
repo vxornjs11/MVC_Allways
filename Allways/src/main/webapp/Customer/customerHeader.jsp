@@ -126,7 +126,6 @@ position: absolute;
 	function logout() {
 		var form = document.loginokay;
 		form.action = "customerAbout.do";
-		session.invalidate();
 		form.submit();
 	}
 	
@@ -142,7 +141,7 @@ function signup() {
 
 </head>
 <body>
-	<c:if test="${ID eq null}">
+	<c:if test="${ID == null}">
 	<form name="nullcustomer">
 	  <div class="container-fluid bg-light d-none d-lg-block">
         <div class="row py-2 px-lg-5">
@@ -174,7 +173,7 @@ function signup() {
 	        </button>
 	        <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
 	            <div class="navbar-nav m-auto py-0">
-		            <a href="customerAbout.do" class="navbar-brand ml-lg-3">
+		            <a href="customerAbout.jsp" class="navbar-brand ml-lg-3">
 		       			 <img src="./images/HeaderLogo.png"><!-- style="padding-left: 90px;" -->
 		        	</a>
 	                <a href="customerAbout.do" id="center" class="nav-item nav-link active">HOME</a>
@@ -234,9 +233,9 @@ function signup() {
             <div class="col-lg-6 text-right">
                 <div class="d-inline-flex align-items-center">
                     <a class="text-primary pl-2" href="customerMypage.do">
-                        <i class="">${NAME}님 환영합니다!</i>
+                        <i class="">${NAME}님 환영합니다!&nbsp;&nbsp;&nbsp;</i>
                     </a>
-                    <input type="submit" class="text-primary pl-2" onclick="logout()" value="LOGOUT">
+                    <input type="button" class="text-primary pl-2" onclick="logout()" value="LOGOUT">
                        <!--  <i class="text-primary pl-2" >LOGOUT</i> -->
                 </div>
             </div>
@@ -253,7 +252,7 @@ function signup() {
 		            <a href="customerAbout.do" class="navbar-brand ml-lg-3">
 		       			 <img src="./images/HeaderLogo.png"><!--  style="padding-left: 90px;"></img> -->
 		        	</a>
-	                <a href="customerAbout.do" id="center" class="nav-item nav-link active">HOME</a>
+	                <a href="customerAbout.jsp" id="center" class="nav-item nav-link active">HOME</a>
 	                <div class="dropdown show">
 	                    <a href="#" id="center" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="padding-bottom: 0px;">CAKE</a>
 	                    <div class="dropdown-menu" id=".dropdown-menu" style="width: 80px; height: 78px; right: 0px; left: 0px; top: 80px;">
@@ -266,6 +265,7 @@ function signup() {
 	                <!-- <a href="" id="center" class="nav-item nav-link" style="width: 300px;"></a> -->
 	                <a href="customerCartList.do" id="center" class="nav-item nav-link">CART</a>
 	                
+	              
 						<%-- <%if (session.getAttribute("ID") == null) { %>
 							<form name="loginbtn" method="post">
 								<input id="center" type="button" class="nav-item nav-link" onclick="login()" value="LOGIN"> 
