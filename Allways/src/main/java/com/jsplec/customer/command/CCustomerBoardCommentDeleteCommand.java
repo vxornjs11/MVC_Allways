@@ -10,7 +10,7 @@ public class CCustomerBoardCommentDeleteCommand implements CCustomerCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
-		int writeId = Integer.parseInt(request.getParameter("writeId"));
+		int writeId = Integer.parseInt(request.getParameter("WRITEID"));
 		
 		CCustomerBoardDeleteDao dao = new CCustomerBoardDeleteDao();
 		dao.boardCommentDelete(writeId);

@@ -71,11 +71,7 @@ function writeComment(index) {
 											          <td width="300">&nbsp;&nbsp;↳ ${dto.writeContent }</td>
 											          <td width="110">${dto.customerName }</td>
 											          <td width="120">${dto.writeInitdate }</td>
-											          <td><a href = "customerBoardReCommentDelete.do?recommentId=${dto.recommentId }">X</a></td>
-											          <td>
-											          	<input type = "text">
-											          	<a href = "customerWriteComment.do?writeId=<%=request.getParameter("writeId")%>&commentWriteId=${dto.writeId}"><button>OK</button></a>
-											          </td>
+											          <td><a href = "customerBoardReCommentDelete.do?recommentId=${dto.recommentId }&writeId=${boardDetail.writeId}">X</a></td>
 											        </tr>
 										      </tbody>
 											</c:when>
@@ -100,7 +96,7 @@ function writeComment(index) {
 											          <td width="300">${dto.writeContent }</td>
 											          <td width="110">${dto.customerName }</td>
 											          <td width="120">${dto.writeInitdate }</td>
-											          <td><a href = "customerBoardCommentDelete.do?writeId=${dto.writeId }">X</a></td>
+											          <td><a href = "customerBoardCommentDelete.do?WRITEID=${dto.writeId }&writeId=${boardDetail.writeId}">X</a></td>
 											        </tr>
 										      </tbody>
 											</c:when>
@@ -183,11 +179,11 @@ function writeComment(index) {
 		<br>
 		
 		<form action = "customerWriteComment.do" name = "myform" method = "post">
+			<input type = "hidden" name = "writeId" value = "${boardDetail.writeId}">
 			<input type = "text" name = "writeContent" size = "65" placeholder="답글 작성란">
 			<button type = "submit">OK</button>
 		</form>
 		
 	</div>
-	
 </body>
 </html>

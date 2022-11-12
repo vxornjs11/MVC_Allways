@@ -45,7 +45,6 @@ public class CCustomerReviewListCommand implements CCustomerCommand {
 		
 		ArrayList<CCustomerReviewListDto> dtos = dao.reviewList1(sort, searchContent, combo);
 		
-		request.setAttribute("reviewList", dtos);
 		request.setAttribute("listcount", dtos.size());
 		request.setAttribute("sort", sort);
 		

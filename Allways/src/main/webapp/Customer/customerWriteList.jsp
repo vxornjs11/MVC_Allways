@@ -58,13 +58,13 @@ function login() {
 						<a href = "customerWriteList.do"><button type = "button" name = "buttons" id="button_group">BOARD</button></a>&nbsp;
 					</td>
 					<td>
-						<a href = "customerOrdersReview.do"><button type = "button" name = "buttons" id="button_group" onclick = "reviewList();">REVIEW</button></a>&nbsp;
+						<a href = "customerOrdersReview.do"><button type = "button" name = "buttons" id="button_group">REVIEW</button></a>&nbsp;
 					</td>
 					<td>
 						<a href = ""><button type = "button" name = "buttons" id="button_group">FAQ</button></a>&nbsp;
 					</td>
 					<td>
-						<a href = "customerQuestionList.do"><button type = "button" name = "buttons" id="button_group" onclick = "QNA();">Q&A</button></a>
+						<a href = "customerQuestionList.do"><button type = "button" name = "buttons" id="button_group">Q&A</button></a>
 					</td>
 				</tr>
 				
@@ -87,8 +87,8 @@ function login() {
 				</c:choose>
 	
 				<select style = "margin-left: 720px;" name = "combo">
-					<option value = "or_customerId">작성자</option>
-					<option value = "oreviewContent">내용</option>
+					<option value = "w_customerId">작성자</option>
+					<option value = "writeTitle">내용</option>
 				</select>
 				
 				<input type = "text" name = "searchContent" size = "20"> &nbsp;
@@ -105,9 +105,9 @@ function login() {
 					<tr>
 						<th width="80">No</th>
 						<th width="400" style = "text-align: left">제목 + 답글</th>
-						<th width="130">작성자</th>
-						<th width="130">작성일</th>
-						<th width="130"></th>
+						<th width="100">작성자</th>
+						<th width="100">작성일</th>
+						<th width="100"></th>
 					</tr>
 				</thead>
 				
@@ -138,7 +138,7 @@ function login() {
 													<td style = "text-align: left">${dto.writeContent }</td>
 													<td>${dto.w_customerId }</td>
 													<td>${dto.writeInitdate }</td>
-													<td><a href = "customerBoardCommentDelete.do?writeId=${dto.writeId }">X</a></td>
+													<td><a href = "customerBoardCommentDelete.do?WRITEID=${dto.writeId }">X</a></td>
 												</tr>
 											</tbody>
 										</c:if>

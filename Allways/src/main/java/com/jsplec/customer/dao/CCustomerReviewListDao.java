@@ -85,8 +85,8 @@ public class CCustomerReviewListDao {
 			
 			String query1 = "select * from (select row_number() over(order by oreviewId) as rownum, "
 					+ "or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating from ordersreview  order by oreviewId desc) o "
-					+ "where rownum between " + index + " and " + maxPage + " and " + combo + " like '%" + searchContent + "%' order by " + sort + " desc";
-			
+					+ "where " + combo + " like '%" + searchContent + "%' order by " + sort + " desc";
+
 			preparedStatement = connection.prepareStatement(query1);
 			
 			rs = preparedStatement.executeQuery();

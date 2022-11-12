@@ -270,14 +270,14 @@ public class CController extends HttpServlet {
 		case ("/Customer/customerBoardCommentDelete.do"):
 			customercommand = new CCustomerBoardCommentDeleteCommand();
 			customercommand.execute(request, response);
-			viewPage = "customerWriteList.do";
+			viewPage = "customerBoardDetail.do";
 			break;
 		
 		// 게시판 댓글 삭제
 		case ("/Customer/customerBoardReCommentDelete.do"):
 			customercommand = new CCustomerBoardReCommentDeleteCommand();
 			customercommand.execute(request, response);
-			viewPage = "customerWriteList.do";
+			viewPage = "customerBoardDetail.do";
 			break;
 		
 		
