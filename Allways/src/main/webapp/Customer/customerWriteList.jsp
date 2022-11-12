@@ -188,7 +188,7 @@ function login() {
 									<tbody>
 										<tr>
 											<td>&nbsp;&nbsp;&nbsp;↳</td>
-											<td style = "text-align: left">삭제된 게시글의 답글입니다.</td>
+											<td style = "text-align: left">삭제된 답글입니다.</td>
 											<td>${dto.w_customerId }</td>
 											<td>${dto.writeInitdate }</td>
 										</tr>

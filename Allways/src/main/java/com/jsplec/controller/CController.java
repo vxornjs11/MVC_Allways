@@ -255,7 +255,7 @@ public class CController extends HttpServlet {
 			viewPage = "customerWriteList.do";
 			break;
 		
-		// 게시판 답글 삭제
+		// 게시판 댓글 삭제
 		case ("/Customer/customerBoardReCommentDelete.do"):
 			customercommand = new CCustomerBoardReCommentDeleteCommand();
 			customercommand.execute(request, response);

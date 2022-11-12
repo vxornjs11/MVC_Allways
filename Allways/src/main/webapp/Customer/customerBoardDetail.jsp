@@ -60,56 +60,117 @@ function writeComment(index) {
 					<c:forEach var = "dto" items="${boardComment }">
 					
 						<c:choose>
-							<c:when test="${dto.distinguish == 2 }">
+							<c:when test="${dto.writeDeletedate == null }">
+							
 								<c:choose>
-									<c:when test="${CUSTOMERID == dto.w_customerId }">
-										<tbody>
-									        <tr>
-									          <td width="300">↳ ${dto.writeContent }</td>
-									          <td width="110">${dto.customerName }</td>
-									          <td width="120">${dto.writeInitdate }</td>
-									          <td><a href = "customerBoardReCommentDelete.do">X</a></td>
-									        </tr>
-								      </tbody>
+									<c:when test="${dto.distinguish == 2 }">
+										<c:choose>
+											<c:when test="${CUSTOMERID == dto.w_customerId }">
+												<tbody>
+											        <tr>
+											          <td width="300">&nbsp;&nbsp;↳ ${dto.writeContent }</td>
+											          <td width="110">${dto.customerName }</td>
+											          <td width="120">${dto.writeInitdate }</td>
+											          <td><a href = "customerBoardReCommentDelete.do?recommentId=${dto.recommentId }">X</a></td>
+											        </tr>
+										      </tbody>
+											</c:when>
+											
+											<c:otherwise>
+												<tbody>
+											        <tr>
+											          <td width="300">&nbsp;&nbsp;↳ ${dto.writeContent }</td>
+											          <td width="110">${dto.customerName }</td>
+											          <td width="120">${dto.writeInitdate }</td>
+											        </tr>
+										      </tbody>
+											</c:otherwise>
+										</c:choose>
 									</c:when>
 									
 									<c:otherwise>
-										<tbody>
-									        <tr>
-									          <td width="300">↳ ${dto.writeContent }</td>
-									          <td width="110">${dto.customerName }</td>
-									          <td width="120">${dto.writeInitdate }</td>
-									        </tr>
-								      </tbody>
+										<c:choose>
+											<c:when test="${CUSTOMERID == dto.w_customerId }">
+												<tbody>
+											        <tr>
+											          <td width="300">${dto.writeContent }</td>
+											          <td width="110">${dto.customerName }</td>
+											          <td width="120">${dto.writeInitdate }</td>
+											          <td><a href = "customerBoardCommentDelete.do?writeId=${dto.writeId }">X</a></td>
+											        </tr>
+										      </tbody>
+											</c:when>
+											
+											<c:otherwise>
+												<tbody>
+											        <tr>
+											          <td width="300">${dto.writeContent }</td>
+											          <td width="110">${dto.customerName }</td>
+											          <td width="120">${dto.writeInitdate }</td>
+											        </tr>
+										     	</tbody>
+											</c:otherwise> 
+										</c:choose>
 									</c:otherwise>
+									
 								</c:choose>
 							</c:when>
-							
+								
 							<c:otherwise>
+							
 								<c:choose>
-									<c:when test="${CUSTOMERID == dto.w_customerId }">
-										<tbody>
-									        <tr>
-									          <td width="300">${dto.writeContent }</td>
-									          <td width="110">${dto.customerName }</td>
-									          <td width="120">${dto.writeInitdate }</td>
-									          <td><a href = "">X</a></td>
-									        </tr>
-								      </tbody>
+									<c:when test="${dto.distinguish == 2 }">
+										<c:choose>
+											<c:when test="${CUSTOMERID == dto.w_customerId }">
+												<tbody>
+											        <tr>
+											          <td width="300">&nbsp;&nbsp;↳ 삭제된 글 입니다.</td>
+											          <td width="110">${dto.customerName }</td>
+											          <td width="120">${dto.writeInitdate }</td>
+											        </tr>
+										      </tbody>
+											</c:when>
+											
+											<c:otherwise>
+												<tbody>
+											        <tr>
+											          <td width="300">&nbsp;&nbsp;↳ ${dto.writeContent }</td>
+											          <td width="110">${dto.customerName }</td>
+											          <td width="120">${dto.writeInitdate }</td>
+											        </tr>
+										      </tbody>
+											</c:otherwise>
+										</c:choose>
 									</c:when>
 									
 									<c:otherwise>
-										<tbody>
-									        <tr>
-									          <td width="300">${dto.writeContent }</td>
-									          <td width="110">${dto.customerName }</td>
-									          <td width="120">${dto.writeInitdate }</td>
-									        </tr>
-								     	</tbody>
-									</c:otherwise> 
+										<c:choose>
+											<c:when test="${CUSTOMERID == dto.w_customerId }">
+												<tbody>
+											        <tr>
+											          <td width="300">삭제된 글 입니다.</td>
+											          <td width="110">${dto.customerName }</td>
+											          <td width="120">${dto.writeInitdate }</td>
+											        </tr>
+										      </tbody>
+											</c:when>
+											
+											<c:otherwise>
+												<tbody>
+											        <tr>
+											          <td width="300">${dto.writeContent }</td>
+											          <td width="110">${dto.customerName }</td>
+											          <td width="120">${dto.writeInitdate }</td>
+											        </tr>
+										     	</tbody>
+											</c:otherwise> 
+										</c:choose>
+									</c:otherwise>
+									
 								</c:choose>
-							</c:otherwise>
 							
+							</c:otherwise>
+								
 						</c:choose>
 						
 					</c:forEach>

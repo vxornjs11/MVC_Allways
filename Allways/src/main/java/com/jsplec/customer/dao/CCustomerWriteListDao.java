@@ -122,7 +122,7 @@ public class CCustomerWriteListDao {
 	} // boardDetail() --
 	
 	
-	public ArrayList<CCustomerWriteListDto> boardComment(int writeId) {
+	public ArrayList<CCustomerWriteListDto> boardComment(int WRITEID) {
 		
 		ArrayList<CCustomerWriteListDto> dtos = new ArrayList<CCustomerWriteListDto>();
 		
@@ -134,9 +134,9 @@ public class CCustomerWriteListDao {
 			connection = dataSource.getConnection();
 			
 			String query = "select * from ( "
-					+ "	select row_number() over(order by commentId) as rownum, c.customerName, w.writeContent, w.writeInitdate, w.w_customerId, distinguish "
+					+ "	select row_number() over(order by commentId) as rownum, c.customerName, w.writeContent, w.writeInitdate, w.w_customerId, distinguish, recommentId, writeDeletedate, writeId "
 					+ "	from `write` w, customer c "
-					+ "    where commentId = " + writeId + " and distinguish > 0 and w.w_customerId = c.customerId "
+					+ "    where commentId = " + WRITEID + " and distinguish > 0 and w.w_customerId = c.customerId "
 					+ "    order by recommentId) w";
 			
 			preparedStatement = connection.prepareStatement(query);
@@ -149,8 +149,12 @@ public class CCustomerWriteListDao {
 				Date writeInitdate = rs.getDate(4);
 				String w_customerId = rs.getString(5);
 				int distinguish = rs.getInt(6);
+				int recommentId = rs.getInt(7);
+				Date writeDeletedate = rs.getDate(8);
+				int writeId = rs.getInt(9);
 				
-				CCustomerWriteListDto dto = new CCustomerWriteListDto(customerName, writeContent, writeInitdate, w_customerId, distinguish);
+				CCustomerWriteListDto dto = new CCustomerWriteListDto(customerName, writeContent, writeInitdate, w_customerId,
+																	distinguish, recommentId, writeDeletedate, writeId);
 				dtos.add(dto);
 			}
 			

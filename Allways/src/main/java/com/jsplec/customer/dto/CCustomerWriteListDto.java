@@ -14,6 +14,7 @@ public class CCustomerWriteListDto {
 	int writeId;
 	Date writeDeletedate;
 	int commentId;
+	int recommentId;
 	
 	
 	public CCustomerWriteListDto() {
@@ -47,13 +48,17 @@ public class CCustomerWriteListDto {
 
 	
 	
-	public CCustomerWriteListDto(String customerName, String writeContent, Date writeInitdate, String w_customerId, int distinguish) {
+	public CCustomerWriteListDto(String customerName, String writeContent, Date writeInitdate, String w_customerId, 
+			int distinguish, int recommentId, Date writeDeletedate, int writeId) {
 		super();
 		this.customerName = customerName;
 		this.writeContent = writeContent;
 		this.writeInitdate = writeInitdate;
 		this.w_customerId = w_customerId;
 		this.distinguish = distinguish;
+		this.recommentId = recommentId;
+		this.writeDeletedate = writeDeletedate;
+		this.writeId = writeId;
 	}
 
 	public int getRowNum() {
@@ -135,6 +140,15 @@ public class CCustomerWriteListDto {
 	public void setCommentId(int commentId) {
 		this.commentId = commentId;
 	}
+
+	public int getRecommentId() {
+		return recommentId;
+	}
+
+	public void setRecommentId(int recommentId) {
+		this.recommentId = recommentId;
+	}
+
 	
 	
 	

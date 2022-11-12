@@ -79,4 +79,33 @@ public class CCustomerBoardDeleteDao {
 		}
 	}
 	
+	
+	public void boardReCommentDelete(int recommentId) {
+		
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "update `write` set writeDeletedate = now() where recommentId = " + recommentId;
+			ps = connection.prepareStatement(query);
+			ps.executeUpdate();
+			
+			ps.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if(ps!=null)ps.close();
+				if (connection!=null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
 }
