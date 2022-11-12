@@ -20,6 +20,7 @@ import com.jsplec.customer.command.CCustomerCakeDetailCommand;
 import com.jsplec.customer.command.CCustomerCakeListCommand;
 import com.jsplec.customer.command.CCustomerCakeOrderCommand;
 import com.jsplec.customer.command.CCustomerCakeQuickOrderCommand;
+import com.jsplec.customer.command.CCustomerCartDeleteCommand;
 import com.jsplec.customer.command.CCustomerCartListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerFindIdCommand;
@@ -294,17 +295,25 @@ public class CController extends HttpServlet {
 			customercommand.execute(request, response);
 			viewPage = "customerOrder.jsp";
 			break;
+			
 		// 결제
 		case ("/Customer/customerOrder.do"):
 			customercommand = new CCustomerPayCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerMain.jsp";
 			break;
-			// 결제
-		case ("/Customer/customerCakeQuickOrder.do.do"):
+			
+		// 결제
+		case ("/Customer/customerCakeQuickOrder.do"):
 			customercommand = new CCustomerCakeQuickOrderCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerMain.jsp";
+			break;
+			
+		case ("/Customer/customerCartDelete.do"):
+			customercommand = new CCustomerCartDeleteCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCartList.do";
 			break;
 		
 //-------------------------------- 유승 --------------------------------
