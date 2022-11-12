@@ -184,22 +184,22 @@
 
 
 	function CheckId(){
-		var joinForm = document.customerJoin;
-		var id = form.customerId.value;
+		var form = document.customerJoin;
+		form.action="idcheck.do";
+		form.submit();
+		/* var id = document.customerJoin.customerId.value;
+		var regExId=/^[a-z|0-9]+$/; */
 		
-		var regExId=/^[a-z|0-9]+$/;
-		
-		if(!regExId.test(id)){
+		/* if(!regExId.test(id)){
 			alert("ID는 영어 소문자와 숫자만 입력 가능합니다.");
 			return;
-		}else{
-			joinForm.action="idcheck.do";
-			joinForm.submit();
-		}
+		}else{ */
+		/* } */
 	}
-	
+
 	function joinAction(){
 		
+		var form = document.customerJoin;
 		var regExId=/^[a-z|0-9]+$/; //영문 소문자와 숫자만 한 글자 이상
 		var regExPw=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/; //영문 대문자와 소문자, 특수문자, 숫자 모두 포함하여 8글자 이상
 		var regExPhone=/^[0-9].{9,11}$/; //숫자만 9글자 이상 11글자 이하
@@ -241,8 +241,8 @@
 			return;
 		}
 		
-		if(!regExPhone.test(document.customerJoin.customerPhone.value)){
-			alert("전화번호는 숫자만 입력 가능합니다.");
+		if(!regExPhone.test(document.customerJoin.customerPhone.value) || document.customerJoin.customerPhone.value.length >= 12){
+			alert("전화번호는 '-'빼고 11자리 숫자만 입력해 주세요! 예) 01012345678");
 			customerJoin.customerPhone.focus();
 			return;
 		}
@@ -258,7 +258,7 @@
 			customerJoin.email2.focus();
 			return;
 		}
-		
+		 
 		if(document.customerJoin.customerBirth.value.length == 0){
 			alert("생년월일을 선택해 주세요");
 			return;
@@ -269,12 +269,17 @@
 			return;
 		}
 		
-		if(document.customerJoin.idcheck.value == 1){
-			alert("회원가입이 완료되었습니다.");
-			form.submit();
-		} else{
+		if(document.customerJoin.addressDetail.value.length == 0){
+			alert("상세주소를 입력해 주세요");
+			return;
+		}
+		
+		if(document.customerJoin.idcheck.value != 1){
 			alert("ID 중복체크를 해 주세요.");
 			return;
+		}else{
+			alert("회원가입이 완료되었습니다.");
+			form.submit();
 		}
 		
 	}
@@ -295,11 +300,21 @@
 					<br><h2 id="Join">J O I N</h2><br>
 					
 					<label id="label_design">ID</label>
+					
+					<c:if test="${CHECK==null}">
+					<input class="input_id" id="id_box" type="text" name="customerId" placeholder="영어 소문자와 숫자만 입력 가능" value="">
+					<input type="hidden" name="idcheck" value="2"/>
+					<input type="button" name="btnIdCheck" id="check_box" value="중복체크" onclick="CheckId()">
+					</c:if>
+					<c:if test="${CHECK==true}">
 					<input class="input_id" id="id_box" type="text" name="customerId" placeholder="영어 소문자와 숫자만 입력 가능" value="${CHECKID}">
-					<input type="button" name="btnIdCheck" id="check_box" value="중복체크" onclick="CheckId()"><br>
-					<c:if test="${CHECK==true }">이미 존재하는 ID입니다.</c:if>
-					<c:if test="${CHECK==false }">사용 가능한 ID입니다.
-					<td><input type="hidden" name="idcheck" value="1"/></td></c:if><br>
+					<input type="hidden" name="idcheck" value="0"/>
+					<input type="button" name="btnIdCheck" id="check_box" value="중복체크" onclick="CheckId()"><br>이미 존재하는 ID입니다.
+					</c:if>
+					<c:if test="${CHECK==false}">
+					<input class="input_id" id="id_box" type="text" name="customerId" placeholder="영어 소문자와 숫자만 입력 가능" value="${CHECKID}">
+					<input type="hidden" name="idcheck" value="1"/>
+					<input type="button" name="btnIdCheck" id="check_box" value="중복체크" onclick="CheckId()"><br>사용 가능한 ID입니다.</c:if><br><br>
 					
 					<label id="label_design">PASSWORD</label>
 					<input id="input_box" type="password" name="customerPw" placeholder="비밀번호 입력"><br><br>
@@ -308,17 +323,17 @@
 					<input id="input_box" type="password" name="customerPwCheck" placeholder="비밀번호 재입력"><br><br>
 					
 					<label id="label_design">NAME</label>
-					<input id="input_box" type="text" name="customerName" placeholder="이름을 입력해주세요"><br><br>
+					<input id="input_box" type="text" name="customerName" placeholder="이름을 입력해주세요" value="${NAME}"><br><br>
 					
 					<label id="label_design">GENDER</label>
 					<input id="radio_design" type="radio" name="customerGender" value="woman" checked="checked"> WOMAN&nbsp;
 					<input id="radio_design" type="radio" name="customerGender" value="man"> MAN<br><br>
 					
 					<label id="label_design">PHONE</label>
-					<input id="input_box" type="text" name="customerPhone" placeholder=" '-' 를 제외하고 숫자만 입력해주세요"><br><br>
+					<input id="input_box" type="text" name="customerPhone" placeholder=" '-' 를 제외하고 숫자만 입력해주세요" value="${PHONE}"><br><br>
 					
 					<label id="label_design">EMAIL</label>
-					<input id="email_first" type="text" name="email1"> @ <input id="email_first" type="text" name="email2" placeholder="직접 입력">
+					<input id="email_first" type="text" name="email1" value="${EMAIL}"> @ <input id="email_first" type="text" name="email2" placeholder="직접 입력">
 						<select id="input_box" name="selectemail" style="margin-top: 5px;" onChange="selectEmail(this)">
 							<option value="" selected="selected">선택하세요</option>
 							<option value="naver.com">naver.com</option>
@@ -328,7 +343,7 @@
 						</select><br><br>
 					
 					<label id="label_design">BIRTHDAY</label>
-					<input id="input_box" type="date" name="customerBirth" style="padding-right: 10px;"><br><br>
+					<input id="input_box" type="date" name="customerBirth" style="padding-right: 10px;" value="${BIRTH}"><br><br>
 					
 					<label id="label_design">ADDRESS</label>
 					<input type="text" 

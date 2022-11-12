@@ -100,6 +100,36 @@ public class CCustomerLoginDao {
 		
 	}
 	
+	public String userFindId(String customerName, String customerBirthday , String customerPhone, String customerEmail) {
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String customerId=null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "select customerId from customeer where customerName = '" + customerName + "' and customerBirthday = '" + customerBirthday + "' and customerPhone = '" + customerPhone + "' and customerEmail = '" + customerEmail + "' and customerDeletedate is null";
+			ps = connection.prepareStatement(query);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				customerId=rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if(ps!=null)ps.close();
+				if (connection!=null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return customerId;
+	}
 	
 	
 	

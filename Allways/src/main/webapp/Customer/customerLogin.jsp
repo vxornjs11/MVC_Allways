@@ -58,6 +58,13 @@ input::placeholder {
 		form.action="customerLogin.do";
 		form.submit();
 	}
+	
+	function findid(){
+		var form=document.custoemrLogin;
+		form.action="customerFindId.jsp";
+		form.submit();
+	}
+	
 	/* 
 	function backtomain(){
 		var form=document.login;
@@ -65,11 +72,6 @@ input::placeholder {
 		form.submit();
 	}
 	
-	function findid(){
-		var form=document.login;
-		form.action="managerFindId.jsp";
-		form.submit();
-	}
 	
 	function findpw(){
 		var form=document.login;
@@ -116,7 +118,7 @@ input::placeholder {
 				</c:choose>
 								
 				<a href="customerJoin.jsp" id="TextColor">ALLWAYS 첫 방문이신가요? ▶ JOIN</a><br>
-				<a href="customerFindId.jsp" id="TextColor">ID/PASSWORD를 잊어버리셨나요? ▶ ID찾기 / </a>
+				<a href="customerFindId.jsp" id="TextColor" onclick="findid()">ID/PASSWORD를 잊어버리셨나요? ▶ ID찾기 / </a>
 				<a href="customerFindPw.jsp" id="TextColor">PASSWORD 찾기</a><br>
 				
 				<a href="customerAbout.jsp" id="TextColor" style="font-size: 21px;">GO HOME</a>

@@ -176,14 +176,8 @@ function signup() {
 		            <a href="customerAbout.jsp" class="navbar-brand ml-lg-3">
 		       			 <img src="./images/HeaderLogo.png"><!-- style="padding-left: 90px;" -->
 		        	</a>
-	                <a href="customerAbout.do" id="center" class="nav-item nav-link active">HOME</a>
-	                <div class="dropdown show">
-	                    <a href="#" id="center" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="padding-bottom: 0px;">CAKE</a>
-	                    <div class="dropdown-menu" id=".dropdown-menu" style="width: 80px; height: 78px; right: 0px; left: 0px; top: 80px;">
-	                        <a href="customerCakeList.do" id="" class="dropdown-item" style="width: 80px;">cake</a>
-	                        <a href="#" id="" class="dropdown-item" style="width: 80px;">extras</a>
-	                    </div>
-	                </div>
+	                <a href="customerAbout.jsp" id="center" class="nav-item nav-link active">HOME</a>
+	                <a href="customerCakeList.do" id="center" class="nav-item nav-link active">CAKE</a>
 	                <a href="customerWriteList.do" id="center" class="nav-item nav-link">BOARD</a>
 	                <a href="customerLocation.do" id="center" class="nav-item nav-link">LOCATION</a>
 	          		<!--   <a href="" id="center" class="nav-item nav-link" style="width: 300px;"></a> -->
@@ -253,13 +247,7 @@ function signup() {
 		       			 <img src="./images/HeaderLogo.png"><!--  style="padding-left: 90px;"></img> -->
 		        	</a>
 	                <a href="customerAbout.jsp" id="center" class="nav-item nav-link active">HOME</a>
-	                <div class="dropdown show">
-	                    <a href="#" id="center" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="padding-bottom: 0px;">CAKE</a>
-	                    <div class="dropdown-menu" id=".dropdown-menu" style="width: 80px; height: 78px; right: 0px; left: 0px; top: 80px;">
-	                        <a href="customerCakeList.do" id="" class="dropdown-item" style="width: 80px;">cake</a>
-	                        <a href="#" id="" class="dropdown-item" style="width: 80px;">extras</a>
-	                    </div>
-	                </div>
+	                <a href="customerCakeList.do" id="center" class="nav-item nav-link active">CAKE</a>
 	                <a href="customerWriteList.do" id="center" class="nav-item nav-link">BOARD</a>
 	                <a href="customerLocation.do" id="center" class="nav-item nav-link" >LOCATION</a>
 	                <!-- <a href="" id="center" class="nav-item nav-link" style="width: 300px;"></a> -->

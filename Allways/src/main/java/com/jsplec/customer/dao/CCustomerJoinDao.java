@@ -36,9 +36,8 @@ public class CCustomerJoinDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "select count(*) from customer where customerId='" + customerId + "' and customerDeletedate is null";
+			String query = "select count(*) from customer where customerId = '" + customerId + "' and customerDeletedate is null";
 			ps = connection.prepareStatement(query);
-			ps.setString(1, customerId);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
@@ -58,18 +57,17 @@ public class CCustomerJoinDao {
 		}
 		
 		if(count==1) {
-			return false;			
+			return true;			
 		}else {
-			return true;
+			return false;
 		}
 		
 	} // idCheck
 	
-	public int insertAction(String customerId, String customerPw, String customerName, String customerGender, String customerPhone, String customerEmail, String customerBirthday, String customerPostcode, String customerAddress, String customerAddressDetail) {
+	public void insertAction(String customerId, String customerPw, String customerName, String customerGender, String customerPhone, String customerEmail, String customerBirthday, String customerPostcode, String customerAddress, String customerAddressDetail) {
 		Connection connection = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		int result = 0;
 
 		try {
 			connection = dataSource.getConnection();
@@ -77,7 +75,6 @@ public class CCustomerJoinDao {
 			String query = "insert into customer (customerId, customerPw, customerName, customerGender, customerPhone, customerEmail, customerBirthday, customerPostcode, customerAddress, customerAddressDetail, customerInitdate) ";
 			String query1 = "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())";
 			ps = connection.prepareStatement(query + query1);
-			ps.executeUpdate();
 			
 			ps.setString(1, customerId);
 			ps.setString(2, customerPw);
@@ -90,7 +87,7 @@ public class CCustomerJoinDao {
 			ps.setString(9, customerAddress);
 			ps.setString(10, customerAddressDetail);
 			
-			result = ps.executeUpdate();
+			ps.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -103,7 +100,6 @@ public class CCustomerJoinDao {
 				e2.printStackTrace();
 			}
 		}
-		return result;
 	}
 	
 	
