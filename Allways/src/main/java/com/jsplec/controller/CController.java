@@ -24,10 +24,12 @@ import com.jsplec.customer.command.CCustomerCartDeleteCommand;
 import com.jsplec.customer.command.CCustomerCartListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerFindIdCommand;
+import com.jsplec.customer.command.CCustomerFindPwCommand;
 import com.jsplec.customer.command.CCustomerIdCheckCommand;
 import com.jsplec.customer.command.CCustomerJoinCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
 import com.jsplec.customer.command.CCustomerOrderListCommand;
+import com.jsplec.customer.command.CCustomerPasswordResetCommand;
 import com.jsplec.customer.command.CCustomerPayCommand;
 import com.jsplec.customer.command.CCustomerQuestionCommand;
 import com.jsplec.customer.command.CCustomerReviewListCommand;
@@ -171,6 +173,20 @@ public class CController extends HttpServlet {
 			customercommand=new CCustomerFindIdCommand();
 			customercommand.execute(request, response);
 			viewPage="customerShowId.jsp";
+			break;
+		
+		// 비밀번호 찾기 
+		case("/Customer/customerFindPw.do"):
+			customercommand=new CCustomerFindPwCommand();
+			customercommand.execute(request, response);
+			viewPage="customerShowPw.jsp";
+			break;
+
+		// 비밀번호 재설정
+		case("/Customer/customerPwReset.do"):
+			customercommand=new CCustomerPasswordResetCommand();
+			customercommand.execute(request, response);
+			viewPage="customerLoginPage.jsp";
 			break;
 
 //-------------------------------- 한별 --------------------------------

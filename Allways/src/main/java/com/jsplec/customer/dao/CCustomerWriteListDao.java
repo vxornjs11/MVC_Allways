@@ -40,7 +40,7 @@ public class CCustomerWriteListDao {
 					+ "	select row_number() over(order by commentId) as rownum, "
 					+ " writeTitle, writeContent, w_customerId, writeInitdate, distinguish, writeId, writeDeletedate, commentId "
 					+ "	from `write` "
-					+ " order by commentId desc) w";
+					+ " order by commentId desc, writeInitdate asc) w";
 			
 			preparedStatement = connection.prepareStatement(query);
 			
