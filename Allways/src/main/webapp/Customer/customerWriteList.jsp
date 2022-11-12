@@ -104,34 +104,99 @@ function login() {
 					<tr>
 						<th width="80">No</th>
 						<th width="400" style = "text-align: left">제목 + 답글</th>
-						<th width="140">작성자</th>
-						<th width="140">작성일</th>
+						<th width="130">작성자</th>
+						<th width="130">작성일</th>
+						<th width="130"></th>
 					</tr>
 				</thead>
 				
 				<c:forEach var = "dto" items="${writeList }" begin="${(index - 1) * rowcount }" end="${(index) * rowcount - 1}">
 					<c:if test="${dto != null }">
-						<c:if test="${dto.distinguish == 0 }">
-							<tbody>
-								<tr>
-									<td>${dto.rowNum }</td>
-									<td style = "text-align: left"><a href = "customerBoardDetail.do?writeId=${dto.writeId }">${dto.writeTitle }</a></td>
-									<td>${dto.w_customerId }</td>
-									<td>${dto.writeInitdate }</td>
-								</tr>
-							</tbody>
-						</c:if>
+					
+						<c:choose>
+							<c:when test="${dto.writeDeletedate == null }">
+								<c:choose>
+									<c:when test="${CUSTOMERID == dto.w_customerId }">
+									
+										<c:if test="${dto.distinguish == 0 }">
+											<tbody>
+												<tr>
+													<td>${dto.rowNum }</td>
+													<td style = "text-align: left"><a href = "customerBoardDetail.do?writeId=${dto.writeId }">${dto.writeTitle }</a></td>
+													<td>${dto.w_customerId }</td>
+													<td>${dto.writeInitdate }</td>
+													<td><a href = "">X</a></td>
+												</tr>
+											</tbody>
+										</c:if>
+										
+										<c:if test="${dto.distinguish == 1 }">
+											<tbody>
+												<tr>
+													<td>&nbsp;&nbsp;&nbsp;↳</td>
+													<td style = "text-align: left">${dto.writeContent }</td>
+													<td>${dto.w_customerId }</td>
+													<td>${dto.writeInitdate }</td>
+													<td><a href = "">X</a></td>
+												</tr>
+											</tbody>
+										</c:if>
+										
+									</c:when>
+									
+									<c:otherwise>
+										<c:if test="${dto.distinguish == 0 }">
+											<tbody>
+												<tr>
+													<td>${dto.rowNum }</td>
+													<td style = "text-align: left"><a href = "customerBoardDetail.do?writeId=${dto.writeId }">${dto.writeTitle }</a></td>
+													<td>${dto.w_customerId }</td>
+													<td>${dto.writeInitdate }</td>
+												</tr>
+											</tbody>
+										</c:if>
+										
+										<c:if test="${dto.distinguish == 1 }">
+											<tbody>
+												<tr>
+													<td>&nbsp;&nbsp;&nbsp;↳</td>
+													<td style = "text-align: left">${dto.writeContent }</td>
+													<td>${dto.w_customerId }</td>
+													<td>${dto.writeInitdate }</td>
+												</tr>
+											</tbody>
+										</c:if>
+									</c:otherwise>
+									
+								</c:choose>
+							</c:when>
+							
+							<c:otherwise>
+								<c:if test="${dto.distinguish == 0 }">
+									<tbody>
+										<tr>
+											<td>${dto.rowNum }</td>
+											<td style = "text-align: left">삭제된 게시글입니다.</td>
+											<td>${dto.w_customerId }</td>
+											<td>${dto.writeInitdate }</td>
+										</tr>
+									</tbody>
+								</c:if>
+								
+								<c:if test="${dto.distinguish == 1 }">
+									<tbody>
+										<tr>
+											<td>&nbsp;&nbsp;&nbsp;↳</td>
+											<td style = "text-align: left">삭제된 게시글의 답글입니다.</td>
+											<td>${dto.w_customerId }</td>
+											<td>${dto.writeInitdate }</td>
+										</tr>
+									</tbody>
+								</c:if>
+							</c:otherwise>
+							
+						</c:choose>
 						
-						<c:if test="${dto.distinguish == 1 }">
-							<tbody>
-								<tr>
-									<td>&nbsp;&nbsp;&nbsp;↳</td>
-									<td style = "text-align: left">${dto.writeContent }</td>
-									<td>${dto.w_customerId }</td>
-									<td>${dto.writeInitdate }</td>
-								</tr>
-							</tbody>
-						</c:if>
 					</c:if>
 				</c:forEach>
 				

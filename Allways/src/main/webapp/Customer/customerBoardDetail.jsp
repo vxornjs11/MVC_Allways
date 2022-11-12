@@ -21,7 +21,7 @@
 function writeComment(index) {
 	var form = document.myform;
 	if (index == 1) {
-		form.method = "get";
+		form.method = "post";
 		form.action = "customerWriteComment.do";
 	}
 	form.submit();
@@ -60,28 +60,55 @@ function writeComment(index) {
 					<c:forEach var = "dto" items="${boardComment }">
 					
 						<c:choose>
-						
-							<c:when test="${CUSTOMERID == dto.w_customerId }">
-								<tbody>
-							        <tr>
-							          <td width="110">${dto.customerName }</td>
-							          <td width="300">${dto.writeContent }</td>
-							          <td width="120">${dto.writeInitdate }</td>
-							          <td><a href = "">X</a></td>
-							        </tr>
-						      </tbody>
+							<c:when test="${dto.distinguish == 2 }">
+								<c:choose>
+									<c:when test="${CUSTOMERID == dto.w_customerId }">
+										<tbody>
+									        <tr>
+									          <td width="300">↳ ${dto.writeContent }</td>
+									          <td width="110">${dto.customerName }</td>
+									          <td width="120">${dto.writeInitdate }</td>
+									          <td><a href = "">X</a></td>
+									        </tr>
+								      </tbody>
+									</c:when>
+									
+									<c:otherwise>
+										<tbody>
+									        <tr>
+									          <td width="300">↳ ${dto.writeContent }</td>
+									          <td width="110">${dto.customerName }</td>
+									          <td width="120">${dto.writeInitdate }</td>
+									        </tr>
+								      </tbody>
+									</c:otherwise>
+								</c:choose>
 							</c:when>
 							
 							<c:otherwise>
-								<tbody>
-							        <tr>
-							          <td width="110">${dto.customerName }</td>
-							          <td width="300">${dto.writeContent }</td>
-							          <td width="120">${dto.writeInitdate }</td>
-							        </tr>
-						      </tbody>
-							</c:otherwise> 	
-							
+								<c:choose>
+									<c:when test="${CUSTOMERID == dto.w_customerId }">
+										<tbody>
+									        <tr>
+									          <td width="300">${dto.writeContent }</td>
+									          <td width="110">${dto.customerName }</td>
+									          <td width="120">${dto.writeInitdate }</td>
+									          <td><a href = "">X</a></td>
+									        </tr>
+								      </tbody>
+									</c:when>
+									
+									<c:otherwise>
+										<tbody>
+									        <tr>
+									          <td width="300">${dto.writeContent }</td>
+									          <td width="110">${dto.customerName }</td>
+									          <td width="120">${dto.writeInitdate }</td>
+									        </tr>
+								      </tbody>
+									</c:otherwise> 
+								</c:choose>
+							</c:otherwise>
 						</c:choose>
 						
 					</c:forEach>
@@ -92,7 +119,7 @@ function writeComment(index) {
 				
 		</table>
 		<br>
-		<form action = "customerWriteComment.do" name = "myform" method = "get">
+		<form action = "customerWriteComment.do" name = "myform" method = "post">
 			<input type = "hidden" name = "writeId" value = "${boardDetail.writeId}">
 			<input type = "text" name = "writeContent" size = "65" placeholder="답글 작성란">
 			<button type = "submit">OK</button>

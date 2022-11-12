@@ -37,7 +37,7 @@ public class CCustomerWriteListDao {
 			connection = dataSource.getConnection();
 			
 			String query = "select * from ( "
-					+ "	select row_number() over(order by commentId) as rownum, writeTitle, writeContent, w_customerId, writeInitdate, distinguish, writeId "
+					+ "	select row_number() over(order by commentId) as rownum, writeTitle, writeContent, w_customerId, writeInitdate, distinguish, writeId, writeDeletedate "
 					+ "	from `write` "
 					+ " order by commentId desc) w";
 			
@@ -54,8 +54,9 @@ public class CCustomerWriteListDao {
 				Date writeInitdate = rs.getDate(5);
 				int distinguish = rs.getInt(6);
 				int writeId = rs.getInt(7);
+				Date writeDeletedate = rs.getDate(8);
 				
-				CCustomerWriteListDto dto = new CCustomerWriteListDto(rowNum, writeTitle, writeContent, w_customerId, writeInitdate, distinguish, writeId);
+				CCustomerWriteListDto dto = new CCustomerWriteListDto(rowNum, writeTitle, writeContent, w_customerId, writeInitdate, distinguish, writeId, writeDeletedate);
 				dtos.add(dto);
 			}
 			
@@ -130,10 +131,10 @@ public class CCustomerWriteListDao {
 			connection = dataSource.getConnection();
 			
 			String query = "select * from ( "
-							+ "	select row_number() over(order by commentId) as rownum, c.customerName, w.writeContent, w.writeInitdate, w.w_customerId "
-							+ "	from `write` w, customer c "
-							+ " where w.w_customerId = c.customerId and distinguish = 1 and commentId = " + writeId
-							+ " order by writeInitdate desc) a";
+					+ "	select row_number() over(order by commentId) as rownum, c.customerName, w.writeContent, w.writeInitdate, w.w_customerId, distinguish "
+					+ "	from `write` w, customer c "
+					+ "    where commentId = " + writeId + " and distinguish > 0 and w.w_customerId = c.customerId "
+					+ "    order by recommentId) w";
 			
 			preparedStatement = connection.prepareStatement(query);
 			rs = preparedStatement.executeQuery();
@@ -144,8 +145,9 @@ public class CCustomerWriteListDao {
 				String writeContent = rs.getString(3);
 				Date writeInitdate = rs.getDate(4);
 				String w_customerId = rs.getString(5);
+				int distinguish = rs.getInt(6);
 				
-				CCustomerWriteListDto dto = new CCustomerWriteListDto(customerName, writeContent, writeInitdate, w_customerId);
+				CCustomerWriteListDto dto = new CCustomerWriteListDto(customerName, writeContent, writeInitdate, w_customerId, distinguish);
 				dtos.add(dto);
 			}
 			

@@ -21,6 +21,7 @@ import com.jsplec.customer.command.CCustomerCakeQuickOrderCommand;
 import com.jsplec.customer.command.CCustomerCartListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerIdCheckCommand;
+import com.jsplec.customer.command.CCustomerJoinCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
 import com.jsplec.customer.command.CCustomerOrderListCommand;
 import com.jsplec.customer.command.CCustomerPayCommand;
@@ -125,6 +126,8 @@ public class CController extends HttpServlet {
 			break;
 
 		case ("/Customer/customerJoin.do"):
+			customercommand = new CCustomerJoinCommand();
+			customercommand.execute(request, response);
 			viewPage = "customerLogin.jsp";
 			break;
 
