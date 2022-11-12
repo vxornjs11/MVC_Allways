@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
@@ -22,20 +23,7 @@
 			<a href="MorderStatus.do" class="viewall">전체보기</a>
 		</div>
 		<div class="inner">
-			<table class="table">
-				<tr>
-					<th>날짜</th>
-					<th>주문량</th>
-					<th>매출</th>
-				</tr>
-				<c:forEach var="cnt" items="${SALESDTO }" begin="1" end="10">
-					<tr>
-						<td>${SALESDTO.ordersdate }</td>
-						<td>${SALESDTO.ordersquantity }</td>
-						<td><fmt:formatNumber value="${SALESDTO.ordersdate }" type="currency"/></td>
-					</tr>
-				</c:forEach>
-			</table>
+			<canvas id="PriceCanvas"></canvas>
 		</div>
 	</div>
 	<div class="main">
@@ -64,20 +52,7 @@
 			<a href="MorderStatus.do" class="viewall">전체보기</a>
 		</div>
 		<div class="inner">
-			<table class="table">
-				<tr>
-					<th>날짜</th>
-					<th>주문량</th>
-					<th>매출</th>
-				</tr>
-				<c:forEach var="cnt" items="${SALESDTO }" begin="1" end="10">
-					<tr>
-						<td>${SALESDTO.ordersdate }</td>
-						<td>${SALESDTO.ordersquantity }</td>
-						<td><fmt:formatNumber value="${SALESDTO.ordersdate }" type="currency"/></td>
-					</tr>
-				</c:forEach>
-			</table>
+			<canvas id="QuantityCanvas"></canvas>
 		</div>
 	</div>
 	<div class="main">
@@ -103,5 +78,70 @@
 		</div>
 	</div>
 </div>
+<form action="#" name="chartdata">
+	<input type="hidden" name="Xaxis" value="${XAXIS }">
+	<input type="hidden" name="Price" value="${SALESPRICE }">
+	<input type="hidden" name="Quantity" value="${SALESQUANTITY }">
+</form>
+<script>
+var price = document.getElementById('PriceCanvas');
+var quantity=document.getElementById('QuantityCanvas');
+var ctxprice=price.getContext('2d');
+var ctxquantity=quantity.getContext('2d');
+var xaxis=document.chartdata.Xaxis.value;
+var pricedata=document.chartdata.Price.value;
+var quantitydata=document.chartdata.Quantity.value;
+var arrxaxis=xaxis.split(',');
+var arrprice=pricedata.split(',');
+var arrquantity=quantitydata.split(',');
+
+const priceChart = new Chart(ctxprice, {
+    type: 'line',
+    data: {
+        labels: arrxaxis,
+        datasets: [{
+            data: arrprice,
+            backgroundColor: [
+                'rgb(0, 0, 0)'
+            ],
+            borderColor: [
+            	'rgb(0, 0, 0)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+const quantityChart = new Chart(ctxquantity, {
+    type: 'line',
+    data: {
+        labels: arrxaxis,
+        datasets: [{
+            data: arrquantity,
+            backgroundColor: [
+                'rgb(0, 0, 0)'
+            ],
+            borderColor: [
+            	'rgb(0, 0, 0)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
 </body>
 </html>
