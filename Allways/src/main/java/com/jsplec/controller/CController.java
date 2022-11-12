@@ -187,7 +187,7 @@ public class CController extends HttpServlet {
 		case("/Customer/customerPwReset.do"):
 			customercommand=new CCustomerPasswordResetCommand();
 			customercommand.execute(request, response);
-			viewPage="customerLoginPage.jsp";
+			viewPage="customerLoginPage.do";
 			break;
 
 //-------------------------------- 한별 --------------------------------
