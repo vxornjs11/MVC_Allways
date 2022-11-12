@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jsplec.customer.dao.CCustomerCakeOrderDao;
+import com.jsplec.customer.dao.CCustomerCartDeleteDao;
 
 public class CCustomerPayCommand implements CCustomerCommand {
 
@@ -25,6 +26,7 @@ public class CCustomerPayCommand implements CCustomerCommand {
 		dao.orderInsert(ordersId, customerId, cakeId, ordersSalePrice, ordersQuantity);
 		
 		dao.cartListUpdate(ordersId);
+		
 	}
 
 	@Override

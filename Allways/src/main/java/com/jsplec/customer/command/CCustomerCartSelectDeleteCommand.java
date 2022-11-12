@@ -4,21 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.jsplec.customer.dao.CCustomerCartDeleteDao;
+import com.jsplec.customer.dao.CCustomerCartSelectDeleteDao;
 
-public class CCustomerCartDeleteCommand implements CCustomerCommand {
+public class CCustomerCartSelectDeleteCommand implements CCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+
+		String[] ordersId = request.getParameterValues("ordersId");
 		
-		int ordersId = Integer.parseInt(request.getParameter("ordersId"));
+		CCustomerCartSelectDeleteDao dao = new CCustomerCartSelectDeleteDao();
 		
-		CCustomerCartDeleteDao dao = new CCustomerCartDeleteDao();
-		
-		dao.cartOptionDelete(ordersId);
-		
-		dao.cartDelete(ordersId);
-		
+		dao.cartSelectOptionDelete(ordersId);
+		dao.cartSelectDelete(ordersId);
 	}
 
 	@Override

@@ -3,24 +3,18 @@ package com.jsplec.customer.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class CCustomerCartDeleteDao {
+public class CCustomerCartSelectDeleteDao {
 
 	DataSource dataSource;
 
-	public CCustomerCartDeleteDao() {
-		try {
-			Context context = new InitialContext();
-			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mvc");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public CCustomerCartSelectDeleteDao() {
+		// TODO Auto-generated constructor stub
 	}
 	
-	public void cartOptionDelete(int ORDERSID) {
+
+	public void cartSelectOptionDelete(String[] ORDERSID) {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -28,11 +22,16 @@ public class CCustomerCartDeleteDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "delete from detailoption where d_ordersId = " + ORDERSID;
+			for (int i = 0; i < ORDERSID.length; i++) {
 
-			preparedStatement = connection.prepareStatement(query);
+				String query = "delete from detailoption where d_ordersId = ?";
 
-			preparedStatement.executeUpdate();
+				preparedStatement = connection.prepareStatement(query);
+
+				preparedStatement.setString(1, ORDERSID[i]);
+
+				preparedStatement.executeUpdate();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -47,7 +46,7 @@ public class CCustomerCartDeleteDao {
 		}
 	}
 
-	public void cartDelete(int ORDERSID) {
+	public void cartSelectDelete(String[] ORDERSID) {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -55,11 +54,16 @@ public class CCustomerCartDeleteDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "delete from orders where ordersId = " + ORDERSID;
+			for (int i = 0; i < ORDERSID.length; i++) {
 
-			preparedStatement = connection.prepareStatement(query);
+				String query = "delete from orders where ordersId = ?";
 
-			preparedStatement.executeUpdate();
+				preparedStatement = connection.prepareStatement(query);
+
+				preparedStatement.setString(1, ORDERSID[i]);
+
+				preparedStatement.executeUpdate();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

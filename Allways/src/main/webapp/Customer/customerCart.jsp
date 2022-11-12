@@ -11,7 +11,7 @@ pageEncoding="UTF-8"%>
 function mySubmit(index){
 	var form = document.detail;
 	if (index == 1) {
-		form.action = "customerCakeList.do";
+		form.action = "customerCartSelectDelete.do";
 	}
 	if (index == 2) {
 		form.action = "customerCakeList.do";
@@ -19,6 +19,10 @@ function mySubmit(index){
 	if (index == 3) {
 		form.action = "customerOrderPage.do";
 	}
+	if (index == 4) {
+		form.action = "customerCartDelete.do";
+	}
+	
 		form.submit();
 }
 
@@ -114,7 +118,8 @@ color: #FFFDFD;
 			<td>${dto.cakeName }</td>
 			<td>${dto.ordersQuantity }</td>
 			<td>￦ <fmt:formatNumber value="${dto.ordersSalePrice}"/></td>
-			<td>X</td>
+			<td><a href="/Allways/Customer/customerCartDelete.do?ordersId=${dto.ordersId }">X</a>
+			</td>
 		</tr>
 	</c:forEach>
 		<tr align="center">
