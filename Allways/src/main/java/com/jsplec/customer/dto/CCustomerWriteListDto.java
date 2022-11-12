@@ -13,6 +13,7 @@ public class CCustomerWriteListDto {
 	int distinguish;
 	int writeId;
 	Date writeDeletedate;
+	int commentId;
 	
 	
 	public CCustomerWriteListDto() {
@@ -20,7 +21,7 @@ public class CCustomerWriteListDto {
 	}
 
 	public CCustomerWriteListDto(int rowNum, String writeTitle, String writeContent, String w_customerId, Date writeInitdate,
-			int distinguish, int writeId, Date writeDeletedate) {
+			int distinguish, int writeId, Date writeDeletedate, int commentId) {
 		super();
 		this.rowNum = rowNum;
 		this.writeTitle = writeTitle;
@@ -30,6 +31,7 @@ public class CCustomerWriteListDto {
 		this.distinguish = distinguish;
 		this.writeId = writeId;
 		this.writeDeletedate = writeDeletedate;
+		this.commentId = commentId;
 	}
 	
 
@@ -124,6 +126,14 @@ public class CCustomerWriteListDto {
 
 	public void setWriteDeletedate(Date writeDeletedate) {
 		this.writeDeletedate = writeDeletedate;
+	}
+
+	public int getCommentId() {
+		return commentId;
+	}
+
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
 	}
 	
 	

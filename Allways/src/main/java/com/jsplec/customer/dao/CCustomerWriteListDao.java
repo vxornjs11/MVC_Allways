@@ -37,7 +37,8 @@ public class CCustomerWriteListDao {
 			connection = dataSource.getConnection();
 			
 			String query = "select * from ( "
-					+ "	select row_number() over(order by commentId) as rownum, writeTitle, writeContent, w_customerId, writeInitdate, distinguish, writeId, writeDeletedate "
+					+ "	select row_number() over(order by commentId) as rownum, "
+					+ " writeTitle, writeContent, w_customerId, writeInitdate, distinguish, writeId, writeDeletedate, commentId "
 					+ "	from `write` "
 					+ " order by commentId desc) w";
 			
@@ -55,8 +56,10 @@ public class CCustomerWriteListDao {
 				int distinguish = rs.getInt(6);
 				int writeId = rs.getInt(7);
 				Date writeDeletedate = rs.getDate(8);
+				int commentId = rs.getInt(9);
 				
-				CCustomerWriteListDto dto = new CCustomerWriteListDto(rowNum, writeTitle, writeContent, w_customerId, writeInitdate, distinguish, writeId, writeDeletedate);
+				CCustomerWriteListDto dto = new CCustomerWriteListDto(rowNum, writeTitle, writeContent, w_customerId, 
+																writeInitdate, distinguish, writeId, writeDeletedate, commentId);
 				dtos.add(dto);
 			}
 			

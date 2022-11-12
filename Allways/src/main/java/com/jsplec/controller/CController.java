@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import com.jsplec.customer.command.CCustomerAnswerCommand;
 import com.jsplec.customer.command.CCustomerBestCakeListCommand;
+import com.jsplec.customer.command.CCustomerBoardCommentDeleteCommand;
+import com.jsplec.customer.command.CCustomerBoardDeleteCommand;
 import com.jsplec.customer.command.CCustomerBoardWriteCommand;
 import com.jsplec.customer.command.CCustomerCakeCartCommand;
 import com.jsplec.customer.command.CCustomerCakeDetailCommand;
@@ -225,10 +227,23 @@ public class CController extends HttpServlet {
 			
 		// 게시판 답글달기
 		case ("/Customer/customerWriteComment.do"):
-			System.out.println("얍!!");
 			customercommand = new CCustomerWriteCommentCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerBoardDetail.do";
+			break;
+			
+		// 게시판 삭제
+		case ("/Customer/customerBoardDelete.do"):
+			customercommand = new CCustomerBoardDeleteCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerWriteList.do";
+			break;
+			
+		// 게시판 삭제
+		case ("/Customer/customerBoardCommentDelete.do"):
+			customercommand = new CCustomerBoardCommentDeleteCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerWriteList.do";
 			break;
 		
 //----------------------- 오수 --------------------------------

@@ -33,6 +33,7 @@
 <script type="text/javascript">
 
 function login() {
+	
 	alert('게시글 작성은 로그인 후 이용 가능합니다.');
 	var form = document.myform;
 	form.action = "customerLoginPage.do";
@@ -125,7 +126,7 @@ function login() {
 													<td style = "text-align: left"><a href = "customerBoardDetail.do?writeId=${dto.writeId }">${dto.writeTitle }</a></td>
 													<td>${dto.w_customerId }</td>
 													<td>${dto.writeInitdate }</td>
-													<td><a href = "">X</a></td>
+													<td><a href = "customerBoardDelete.do?commentId=${dto.commentId }">X</a></td>
 												</tr>
 											</tbody>
 										</c:if>
@@ -137,7 +138,7 @@ function login() {
 													<td style = "text-align: left">${dto.writeContent }</td>
 													<td>${dto.w_customerId }</td>
 													<td>${dto.writeInitdate }</td>
-													<td><a href = "">X</a></td>
+													<td><a href = "customerBoardCommentDelete.do?writeId=${dto.writeId }">X</a></td>
 												</tr>
 											</tbody>
 										</c:if>
