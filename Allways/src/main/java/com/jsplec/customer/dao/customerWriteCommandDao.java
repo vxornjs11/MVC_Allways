@@ -22,14 +22,17 @@ public class customerWriteCommandDao {
 	
 	
 	public void writeComment(String CUSTOMERID, int writeId, String writeContent) {
-		//write
+		
 		Connection connection = null;
 		PreparedStatement ps = null;
 		
 		try {
+			
 			connection = dataSource.getConnection();
 			
-			String query = "insert into `write` (w_customerId, distinguish, commentId, recommentId, writeContent, writeInitdate) values (?, ?, ?, ?, ?, now())";
+			String query = "insert into `write` (w_customerId, distinguish, commentId, recommentId, writeContent, writeInitdate) "
+						 + "values (?, ?, ?, ?, ?, now())";
+			
 			ps = connection.prepareStatement(query);
 			
 			ps.setString(1, CUSTOMERID);
@@ -52,5 +55,7 @@ public class customerWriteCommandDao {
 			}
 		}
 	}
+	
+	
 	
 }

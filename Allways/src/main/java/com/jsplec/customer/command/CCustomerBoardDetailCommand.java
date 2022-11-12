@@ -23,6 +23,10 @@ public class CCustomerBoardDetailCommand implements CCustomerCommand {
 		CCustomerWriteListDto dto = dao.boardDetail(writeId);
 		ArrayList<CCustomerWriteListDto> dtos = dao.boardComment(writeId);
 		
+		for(int i = 0; i < dtos.size(); i++) {
+			dtos.get(i).getWriteId();
+		}
+		
 		request.setAttribute("boardlength", dtos.size());
 		request.setAttribute("CUSTOMERID", customerId);
 		request.setAttribute("boardDetail", dto);

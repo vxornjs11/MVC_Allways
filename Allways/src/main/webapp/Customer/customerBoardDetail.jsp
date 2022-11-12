@@ -15,7 +15,7 @@
 </style>
 </head>
 <body>
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 
 function writeComment(index) {
@@ -58,7 +58,7 @@ function writeComment(index) {
 				
 				<c:otherwise>
 					<c:forEach var = "dto" items="${boardComment }">
-					
+					<input type = "hidden" value ="${dto.writeId }">
 						<c:choose>
 							<c:when test="${dto.writeDeletedate == null }">
 							
@@ -72,6 +72,10 @@ function writeComment(index) {
 											          <td width="110">${dto.customerName }</td>
 											          <td width="120">${dto.writeInitdate }</td>
 											          <td><a href = "customerBoardReCommentDelete.do?recommentId=${dto.recommentId }">X</a></td>
+											          <td>
+											          	<input type = "text">
+											          	<a href = "customerWriteComment.do?writeId=<%=request.getParameter("writeId")%>&commentWriteId=${dto.writeId}"><button>OK</button></a>
+											          </td>
 											        </tr>
 										      </tbody>
 											</c:when>
@@ -170,23 +174,20 @@ function writeComment(index) {
 								</c:choose>
 							
 							</c:otherwise>
-								
 						</c:choose>
-						
 					</c:forEach>
 				</c:otherwise>
-				
 			</c:choose>
-			
-				
 		</table>
+		
 		<br>
+		
 		<form action = "customerWriteComment.do" name = "myform" method = "post">
-			<input type = "hidden" name = "writeId" value = "${boardDetail.writeId}">
 			<input type = "text" name = "writeContent" size = "65" placeholder="답글 작성란">
 			<button type = "submit">OK</button>
 		</form>
 		
 	</div>
+	
 </body>
 </html>

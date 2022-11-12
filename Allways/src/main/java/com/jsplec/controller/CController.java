@@ -22,6 +22,7 @@ import com.jsplec.customer.command.CCustomerCakeOrderCommand;
 import com.jsplec.customer.command.CCustomerCakeQuickOrderCommand;
 import com.jsplec.customer.command.CCustomerCartDeleteCommand;
 import com.jsplec.customer.command.CCustomerCartListCommand;
+import com.jsplec.customer.command.CCustomerCartSelectDeleteCommand;
 import com.jsplec.customer.command.CCustomerCommand;
 import com.jsplec.customer.command.CCustomerFindIdCommand;
 import com.jsplec.customer.command.CCustomerFindPwCommand;
@@ -332,6 +333,12 @@ public class CController extends HttpServlet {
 			viewPage = "customerCartList.do";
 			break;
 		
+		case ("/Customer/customerCartSelectDelete.do"):
+			customercommand = new CCustomerCartSelectDeleteCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCartList.do";
+			break;
+			
 //-------------------------------- 유승 --------------------------------
 		// 메인 화면 출력
 		case ("/Manager/managerMain.do"):
