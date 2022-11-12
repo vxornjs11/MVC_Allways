@@ -22,6 +22,7 @@ import com.jsplec.customer.command.CCustomerCakeOrderCommand;
 import com.jsplec.customer.command.CCustomerCakeQuickOrderCommand;
 import com.jsplec.customer.command.CCustomerCartListCommand;
 import com.jsplec.customer.command.CCustomerCommand;
+import com.jsplec.customer.command.CCustomerFindIdCommand;
 import com.jsplec.customer.command.CCustomerIdCheckCommand;
 import com.jsplec.customer.command.CCustomerJoinCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
@@ -32,6 +33,7 @@ import com.jsplec.customer.command.CCustomerReviewListCommand;
 import com.jsplec.customer.command.CCustomerWriteListCommand;
 import com.jsplec.customer.command.CCustomerWriteReviewCommand;
 import com.jsplec.customer.command.CCustomerBoardDetailCommand;
+import com.jsplec.customer.command.CCustomerBoardReCommentDeleteCommand;
 import com.jsplec.customer.command.CCustomerWriteCommentCommand;
 import com.jsplec.manager.command.CManagerAddCakeCommand;
 import com.jsplec.manager.command.CManagerAddGoodsCommand;
@@ -162,6 +164,13 @@ public class CController extends HttpServlet {
 		case ("/Customer/customerJoinPage.do"):
 			viewPage = "customerJoin.jsp";
 			break;
+			
+		// 아이디 찾기 
+		case("/Customer/customerFindId.do"):
+			customercommand=new CCustomerFindIdCommand();
+			customercommand.execute(request, response);
+			viewPage="customerShowId.jsp";
+			break;
 
 //-------------------------------- 한별 --------------------------------
 		// 리뷰 리스트 출력
@@ -239,12 +248,21 @@ public class CController extends HttpServlet {
 			viewPage = "customerWriteList.do";
 			break;
 			
-		// 게시판 삭제
+		// 게시판 답글 삭제
 		case ("/Customer/customerBoardCommentDelete.do"):
 			customercommand = new CCustomerBoardCommentDeleteCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerWriteList.do";
 			break;
+		
+		// 게시판 답글 삭제
+		case ("/Customer/customerBoardReCommentDelete.do"):
+			customercommand = new CCustomerBoardReCommentDeleteCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerWriteList.do";
+			break;
+		
+		
 		
 //----------------------- 오수 --------------------------------
 		case ("/Customer/customerCakeList.do"):

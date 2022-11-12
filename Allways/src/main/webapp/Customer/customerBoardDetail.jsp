@@ -68,7 +68,7 @@ function writeComment(index) {
 									          <td width="300">↳ ${dto.writeContent }</td>
 									          <td width="110">${dto.customerName }</td>
 									          <td width="120">${dto.writeInitdate }</td>
-									          <td><a href = "">X</a></td>
+									          <td><a href = "customerBoardReCommentDelete.do">X</a></td>
 									        </tr>
 								      </tbody>
 									</c:when>
@@ -105,10 +105,11 @@ function writeComment(index) {
 									          <td width="110">${dto.customerName }</td>
 									          <td width="120">${dto.writeInitdate }</td>
 									        </tr>
-								      </tbody>
+								     	</tbody>
 									</c:otherwise> 
 								</c:choose>
 							</c:otherwise>
+							
 						</c:choose>
 						
 					</c:forEach>
