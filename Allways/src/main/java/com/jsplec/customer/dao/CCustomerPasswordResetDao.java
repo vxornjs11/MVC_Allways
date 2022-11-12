@@ -60,6 +60,35 @@ public class CCustomerPasswordResetDao {
 		
 	}
 	
+	public void resetPw(String customerId, String customerPw) {
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "update customer set customerPw=? where customerid=?";
+			ps = connection.prepareStatement(query);
+			ps.setString(1, customerPw);
+			ps.setString(2, customerId);
+			ps.executeUpdate();
+
+			if (rs.next()) {
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if(ps!=null)ps.close();
+				if (connection!=null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+	}
 	
 
 	

@@ -11,15 +11,13 @@ public class CCustomerPasswordResetCommand implements CCustomerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		String customerId = request.getParameter("customerId");
-		String customerName = request.getParameter("customerName");
-		String customerBirthday = request.getParameter("customerBirth");
-		String customerPhone = request.getParameter("customerPhone");
-		String customerEmail = request.getParameter("email1") + "@" + request.getParameter("email2");
+		String customerPw = request.getParameter("customerPw");
+		
+		System.out.println(customerId);
 		
 		CCustomerPasswordResetDao dao = new CCustomerPasswordResetDao();
-		boolean chk = dao.userChk(customerId, customerName, customerBirthday, customerPhone, customerEmail);
+		dao.resetPw(customerId, customerPw);
 		
-		request.setAttribute("USERCHECK", chk);
 		
 	}
 

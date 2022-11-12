@@ -216,7 +216,13 @@
 
 	function findAction(){
 		
-		var form = document.customerFindId;
+		var form = document.customerFindPw;
+		
+		if(form.customerId.value.length == 0) {
+			alert("아이디를 입력해주세요.");
+			form.customerName.focus();
+			return;
+		}
 		
 		if(form.customerName.value.length == 0) {
 			alert("이름을 입력해주세요.");

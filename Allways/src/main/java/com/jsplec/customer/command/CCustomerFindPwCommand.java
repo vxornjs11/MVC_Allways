@@ -20,6 +20,7 @@ public class CCustomerFindPwCommand implements CCustomerCommand {
 		boolean chk = dao.userChk(customerId, customerName, customerBirthday, customerPhone, customerEmail);
 		
 		request.setAttribute("USERCHECK", chk);
+		request.setAttribute("USERID", customerId);
 		
 	}
 
