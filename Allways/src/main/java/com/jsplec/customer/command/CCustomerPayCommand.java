@@ -23,6 +23,8 @@ public class CCustomerPayCommand implements CCustomerCommand {
 		
 		CCustomerCakeOrderDao dao = new CCustomerCakeOrderDao();
 		dao.orderInsert(ordersId, customerId, cakeId, ordersSalePrice, ordersQuantity);
+		
+		dao.cartListUpdate(ordersId);
 	}
 
 	@Override

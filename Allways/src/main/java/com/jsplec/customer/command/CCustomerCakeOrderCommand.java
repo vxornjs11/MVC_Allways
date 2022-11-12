@@ -26,7 +26,6 @@ public class CCustomerCakeOrderCommand implements CCustomerCommand {
 		
 		ArrayList<CCustomerCakeOrderDto> dtos2 = dao.customerInfo(customerId);
 		
-		request.setAttribute("ordersSize", ordersId.length);
 		request.setAttribute("customerInfo", dtos2);
 		
 //		int cakeId = Integer.parseInt(request.getParameter("cakeId"));

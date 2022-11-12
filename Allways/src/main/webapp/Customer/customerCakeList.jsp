@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,7 +78,7 @@ color: #766262;
 						<div class="card-body">
 							<table>
 								<tr>
-									<td align="left" width="170px">${dto.cakeName}</td><td align="right" width="120px">￦ ${dto.cakePrice}</td>
+									<td align="left" width="170px">${dto.cakeName}</td><td align="right" width="120px">￦ <fmt:formatNumber value="+${dto.cakePrice}"/></td>
 								</tr>
 								<tr>
 									<td align="left">&hearts; ${dto.cakeLike}</td><td align="right">Views ${dto.cakeViews}</td>

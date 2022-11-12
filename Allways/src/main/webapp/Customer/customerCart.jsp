@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,7 +113,7 @@ color: #FFFDFD;
 			<td><input type="checkbox" name="ordersId" value="${dto.ordersId }"></td>
 			<td>${dto.cakeName }</td>
 			<td>${dto.ordersQuantity }</td>
-			<td>￦${dto.ordersSalePrice }</td>
+			<td>￦ <fmt:formatNumber value="${dto.ordersSalePrice}"/></td>
 			<td>X</td>
 		</tr>
 	</c:forEach>

@@ -104,7 +104,7 @@ public class CCustomerCakeCartDao {
 	
 	
 	
-	public void detailOptionInsert(int ordersId, String ordersStatus, int[] cakeoptionId, String customerId, int cakeId, String detailoptionLattering) {
+	public void detailOptionInsert(int ordersId, String ordersStatus, int[] cakeoptionId, String customerId, int cakeId, String detailoptionLettering) {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -126,7 +126,7 @@ public class CCustomerCakeCartDao {
 				preparedStatement.setString(4, customerId);
 				preparedStatement.setInt(5, cakeId);
 				preparedStatement.setInt(6, 1);
-				preparedStatement.setString(7, detailoptionLattering);
+				preparedStatement.setString(7, detailoptionLettering);
 	
 				preparedStatement.executeUpdate();
 

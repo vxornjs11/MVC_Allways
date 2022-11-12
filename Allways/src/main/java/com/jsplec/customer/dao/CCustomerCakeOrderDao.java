@@ -162,5 +162,37 @@ public class CCustomerCakeOrderDao {
 			}
 		}
 	}
+	
+	public void cartListUpdate(String[] ORDERSID) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			for (int i = 0; i < ORDERSID.length; i++) {
+
+				String query = "update orders set ordersPoint = 0 where ordersStatus = '장바구니' and ordersId = ?";
+
+				preparedStatement = connection.prepareStatement(query);
+
+				preparedStatement.setString(1, ORDERSID[i]);
+
+				preparedStatement.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 }

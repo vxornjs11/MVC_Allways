@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <title>${cakeInfo.cakeName}</title>
@@ -126,6 +127,17 @@ align-items: center;
 color: #766262;
 	}
 
+#option_price{
+font-family: 'Baloo Tammudu 2';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 15px;
+text-transform: capitalize;
+align-items: center;
+color: #766262;
+}
+
 #checkout_box{
 width: 621px;
 height: 55px;
@@ -228,7 +240,7 @@ color: #FFFDFD;
 					${cakeInfo.cakeName }
 				</div>
 				<div id="cake_name" align="left"><input type="hidden" name="cakePrice" value="${cakeInfo.cakePrice }">
-					￦ ${cakeInfo.cakePrice }
+					￦ <fmt:formatNumber value="${cakeInfo.cakePrice}"/>
 				</div>
 				<div>
 					<hr id="line4">
@@ -251,6 +263,12 @@ color: #FFFDFD;
 						<c:set var="i" value="${i+1 }"/>
 							<input type="radio" id="shape${i}" name="shape" value="${dto.cakeoptionId }"><label for="shape${i}">${dto.cakeoptionValue}</label>
 							&nbsp;
+							<c:if test="${dto.cakeoptionPrice ne 0 }">
+								<label id="option_price">
+								￦ <fmt:formatNumber value="+${dto.cakeoptionPrice}"/>
+								</label>&nbsp;
+								<input type = "hidden" name="shapePrice" value="${dto.cakeoptionPrice }">
+							</c:if>
 					</c:forEach>
 				</div>
 			
@@ -264,6 +282,12 @@ color: #FFFDFD;
 						<c:set var="i" value="${i+1 }"/>
 							<input type="radio" id="size${i}" name="size" value="${dto.cakeoptionId}"><label for="size${i}">${dto.cakeoptionValue}</label>
 							&nbsp;
+							<c:if test="${dto.cakeoptionPrice ne 0 }">
+							<label id="option_price">
+							￦ <fmt:formatNumber value="+${dto.cakeoptionPrice}"/>
+							</label>
+							<input type = "hidden" name="sizePrice" value="${dto.cakeoptionPrice }">
+							</c:if>
 					</c:forEach>
 				</div>
 				
@@ -286,7 +310,7 @@ color: #FFFDFD;
 				
 				<div align="left" id="cake_option">
 					<table>
-						<!-- <tr align="center">
+						 <tr align="center">
 							<td style="width: 150px;">
 								Total Quantity
 							</td>
@@ -301,7 +325,7 @@ color: #FFFDFD;
 							<td style="width: 100px;">
 								￦52,000
 							</td>
-						</tr> -->
+						</tr>
 						<tr align="center">
 							<td colspan="2"><hr id="line4"></td>
 						</tr>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,10 +71,10 @@ border: 2px solid #FECACA;
 		</tr>
 		<c:forEach items="${orderList}" var="dto">
 		<tr align="center">
-		<td><input type = "hidden" name = "ordersSize" value ="${ordersSize }"></td>
+		<%-- <td><input type = "hidden" name = "ordersSize" value ="${ordersSize }"></td> --%>
 			<td>${dto.cakeName }<input type="hidden" name="ordersId" value="${dto.ordersId}"><input type="hidden" name="cakeId" value="${dto.cakeId}"></td>
 			<td>${dto.ordersQuantity }<input type="hidden" name="ordersQuantity" value="${dto.ordersQuantity }"></td>
-			<td>￦ ${dto.ordersSalePrice }<input type="hidden" name="ordersSalePrice" value="${dto.ordersSalePrice }"></td>
+			<td>￦ <fmt:formatNumber value="${dto.ordersSalePrice}"/><input type="hidden" name="ordersSalePrice" value="${dto.ordersSalePrice }"></td>
 			<!-- <td>2022-11-11</td> -->
 		</tr>
 		</c:forEach>
@@ -85,7 +86,6 @@ border: 2px solid #FECACA;
 	<table>
 	<c:forEach items="${customerInfo }" var="dto">
 		<tr>
-			<td></td>
 			<td width="150px;">Orderer Name</td>
 			<td>${dto.customerName }</td>
 		</tr>
