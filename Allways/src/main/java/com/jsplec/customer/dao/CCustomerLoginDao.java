@@ -109,7 +109,7 @@ public class CCustomerLoginDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "select customerId from customeer where customerName = '" + customerName + "' and customerBirthday = '" + customerBirthday + "' and customerPhone = '" + customerPhone + "' and customerEmail = '" + customerEmail + "' and customerDeletedate is null";
+			String query = "select customerId from customer where customerName = '" + customerName + "' and customerBirthday = '" + customerBirthday + "' and customerPhone = '" + customerPhone + "' and customerEmail = '" + customerEmail + "' and customerDeletedate is null";
 			ps = connection.prepareStatement(query);
 			rs = ps.executeQuery();
 

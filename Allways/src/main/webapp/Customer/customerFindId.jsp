@@ -211,6 +211,48 @@
 
 <title>ALLWAYS FIND ID</title>
 <%@include file="customerHeader.jsp" %>
+
+<script type="text/javascript">
+
+	function findAction(){
+		
+		var form = document.customerFindId;
+		
+		if(form.customerName.value.length == 0) {
+			alert("이름을 입력해주세요.");
+			form.customerName.focus();
+			return;
+		}
+		
+		if(form.customerBirth.value.length == 0){
+			alert("생년월일을 선택해 주세요");
+			form.customerBirth.focus();
+			return;
+		}
+		
+		if(form.customerPhone.value.length == 0){
+			alert("전화번호를 입력해 주세요.");
+			form.customerPhone.focus();
+			return;
+		}
+		
+		if(form.email1.value.length == 0) {
+			alert("메일을 입력해 주세요.");
+			form.email1.focus();
+			return;
+		}
+		
+		if(form.email2.value.length == 0) {
+			alert("메일주소를 선택해 주세요.");
+			form.email2.focus();
+			return;
+		}
+
+		form.submit();
+	}
+
+</script>
+
 </head>
 <body>
 
@@ -244,11 +286,11 @@
 					<input type="button" name="btnIdCheck" id="send_box" value="인증번호 보내기" onclick="CheckId()"><br><br>
 					
 					<label id="label_design">VERIFICATION CODE CHECK</label>
-					<input id="code_box" type="text" name="customerPhone" placeholder="인증번호">
+					<input id="code_box" type="text" name="" placeholder="인증번호">
 					<input type="button" name="btnIdCheck" id="check_box" value="확인" onclick="CheckId()"><br><br>
 					
 					
-					<input id="join_button" style="margin-top: 30px" type="button" name="join" value="FIND" onclick="joinAction()">			
+					<input id="join_button" style="margin-top: 30px" type="button" name="find" value="FIND" onclick="findAction()">			
 				</div>
 			<div class="col">
 			</div>
