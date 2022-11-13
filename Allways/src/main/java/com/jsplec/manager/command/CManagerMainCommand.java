@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jsplec.manager.dao.CManagerMainDao;
+import com.jsplec.manager.dao.CManagerOrderStausDao;
 import com.jsplec.manager.dao.CManagerOrdersReviewDao;
+import com.jsplec.manager.dto.CManagerOrderStautsDTo;
 import com.jsplec.manager.dto.ordersReviewDto;
 import com.jsplec.manager.dto.salesDto;
 
@@ -17,11 +19,13 @@ public class CManagerMainCommand implements CManagerCommand {
 		// TODO Auto-generated method stub
 		ArrayList<salesDto> dtos = new ArrayList<salesDto>();
 		CManagerMainDao dao = new CManagerMainDao();
+		CManagerOrderStausDao ordersdao=new CManagerOrderStausDao();
 		ArrayList<ordersReviewDto> dtos2 = new ArrayList<ordersReviewDto>();
 		CManagerOrdersReviewDao dao2 = new CManagerOrdersReviewDao();
 		ArrayList<String> dates = dao.makeXAxis();
 		ArrayList<Integer> price = dao.makeSalesPrice();
 		ArrayList<Integer> quantity = dao.makeSalesQuantity();
+		ArrayList<CManagerOrderStautsDTo> ordersdtos=ordersdao.orderStautsList();
 		String strDates = "";
 		String strPrice = "";
 		String strQuantity = "";
@@ -44,6 +48,7 @@ public class CManagerMainCommand implements CManagerCommand {
 		request.setAttribute("XAXIS", strDates);
 		request.setAttribute("SALESPRICE", strPrice);
 		request.setAttribute("SALESQUANTITY", strQuantity);
+		request.setAttribute("ORDERS", ordersdtos);
 
 	}
 

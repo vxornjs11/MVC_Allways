@@ -29,18 +29,27 @@
 	<div class="main">
 		<h2 class="inner">미답변 문의</h2>
 		<div align="right" style="margin:1px">
-			<a href="#" class="viewall">전체보기</a>
+			<a href="MorderStatus.do" class="viewall">전체보기</a>
 		</div>
 		<div class="inner">
 			<table class="table">
 				<tr>
-					<th>날짜</th>
-					<th>작성자</th>
-					<th>제목</th>
+					<th>주문번호</th>
+					<th>구매자</th>
+					<th>상품명</th>
 				</tr>
-				<c:forEach var="cnt" begin="1" end="10">
+				<c:forEach var="cnt" items="${ORDERS }" begin="1" end="10">
 					<tr>
-						<td>2022-10-05</td><td>5</td><td>100000</td>
+						<td>${cnt.ordersId }</td>
+						<td>${cnt.o_customerId }</td>
+						<td>
+							<c:if test="${cnt.cakeName==null }">
+								${cnt.goodsName }
+							</c:if>
+							<c:if test="${cnt.goodsName==null }">
+								${cnt.cakeName }
+							</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
