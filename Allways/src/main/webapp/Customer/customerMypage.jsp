@@ -93,18 +93,32 @@
 <script type="text/javascript">
 
 
-function revision(){
+function revision(index){
 		var form = document.customerMypage;
+		
+		if(index==1){
 		form.action="customerRevision.do";
+		}
+		
+		if(index==2){
+		form.action="customerOrdersList.do";
+		}
+		
+		if(index==3){
+		form.action="customerMypoint.do";
+		}
+		
 		form.submit();
+	
 	}
 	
+/* 	
 function orderlist(){
 		var form = document.customerMypage;
 		form.action="customerOrdersList.do";
 		form.submit();
 	}
-	
+	 */
 </script>
 
 <title>MYPAGE REVISION</title>
@@ -124,13 +138,13 @@ function orderlist(){
 					<img src="./images/Amypage.png" id="Join_image" style="margin-top: 30px;"><br>
 					<br><h2 id="Join">MYPAGE</h2><br>
 					
-					<button id="LoginBtn" type="button" name="Revision" onclick="revision()">
+					<button id="LoginBtn" type="button" name="Revision" onclick="revision(1)">
 					<p id="pSet" style="padding-top: 11px;">INFORMATION REVISION</p></button><br><br>
 					
-					<button id="LoginBtn" type="button" name="orderlist" onclick="orderlist()">
+					<button id="LoginBtn" type="button" name="orderlist" onclick="revision(2)">
 					<p id="pSet" style="padding-top: 11px;">MY ORDERLIST</p></button><br><br>
 					
-					<button id="LoginBtn" type="button" name="mypoint" onclick="mypoint()">
+					<button id="LoginBtn" type="button" name="mypoint" onclick="revision(3)">
 					<p id="pSet" style="padding-top: 11px;">MY POINT</p></button><br><br>
 					
 					
