@@ -41,6 +41,12 @@ function login() {
 	
 }
 
+function searchList() {
+	var form = document.myform;
+	form.action = "customerWriteList.do";
+	form.submit();
+}
+
 </script>
 
 <title>Insert title here</title>

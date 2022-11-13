@@ -25,7 +25,7 @@ public class CCustomerWriteListDao {
 		}
 	}
 	
-	public ArrayList<CCustomerWriteListDto> writeList() {
+	public ArrayList<CCustomerWriteListDto> writeList(String combo, String searchContent) {
 		
 		ArrayList<CCustomerWriteListDto> dtos = new ArrayList<CCustomerWriteListDto>();
 		
@@ -39,7 +39,7 @@ public class CCustomerWriteListDao {
 			String query = "select * from ( "
 					+ "	select row_number() over(order by commentId) as rownum, "
 					+ " writeTitle, writeContent, w_customerId, writeInitdate, distinguish, writeId, writeDeletedate, commentId "
-					+ "	from `write` "
+					+ "	from `write` where " + combo + " like '%" + searchContent + "%' "
 					+ " order by commentId desc, writeInitdate asc) w";
 			
 			preparedStatement = connection.prepareStatement(query);

@@ -16,8 +16,18 @@ public class CCustomerWriteListCommand implements CCustomerCommand {
 		
 		HttpSession session = request.getSession();
 		
+		String combo = request.getParameter("combo");
+		String searchContent = request.getParameter("searchContent");
+		
+		if(combo == null) {
+			combo = "w_customerId";
+		}
+		if(searchContent == null) {
+			searchContent = "";
+		}
+		
 		CCustomerWriteListDao dao = new CCustomerWriteListDao();
-		ArrayList<CCustomerWriteListDto> dtos = dao.writeList();
+		ArrayList<CCustomerWriteListDto> dtos = dao.writeList(combo, searchContent);
 		
 		int index = 1; // 시작 페이지 번호
 		int rowcount = 10; // 한 페이지에 출력할 리스트 개수
