@@ -68,14 +68,12 @@ public class CCustomerPasswordResetDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "update customer set customerPw=? where customerid=?";
+			String query = "update customer set customerPw=? where customerId=?";
 			ps = connection.prepareStatement(query);
 			ps.setString(1, customerPw);
 			ps.setString(2, customerId);
 			ps.executeUpdate();
 
-			if (rs.next()) {
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

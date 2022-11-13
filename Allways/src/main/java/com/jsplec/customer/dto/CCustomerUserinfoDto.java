@@ -1,6 +1,5 @@
 package com.jsplec.customer.dto;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class CCustomerUserinfoDto {
@@ -12,18 +11,49 @@ public class CCustomerUserinfoDto {
 	String customerGender;
 	String customerPhone;
 	String customerEmail;
-	Date customerBirthday;
-	int customerPostcode;
+	String customerBirthday;
+	String customerPostcode;
 	String customerAddress;
 	String customerAddressDetail;
 	Timestamp customerInitdate;
 	Timestamp customerUpdatedate;
 	Timestamp customerDeletedate;
 	
+	String customerEmailId;
+	String customerEmailDomain;
+	
+	
 	// C
 	public CCustomerUserinfoDto() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public CCustomerUserinfoDto(String customerPw, String customerName, String customerGender,
+			String customerPhone, String customerBirthday, String customerPostcode,
+			String customerAddress, String customerAddressDetail) {
+		super();
+		this.customerPw = customerPw;
+		this.customerName = customerName;
+		this.customerGender = customerGender;
+		this.customerPhone = customerPhone;
+		this.customerBirthday = customerBirthday;
+		this.customerPostcode = customerPostcode;
+		this.customerAddress = customerAddress;
+		this.customerAddressDetail = customerAddressDetail;
+	}
+
+	
+
+
+	public CCustomerUserinfoDto(String customerEmailId, String customerEmailDomain) {
+		super();
+		this.customerEmailId = customerEmailId;
+		this.customerEmailDomain = customerEmailDomain;
+	}
+
+
 
 	// M
 	public String getCustomerId() {
@@ -74,19 +104,19 @@ public class CCustomerUserinfoDto {
 		this.customerEmail = customerEmail;
 	}
 
-	public Date getCustomerBirthday() {
+	public String getCustomerBirthday() {
 		return customerBirthday;
 	}
 
-	public void setCustomerBirthday(Date customerBirthday) {
+	public void setCustomerBirthday(String customerBirthday) {
 		this.customerBirthday = customerBirthday;
 	}
 
-	public int getCustomerPostcode() {
+	public String getCustomerPostcode() {
 		return customerPostcode;
 	}
 
-	public void setCustomerPostcode(int customerPostcode) {
+	public void setCustomerPostcode(String customerPostcode) {
 		this.customerPostcode = customerPostcode;
 	}
 
@@ -128,6 +158,30 @@ public class CCustomerUserinfoDto {
 
 	public void setCustomerDeletedate(Timestamp customerDeletedate) {
 		this.customerDeletedate = customerDeletedate;
+	}
+
+
+
+	public String getCustomerEmailId() {
+		return customerEmailId;
+	}
+
+
+
+	public void setCustomerEmailId(String customerEmailId) {
+		this.customerEmailId = customerEmailId;
+	}
+
+
+
+	public String getCustomerEmailDomain() {
+		return customerEmailDomain;
+	}
+
+
+
+	public void setCustomerEmailDomain(String customerEmailDomain) {
+		this.customerEmailDomain = customerEmailDomain;
 	}
 	
 	

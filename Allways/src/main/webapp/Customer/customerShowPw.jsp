@@ -47,7 +47,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@700&display=swap" rel="stylesheet">
 
-<title>Insert title here</title>
+<title>ALLWAYS FIND PW</title>
 <%@include file="customerHeader.jsp" %>
 </head>
 

@@ -13,8 +13,6 @@ public class CCustomerPasswordResetCommand implements CCustomerCommand {
 		String customerId = request.getParameter("customerId");
 		String customerPw = request.getParameter("customerPw");
 		
-		System.out.println(customerId);
-		
 		CCustomerPasswordResetDao dao = new CCustomerPasswordResetDao();
 		dao.resetPw(customerId, customerPw);
 		

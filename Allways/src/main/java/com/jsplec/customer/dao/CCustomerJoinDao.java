@@ -102,7 +102,42 @@ public class CCustomerJoinDao {
 		}
 	}
 	
-	
+	public void updateAction(String customerId, String customerPw, String customerName, String customerGender, String customerPhone, String customerEmail, String customerBirthday, String customerPostcode, String customerAddress, String customerAddressDetail) {
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "update customer set customerPw=?, customerName=?, customerGender=?, customerPhone=?, customerEmail=?, customerBirthday=?, customerPostcode=?, customerAddress=?, customerAddressDetail=?, customerUpdatedate=now() where customerId=?";
+			ps = connection.prepareStatement(query);
+			
+			ps.setString(1, customerPw);
+			ps.setString(2, customerName);
+			ps.setString(3, customerGender);
+			ps.setString(4, customerPhone);
+			ps.setString(5, customerEmail);
+			ps.setString(6, customerBirthday);
+			ps.setString(7, customerPostcode);
+			ps.setString(8, customerAddress);
+			ps.setString(9, customerAddressDetail);
+			ps.setString(10, customerId);
+			
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if(ps!=null)ps.close();
+				if (connection!=null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
 	
 	
 } // End

@@ -29,6 +29,7 @@ import com.jsplec.customer.command.CCustomerFindPwCommand;
 import com.jsplec.customer.command.CCustomerIdCheckCommand;
 import com.jsplec.customer.command.CCustomerJoinCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
+import com.jsplec.customer.command.CCustomerMypageUpdateCommand;
 import com.jsplec.customer.command.CCustomerOrderListCommand;
 import com.jsplec.customer.command.CCustomerPasswordResetCommand;
 import com.jsplec.customer.command.CCustomerPayCommand;
@@ -189,6 +190,18 @@ public class CController extends HttpServlet {
 			customercommand.execute(request, response);
 			viewPage="customerLoginPage.do";
 			break;
+			
+		// 마이페이지 이동
+		case("/Customer/customerMypage.do"):
+			viewPage="customerMypage.jsp";
+			break;
+			
+		// 회원정보 수정
+		case("/Customer/customerRevision.do"):
+			customercommand = new CCustomerMypageUpdateCommand();
+			customercommand.execute(request, response);
+			viewPage="customerMypageRevision.jsp";
+		break;
 
 //-------------------------------- 한별 --------------------------------
 		// 리뷰 리스트 출력
@@ -298,7 +311,7 @@ public class CController extends HttpServlet {
 		case ("/Customer/customerCakeCart.do"):
 			customercommand = new CCustomerCakeCartCommand();
 			customercommand.execute(request, response);
-			viewPage = "customerMain.jsp";
+			viewPage = "customerMain.do";
 			break;
 			
 		case ("/Customer/customerCartList.do"):
@@ -317,14 +330,14 @@ public class CController extends HttpServlet {
 		case ("/Customer/customerOrder.do"):
 			customercommand = new CCustomerPayCommand();
 			customercommand.execute(request, response);
-			viewPage = "customerMain.jsp";
+			viewPage = "customerMain.do";
 			break;
 			
 		// 결제
 		case ("/Customer/customerCakeQuickOrder.do"):
 			customercommand = new CCustomerCakeQuickOrderCommand();
 			customercommand.execute(request, response);
-			viewPage = "customerMain.jsp";
+			viewPage = "customerMain.do";
 			break;
 			
 		case ("/Customer/customerCartDelete.do"):
