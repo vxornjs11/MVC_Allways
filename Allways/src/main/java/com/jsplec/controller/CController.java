@@ -20,6 +20,7 @@ import com.jsplec.customer.command.CCustomerCakeDetailCommand;
 import com.jsplec.customer.command.CCustomerCakeListCommand;
 import com.jsplec.customer.command.CCustomerCakeOrderCommand;
 import com.jsplec.customer.command.CCustomerCakeQuickOrderCommand;
+import com.jsplec.customer.command.CCustomerCakeSortListCommand;
 import com.jsplec.customer.command.CCustomerCartDeleteCommand;
 import com.jsplec.customer.command.CCustomerCartListCommand;
 import com.jsplec.customer.command.CCustomerCartSelectDeleteCommand;
@@ -318,6 +319,13 @@ public class CController extends HttpServlet {
 			viewPage = "customerCakeList.jsp";
 			break;
 
+		case ("/Customer/customerCakeSortList.do"):
+			customercommand = new CCustomerCakeSortListCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCakeList.jsp";
+			break;
+	
+			
 		case ("/Customer/customerCakeDetail.do"):
 			customercommand = new CCustomerCakeDetailCommand();
 			customercommand.execute(request, response);
