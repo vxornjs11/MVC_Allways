@@ -76,7 +76,7 @@ public CManagerOrderListDao() {
 		try { 
 			connection = dataSource.getConnection();
 			
-			String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption order by cakeoptionCategory DESC";
+			String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption where cakeoptionDeleteDate is null order by cakeoptionCategory DESC";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -133,7 +133,7 @@ public CManagerOrderListDao() {
 			connection = dataSource.getConnection();
 			
 			
-			String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption where " + option + "  Like '%" + Query+ "%' order by cakeoptionCategory DESC";
+			String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption where " + option + "  Like '%" + Query+ "%' and cakeoptionDeleteDate is null order by cakeoptionCategory DESC";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			

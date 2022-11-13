@@ -128,6 +128,7 @@ function previewFile() {
 	</thead>
 	</table>
 	</div>
+	<th>
 	<div align="left" style="width:74%;display:inline-block">
 			<input type="file" name="cakeoptionImage" onchange="previewFile(event)">
 	</div>
@@ -139,6 +140,7 @@ function previewFile() {
 			<img src="" id="preview" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
 		</div>
 	</div>
+	</th>
 		
 	</form>
 		

@@ -22,7 +22,6 @@ public class CManagerOptionDeleteCommand implements CManagerCommand {
 		try {
 			MultipartRequest multi = new MultipartRequest(request, context.getRealPath("/"), maxSize, "utf-8", new DefaultFileRenamePolicy());
 			String cakeoptionId=multi.getParameter("optionId");
-			System.out.println(cakeoptionId);
 			dao.contentDelete(cakeoptionId);
 		} catch (Exception e) {
 			// TODO: handle exception

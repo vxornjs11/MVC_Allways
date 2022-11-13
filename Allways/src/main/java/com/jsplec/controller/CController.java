@@ -568,7 +568,7 @@ public class CController extends HttpServlet {
 		case ("/Manager/MO_Delete.do"):
 			managercommand = new CManagerOptionDeleteCommand();
 			managercommand.execute(request, response);
-			viewPage = "ManagerOptionUpdate.jsp";
+			viewPage = "Mlist.do";
 			break;
 
 		case ("/Manager/ONameCheck.do"):
