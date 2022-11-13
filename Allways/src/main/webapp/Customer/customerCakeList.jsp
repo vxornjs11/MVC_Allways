@@ -55,16 +55,51 @@ color: #766262;
 }
 
 </style>
+
 </head>
 <body>
 
 	<main>
 	
  <div class="select">
-     <input type="radio" id="select" name="shop" onclick=""><label for="select">SORT1</label>
-     <input type="radio" id="select2" name="shop"><label for="select2">SORT2</label>
+ <form action="" name="sort" method="get">
+     <a href="customerCakeList.do?query=cakePrice&">
+     <input type="radio" id="select" name="shop"><label for="select">SORT1</label>
+     </a>
+     <a href ="customerMain.do">
+     <input type="radio" id="select2" name="shop" ><label for="select2">SORT2</label>
+     </a>
      <input type="radio" id="select3" name="shop"><label for="select3">SORT3</label>
+ </form>
 </div>
+
+
+
+
+
+
+
+
+<div class="btn-group">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+    Sort
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakePrice&content=asc">Newest</a></li>
+    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakePrice&content=desc">Star Rating</a></li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 		<div class="row" style="padding-left: 35px; margin-right: 0px;">
 			
@@ -78,7 +113,7 @@ color: #766262;
 						<div class="card-body">
 							<table>
 								<tr>
-									<td align="left" width="170px">${dto.cakeName}</td><td align="right" width="120px">￦ <fmt:formatNumber value="+${dto.cakePrice}"/></td>
+									<td align="left" width="170px">${dto.cakeName}</td><td align="right" width="120px">￦ <fmt:formatNumber value="${dto.cakePrice}"/></td>
 								</tr>
 								<tr>
 									<td align="left">&hearts; ${dto.cakeLike}</td><td align="right">Views ${dto.cakeViews}</td>
@@ -89,20 +124,29 @@ color: #766262;
 				</div>
 			</c:forEach>
 			
-			<c:forEach items="${productListCategory}" var="dto">
-				<div class="col-lg-2 col-md-4">
-					<div class="card" style="width: 14rem;">
-					<a href="productDetail.do?productmodel=${dto.productmodel}">
-						<img src="./productListImage/${dto.productmodel}.png" class="card-img-top"
-							alt="${dto.productmodel}" style="max-height:100">
+			<c:forEach items="${cakeSortList}" var="dto">
+				<div class="col-lg-3 col-md-6" style="padding-bottom: 20px;" id="cakeList">
+					<div class="card" style="width: 20rem;">
+					<a href="customerCakeDetail.do?cakeId=${dto.cakeId}">
+						<img src="./cakeListImage/${dto.cakeImage}" class="card-img-top"
+							alt="${dto.cakeId}">
 					</a>
 						<div class="card-body">
-							<p class="card-text" align="center">${dto.productbrand} ${dto.productmodel}</p>
-							<p class="card-text" align="center">${dto.productprice}</p>
+							<table>
+								<tr>
+									<td align="left" width="170px">${dto.cakeName}</td><td align="right" width="120px">￦ <fmt:formatNumber value="${dto.cakePrice}"/></td>
+								</tr>
+								<tr>
+									<td align="left">&hearts; ${dto.cakeLike}</td><td align="right">Views ${dto.cakeViews}</td>
+								</tr>
+							</table> 						
 						</div>
 					</div>
 				</div>
 			</c:forEach>
+			
+			
+			
 		</div>
 
 	</main>
@@ -110,5 +154,6 @@ color: #766262;
 	<script src="/docs/5.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>
