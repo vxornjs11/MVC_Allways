@@ -243,7 +243,7 @@ function signup() {
 	        </button>
 	       	 	<div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
 	            <div class="navbar-nav m-auto py-0">
-		            <a href="customerAbout.do" class="navbar-brand ml-lg-3">
+		            <a href="customerAbout.jsp" class="navbar-brand ml-lg-3">
 		       			 <img src="./images/HeaderLogo.png"><!--  style="padding-left: 90px;"></img> -->
 		        	</a>
 	                <a href="customerAbout.jsp" id="center" class="nav-item nav-link active">HOME</a>

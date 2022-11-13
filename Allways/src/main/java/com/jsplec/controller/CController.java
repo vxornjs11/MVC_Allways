@@ -24,6 +24,7 @@ import com.jsplec.customer.command.CCustomerCartDeleteCommand;
 import com.jsplec.customer.command.CCustomerCartListCommand;
 import com.jsplec.customer.command.CCustomerCartSelectDeleteCommand;
 import com.jsplec.customer.command.CCustomerCommand;
+import com.jsplec.customer.command.CCustomerDeleteCommand;
 import com.jsplec.customer.command.CCustomerFindIdCommand;
 import com.jsplec.customer.command.CCustomerFindPwCommand;
 import com.jsplec.customer.command.CCustomerIdCheckCommand;
@@ -35,6 +36,7 @@ import com.jsplec.customer.command.CCustomerPasswordResetCommand;
 import com.jsplec.customer.command.CCustomerPayCommand;
 import com.jsplec.customer.command.CCustomerQuestionCommand;
 import com.jsplec.customer.command.CCustomerReviewListCommand;
+import com.jsplec.customer.command.CCustomerUpdateCommand;
 import com.jsplec.customer.command.CCustomerWriteListCommand;
 import com.jsplec.customer.command.CCustomerWriteReviewCommand;
 import com.jsplec.customer.command.CCustomerBoardDetailCommand;
@@ -196,12 +198,26 @@ public class CController extends HttpServlet {
 			viewPage="customerMypage.jsp";
 			break;
 			
-		// 회원정보 수정
+		// 회원정보확인 페이지 이동
 		case("/Customer/customerRevision.do"):
 			customercommand = new CCustomerMypageUpdateCommand();
 			customercommand.execute(request, response);
 			viewPage="customerMypageRevision.jsp";
 		break;
+		
+		// 회원정보 수정
+		case("/Customer/mypageUpdate.do"):
+			customercommand = new CCustomerUpdateCommand();
+			customercommand.execute(request, response);
+			viewPage="customerMypage.jsp";
+			break;
+			
+		// 회원탈퇴
+		case("/Customer/deleteAction.do"):
+			customercommand = new CCustomerDeleteCommand();
+			customercommand.execute(request, response);
+			viewPage="customerLoginPage.do";
+			break;
 
 //-------------------------------- 한별 --------------------------------
 		// 리뷰 리스트 출력

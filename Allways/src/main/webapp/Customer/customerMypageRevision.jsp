@@ -201,7 +201,7 @@
 			return;
 		}
 		
-		if(form.customerPw.value != document.customerJoin.customerPwCheck.value) {
+		if(form.customerPw.value != form.customerPwCheck.value) {
 			alert("비밀번호가 일치하지 않습니다.");
 			customerJoin.customerPw.focus();
 			return;
@@ -246,14 +246,25 @@
 			return;
 		}
 		
-		
 		alert("정보가 수정되었습니다.");
 		form.action = "mypageUpdate.do";
 		form.submit();
-		
-		
 	}
+	
 
+	 function test() {
+		 
+		var form = document.customerRevision;
+		 
+        if (!confirm("정말로 탈퇴하시겠습니까?")) {
+            alert("취소되었습니다.");
+        } else {
+            alert("탍퇴되었습니다.");
+            form.action = "deleteAction.do";
+            form.submit();
+        }
+    }
+	
 </script>
 
 </head>
@@ -346,7 +357,7 @@
 					<input type="text" id="sample4_detailAddress" placeholder="상세주소"> -->
 					
 					<input id="join_button" style="margin-top: 30px" type="button" name="join" value="UPDATE" onclick="updateAction()">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
-					<input id="join_button" style="margin-top: 30px" type="button" name="join" value="DELETE" onclick="deleteAction()">			
+					<input id="join_button" style="margin-top: 30px" type="button" name="join" value="DELETE" onclick="test()">			
 				</div>
 			<div class="col">
 			</div>

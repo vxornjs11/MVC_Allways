@@ -139,5 +139,33 @@ public class CCustomerJoinDao {
 		}
 	}
 	
+	public void deleteAction(String customerId) {
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "update customer set customerDeletedate=now() where customerId=?";
+			ps = connection.prepareStatement(query);
+			
+			ps.setString(1, customerId);
+			
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if(ps!=null)ps.close();
+				if (connection!=null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
 	
 } // End
