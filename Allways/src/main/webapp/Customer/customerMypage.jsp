@@ -99,6 +99,12 @@ function revision(){
 		form.submit();
 	}
 	
+function orderlist(){
+		var form = document.customerMypage;
+		form.action="customerOrdersList.do";
+		form.submit();
+	}
+	
 </script>
 
 <title>MYPAGE REVISION</title>
@@ -119,7 +125,13 @@ function revision(){
 					<br><h2 id="Join">MYPAGE</h2><br>
 					
 					<button id="LoginBtn" type="button" name="Revision" onclick="revision()">
-					<p id="pSet" style="padding-top: 11px;">INFORMATION REVISION</p></button><br>
+					<p id="pSet" style="padding-top: 11px;">INFORMATION REVISION</p></button><br><br>
+					
+					<button id="LoginBtn" type="button" name="orderlist" onclick="orderlist()">
+					<p id="pSet" style="padding-top: 11px;">MY ORDERLIST</p></button><br><br>
+					
+					<button id="LoginBtn" type="button" name="mypoint" onclick="mypoint()">
+					<p id="pSet" style="padding-top: 11px;">MY POINT</p></button><br><br>
 					
 					
 					
