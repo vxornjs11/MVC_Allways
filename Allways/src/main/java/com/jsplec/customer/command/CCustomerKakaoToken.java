@@ -4,17 +4,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jsplec.customer.dao.CCustomerKakaoDao;
+import com.jsplec.customer.dto.CCustomerKakaoDto;
 
 public class CCustomerKakaoToken implements CCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String code = request.getParameter("code");
+//		String code = request.getParameter("code");
 //
 //		CCustomerKakaoDao dao = new CCustomerKakaoDao();
 //		String access_token = dao.getToken(code);
-//		KakaoDTO kakao = dao.getKakao(access_token);
+//		CCustomerKakaoDto kakao = dao.getKakao(access_token);
 //		
 //		request.setAttribute("kakao", kakao);
 //		

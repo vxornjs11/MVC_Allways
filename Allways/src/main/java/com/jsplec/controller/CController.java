@@ -361,7 +361,7 @@ public class CController extends HttpServlet {
 		case ("/Customer/customerCakeQuickOrder.do"):
 			customercommand = new CCustomerCakeQuickOrderCommand();
 			customercommand.execute(request, response);
-			viewPage = "customerMain.do";
+			viewPage = "customerOrder.jsp";
 			break;
 			
 		case ("/Customer/customerCartDelete.do"):

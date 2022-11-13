@@ -8,6 +8,8 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import com.jsplec.customer.dto.CCustomerKakaoDto;
+import com.mysql.cj.xdevapi.JsonParser;
 
 
 public class CCustomerKakaoDao {
@@ -15,7 +17,7 @@ public class CCustomerKakaoDao {
 	public CCustomerKakaoDao() {
 		// TODO Auto-generated constructor stub
 	}
-	
+//	
 //	public String getToken(String code) {
 //		String token = "";
 //
@@ -76,7 +78,7 @@ public class CCustomerKakaoDao {
 //		return token;
 //	}
 //	
-//	public KakaoDTO getKakao(String token) {
+//	public CCustomerKakaoDto getKakao(String token) {
 //
 //		String name = "";
 //		String profile = "";
@@ -153,7 +155,7 @@ public class CCustomerKakaoDao {
 //			}
 //			
 //			// api 에서 받은 data들 한번에 보내기
-//			KakaoDTO kakao = new KakaoDTO( id, name, profile, birthday, email, gender);
+//			CCustomerKakaoDto kakao = new CCustomerKakaoDto( id, name, profile, birthday, email, gender);
 //			
 //			return kakao;
 //		} catch (Exception e) {
