@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 </head>
 <body>
@@ -33,7 +34,7 @@
 								<td>${dto.ROWNUM}</td>
 								<td>${dto.cakeName}</td>
 								<td>${dto.o_customerId}</td>
-								<td>${dto.ordersSalePrice}</td>
+								<td><fmt:formatNumber value="${dto.ordersSalePrice}"/></td>
 								<td>${dto.ordersQuantity}</td>
 								<td>${dto.ordersDate}</td>
 								<td><a href = "customerWriteReview.jsp?ordersId=${dto.ordersId }"><button type = "button">리뷰작성</button></a>

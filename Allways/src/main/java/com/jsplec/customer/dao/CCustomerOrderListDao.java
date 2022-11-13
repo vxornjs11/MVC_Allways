@@ -38,7 +38,7 @@ DataSource dataSource;
 			
 			String query = "select @rownum:=@rownum+1, o.ordersId, ANY_VALUE(c.cakeName), ANY_VALUE(o.o_customerId), ANY_VALUE(o.ordersSalePrice), ANY_VALUE(o.ordersQuantity), ANY_VALUE(o.ordersDate) "
 					+ "from orders o, cake c "
-					+ "where (@rownum:=0)=0 and o.ordersReviewstatus is null and o.o_customerId = '" + CUSTOMERID + "' and o.ordersStatus = '구매' and o.o_cakeId = c.cakeId "
+					+ "where (@rownum:=0)=0 and o.ordersReviewstatus is null and o.o_customerId = '" + CUSTOMERID + "' and o.ordersStatus = '제작완료' and o.o_cakeId = c.cakeId "
 					+ "group by o.ordersId";
 			
 			preparedStatement = connection.prepareStatement(query);

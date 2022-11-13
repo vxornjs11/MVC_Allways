@@ -12,8 +12,8 @@
 
 #write_button {
 
-	width: 115px;
-	height: 45px;
+	width: 100px;
+	height: 40px;
 	
 	font-family: 'Baloo Tammudu 2';
 	font-style: normal;
@@ -24,8 +24,6 @@
 	text-align: center;
 	
 	color: #766262;
-	width: 145px;
-	height: 55px;
 	
 	background: #FBEAEA;
 	border: 0.7px solid #000000;
@@ -131,17 +129,18 @@ function searchList() {
 	<div style = "margin-left: 300px; margin-top: 70px;">
 		
 		<form name = "myform" method = "post">
-		<button style = "margin-left: -160px;" id="write_button" onclick = "ordersList()">Write Review</button>
+		<button style = "margin-left: -120px;" id="write_button" onclick = "ordersList()">Write Review</button>
 		
 		<div class="btn-group">
-		  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-		    Sort
+		  <button type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+			Sort
 		  </button>
 		  <ul class="dropdown-menu">
 		    <li><a class="dropdown-item" href="customerOrdersReview.do?sort=oreviewInitdate&index=${pageNum }">Newest</a></li>
 		    <li><a class="dropdown-item" href="customerOrdersReview.do?sort=oreviewStarrating&index=${pageNum }">Star Rating</a></li>
 		  </ul>
 		</div>
+			
 			
 			<select style = "margin-left: 600px;" name = "combo">
 				<option value = "or_customerId">작성자</option>
@@ -178,7 +177,11 @@ function searchList() {
 						<td>${dto.oreviewContent }</td>
 						<td>
 							<c:forEach begin = "1" end = "${dto.oreviewStarrating }">
-								<label>★</label>
+								<label>⭐</label>
+							</c:forEach>
+							
+							<c:forEach begin = "${dto.oreviewStarrating + 1}" end = "5">
+								<label>☆</label>
 							</c:forEach>
 						</td>
 						<td>${dto.or_customerId }</td>

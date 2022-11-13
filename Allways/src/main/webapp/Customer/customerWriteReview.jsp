@@ -66,10 +66,7 @@
 	border-radius: 70px;
 
 }
-/* div {
-    width: 100%;
-    height: 300px;
-} */
+
 div.left {
     width: 40%;
     float: left;
