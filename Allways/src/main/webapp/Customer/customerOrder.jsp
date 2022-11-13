@@ -5,6 +5,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<title>Order</title>
 
 <script type="text/javascript">
 
@@ -26,7 +27,6 @@ function order(index){
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@700&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <style type="text/css">
 #page_name{
 font-family: 'Baloo Tammudu 2';
@@ -81,6 +81,23 @@ border: 2px solid #FECACA;
 	</table>
 </form>
 </div><br>
+
+
+
+<!--  수정 필요   -->
+<div align="center">
+	<c:forEach var = "dto" items="${optionList }">
+		<tr align="center">
+			<td>${dto.cakeoptionCategory }</td>
+			<td>${dto.cakeoptionValue }</td>
+			<td>${dto.cakeoptionPrice }</td>
+			<td>${dto.detailoptionLettering }</td>
+		</tr>
+	</c:forEach>
+</div>
+<!--  수정 필요   -->
+
+
 
 <div align="center" style="padding-right: 190px;">
 	<table>

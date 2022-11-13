@@ -104,7 +104,7 @@ public class CCustomerCakeCartDao {
 	
 	
 	
-	public void detailOptionInsert(int ordersId, String ordersStatus, int[] cakeoptionId, String customerId, int cakeId, String detailoptionLettering) {
+	public void detailOptionInsert(int ordersId, String ordersStatus, int[] cakeoptionId, String customerId, int cakeId, String detailoptionLettering, String detailoptionPickupDate) {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -114,8 +114,8 @@ public class CCustomerCakeCartDao {
 
 			for(int i = 0; i < cakeoptionId.length; i++) {
 				
-				String query1 = "insert into detailoption (d_ordersId, d_ordersStatus, d_cakeoptionId, d_customerId, d_cakeId, d_goodsId, detailoptionLettering) "
-						+ "values (?, ?, ?, ?, ?, ?, ?);";
+				String query1 = "insert into detailoption (d_ordersId, d_ordersStatus, d_cakeoptionId, d_customerId, d_cakeId, d_goodsId, detailoptionLettering, detailoptionPickupDate) "
+						+ "values (?, ?, ?, ?, ?, ?, ?, ?);";
 				
 				preparedStatement = connection.prepareStatement(query1);
 				
@@ -127,10 +127,81 @@ public class CCustomerCakeCartDao {
 				preparedStatement.setInt(5, cakeId);
 				preparedStatement.setInt(6, 1);
 				preparedStatement.setString(7, detailoptionLettering);
+				preparedStatement.setString(8, detailoptionPickupDate);
 	
 				preparedStatement.executeUpdate();
 
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public ArrayList<CCustomerCakeOptionListDto> selectOptionPrice(int ORDERSID) {
+		
+		ArrayList<CCustomerCakeOptionListDto> dtos2 = new ArrayList<CCustomerCakeOptionListDto>();
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query1 = "select sum(co.cakeoptionPrice) from cake c, cakeoption co, orders o, detailoption d ";
+			String query2 = "where cakeoptionId = d.d_cakeoptionId and c.cakeId = d.d_cakeId and d.d_ordersId = o.ordersId ";
+			String query3 = "and o.ordersStatus = '장바구니' and o.ordersId = " + ORDERSID + " group by o.ordersId, c.cakePrice";
+			
+			preparedStatement = connection.prepareStatement(query1+query2+query3);
+			
+			rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+
+				int cakeoptionPrice = rs.getInt(1);
+				
+				CCustomerCakeOptionListDto dto = new CCustomerCakeOptionListDto(cakeoptionPrice);
+				dtos2.add(dto);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dtos2;
+	}
+	
+	public void salePriceUpdate(int ORDERSID, int CAKEPRICE, int ORDERSQUANTITY, int OPTIONPRICE) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "update orders set ordersSalePrice = ? where ordersId = " + ORDERSID;
+			
+			preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, (CAKEPRICE + OPTIONPRICE) * ORDERSQUANTITY);
+
+			preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

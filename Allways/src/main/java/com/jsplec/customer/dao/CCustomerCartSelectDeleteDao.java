@@ -3,6 +3,8 @@ package com.jsplec.customer.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class CCustomerCartSelectDeleteDao {
@@ -10,9 +12,13 @@ public class CCustomerCartSelectDeleteDao {
 	DataSource dataSource;
 
 	public CCustomerCartSelectDeleteDao() {
-		// TODO Auto-generated constructor stub
+		try {
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mvc");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
 
 	public void cartSelectOptionDelete(String[] ORDERSID) {
 

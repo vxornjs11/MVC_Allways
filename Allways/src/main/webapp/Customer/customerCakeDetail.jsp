@@ -245,55 +245,78 @@ color: #FFFDFD;
 				<div>
 					<hr id="line4">
 				</div>
-				<!-- <div id="cake_option" align="left">
+				
+				 <div id="cake_option" align="left">
 				Pickup Date
 				</div>
 				<div id="cake_option" align="left">
 				</div>
 				<div align="left">
-					<input type="date" name="pickupdate"><br><br>
-				</div> -->
+					<input type="date" name="detailoptionPickupDate"><br><br>
+				</div>
+				
+				
 				
 				<div id="cake_option" align="left">
 				Shape
 				</div>
 				
 				<div class="select" align="left">
-					<c:forEach var="dto" items="${shapeList}">
-						<c:set var="i" value="${i+1 }"/>
-							<input type="radio" id="shape${i}" name="shape" value="${dto.cakeoptionId }"><label for="shape${i}">${dto.cakeoptionValue}</label>
-							&nbsp;
-							<c:if test="${dto.cakeoptionPrice ne 0 }">
-								<label id="option_price">
-								￦ <fmt:formatNumber value="+${dto.cakeoptionPrice}"/>
-								</label>&nbsp;
-								<input type = "hidden" name="shapePrice" value="${dto.cakeoptionPrice }">
-							</c:if>
-					</c:forEach>
+					<table>
+						<tr align="center">
+							<c:forEach var="dto" items="${shapeList}">
+								<td>
+									<c:set var="i" value="${i+1 }"/>
+										<input type="radio" id="shape${i}" name="shape" value="${dto.cakeoptionId }"><label for="shape${i}">${dto.cakeoptionValue}</label>
+										&nbsp;
+								</td>
+							</c:forEach>
+						</tr>
+						<tr align="center">
+							<c:forEach var="dto" items="${shapeList }">
+								<td>
+									<c:if test="${dto.cakeoptionPrice ne 0 }">
+										<label id="option_price">
+										+ ￦ <fmt:formatNumber value="${dto.cakeoptionPrice}"/>
+										</label>&nbsp;
+										<input type = "hidden" name="shapePrice" value="${dto.cakeoptionPrice }">
+									</c:if>						
+								</td>
+							</c:forEach>
+						</tr>
+					</table>
 				</div>
-			
+				
 			
 				<div id="cake_option" align="left">
 					Size
 				</div>
 				
 				<div class="select" align="left">
-					<c:forEach var="dto" items="${sizeList}">
-						<c:set var="i" value="${i+1 }"/>
-							<input type="radio" id="size${i}" name="size" value="${dto.cakeoptionId}"><label for="size${i}">${dto.cakeoptionValue}</label>
-							&nbsp;
-							<c:if test="${dto.cakeoptionPrice ne 0 }">
-							<label id="option_price">
-							￦ <fmt:formatNumber value="+${dto.cakeoptionPrice}"/>
-							</label>
-							<input type = "hidden" name="sizePrice" value="${dto.cakeoptionPrice }">
-							</c:if>
-					</c:forEach>
+					<table>
+						<tr align="center">
+							<c:forEach var="dto" items="${sizeList}">
+								<td>
+									<c:set var="i" value="${i+1 }"/>
+										<input type="radio" id="size${i}" name="size" value="${dto.cakeoptionId}"><label for="size${i}">${dto.cakeoptionValue}</label>
+										&nbsp;
+								</td>
+							</c:forEach>
+						</tr>	
+						<tr align="center">
+							<c:forEach var="dto" items="${sizeList }">
+								<td>
+									<c:if test="${dto.cakeoptionPrice ne 0 }">
+										<label id="option_price">
+										+ ￦ <fmt:formatNumber value="${dto.cakeoptionPrice}"/>
+										</label>
+										<input type = "hidden" name="sizePrice" value="${dto.cakeoptionPrice }">
+									</c:if>
+								</td>
+							</c:forEach>
+						</tr>
+					</table>
 				</div>
-				
-				
-				
-				
 				<div id="cake_option" align="left">
 					Lettering
 				</div>
@@ -303,7 +326,10 @@ color: #FFFDFD;
 				</div><br>
 				
 				<div id="cake_option" align="left">
-					<input type="text" name = "ordersQuantity">
+					Quantity
+				</div>
+				<div align="left">
+					<input type="number" id="lettering" min="0" max="50" name ="ordersQuantity" placeholder="0" value="quantity">
 				</div>
 				
 				<hr id="line4">
@@ -315,7 +341,7 @@ color: #FFFDFD;
 								Total Quantity
 							</td>
 							<td style="width: 50px;">
-								3
+								${quantity }
 							</td>
 						</tr>
 						<tr align="center">

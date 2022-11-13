@@ -61,7 +61,7 @@ color: #766262;
 	<main>
 	
  <div class="select">
-     <input type="radio" id="select" name="shop"><label for="select">SORT1</label>
+     <input type="radio" id="select" name="shop" onclick=""><label for="select">SORT1</label>
      <input type="radio" id="select2" name="shop"><label for="select2">SORT2</label>
      <input type="radio" id="select3" name="shop"><label for="select3">SORT3</label>
 </div>

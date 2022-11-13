@@ -5,6 +5,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<title>Cart</title>
 
 <script type="text/javascript">
 
@@ -19,10 +20,6 @@ function mySubmit(index){
 	if (index == 3) {
 		form.action = "customerOrderPage.do";
 	}
-	if (index == 4) {
-		form.action = "customerCartDelete.do";
-	}
-	
 		form.submit();
 }
 
@@ -33,7 +30,6 @@ function mySubmit(index){
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@700&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <style type="text/css">
 #page_name{
 font-family: 'Baloo Tammudu 2';
@@ -122,6 +118,21 @@ color: #FFFDFD;
 			</td>
 		</tr>
 	</c:forEach>
+	
+	
+	<!--  수정 필요   -->
+	<c:forEach var = "dto" items="${optionList }">
+		<tr align="center">
+			<td>${dto.cakeoptionCategory }</td>
+			<td>${dto.cakeoptionValue }</td>
+			<td>${dto.cakeoptionPrice }</td>
+			<td>${dto.detailoptionLettering }</td>
+		</tr>
+	</c:forEach>
+	<!--  수정 필요   -->
+	
+	
+	
 		<tr align="center">
 			<td><button type = "button" id="util_box" onclick = "mySubmit(1)">Delete</button></td>
 			<td><button type = "button" id="util_box" onclick = "mySubmit(2)">Go Shopping</button></td>
@@ -130,6 +141,10 @@ color: #FFFDFD;
 	</table>
 </form>
 </div><br>
+
+
+
+
  
 <!-- <div align="center" style="padding-left: 350px;">
 	<table>

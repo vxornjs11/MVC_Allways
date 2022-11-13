@@ -28,12 +28,17 @@ public class CCustomerCakeCartCommand implements CCustomerCommand {
 		int size = Integer.parseInt(request.getParameter("size"));
 		int[] option = {shape, size};
 		String detailoptionLettering = request.getParameter("detailoptionLattering");
+		String detailoptionPickupDate = request.getParameter("detailoptionPickupDate");
 		
 		dao.cartInsert(customerId, cakeId, cakePrice, ordersQuantity);
 		
 		ArrayList<CCustomerCakeOptionListDto> dtos = dao.selectOrdersInfo(customerId);
 		
-		dao.detailOptionInsert(dtos.get(0).getOrdersId(), dtos.get(0).getOrdersStatus(), option, customerId, cakeId, detailoptionLettering);
+		dao.detailOptionInsert(dtos.get(0).getOrdersId(), dtos.get(0).getOrdersStatus(), option, customerId, cakeId, detailoptionLettering, detailoptionPickupDate);
+		
+		ArrayList<CCustomerCakeOptionListDto> dtos2 = dao.selectOptionPrice(dtos.get(0).getOrdersId());
+		
+		dao.salePriceUpdate(dtos.get(0).getOrdersId(), cakePrice, ordersQuantity, dtos2.get(0).getCakeoptionPrice());
 		
 	}
 

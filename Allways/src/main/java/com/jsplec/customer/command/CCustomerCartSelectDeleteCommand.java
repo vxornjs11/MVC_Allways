@@ -16,6 +16,7 @@ public class CCustomerCartSelectDeleteCommand implements CCustomerCommand {
 		CCustomerCartSelectDeleteDao dao = new CCustomerCartSelectDeleteDao();
 		
 		dao.cartSelectOptionDelete(ordersId);
+		
 		dao.cartSelectDelete(ordersId);
 	}
 

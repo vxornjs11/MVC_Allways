@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jsplec.customer.dao.CCustomerCartListDao;
+import com.jsplec.customer.dto.CCustomerCakeOrderDto;
 import com.jsplec.customer.dto.CCustomerCartListDto;
 
 public class CCustomerCartListCommand implements CCustomerCommand {
@@ -17,11 +18,19 @@ public class CCustomerCartListCommand implements CCustomerCommand {
 		
 		HttpSession session = request.getSession();
 		String customerId = (String) session.getAttribute("ID");
+		
+		String[] ordersId = request.getParameterValues("ordersId");
 
 		CCustomerCartListDao dao = new CCustomerCartListDao();
 		ArrayList<CCustomerCartListDto> dtos = dao.cartList(customerId);
-		
 		request.setAttribute("cartList", dtos);
+		
+		CCustomerCartListDao dao2 = new CCustomerCartListDao();
+		ArrayList<CCustomerCartListDto> dtos2 = dao2.cartOptionList();
+		request.setAttribute("optionList", dtos2);
+		
+		
+		
 
 	}
 
