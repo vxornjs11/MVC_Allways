@@ -20,6 +20,7 @@ function Return(){
 		var upd = document.upd;
 		upd.action="return.do";
 		upd.submit();
+		upd.method = "post";
 		}
 function Update(){
 		var upd = document.upd;
@@ -44,11 +45,13 @@ function Delete(){
 		upd.action="MO_Delete.do";
 		alert("삭제가 완료되었습니다");
 		upd.submit();
+		upd.method = "post";
 		}
 function CHECKOPTION(){
 		var upd = document.upd;
 		upd.action="OUpdateCheck.do";
 		upd.submit();
+		upd.method = "post";
 
 }
 function previewFile() {

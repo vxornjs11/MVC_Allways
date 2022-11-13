@@ -32,7 +32,7 @@ function Addoption(){
 <div style="text-align:center">
 </div>
 <div style="text-align:center">
-<form name="Olist" method="get">
+<form name="Olist" method="post">
 	<select name="option">
 		<option value="">검색 유형</option>
 		<option value="cakeoptionId">번호</option>

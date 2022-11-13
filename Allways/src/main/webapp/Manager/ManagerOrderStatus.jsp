@@ -22,7 +22,7 @@
 		
 </script>
 <hr/><h1>주문접수</h1><hr/>
-<form name="orderList" method="get">
+<form name="orderList" method="post">
 <table border="1" >
 <thead>
 		<tr>
@@ -93,6 +93,7 @@
 			
 </table>
 <hr/><h1>제작완료</h1>
+<div class="tablediv">
 <table border="1" >
 <thead>
 		<tr>
@@ -106,10 +107,9 @@
 			<th>주문가격</th>
 			<th>주문개수</th>
 			<th>제작선택</th>
-			<th>주문취소</th>
 		</tr>	
 		</thead>
-			<c:forEach items = "${OrdersList3}" var = "dto3">
+			<c:forEach items = "${OrdersList3}" var = "dto3" begin="${(index-1)*rowcount }" end="${(index)*rowcount-1}">
 		<tr>
 			<td>${dto3.ordersId}</td>
 			<td>${dto3.ordersStatus}</td>
@@ -124,8 +124,33 @@
 		</tr>
 			</c:forEach>
 			<tr>
-			<td><input type="button" value="처리완료" name="Final" onclick="Final()"></td>
 			</tr>
+			
 </table>
+</div>
+<c:if test="${Query==null }">
+	<div class="tablediv" align="center">
+		<a href="MorderStatus.do?index=1">처음으로</a>
+		<c:if test="${index!=1 }">
+			<a href="MorderStatus.do?index=${index-1 }">이전</a>
+		</c:if>
+		<c:forEach var="dto3" begin="${pagecount*pagepage+1}" end="${pagecount*(pagepage+1) }">
+			<c:if test="${dto3<=Math.ceil(Size/rowcount) }">
+				<c:if test="${dto3==index }">
+					<span style="display:inline">
+						<a href="MorderStatus.do?index=${dto3 }" style="font-size:1.3em">${dto3 }</a>
+					</span>
+				</c:if>
+				<c:if test="${dto3!=index }">
+					<a href="MorderStatus.do?index=${dto3 }" style="font-size:0.9em">${dto3 }</a>
+				</c:if>
+			</c:if>
+		</c:forEach>
+		<c:if test="${index<Math.ceil(Size/rowcount) }">
+			<a href="MorderStatus.do?index=${index+1 }">다음</a>
+		</c:if>
+		<a href="MorderStatus.do?index=${Math.ceil(Size/rowcount) }">끝으로</a>
+	</div>
+	</c:if>
 </body>
 </html>
