@@ -44,6 +44,9 @@ public class CManagerMainDao {
 				String orderDay = rs.getString(2);
 
 				dates.add(orderMonth + "/" + orderDay);
+				if (dates.size()==10) {
+					break;
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,6 +84,10 @@ public class CManagerMainDao {
 				int ordersPrice = rs.getInt(1);
 
 				price.add(ordersPrice);
+				
+				if (price.size()==10) {
+					break;
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,6 +125,10 @@ public class CManagerMainDao {
 				int ordersQuantity = rs.getInt(1);
 
 				quantity.add(ordersQuantity);
+				
+				if (quantity.size()==10) {
+					break;
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
