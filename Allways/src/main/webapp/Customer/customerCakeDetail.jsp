@@ -267,7 +267,7 @@ color: #FFFDFD;
 							<c:forEach var="dto" items="${shapeList}">
 								<td>
 									<c:set var="i" value="${i+1 }"/>
-										<input type="radio" id="shape${i}" name="shape" value="${dto.cakeoptionId }"><label for="shape${i}">${dto.cakeoptionValue}</label>
+										<input type="radio" id="shape${i}" name="shape" value="${dto.cakeoptionId}"><label for="shape${i}">${dto.cakeoptionValue}</label>
 										&nbsp;
 								</td>
 							</c:forEach>

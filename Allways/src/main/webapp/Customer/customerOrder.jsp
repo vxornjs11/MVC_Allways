@@ -78,6 +78,18 @@ border: 2px solid #FECACA;
 			<!-- <td>2022-11-11</td> -->
 		</tr>
 		</c:forEach>
+		
+		
+		<c:forEach items="${cakeInfo}" var="dto">
+		<tr align="center">
+			<td>${dto.cakeName }</td>
+			<td></td>
+			<td>￦ <fmt:formatNumber value="${dto.cakePrice}"/><input type="hidden" name="ordersSalePrice" value="${dto.cakePrice }"></td>
+			<!-- <td>2022-11-11</td> -->
+		</tr>
+		</c:forEach>
+		
+		
 	</table>
 </form>
 </div><br>
