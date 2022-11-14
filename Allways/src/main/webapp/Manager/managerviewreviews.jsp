@@ -89,14 +89,10 @@ table tr.header{
 			<c:forEach var="cnt" items="${Dtos}" begin="${(index-1)*rowcount }" end="${(index)*rowcount-1}">
 				<tr>
 					<td>${cnt.oreviewId}</td>
-					<c:if test="${cnt.or_cakeName==null }">
-						<td><a href="reviewDetail.do?oreviewId=${cnt.oreviewId }" class="tablebutton">${cnt.or_goodsName }</a></td>
-					</c:if>
-					<c:if test="${cnt.or_goodsName==null }">
-						<td><a href="reviewDetail.do?oreviewId=${cnt.oreviewId }" class="tablebutton">${cnt.or_cakeName }</a></td>
-					</c:if>
+					<td>${cnt.or_customerId }
+					<td><a href="reviewDetail.do?oreviewId=${cnt.oreviewId }" class="tablebutton">${cnt.or_cakeName }</a></td>
 					<td>${cnt.oreviewStarrating}</td>
-					<td><fmt:formatDate value="${cnt.goodsPrice}"/></td>
+					<td><fmt:formatDate value="${cnt.oreviewInitdate}"/></td>
 				</tr>
 			</c:forEach>
 		</table>

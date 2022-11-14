@@ -31,7 +31,7 @@ public class CManagerMainCommand implements CManagerCommand {
 		String strQuantity = "";
 
 		if (dates.size() != 0 && price.size() != 0 && quantity.size() != 0) {
-			for (int i = 0; i <= dates.size(); i++) {
+			for (int i = 0; i < dates.size(); i++) {
 				strDates += dates.get(i);
 				strPrice += price.get(i);
 				strQuantity += quantity.get(i);
@@ -42,7 +42,7 @@ public class CManagerMainCommand implements CManagerCommand {
 				}
 			}
 		}
-
+		
 		dtos2 = dao2.showOrdersReviewOnMain();
 		request.setAttribute("REVIEWDTO", dtos2);
 		request.setAttribute("XAXIS", strDates);

@@ -44,17 +44,12 @@ table tr.header{
 					<th>구매자</th>
 					<th>상품명</th>
 				</tr>
-				<c:forEach var="cnt" items="${ORDERS }" begin="1" end="10">
+				<c:forEach var="cnt" items="${ORDERS }" begin="0" end="9">
 					<tr>
 						<td>${cnt.ordersId }</td>
 						<td>${cnt.o_customerId }</td>
 						<td>
-							<c:if test="${cnt.cakeName==null }">
-								${cnt.goodsName }
-							</c:if>
-							<c:if test="${cnt.goodsName==null }">
 								${cnt.cakeName }
-							</c:if>
 						</td>
 					</tr>
 				</c:forEach>
@@ -82,7 +77,7 @@ table tr.header{
 					<th>작성자</th>
 					<th>별점</th>
 				</tr>
-				<c:forEach var="cnt" items="${REVIEWDTO }" begin="1" end="10">
+				<c:forEach var="cnt" items="${REVIEWDTO }" begin="0" end="9">
 					<tr>
 						<td><fmt:formatDate value="${cnt.oreviewInitdate }" type="both" dateStyle="full"/></td>
 						<td>${cnt.or_customerId }</td>
@@ -115,6 +110,7 @@ const priceChart = new Chart(ctxprice, {
     data: {
         labels: arrxaxis,
         datasets: [{
+        	label: '매출',
             data: arrprice,
             backgroundColor: [
                 'rgb(253, 205, 205)'
@@ -139,6 +135,7 @@ const quantityChart = new Chart(ctxquantity, {
     data: {
         labels: arrxaxis,
         datasets: [{
+        	label: '주문건수',
             data: arrquantity,
             backgroundColor: [
             	'rgb(253, 205, 205)'

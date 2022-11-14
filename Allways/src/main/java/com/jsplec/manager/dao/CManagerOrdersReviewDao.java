@@ -166,7 +166,7 @@ public class CManagerOrdersReviewDao {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "select oreviewId, or_customerId, cakeName, goodsName, oreviewStarrating, oreviewImage, oreviewInitdate, oreviewUpdatedate ";
+			String query = "select oreviewId, or_customerId, cakeName, goodsName, oreviewStarrating, oreviewContent, oreviewImage, oreviewInitdate, oreviewUpdatedate ";
 			String query2 = "from cake, goods, ordersreview, customer where or_cakeId=cakeId and or_goodsId=goodsId and oreviewDeletedate is null ";
 			String query3 = "and or_customerId=customerId and oreviewId=" + oreviewId + ";";
 
@@ -177,14 +177,14 @@ public class CManagerOrdersReviewDao {
 				int wkoreviewId = rs.getInt(1);
 				String wkor_customerId = rs.getString(2);
 				String wkcakeName = rs.getString(3);
-				String wkgoodsName = rs.getString(4);
-				String wkoreviewContent = rs.getString(5);
-				int wkoreviewStarrating = rs.getInt(6);
-				String wkoreviewImage = rs.getString(8);
-				Timestamp wkoreviewInitdate = rs.getTimestamp(9);
-				Timestamp wkoreviewUpdatedate = rs.getTimestamp(10);
+				String wkgoodsName=rs.getString(4);
+				int wkoreviewStarrating = rs.getInt(5);
+				String wkoreviewContent = rs.getString(6);
+				String wkoreviewImage = rs.getString(7);
+				Timestamp wkoreviewInitdate = rs.getTimestamp(8);
+				Timestamp wkoreviewUpdatedate = rs.getTimestamp(9);
 
-				dto = new ordersReviewDto(wkoreviewId, wkor_customerId, wkor_customerId, wkcakeName, wkgoodsName,
+				dto = new ordersReviewDto(wkoreviewId, wkor_customerId, wkor_customerId, wkcakeName, null,
 						wkoreviewContent, wkoreviewStarrating, wkoreviewImage, wkoreviewInitdate, wkoreviewUpdatedate);
 			}
 		} catch (Exception e) {

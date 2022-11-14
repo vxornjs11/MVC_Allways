@@ -6,9 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>케이크 추가</title>
+<title>리뷰 상세보기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
+<link rel="stylesheet" href="css/Table22.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 <style>
 div{
@@ -35,12 +36,7 @@ div{
 		</div>
 		<div align="left" style="width:74%;display:inline-block">
 			<div style="width:50%;display:inline-block">
-				<c:if test="${DTO.or_cakeName==null }">
-					${DTO.or_goodsName }
-				</c:if>
-				<c:if test="${DTO.or_goodsName==null }">
-					${DTO.or_cakeName }
-				</c:if>
+				${DTO.or_cakeName }
 			</div>
 			<div style="display:inline-block">
 				작성자: 
@@ -78,7 +74,7 @@ div{
 			사진
 		</div>
 		<div>
-			<img src="Allways/${DTO.oreviewImage }" id="preview" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
+			<img src="/Allways/Customer/reviewImageFile/${DTO.oreviewImage }" id="preview" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
 		</div>
 		<div>
 			<input type="button" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878" value="뒤로" onclick="cancelDo()">

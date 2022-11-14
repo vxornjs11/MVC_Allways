@@ -50,6 +50,22 @@ public class ordersReviewDto {
 		this.oreviewInitdate = oreviewInitdate;
 	}
 
+	public String getOr_goodsName() {
+		return or_goodsName;
+	}
+
+	public void setOr_goodsName(String or_goodsName) {
+		this.or_goodsName = or_goodsName;
+	}
+
+	public String getOreviewImage() {
+		return oreviewImage;
+	}
+
+	public void setOreviewImage(String oreviewImage) {
+		this.oreviewImage = oreviewImage;
+	}
+
 	public int getOreviewId() {
 		return oreviewId;
 	}

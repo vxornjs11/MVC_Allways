@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
+<link rel="stylesheet" href="css/Table22.css">
 <style>
 div{
 	padding:1%;
