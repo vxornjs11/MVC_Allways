@@ -152,7 +152,7 @@ function searchList() {
 	
 	<div align = "center" class="container text-center">
 		<form action = "" name = "list" method = "post">
-			<table class="table align-middle">
+			<table class="table" >
 				
 				<thead>
 					<tr>
@@ -169,7 +169,7 @@ function searchList() {
 					<c:if test="${dto != null }">
 						<c:choose>
 							<c:when test="${CUSTOMERID == dto.or_customerId }">
-								<tbody>
+								<tbody style="vertical-align:middle;">
 									<tr>
 										<td>${dto.rowNum }</td>
 										<td><img name="img" src="./reviewImageFile/${dto.oreviewImage }" style = "width: 75px; height: 75px;"></td>

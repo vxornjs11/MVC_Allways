@@ -31,7 +31,7 @@ public class CCustomerCakeListDao {
 	// Method
 	
 	// 케이크 리스트 출력
-	public ArrayList<CCustomerCakeListDto> cakeList(String queryName, String content) {
+	public ArrayList<CCustomerCakeListDto> cakeList(String queryName, String content, String sort1, String sort2) {
 		ArrayList<CCustomerCakeListDto> dtos = new ArrayList<CCustomerCakeListDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -41,8 +41,10 @@ public class CCustomerCakeListDao {
 			connection = dataSource.getConnection();
 
 			String query1 = "select cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews from cake ";
-			String query2 = "where " + queryName + " like '%" + content + "%'";
-
+			String query2 = "where " + queryName + " like '%" + content + "%' order by " + sort1 + " " + sort2;
+			
+			System.out.println(query1 + query2);
+			
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
 

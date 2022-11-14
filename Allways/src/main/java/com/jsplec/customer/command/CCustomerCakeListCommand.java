@@ -16,14 +16,20 @@ public class CCustomerCakeListCommand implements CCustomerCommand {
 		
 		String queryName = request.getParameter("query");
 		String content = request.getParameter("content");
+		String sort1 = request.getParameter("sort1");
+		String sort2 = request.getParameter("sort2");
 
 		if (queryName == null) {
 			queryName = "cakeId";
 			content = "";
 		}
+		if(sort1 == null) {
+			sort1 = "cakeInitdate";
+			sort2 = "desc";
+		}
 
 		CCustomerCakeListDao dao = new CCustomerCakeListDao();
-		ArrayList<CCustomerCakeListDto> dtos = dao.cakeList(queryName, content);
+		ArrayList<CCustomerCakeListDto> dtos = dao.cakeList(queryName, content, sort1, sort2);
 		request.setAttribute("cakeList", dtos);
 	}
 

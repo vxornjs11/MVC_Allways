@@ -66,10 +66,10 @@ color: #766262;
     Sort
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakePrice&content=asc">Price Row - High</a></li>
-    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakePrice&content=desc">Price High - Row</a></li>
-    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakeLike&content=desc">Likes</a></li>
-    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakeViews&content=desc">Views</a></li>
+    <li><a class="dropdown-item" href="customerCakeList.do?sort1=cakePrice&sort2=asc">Price Row - High</a></li>
+    <li><a class="dropdown-item" href="customerCakeList.do?sort1=cakePrice&sort2=desc">Price High - Row</a></li>
+    <li><a class="dropdown-item" href="customerCakeList.do?sort1=cakeLike&sort2=desc">Likes</a></li>
+    <li><a class="dropdown-item" href="customerCakeList.do?sort1=cakeViews&sort2=desc">Views</a></li>
   </ul>
 </div>
 
