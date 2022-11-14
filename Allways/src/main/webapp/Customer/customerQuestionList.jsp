@@ -170,44 +170,44 @@ function searchList() {
 		</form>
 		
 		<div align="center">
-		<table>
-			<tr align="center" height="20">
-				<td>
-				
-					<c:if test="${index <= 1}">
-						[이전] &nbsp;
-					</c:if>
-				
-					<c:if test="${index != 1 }">
-						<a href="customerQuestionList.do?index=${index-1 }">이전</a>&nbsp;
-					</c:if> 
-			
-					<c:forEach var="cnt" begin="${pagecount * pagepage + 1}" end="${pagecount * (pagepage + 1)}">
-						<c:if test="${cnt <= Math.ceil(arrsize / rowcount)}">
-						
-							<c:if test="${cnt == index }">
-								<a href="customerQuestionList.do?index=${cnt }" style="font-size:1.3em">[${cnt }]</a>
-							</c:if>
+			<table>
+				<tr align="center" height="20">
+					<td>
 					
-							<c:if test = "${cnt != index }">
-								<a href="customerQuestionList.do?index=${cnt }" style="font-size:0.9em">[${cnt }]</a>&nbsp;
-							</c:if>
-							
+						<c:if test="${index <= 1}">
+							[이전] &nbsp;
 						</c:if>
-					</c:forEach>
-			
-					<c:if test="${index >= maxpage }">
-						[다음]
-					</c:if>
 					
-					<c:if test="${index < Math.ceil(arrsize / rowcount)}">
-						<a href="customerQuestionList.do?index=${index+1 }">다음</a>&nbsp;
-					</c:if>
-					
-				</td>
-			</tr>
-		</table>
-	</div>
+						<c:if test="${index != 1 }">
+							<a href="customerQuestionList.do?index=${index-1 }">이전</a>&nbsp;
+						</c:if> 
+				
+						<c:forEach var="cnt" begin="${pagecount * pagepage + 1}" end="${pagecount * (pagepage + 1)}">
+							<c:if test="${cnt <= Math.ceil(arrsize / rowcount)}">
+							
+								<c:if test="${cnt == index }">
+									<a href="customerQuestionList.do?index=${cnt }" style="font-size:1.3em">[${cnt }]</a>
+								</c:if>
+						
+								<c:if test = "${cnt != index }">
+									<a href="customerQuestionList.do?index=${cnt }" style="font-size:0.9em">[${cnt }]</a>&nbsp;
+								</c:if>
+								
+							</c:if>
+						</c:forEach>
+				
+						<c:if test="${index >= maxpage }">
+							[다음]
+						</c:if>
+						
+						<c:if test="${index < Math.ceil(arrsize / rowcount)}">
+							<a href="customerQuestionList.do?index=${index+1 }">다음</a>&nbsp;
+						</c:if>
+						
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
