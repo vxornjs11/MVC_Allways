@@ -19,14 +19,6 @@ public class CCustomerCakeOrderDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getCakeId() {
-		return cakeId;
-	}
-
-	public void setCakeId(int cakeId) {
-		this.cakeId = cakeId;
-	}
-
 	public CCustomerCakeOrderDto(int ordersId, int cakeId, int ordersSalePrice, int ordersQuantity, String cakeName) {
 		super();
 		this.ordersId = ordersId;
@@ -45,6 +37,11 @@ public class CCustomerCakeOrderDto {
 		this.customerPostcode = customerPostcode;
 		this.customerAddress = customerAddress;
 		this.customerAddressDetail = customerAddressDetail;
+	}
+
+	public CCustomerCakeOrderDto(int ordersId) {
+		super();
+		this.ordersId = ordersId;
 	}
 
 	public int getOrdersId() {
@@ -125,6 +122,14 @@ public class CCustomerCakeOrderDto {
 
 	public void setCakeName(String cakeName) {
 		this.cakeName = cakeName;
+	}
+
+	public int getCakeId() {
+		return cakeId;
+	}
+
+	public void setCakeId(int cakeId) {
+		this.cakeId = cakeId;
 	}
 
 }

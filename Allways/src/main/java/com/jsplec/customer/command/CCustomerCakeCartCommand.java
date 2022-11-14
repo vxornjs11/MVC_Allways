@@ -19,11 +19,10 @@ public class CCustomerCakeCartCommand implements CCustomerCommand {
 		HttpSession session = request.getSession();
 		String customerId = (String) session.getAttribute("ID");
 		
-		String cakeName = request.getParameter("cakeName");
-		
 		int cakeId = Integer.parseInt(request.getParameter("cakeId"));
 		int cakePrice = Integer.parseInt(request.getParameter("cakePrice"));
 		int ordersQuantity = Integer.parseInt(request.getParameter("ordersQuantity"));
+		
 		int shape = Integer.parseInt(request.getParameter("shape"));
 		int size = Integer.parseInt(request.getParameter("size"));
 		int[] option = {shape, size};

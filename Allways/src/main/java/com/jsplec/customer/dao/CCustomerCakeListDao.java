@@ -77,7 +77,7 @@ public class CCustomerCakeListDao {
 	}
 	
 	public ArrayList<CCustomerCakeListDto> cakeSortList(String queryName, String content) {
-		ArrayList<CCustomerCakeListDto> dtos = new ArrayList<CCustomerCakeListDto>();
+		ArrayList<CCustomerCakeListDto> dtos2 = new ArrayList<CCustomerCakeListDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -86,7 +86,7 @@ public class CCustomerCakeListDao {
 			connection = dataSource.getConnection();
 
 			String query1 = "select cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews from cake ";
-			String query2 = "order by " + queryName + content;
+			String query2 = "order by " + queryName + " " + content;
 
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
@@ -98,9 +98,9 @@ public class CCustomerCakeListDao {
 				String cakeImage= resultSet.getString("cakeImage");
 				int cakeLike = resultSet.getInt("cakeLike");
 				int cakeViews = resultSet.getInt("cakeViews");
-
+				
 				CCustomerCakeListDto dto = new CCustomerCakeListDto(cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews);
-				dtos.add(dto);
+				dtos2.add(dto);
 			}
 
 		} catch (Exception e) {
@@ -117,7 +117,7 @@ public class CCustomerCakeListDao {
 				e.printStackTrace();
 			}
 		}
-		return dtos;
+		return dtos2;
 
 	}
 

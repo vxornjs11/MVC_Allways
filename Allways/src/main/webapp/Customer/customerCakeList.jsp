@@ -61,45 +61,17 @@ color: #766262;
 
 	<main>
 	
- <div class="select">
- <form action="" name="sort" method="get">
-     <a href="customerCakeList.do?query=cakePrice&">
-     <input type="radio" id="select" name="shop"><label for="select">SORT1</label>
-     </a>
-     <a href ="customerMain.do">
-     <input type="radio" id="select2" name="shop" ><label for="select2">SORT2</label>
-     </a>
-     <input type="radio" id="select3" name="shop"><label for="select3">SORT3</label>
- </form>
-</div>
-
-
-
-
-
-
-
-
-<div class="btn-group">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+<div class="btn-group" style="margin-left: 50px">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" >
     Sort
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakePrice&content=asc">Newest</a></li>
-    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakePrice&content=desc">Star Rating</a></li>
+    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakePrice&content=asc">Price Row - High</a></li>
+    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakePrice&content=desc">Price High - Row</a></li>
+    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakeLike&content=desc">Likes</a></li>
+    <li><a class="dropdown-item" href="customerCakeSortList.do?query=cakeViews&content=desc">Views</a></li>
   </ul>
 </div>
-
-
-
-
-
-
-
-
-
-
-
 
 		<div class="row" style="padding-left: 35px; margin-right: 0px;">
 			
@@ -144,8 +116,6 @@ color: #766262;
 					</div>
 				</div>
 			</c:forEach>
-			
-			
 			
 		</div>
 
