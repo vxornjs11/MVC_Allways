@@ -47,6 +47,16 @@ function searchList() {
 	form.submit();
 }
 
+function next(commentId, index) {
+	 if(confirm("삭제를 원하시면 예를 누르시고 원하지 않으시면 아니오를 눌러주세요")) {
+		 
+		location.href="customerBoardDelete.do?commentId=" + commentId + "&index=" + index;
+		
+	 } else {
+		 
+	 }
+}
+
 </script>
 
 <title>Insert title here</title>
@@ -129,11 +139,12 @@ function searchList() {
 													<td style = "text-align: left"><a href = "customerBoardDetail.do?writeId=${dto.writeId }">${dto.writeTitle }</a></td>
 													<td>${dto.w_customerId }</td>
 													<td>${dto.writeInitdate }</td>
-													<td><a href = "customerBoardDelete.do?commentId=${dto.commentId }">X</a></td>
+													<td><a href = "" onclick = "next(${dto.commentId}, ${index })" data-bs-toggle="modal" data-bs-target="#exampleModal">X</a></td>
 												</tr>
 											</tbody>
 										</c:if>
 										
+											
 										<c:if test="${dto.distinguish == 1 }">
 											<tbody>
 												<tr>
@@ -213,6 +224,14 @@ function searchList() {
 				<td>
 				
 					<c:if test="${index <= 1}">
+						[처음] &nbsp;
+					</c:if>
+				
+					<c:if test="${index != 1 }">
+						<a href = "customerWriteList.do?index=1">[처음]</a>&nbsp;
+					</c:if> 
+					
+					<c:if test="${index <= 1}">
 						[이전] &nbsp;
 					</c:if>
 				
@@ -241,6 +260,15 @@ function searchList() {
 					<c:if test="${index < Math.ceil(arrsize / rowcount)}">
 						<a href="customerWriteList.do?index=${index+1 }">다음</a>&nbsp;
 					</c:if>
+					
+					<c:if test="${index >= maxpage }">
+						[끝]
+					</c:if>
+					
+					<c:if test="${index < Math.ceil(arrsize / rowcount)}">
+						<a href = "customerWriteList.do?index=${maxpage}">[끝]</a>&nbsp;
+					</c:if>
+					
 					
 				</td>
 			</tr>

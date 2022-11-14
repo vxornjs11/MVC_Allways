@@ -13,6 +13,7 @@
 <body>
 
 	<%@include file="customerHeader.jsp" %>
+	
 	<div align="center" class="container text-center">
 		<form action = "" method = "post" name = "myform">
 			<table class="table">
@@ -28,7 +29,7 @@
 				</thead>
 				
 				<c:forEach var = "dto" items = "${orderList}" begin = "${(index - 1) * rowcount }" end = "${(index) * rowcount - 1}">
-					<c:if test="${dto != null }">
+					<c:if test="${arrsize != 0 }">
 						<tbody>
 							<tr>
 								<td>${dto.ROWNUM}</td>
@@ -41,6 +42,10 @@
 							</tr>
 						</tbody>
 					</c:if>
+					
+					<c:if test = "${arrsize == 0 }">
+						<h5>리뷰 작성 가능한 상품이 없습니다.</h5>
+					</c:if>
 				</c:forEach>
 			</table>
 		</form>
@@ -49,9 +54,10 @@
 		<table>
 			<tr align="center" height="20">
 				<td>
-				
-					<c:if test="${index <= 1}">
-						[이전] &nbsp;
+					<c:if test="${arrsize != 0 }">
+						<c:if test="${index <= 1}">
+							[이전] &nbsp;
+						</c:if>
 					</c:if>
 				
 					<c:if test="${index != 1 }">
@@ -71,9 +77,11 @@
 							
 						</c:if>
 					</c:forEach>
-			
-					<c:if test="${index >= maxpage }">
-						[다음]
+					
+					<c:if test="${arrsize != 0 }">
+						<c:if test="${index >= maxpage }">
+							[다음]
+						</c:if>
 					</c:if>
 					
 					<c:if test="${index < Math.ceil(arrsize / rowcount)}">

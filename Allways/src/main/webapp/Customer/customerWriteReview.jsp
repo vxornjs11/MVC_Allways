@@ -89,8 +89,25 @@ div.right {
 
 function writeReview() {
 	var form = document.myform;
-	form.method = "post";
-	form.action = "customerWriteReview.do";
+
+	if(form.oreviewStarRating.value.length == 0) {
+		alert("리뷰 별점을 선택해주세요.");
+		myform.writeContent.focus();
+		return;
+	}
+	
+	if(form.oreviewContent.value.length == 0) {
+		alert("리뷰 내용을 작성하세요.");
+		myform.writeTitle.focus();
+		return;
+		
+	}else {
+		alert("리뷰가 등록 되었습니다.");
+		form.method = "post";
+		form.action = "customerWriteReview.do";
+		form.submit();
+	}
+	
 }
 
 function previewFile() {

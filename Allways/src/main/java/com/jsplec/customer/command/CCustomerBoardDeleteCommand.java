@@ -11,7 +11,7 @@ public class CCustomerBoardDeleteCommand implements CCustomerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		int commentId = Integer.parseInt(request.getParameter("commentId"));
-		
+		System.out.println(commentId);
 		CCustomerBoardDeleteDao dao = new CCustomerBoardDeleteDao();
 		dao.boardDelete(commentId);
 		

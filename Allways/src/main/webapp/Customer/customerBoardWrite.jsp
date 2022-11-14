@@ -32,6 +32,34 @@
 }
 
 </style>
+
+<script type="text/javascript">
+
+function writeAction(){
+	
+	var form = document.myform;
+	
+	if(form.writeTitle.value.length == 0) {
+		alert("제목을 작성하세요.");
+		myform.writeTitle.focus();
+		return;
+	}
+	
+	if(form.writeContent.value.length == 0) {
+		alert("게시글 내용을 작성하세요.");
+		myform.writeContent.focus();
+		return;
+		
+	}else {
+		alert("게시글이 등록 되었습니다.");
+		form.action = "customerBoardWrite.do";
+		form.submit();
+	}
+	
+}
+
+</script>
+
 </head>
 <body>
 
@@ -57,7 +85,7 @@
 		</form>
 	</div>
 
-	<form action = "customerBoardWrite.do" class="mb-3" name="myform" id="myform" method="post">
+	<form class="mb-3" name="myform" id="myform" method="post">
 	
 		<div align="center" style = "margin-top: 100px;">
 			<table>
@@ -68,7 +96,7 @@
 					<td><textarea rows="10" cols="50" name = "writeContent" placeholder="게시글 내용을 작성하세요."></textarea></td>
 				</tr>
 				<tr>
-					<td align = "center"><button type = "submit">Write</button></td>
+					<td align = "center"><button onclick="writeAction()" type = "button">Write</button></td>
 				</tr>
 			</table>
 		</div>
