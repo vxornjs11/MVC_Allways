@@ -10,7 +10,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
+<link rel="stylesheet" href="css/Table22.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+table tr.header{
+		background:#fdcdcd;
+	}
+</style>
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
@@ -33,7 +39,7 @@
 		</div>
 		<div class="inner">
 			<table class="table">
-				<tr>
+				<tr class="header">
 					<th>주문번호</th>
 					<th>구매자</th>
 					<th>상품명</th>
@@ -71,7 +77,7 @@
 		</div>
 		<div class="inner">
 			<table class="table">
-				<tr>
+				<tr class="header">
 					<th>날짜</th>
 					<th>작성자</th>
 					<th>별점</th>

@@ -77,7 +77,7 @@ public class CManagerOrdersReviewDao {
 		try {
 			connection = dataSource.getConnection();
 			String query = "select oreviewId, or_customerId, cakeName, goodsName, oreviewStarrating, oreviewInitdate ";
-			String query2 = "from cake, goods, ordersreview where or_o_cakeId=cakeId and or_o_goodsId=goodsId and oreviewDeletedate is null;";
+			String query2 = "from cake, goods, ordersreview where or_cakeId=cakeId and or_goodsId=goodsId and oreviewDeletedate is null;";
 
 			ps = connection.prepareStatement(query + query2);
 			rs = ps.executeQuery();
@@ -122,7 +122,7 @@ public class CManagerOrdersReviewDao {
 		try {
 			connection = dataSource.getConnection();
 			String query = "select oreviewId, or_customerId, cakeName, goodsName, oreviewStarrating, oreviewInitdate ";
-			String query2 = "from cake, goods, ordersreview where or_o_cakeId=cakeId and or_o_goodsId=goodsId and oreviewDeletedate is null ";
+			String query2 = "from cake, goods, ordersreview where or_cakeId=cakeId and or_goodsId=goodsId and oreviewDeletedate is null ";
 			String query3 = "and " + condition + " like '%" + conditionquery + "%';";
 
 			ps = connection.prepareStatement(query + query2 + query3);
@@ -167,7 +167,7 @@ public class CManagerOrdersReviewDao {
 		try {
 			connection = dataSource.getConnection();
 			String query = "select oreviewId, or_customerId, cakeName, goodsName, oreviewStarrating, oreviewImage, oreviewInitdate, oreviewUpdatedate ";
-			String query2 = "from cake, goods, ordersreview, customer where or_o_cakeId=cakeId and or_o_goodsId=goodsId and oreviewDeletedate is null ";
+			String query2 = "from cake, goods, ordersreview, customer where or_cakeId=cakeId and or_goodsId=goodsId and oreviewDeletedate is null ";
 			String query3 = "and or_customerId=customerId and oreviewId=" + oreviewId + ";";
 
 			ps = connection.prepareStatement(query + query2 + query3);
