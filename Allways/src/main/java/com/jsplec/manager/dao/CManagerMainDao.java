@@ -144,6 +144,7 @@ public class CManagerMainDao {
 				e2.printStackTrace();
 			}
 		}
+		
 
 		return quantity;
 	}

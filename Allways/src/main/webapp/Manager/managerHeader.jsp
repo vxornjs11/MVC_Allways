@@ -37,18 +37,6 @@
           <li class="nav-item">
           <a class="nav-link" href="searchReview.do">리뷰 관리</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           클래스
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">클래스 리스트 관리</a></li>
-            <li><a class="dropdown-item" href="#">클래스 신청 관리</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">공지 사항</a>
-        </li>
       </ul>
       
     </div>

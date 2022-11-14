@@ -27,7 +27,7 @@
 		</div>
 	</div>
 	<div class="main">
-		<h2 class="inner">미답변 문의</h2>
+		<h2 class="inner">미처리 주문</h2>
 		<div align="right" style="margin:1px">
 			<a href="MorderStatus.do" class="viewall">전체보기</a>
 		</div>
@@ -111,10 +111,10 @@ const priceChart = new Chart(ctxprice, {
         datasets: [{
             data: arrprice,
             backgroundColor: [
-                'rgb(0, 0, 0)'
+                'rgb(253, 205, 205)'
             ],
             borderColor: [
-            	'rgb(0, 0, 0)'
+            	'rgb(253, 205, 205)'
             ],
             borderWidth: 1
         }]
@@ -135,10 +135,10 @@ const quantityChart = new Chart(ctxquantity, {
         datasets: [{
             data: arrquantity,
             backgroundColor: [
-                'rgb(0, 0, 0)'
+            	'rgb(253, 205, 205)'
             ],
             borderColor: [
-            	'rgb(0, 0, 0)'
+            	'rgb(253, 205, 205)'
             ],
             borderWidth: 1
         }]
