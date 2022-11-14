@@ -301,7 +301,6 @@ public CManagerOrderListDao() {
 				int ordersQuantity = resultSet.getInt("ordersQuantity");
 				int ordersPoint = resultSet.getInt("ordersPoint");
 			
-			
 				
 				dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId,cakeName, o_goodsId,goodsName, ordersSalePrice, ordersQuantity,ordersPoint);
 						

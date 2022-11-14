@@ -43,7 +43,7 @@
 		<th>
 	주문 상태 :
 	<select name="ordersStatus">
-		<option value="주문접수">주문접수</option>
+		<option value="구매">구매</option>
 		<option value="제작중">제작중</option>
 		<option value="제작완료">제작완료</option>
 	</select></th>

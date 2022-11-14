@@ -104,7 +104,7 @@ function previewFile() {
 					<option style="border-color:#fdcdcd" value="MassageColor">MassageColor</option>
 					<option style="border-color:#fdcdcd" value="Box">Box</option>
 				</select>
-		</div>
+			</div>
 		</div>
 			<div align="left" style="width:20%;height:20%;display:inline-block">
 				옵션 ID :
