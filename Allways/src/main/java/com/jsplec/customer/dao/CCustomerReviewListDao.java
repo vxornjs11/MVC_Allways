@@ -84,7 +84,7 @@ public class CCustomerReviewListDao {
 			connection = dataSource.getConnection();
 			
 			String query1 = "select * from (select row_number() over(order by oreviewId) as rownum, "
-					+ "or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating, oreviewId from ordersreview order by oreviewId desc) o "
+					+ "or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating, oreviewId from ordersreview where oreviewDeletedate is null order by oreviewId desc) o "
 					+ "where " + combo + " like '%" + searchContent + "%' order by " + sort + " desc";
 
 			preparedStatement = connection.prepareStatement(query1);

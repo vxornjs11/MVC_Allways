@@ -31,7 +31,7 @@ public class CCustomerReviewDeleteDao {
 			connection = dataSource.getConnection();
 
 
-				String query = "update ordersreview set oreivewDeletedate = now() where oreviewId = ?";
+				String query = "update ordersreview set oreviewDeletedate = now() where oreviewId = ?";
 
 				preparedStatement = connection.prepareStatement(query);
 
