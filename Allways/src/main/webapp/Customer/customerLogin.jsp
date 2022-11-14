@@ -75,29 +75,41 @@ input::placeholder {
 
 <!-- 카카오 스크립트 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://code.jquery.com/jquery3.1.1.min.js"></script>
+<script type="text/javascript">
+
 <script>
 Kakao.init('f671edc3fc17d4fe50018e3c23712b17'); //발급받은 키 중 javascript키를 사용해준다.
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
 //카카오로그인
 function kakaoLogin() {
     Kakao.Auth.login({
-      success: function (response) {
+      success: function (authObj) {
+    	  
         Kakao.API.request({
           url: '/v2/user/me',
           success: function (response) {
-        	  console.log(response)
-          },
-          fail: function (error) {
-            console.log(error)
-          },
+        	  console.log(response);
+        	  
+        	  var id = res.id;
+        	  var email = res.kakao_account.email;
+        	  var name = res.properties.nickname;
+        	  var html = '<BR>' + email + '<BR>' + name;
+        	  
+        	  $('body').append(html);
+        	  
+          }
         })
-      },
-      fail: function (error) {
-        console.log(error)
-      },
-    })
-  }
-//카카오로그아웃  
+        	consolelog.log(authObj);
+        	var token = authObj.access_token;
+        	
+      	},	
+          fail: function (err) {
+           	alert(JSON.stringify(err));
+          }
+        });
+
+    //카카오로그아웃  
 function kakaoLogout() {
     if (Kakao.Auth.getAccessToken()) {
       Kakao.API.request({

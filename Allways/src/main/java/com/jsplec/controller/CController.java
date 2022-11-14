@@ -34,6 +34,7 @@ import com.jsplec.customer.command.CCustomerJoinCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
 import com.jsplec.customer.command.CCustomerMypageUpdateCommand;
 import com.jsplec.customer.command.CCustomerOrderListCommand;
+import com.jsplec.customer.command.CCustomerOrdersListCommand;
 import com.jsplec.customer.command.CCustomerPasswordResetCommand;
 import com.jsplec.customer.command.CCustomerPayCommand;
 import com.jsplec.customer.command.CCustomerQuestionCommand;
@@ -219,6 +220,12 @@ public class CController extends HttpServlet {
 			customercommand = new CCustomerDeleteCommand();
 			customercommand.execute(request, response);
 			viewPage="customerLoginPage.do";
+			break;
+			
+		case("/Customer/customerOrderList.do"):
+			customercommand = new CCustomerOrdersListCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerOrdersList.jsp";
 			break;
 
 //-------------------------------- 한별 --------------------------------
