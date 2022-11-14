@@ -61,12 +61,12 @@ color: #766262;
 
 	<main>
 	
-		<div class="btn-group" style="margin-left: 50px">
-		  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" >
+		<div class="btn-group dropend" style="margin: 30px;">
+		  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 		    Sort
 		  </button>
 		  <ul class="dropdown-menu">
-		    <li><a class="dropdown-item" href="customerCakeList.do?sort1=cakePrice&sort2=asc&index=${index }">Price Row - High</a></li>
+		  	<li><a class="dropdown-item" href="customerCakeList.do?sort1=cakePrice&sort2=asc&index=${index }">Price Row - High</a></li>
 		    <li><a class="dropdown-item" href="customerCakeList.do?sort1=cakePrice&sort2=desc&index=${index }">Price High - Row</a></li>
 		    <li><a class="dropdown-item" href="customerCakeList.do?sort1=cakeLike&sort2=desc&index=${index }">Likes</a></li>
 		    <li><a class="dropdown-item" href="customerCakeList.do?sort1=cakeViews&sort2=desc&index=${index }">Views</a></li>

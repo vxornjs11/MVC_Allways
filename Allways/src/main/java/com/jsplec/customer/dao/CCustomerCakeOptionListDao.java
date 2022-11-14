@@ -34,7 +34,7 @@ public class CCustomerCakeOptionListDao {
 			connection = dataSource.getConnection();
 
 			String query1 = "select cakeoptionId, cakeoptionCategory, cakeoptionValue, cakeoptionPrice from cakeoption ";
-			String query2 = "where cakeoptionCategory = 'shape'";
+			String query2 = "where cakeoptionCategory = 'shape' and cakeoptionDeletedate is null";
 
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
@@ -78,7 +78,7 @@ public class CCustomerCakeOptionListDao {
 			connection = dataSource.getConnection();
 			
 			String query1 = "select cakeoptionId, cakeoptionCategory, cakeoptionValue, cakeoptionPrice from cakeoption ";
-			String query2 = "where cakeoptionCategory = 'size'";
+			String query2 = "where cakeoptionCategory = 'size' and cakeoptionDeletedate is null";
 			
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();

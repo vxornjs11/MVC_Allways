@@ -127,6 +127,23 @@ align-items: center;
 color: #766262;
 	}
 
+#quantity {
+background: #FFFFFF; 
+border: 2px solid #FBEAEA; 
+width: 50px;
+height: 30px;
+margin-bottom: 10px;
+
+font-family: 'Baloo Tammudu 2';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 15px;
+text-transform: capitalize;
+align-items: center;
+color: #766262;
+	}
+
 #option_price{
 font-family: 'Baloo Tammudu 2';
 font-style: normal;
@@ -329,7 +346,7 @@ color: #FFFDFD;
 					Quantity
 				</div>
 				<div align="left">
-					<input type="number" id="lettering" min="0" max="50" name ="ordersQuantity" placeholder="0" value="quantity">
+					<input type="number" id="quantity" min="0" max="50" name ="ordersQuantity" placeholder="0" value="quantity">
 				</div>
 				
 				<hr id="line4">
