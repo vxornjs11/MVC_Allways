@@ -48,7 +48,7 @@ public class CCustomerCakeQuickOrderCommand implements CCustomerCommand {
 		request.setAttribute("orderList", dtos3);
 		
 		CCustomerCartListDao dao3 = new CCustomerCartListDao();
-		ArrayList<CCustomerCartListDto> dtos4 = dao3.cartOptionList();
+		ArrayList<CCustomerCartListDto> dtos4 = dao3.cartOptionList(customerId);
 		request.setAttribute("optionList", dtos4);
 	}
 
