@@ -141,6 +141,18 @@
 	
 	}
 	
+	#email_second{
+		box-sizing: border-box;
+		left: 30px;
+		right: 0px;
+		width: 162.3px;
+		height: 45px;
+		background: #FFFFFF;
+		border: 3px solid #FCD5D5;
+		padding-left: 10px;
+	
+	}
+	
 	#label_design{
 		font-family: 'Baloo Tammudu 2';
 		font-style: normal;
@@ -253,10 +265,66 @@
 			form.email2.focus();
 			return;
 		}
+		
+		if(form.codecheck.value != 1){
+			alert("이메일 인증을 해주세요");
+			return;
+		}
 
 		form.submit();
 	}
 
+</script>
+
+<script>
+
+
+	$(document).ready(function(){
+		
+		$('#send_box').click(function(){
+		
+			var uemail = $('#email_first').val() + "@" + $('#email_second').val();
+			var email1 = $('#email_first').val();
+			var email2 = $('#email_second').val();
+			
+			if(email1==""){
+				alert("이메일을 입력해주세요");
+			}else{
+				alert('이메일 전송중입니다. 이메일 전송 완료 알림이 뜰 때까지 기다려주세요.');
+				
+				$.ajax({
+					url:'http://localhost:8080/Allways/Email2',
+					type:'POST',
+					data:{email1 : email1 , email2 : email2},
+					success:function(response){
+						$('#email_certify_num').attr('value',response);
+						alert('이메일 전송이 완료되었습니다.');
+					}
+				});
+			}
+		})
+	})
+
+	
+	function CheckCode() {
+	// 이메일 인증번호가 일치하는지 확인
+		var insert_num = $('#ucertify_num').val(); 
+		var answer = $('#email_certify_num').val();
+		if(insert_num != answer){
+			alert("인증번호가 틀렸습니다. 다시 확인해 주세요.");
+			focus($('#ucertify_num'));
+			var offset = $("#ucertify_num").offset(); 
+			$("html, body").animate({scrollTop: offset.top},200); 
+			return;
+		}
+		
+		if(insert_num == answer){
+			var result = 1;
+			alert("인증되었습니다.");
+			$('input[name=codecheck]').attr('value',result);
+		}
+	}
+	
 </script>
 
 </head>
@@ -284,7 +352,7 @@
 					<input id="input_box" type="text" name="customerPhone" placeholder=" '-' 를 제외하고 숫자만 입력해주세요"><br><br>
 					
 					<label id="label_design">EMAIL</label>
-					<input id="email_first" type="text" name="email1" value="${EMAIL}"> @ <input id="email_first" type="text" name="email2" placeholder="직접 입력">
+					<input id="email_first" type="text" name="email1" value="${EMAIL}"> @ <input id="email_second" type="text" name="email2" placeholder="직접 입력">
 						<select id="select_box" name="selectemail" style="margin-top: 5px;" onChange="selectEmail(this)">
 							<option value="" selected="selected">선택하세요</option>
 							<option value="naver.com">naver.com</option>
@@ -295,9 +363,20 @@
 					<input type="button" name="btnIdCheck" id="send_box" value="인증번호 보내기" onclick="CheckId()"><br><br>
 					
 					<label id="label_design">VERIFICATION CODE CHECK</label>
-					<input id="code_box" type="text" name="" placeholder="인증번호">
-					<input type="button" name="btnIdCheck" id="check_box" value="확인" onclick="CheckId()"><br><br>
+					<input style="box-sizing: border-box;
+								left: 30px;
+								right: 0px;
+								width: 270px;
+								height: 45px;
+								background: #FFFFFF;
+								border: 3px solid #FCD5D5;
+								padding-left: 10px;" 
+					id="ucertify_num" type="text" name="" placeholder="인증번호를 입력해 주세요">
+					<input type="button" name="btnIdCheck" id="check_box" value="확인" onclick="CheckCode()"><br><br>
 					
+					<input type="hidden" id="email_certify_num" >
+					
+					<input type="hidden" id="codecheck" name="codecheck" value="">
 					
 					<input id="join_button" style="margin-top: 30px" type="button" name="find" value="FIND" onclick="findAction()">			
 				</div>
@@ -366,9 +445,6 @@
 <script src="/lib/mall/order.js?ver=1.0408"></script>
 
 
-<script type="text/javascript">
-<script
-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	
 
 </body>

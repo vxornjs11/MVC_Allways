@@ -511,7 +511,8 @@
                 document.getElementById("customerPostcode").value = data.zonecode; //5자리 기초구역번호 사용
                 document.getElementById("customerAddress").value = fullAddr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("cutomerAddressDetail").focus();
+                document.getElementById("cutomerAddressDetail");
+                
             }
         }).open();
     }
