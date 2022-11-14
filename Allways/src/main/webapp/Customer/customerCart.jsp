@@ -144,7 +144,7 @@ color: #FFFDFD;
 	
 		<tr align="center">
 			<td><button type = "button" id="util_box" onclick = "mySubmit(1)">Delete</button></td>
-			<td><button type = "button" id="util_box" onclick = "mySubmit(2)">Go Shopping</button></td>
+			<td colspan="3"><button type = "button" id="util_box" onclick = "mySubmit(2)">Go Shopping</button></td>
 			<td><button type = "button" id="util_box" onclick = "mySubmit(3)">Buy Now</button></td>
 		</tr>
 	</table>

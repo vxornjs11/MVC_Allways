@@ -43,8 +43,6 @@ public class CCustomerCakeListDao {
 			String query1 = "select cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews from cake ";
 			String query2 = "where " + queryName + " like '%" + content + "%' order by " + sort1 + " " + sort2;
 			
-			System.out.println(query1 + query2);
-			
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
 

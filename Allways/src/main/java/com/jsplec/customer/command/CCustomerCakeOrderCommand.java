@@ -15,25 +15,25 @@ public class CCustomerCakeOrderCommand implements CCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		HttpSession session = request.getSession();
-		
+
 		String customerId = (String) session.getAttribute("ID");
 		String[] ordersId = request.getParameterValues("ordersId");
-		
+
 		CCustomerCakeOrderDao dao = new CCustomerCakeOrderDao();
 
 		ArrayList<CCustomerCakeOrderDto> dtos = dao.orderList(customerId, ordersId);
 		request.setAttribute("orderList", dtos);
-		
+
 		CCustomerCartListDao dao2 = new CCustomerCartListDao();
 		ArrayList<CCustomerCartListDto> dtos2 = dao2.cartOptionList(customerId);
 		request.setAttribute("optionList", dtos2);
-		
+
 		ArrayList<CCustomerCakeOrderDto> dtos3 = dao.customerInfo(customerId);
-		
+
 		request.setAttribute("customerInfo", dtos3);
-		
+
 //		int cakeId = Integer.parseInt(request.getParameter("cakeId"));
 //		int cakePrice = Integer.parseInt(request.getParameter("cakePrice"));
 //		int ordersQuantity = Integer.parseInt(request.getParameter("ordersQuantity"));
