@@ -32,6 +32,7 @@ import com.jsplec.customer.command.CCustomerFindPwCommand;
 import com.jsplec.customer.command.CCustomerIdCheckCommand;
 import com.jsplec.customer.command.CCustomerJoinCommand;
 import com.jsplec.customer.command.CCustomerLoginCommand;
+import com.jsplec.customer.command.CCustomerMyPointCommand;
 import com.jsplec.customer.command.CCustomerMypageUpdateCommand;
 import com.jsplec.customer.command.CCustomerOrderListCommand;
 import com.jsplec.customer.command.CCustomerOrdersListCommand;
@@ -227,6 +228,13 @@ public class CController extends HttpServlet {
 			customercommand.execute(request, response);
 			viewPage = "customerOrdersList.jsp";
 			break;
+			
+			// 마이포인트 내역
+		case("/Customer/customerMyPointList.do"):
+			customercommand = new CCustomerMyPointCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerMypoint.jsp";
+			break;	
 
 //-------------------------------- 한별 --------------------------------
 		// 리뷰 리스트 출력
