@@ -101,7 +101,7 @@ function revision(index){
 		}
 		
 		if(index==2){
-		form.action="customerOrdersList.do";
+		form.action="customerOrderList.do";
 		}
 		
 		if(index==3){
