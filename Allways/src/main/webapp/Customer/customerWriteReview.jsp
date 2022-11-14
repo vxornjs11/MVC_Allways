@@ -129,6 +129,7 @@ function previewFile() {
 			<div class="right">
 			
 				<input type = "hidden" name = "ordersId" value = "<%=request.getParameter("ordersId")%>">
+				<input type = "hidden" name = "o_cakeId" value = "<%=request.getParameter("o_cakeId")%>">
 			
 				<fieldset>
 					<span class="text-bold">별점을 선택해주세요</span>
@@ -139,8 +140,7 @@ function previewFile() {
 					<input type="radio" name="oreviewStarRating" value="1" id="rate5"><label for="rate5">★</label>
 				</fieldset>
 				
-				<textarea class="col-auto form-control" id="reviewContents" name = "oreviewContent"
-						  placeholder="리뷰 내용을 작성하세요."></textarea>
+				<textarea class="col-auto form-control" id="reviewContents" name = "oreviewContent" placeholder="리뷰 내용을 작성하세요."></textarea>
 				<button style = "margin-left:100px; margin-top: 20px;" id="writeButton" onclick = "writeReview()">Writer Review</button>
 			</div>
 			

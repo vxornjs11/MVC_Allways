@@ -67,9 +67,6 @@ function searchList() {
 						<a href = "customerOrdersReview.do"><button type = "button" name = "buttons" id="button_group">REVIEW</button></a>&nbsp;
 					</td>
 					<td>
-						<a href = ""><button type = "button" name = "buttons" id="button_group">FAQ</button></a>&nbsp;
-					</td>
-					<td>
 						<a href = "customerQuestionList.do"><button type = "button" name = "buttons" id="button_group">Q&A</button></a>
 					</td>
 				</tr>

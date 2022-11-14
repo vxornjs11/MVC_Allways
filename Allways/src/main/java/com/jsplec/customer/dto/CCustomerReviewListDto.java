@@ -10,6 +10,7 @@ public class CCustomerReviewListDto {
 	Date oreviewInitdate;
 	String oreviewImage;
 	int oreviewStarrating;
+	int oreviewId;
 	
 	public CCustomerReviewListDto() {
 		// TODO Auto-generated constructor stub
@@ -33,7 +34,7 @@ public class CCustomerReviewListDto {
 
 
 	public CCustomerReviewListDto(int rowNum, String or_customerId, String oreviewContent, Date oreviewInitdate,
-			String oreviewImage, int oreviewStarrating) {
+			String oreviewImage, int oreviewStarrating, int oreviewId) {
 		super();
 		this.rowNum = rowNum;
 		this.or_customerId = or_customerId;
@@ -41,6 +42,7 @@ public class CCustomerReviewListDto {
 		this.oreviewInitdate = oreviewInitdate;
 		this.oreviewImage = oreviewImage;
 		this.oreviewStarrating = oreviewStarrating;
+		this.oreviewId = oreviewId;
 	}
 
 
@@ -94,6 +96,14 @@ public class CCustomerReviewListDto {
 
 	public void setOreviewStarrating(int oreviewStarrating) {
 		this.oreviewStarrating = oreviewStarrating;
+	}
+
+	public int getOreviewId() {
+		return oreviewId;
+	}
+
+	public void setOreviewId(int oreviewId) {
+		this.oreviewId = oreviewId;
 	}
 
 	

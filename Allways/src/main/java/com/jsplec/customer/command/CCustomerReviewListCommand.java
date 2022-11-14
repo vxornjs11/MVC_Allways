@@ -16,8 +16,8 @@ public class CCustomerReviewListCommand implements CCustomerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		HttpSession session = request.getSession();
-		ServletContext context = session.getServletContext();
-		
+
+		String customerId = (String)session.getAttribute("ID");
 		String sort = request.getParameter("sort");
 		String searchContent = request.getParameter("searchContent");
 		String combo = request.getParameter("combo");
@@ -51,15 +51,6 @@ public class CCustomerReviewListCommand implements CCustomerCommand {
 		int maxpage = (dtos.size() % rowcount) != 0 ? (dtos.size() / rowcount) + 1 : (dtos.size() / rowcount);
 		ArrayList<CCustomerReviewListDto> dtos2 = dao.reviewList2(sort, searchContent, combo, index, dtos.size());
 		
-		String fileSearch = "";
-		ArrayList<String> fileDto = new ArrayList<String>();
-		
-		for(int i = 0; i < dtos2.size(); i ++) {
-			
-			fileSearch = context.getRealPath("/") + dtos2.get(i).getOreviewImage();
-			fileDto.add(fileSearch);
-		}
-		
 		if (request.getParameter("index")!=null) {
 			index=(int)Float.parseFloat(request.getParameter("index"));
 		}
@@ -70,7 +61,7 @@ public class CCustomerReviewListCommand implements CCustomerCommand {
 			pagepage = index / pagecount;
 		}
 		
-		request.setAttribute("imageFile", fileDto);
+		request.setAttribute("CUSTOMERID", customerId);
 		request.setAttribute("maxpage", maxpage);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("reviewList", dtos2);

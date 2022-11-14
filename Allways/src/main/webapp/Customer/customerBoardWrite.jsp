@@ -49,9 +49,6 @@
 						<a href = "customerOrdersReview.do"><button type = "button" name = "buttons" id="button_group" onclick = "reviewList();">REVIEW</button></a>&nbsp;
 					</td>
 					<td>
-						<a><button type = "button" name = "buttons" id="button_group">FAQ</button></a>&nbsp;
-					</td>
-					<td>
 						<a href = "customerQuestionList.do"><button type = "button" name = "buttons" id="button_group" onclick = "QNA();">Q&A</button></a>
 					</td>
 				</tr>

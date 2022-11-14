@@ -46,7 +46,7 @@ function writeComment(index) {
 	<br>
 	
 	<div align="center">
-		<textarea rows="10" cols="70">${boardDetail.writeContent}</textarea>
+		<textarea rows="10" cols="70" readonly="true" style = "resize: none;">${boardDetail.writeContent}</textarea>
 
 		<table>
 		

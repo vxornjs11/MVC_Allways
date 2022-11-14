@@ -115,9 +115,6 @@ function searchList() {
 						<a href = "customerOrdersReview.do"><button type = "button" name = "buttons" id="button_group" onclick = "reviewList();">REVIEW</button></a>&nbsp;
 					</td>
 					<td>
-						<a><button type = "button" name = "buttons" id="button_group">FAQ</button></a>&nbsp;
-					</td>
-					<td>
 						<a href = "customerQuestionList.do"><button type = "button" name = "buttons" id="button_group" onclick = "QNA();">Q&A</button></a>
 					</td>
 				</tr>
@@ -129,7 +126,7 @@ function searchList() {
 	<div style = "margin-left: 300px; margin-top: 70px;">
 		
 		<form name = "myform" method = "post">
-		<button style = "margin-left: -120px;" id="write_button" onclick = "ordersList()">Write Review</button>
+		<button style = "margin-left: -120px;" onclick = "ordersList()">Write Review</button>
 		
 		<div class="btn-group">
 		  <button type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
@@ -153,9 +150,9 @@ function searchList() {
 		</form>
 	</div>
 	
-	<div align="center" class="container text-center">
+	<div align = "center" class="container text-center">
 		<form action = "" name = "list" method = "post">
-			<table class="table">
+			<table class="table align-middle">
 				
 				<thead>
 					<tr>
@@ -168,28 +165,55 @@ function searchList() {
 					</tr>
 				</thead>
 				
-		<c:forEach var = "dto" items="${reviewList }" begin="${(index - 1) * rowcount }" end="${(index) * rowcount - 1}">
-			<c:if test="${dto != null }">
-				<tbody>
-					<tr>
-						<td>${dto.rowNum }</td>
-						<td><img name="img" src="${imageFile }"></td>
-						<td>${dto.oreviewContent }</td>
-						<td>
-							<c:forEach begin = "1" end = "${dto.oreviewStarrating }">
-								<label>⭐</label>
-							</c:forEach>
+				<c:forEach var = "dto" items="${reviewList }" begin="${(index - 1) * rowcount }" end="${(index) * rowcount - 1}">
+					<c:if test="${dto != null }">
+						<c:choose>
+							<c:when test="${CUSTOMERID == dto.or_customerId }">
+								<tbody>
+									<tr>
+										<td>${dto.rowNum }</td>
+										<td><img name="img" src="./reviewImageFile/${dto.oreviewImage }" style = "width: 75px; height: 75px;"></td>
+										<td>${dto.oreviewContent }</td>
+										<td>
+											<c:forEach begin = "1" end = "${dto.oreviewStarrating }">
+												<label>⭐</label>
+											</c:forEach>
+											
+											<c:forEach begin = "${dto.oreviewStarrating + 1}" end = "5">
+												<label>☆</label>
+											</c:forEach>
+										</td>
+										<td>${dto.or_customerId }</td>
+										<td>${dto.oreviewInitdate }</td>
+										<td><a href = "customerReviewDelete.do?oreviewId=${dto.oreviewId }">X</a></td>
+									</tr>
+								</tbody>
+							</c:when>
 							
-							<c:forEach begin = "${dto.oreviewStarrating + 1}" end = "5">
-								<label>☆</label>
-							</c:forEach>
-						</td>
-						<td>${dto.or_customerId }</td>
-						<td>${dto.oreviewInitdate }</td>
-					</tr>
-				</tbody>
-			</c:if>
-		</c:forEach>
+							<c:otherwise>
+								<tbody>
+									<tr>
+										<td>${dto.rowNum }</td>
+										<td><img name="img" src="./reviewImageFile/${dto.oreviewImage }" style = "width: 75px; height: 75px;"></td>
+										<td>${dto.oreviewContent }</td>
+										<td>
+											<c:forEach begin = "1" end = "${dto.oreviewStarrating }">
+												<label>⭐</label>
+											</c:forEach>
+											
+											<c:forEach begin = "${dto.oreviewStarrating + 1}" end = "5">
+												<label>☆</label>
+											</c:forEach>
+										</td>
+										<td>${dto.or_customerId }</td>
+										<td>${dto.oreviewInitdate }</td>
+									</tr>
+								</tbody>
+							</c:otherwise>
+							
+						</c:choose>
+					</c:if>
+				</c:forEach>
 				
 			</table>
 		</form>

@@ -22,17 +22,18 @@ public class CCustomerWriteReviewCommand implements CCustomerCommand {
 		int maxSize = 1024 * 1024 * 1024;
 		
 		try {
-			MultipartRequest multi = new MultipartRequest(request, context.getRealPath("/"), maxSize, "utf-8", new DefaultFileRenamePolicy());
+			MultipartRequest multi = new MultipartRequest(request, context.getRealPath("/Customer/reviewImageFile/"), maxSize, "utf-8", new DefaultFileRenamePolicy());
 			
 			String customerId = (String)session.getAttribute("ID");
 			int ordersId = Integer.parseInt(multi.getParameter("ordersId"));
+			int o_cakeId = Integer.parseInt(multi.getParameter("o_cakeId"));
 			String oreviewStarRating = multi.getParameter("oreviewStarRating");
 			String oreviewContent = multi.getParameter("oreviewContent");
 			String uploadFile = multi.getFilesystemName("cakeviews");
 			
 			CCustomerWriteReviewDao dao = new CCustomerWriteReviewDao();
 			
-			dao.writeReview(customerId, ordersId, oreviewStarRating, oreviewContent, uploadFile);
+			dao.writeReview(customerId, ordersId, oreviewStarRating, oreviewContent, uploadFile, o_cakeId);
 			dao.writeReviewUpdate(ordersId);
 			
 		} catch (IOException e) {

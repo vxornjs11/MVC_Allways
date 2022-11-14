@@ -37,7 +37,7 @@
 								<td><fmt:formatNumber value="${dto.ordersSalePrice}"/></td>
 								<td>${dto.ordersQuantity}</td>
 								<td>${dto.ordersDate}</td>
-								<td><a href = "customerWriteReview.jsp?ordersId=${dto.ordersId }"><button type = "button">리뷰작성</button></a>
+								<td><a href = "customerWriteReview.jsp?ordersId=${dto.ordersId }&o_cakeId=${dto.o_cakeId}"><button type = "button">리뷰작성</button></a>
 							</tr>
 						</tbody>
 					</c:if>

@@ -11,6 +11,7 @@ public class CCustomerOrderListDto {
 	int ordersSalePrice;
 	int ordersQuantity;
 	Date ordersDate;
+	int o_cakeId;
 	
 	public CCustomerOrderListDto() {
 		// TODO Auto-generated constructor stub
@@ -19,7 +20,7 @@ public class CCustomerOrderListDto {
 	
 
 	public CCustomerOrderListDto(int ROWNUM, int ordersId, String cakeName, String o_customerId, int ordersSalePrice,
-			int ordersQuantity, Date ordersDate) {
+			int ordersQuantity, Date ordersDate, int o_cakeId) {
 		super();
 		this.ROWNUM = ROWNUM;
 		this.ordersId = ordersId;
@@ -28,6 +29,7 @@ public class CCustomerOrderListDto {
 		this.ordersSalePrice = ordersSalePrice;
 		this.ordersQuantity = ordersQuantity;
 		this.ordersDate = ordersDate;
+		this.o_cakeId = o_cakeId;
 	}
 
 
@@ -87,6 +89,14 @@ public class CCustomerOrderListDto {
 
 	public void setOrdersDate(Date ordersDate) {
 		this.ordersDate = ordersDate;
+	}
+
+	public int getO_cakeId() {
+		return o_cakeId;
+	}
+
+	public void setO_cakeId(int o_cakeId) {
+		this.o_cakeId = o_cakeId;
 	}
 
 	

@@ -84,7 +84,7 @@ public class CCustomerReviewListDao {
 			connection = dataSource.getConnection();
 			
 			String query1 = "select * from (select row_number() over(order by oreviewId) as rownum, "
-					+ "or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating from ordersreview  order by oreviewId desc) o "
+					+ "or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating, oreviewId from ordersreview order by oreviewId desc) o "
 					+ "where " + combo + " like '%" + searchContent + "%' order by " + sort + " desc";
 
 			preparedStatement = connection.prepareStatement(query1);
@@ -99,8 +99,10 @@ public class CCustomerReviewListDao {
 				Date oreviewInitdate = rs.getDate(4);
 				String oreviewImage = rs.getString(5);
 				int oreviewStarrating = rs.getInt(6);
+				int oreviewId = rs.getInt(7);
 				
-				CCustomerReviewListDto dto = new CCustomerReviewListDto(ROWNUM, or_customerId, oreviewContent, oreviewInitdate, oreviewImage, oreviewStarrating);
+				CCustomerReviewListDto dto = new CCustomerReviewListDto(ROWNUM, or_customerId, oreviewContent, oreviewInitdate, 
+																		oreviewImage, oreviewStarrating, oreviewId);
 				dtos.add(dto);
 			}
 			
