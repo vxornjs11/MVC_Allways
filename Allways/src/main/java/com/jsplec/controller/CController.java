@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jsplec.customer.command.CCusotmerReviewDeleteCommand;
 import com.jsplec.customer.command.CCustomerAnswerCommand;
 import com.jsplec.customer.command.CCustomerBestCakeListCommand;
 import com.jsplec.customer.command.CCustomerBoardCommentDeleteCommand;
@@ -310,7 +311,12 @@ public class CController extends HttpServlet {
 			viewPage = "customerBoardDetail.do";
 			break;
 		
-		
+		// 리뷰 삭제
+		case ("/Customer/customerReviewDelete.do"):
+			customercommand = new CCusotmerReviewDeleteCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerOrdersReview.do";
+			break;
 		
 //----------------------- 오수 --------------------------------
 		case ("/Customer/customerCakeList.do"):
