@@ -19,14 +19,15 @@ public class CManagerAddStatusCommand implements CManagerCommand {
 		String o_goodsId = request.getParameter("o_goodsId");
 		String ordersSalePrice = request.getParameter("ordersSalePrice");
 		String ordersQuantity = request.getParameter("ordersQuantity");
+		String ordersPoint = request.getParameter("ordersPoint");
 		String ad = "제작중";
 		String bbb = "제작완료";
 		if(ordersStatus.equals(ad)) {
 			CManagerOrderListDao dao = new CManagerOrderListDao();
-			dao.Addstatus(ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity);
+			dao.Addstatus(ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity,ordersPoint);
 		}else if (ordersStatus.equals(bbb)) {
 			CManagerOrderListDao dao = new CManagerOrderListDao();
-			dao.Addstatus2(ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity);
+			dao.Addstatus2(ordersId, ordersStatus, o_customerId, o_cakeId, o_goodsId, ordersSalePrice, ordersQuantity,ordersPoint);
 		}
 		
 		

@@ -10,6 +10,7 @@ public class CManagerOrderStautsDTo {
 	String goodsName;
 	int ordersSalePrice;
 	int ordersQuantity;
+	int ordersPoint;
 	public int getOrdersId() {
 		return ordersId;
 	}
@@ -64,8 +65,14 @@ public class CManagerOrderStautsDTo {
 	public void setOrdersQuantity(int ordersQuantity) {
 		this.ordersQuantity = ordersQuantity;
 	}
+	public int getOrdersPoint() {
+		return ordersPoint;
+	}
+	public void setOrdersPoint(int ordersPoint) {
+		this.ordersPoint = ordersPoint;
+	}
 	public CManagerOrderStautsDTo(int ordersId, String ordersStatus, String o_customerId, int o_cakeId, String cakeName,
-			int o_goodsId, String goodsName, int ordersSalePrice, int ordersQuantity) {
+			int o_goodsId, String goodsName, int ordersSalePrice, int ordersQuantity, int ordersPoint) {
 		super();
 		this.ordersId = ordersId;
 		this.ordersStatus = ordersStatus;
@@ -76,10 +83,10 @@ public class CManagerOrderStautsDTo {
 		this.goodsName = goodsName;
 		this.ordersSalePrice = ordersSalePrice;
 		this.ordersQuantity = ordersQuantity;
+		this.ordersPoint = ordersPoint;
 	}
 	
-	
-	
+
 	
 	
 

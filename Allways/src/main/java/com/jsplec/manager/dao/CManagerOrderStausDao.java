@@ -38,7 +38,7 @@ public ArrayList<CManagerOrderStautsDTo> orderStautsList(){
 	try { 
 			connection = dataSource.getConnection();
 			
-			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,cakeName,o_goodsId,goodsName,ordersSalePrice,ordersQuantity ";
+			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,cakeName,o_goodsId,goodsName,ordersSalePrice,ordersQuantity,ordersPoint ";
 			String query2 = "from orders as o, cake as c, goods as g where o.o_cakeId = c.cakeId and g.goodsId = o.o_goodsId and ordersStatus = '주문접수' ";
 			String query3 = "and orderDeleteDate is null and orderSoldOutDate is null and ordersMakeDate is null" ;
 			preparedStatement = connection.prepareStatement(query+ query2+query3 );
@@ -54,11 +54,19 @@ public ArrayList<CManagerOrderStautsDTo> orderStautsList(){
 				String goodsName = resultSet.getString("goodsName");
 				int ordersSalePrice = resultSet.getInt("ordersSalePrice");
 				int ordersQuantity = resultSet.getInt("ordersQuantity");
-				CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId,cakeName, o_goodsId,goodsName, ordersSalePrice, ordersQuantity);
+				int ordersPoint = resultSet.getInt("ordersPoint");
+				CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId,cakeName, o_goodsId,goodsName, ordersSalePrice, ordersQuantity,ordersPoint);
 				dtos.add(dto);
 				}
 	} catch (Exception e) {
-		// TODO: handle exception
+	}finally {
+		try {
+			if(resultSet != null) resultSet.close();
+			if(preparedStatement != null) preparedStatement.close();
+			if(connection != null) connection.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	return dtos;
 }//option list
@@ -71,7 +79,7 @@ public ArrayList<CManagerOrderStautsDTo> orderStautsList2(){
 	try { 
 			connection = dataSource.getConnection();
 			
-			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,cakeName,o_goodsId,goodsName,ordersSalePrice,ordersQuantity ";
+			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,cakeName,o_goodsId,goodsName,ordersSalePrice,ordersQuantity,ordersPoint ";
 			String query2 = "from orders as o, cake as c, goods as g where o.o_cakeId = c.cakeId and g.goodsId = o.o_goodsId and ordersStatus = '제작중' ";
 			String query3 = "and orderDeleteDate is null and orderSoldOutDate is null " ;
 			preparedStatement = connection.prepareStatement(query +query2 +query3 );
@@ -87,11 +95,19 @@ public ArrayList<CManagerOrderStautsDTo> orderStautsList2(){
 				String goodsName = resultSet.getString("goodsName");
 				int ordersSalePrice = resultSet.getInt("ordersSalePrice");
 				int ordersQuantity = resultSet.getInt("ordersQuantity");
-				CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId,cakeName, o_goodsId,goodsName, ordersSalePrice, ordersQuantity);
+				int ordersPoint = resultSet.getInt("ordersPoint");
+				CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId,cakeName, o_goodsId,goodsName, ordersSalePrice, ordersQuantity,ordersPoint);
 				dtos.add(dto);
 				}
 	} catch (Exception e) {
-		// TODO: handle exception
+	}finally {
+		try {
+			if(resultSet != null) resultSet.close();
+			if(preparedStatement != null) preparedStatement.close();
+			if(connection != null) connection.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	return dtos;
 }//option list2
@@ -104,7 +120,7 @@ public ArrayList<CManagerOrderStautsDTo> orderStautsList3(){
 	try { 
 			connection = dataSource.getConnection();
 			
-			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,cakeName,o_goodsId,goodsName,ordersSalePrice,ordersQuantity ";
+			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,cakeName,o_goodsId,goodsName,ordersSalePrice,ordersQuantity,ordersPoint ";
 			String query2 = "from orders as o, cake as c, goods as g where o.o_cakeId = c.cakeId and g.goodsId = o.o_goodsId and ordersStatus = '제작완료' ";
 			String query3 = "and orderDeleteDate is null " ;
 			preparedStatement = connection.prepareStatement(query + query2+query3);
@@ -120,11 +136,19 @@ public ArrayList<CManagerOrderStautsDTo> orderStautsList3(){
 				String goodsName = resultSet.getString("goodsName");
 				int ordersSalePrice = resultSet.getInt("ordersSalePrice");
 				int ordersQuantity = resultSet.getInt("ordersQuantity");
-				CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId,cakeName, o_goodsId,goodsName, ordersSalePrice, ordersQuantity);
+				int ordersPoint = resultSet.getInt("ordersPoint");
+				CManagerOrderStautsDTo dto = new CManagerOrderStautsDTo(ordersId, ordersStatus, o_customerId, o_cakeId,cakeName, o_goodsId,goodsName, ordersSalePrice, ordersQuantity,ordersPoint);
 				dtos.add(dto);
 				}
 	} catch (Exception e) {
-		// TODO: handle exception
+	}finally {
+		try {
+			if(resultSet != null) resultSet.close();
+			if(preparedStatement != null) preparedStatement.close();
+			if(connection != null) connection.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	return dtos;
 }//option list3

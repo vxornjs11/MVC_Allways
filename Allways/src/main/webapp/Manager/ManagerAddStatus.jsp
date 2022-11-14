@@ -87,6 +87,11 @@
 		</th>
 	</tr>
 	<tr>
+		<th>포인트 :
+		<input type="text" name="ordersPoint" value="${add_Order.ordersPoint}" readonly="readonly">
+		</th>
+	</tr>
+	<tr>
 		<th>
 			<input type="button" value="돌아가기" onclick="Return()">
 			<input type="button" value="수정" onclick="Update()">

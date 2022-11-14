@@ -11,6 +11,20 @@
 <link rel="stylesheet" href="managerstyle.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 <link rel="stylesheet" href="css/Table22.css">
+<style>
+div{
+	padding:1%;
+}
+
+input[type=file]::file-selector-button{
+	background-color:#ffffff;
+	border-color:#fdcdcd;
+	border-radius:10px;
+	hover:{
+		background:#fdcdcd;
+	}
+}
+</style>
 </head>
 <body >
 <%@include file="managerHeader.jsp"%>
@@ -29,11 +43,10 @@ function Addoption(){
 		
 </script>
 <div style="text-align:center"><hr/><h1>옵션</h1><hr/></div>
-<div style="text-align:center">
-</div>
-<div style="text-align:center">
-<form name="Olist" method="post">
-	<select name="option">
+
+<div align="center">
+<form name="Olist" method="post" >
+	<select name="option" style="background:#ffffff;border-color:#a87878;color:#a87878">
 		<option value="">검색 유형</option>
 		<option value="cakeoptionId">번호</option>
 		<option value="cakeoptionCategory">카테고리</option>
@@ -46,14 +59,14 @@ function Addoption(){
 		$('select[name="param__option"]').val('${param__option}');
 	}
 	</script>
-	<input type="hidden" name ="boardId" value="${param.boardId }"/>
-<input value="${param.Query }" type="text" name="Query" size="18">
-<input type="button" name="Select" value="검색" onclick="SELECT1()">
-<input type="button" name="add" value="추가" onclick="Addoption()">
+	<input type="hidden" style="border-color:#FDCDCD" name ="boardId" value="${param.boardId }"/>
+<input value="${param.Query }" style="border-color:#FDCDCD" type="text" name="Query" size="30">
+<input type="button" style="background:#ffffff;border-color:#a87878;color:#a87878" name="Select" value="검색" onclick="SELECT1()">
+<input type="button" style="background:#ffffff;border-color:#a87878;color:#a87878" name="add" value="추가" onclick="Addoption()" >
 총 ${Size}건
-<div class="tablediv">
-	<table border="1" align="center" >
-	<thead>
+<div class="tablediv" >
+	<table  border="1" >
+	<thead align="center">
 		<tr>
 			<th>번호</th>
 			<th>카테고리</th>

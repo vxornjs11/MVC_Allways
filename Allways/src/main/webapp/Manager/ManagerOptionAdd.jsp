@@ -6,12 +6,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
-rel="stylesheet" 
-integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
-crossorigin="anonymous">
-<link rel="stylesheet" href="css/Table22.css">
+<title>옵션 추가</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="managerstyle.css">
+<link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
+<style>
+div{
+	padding:1%;
+}
+
+input[type=file]::file-selector-button{
+	background-color:#ffffff;
+	border-color:#fdcdcd;
+	border-radius:10px;
+	hover:{
+		background:#fdcdcd;
+	}
+}
+</style>
+
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
@@ -25,7 +38,6 @@ function Return(){
 		}
 function CHECKOPTION(){
 		var add = document.add;
-		
 		add.action="ONameCheck.do";
 		add.submit();
 
@@ -75,78 +87,75 @@ function previewFile() {
 </script>
 
 
-<h1 align="center">옵션 관리</h1>
-
-	<form method="post" enctype="multipart/form-data" name = "add">
 	<div align="center">
-	<table border="0">
-	<thead>
-	<tr>
-	<th>
-	카테고리 :
-	<select name="option">
-		<option value="size">size</option>
-		<option value="IcingColor">IcingColor</option>
-		<option value="BorderColor">BorderColor</option>
-		<option value="Flavor">Flavor</option>
-		<option value="MassageColor">MassageColor</option>
-		<option value="Box">Box</option>
-	</select></th>
-	<tr>
-		<th>CAKE ID :
-		<input type="text" name="optionId" placeholder="자동으로 입력 됩니다." readonly/>
-		</th>
-	</tr>
-	
-	<tr>
-		<th>옵션 이름 :
-			<input type="text" name="optionName" value="${optionName}" >
-		<c:if test="${check == null }">
-			<th><input type="hidden" name="ko" value="0"/></th></c:if>
-		<c:if test="${check == true }"> 
-		<br>
-				<span style = " font-size:1.0em;  color: red;"> 사용 불가능한 이름 입니다</span>
-			<th><input type="hidden" name="ko" value="2"/></th></c:if>
-		<c:if test="${check == false }"> 
-		<br>
-				<span style = " font-size:1.0em;  color:  blue;"> 사용 가능한 이름 입니다</span>
-			<th><input type="hidden" name="ko" value="1"/></th></c:if>
-		</th>
-	</tr>
-	<tr>
-		<th>가격 이름 :
-			<input type="text" name="optionPrice"  value="${optionPrice}" >
-		</th>
-	</tr>
-	<tr>
-		<th>
-			<input type="button" value="돌아가기" onclick="Return()">
-			<input type="button" value="중복체크" onclick="CHECKOPTION()">
-			<input type="button" value="추가" onclick="ADDOPTION()">
-		</th>
-	</tr>
-	</thead>
-	</table>
-	</div>
-	<th>
-	<div align="left" style="width:74%;display:inline-block">
-			<input type="file" name="cakeoptionImage" onchange="previewFile(event)">
-	</div>
-	<div style="display:inline-block;width:30%;height:50%" align="center">
-		<div>
-			사진 미리보기
+	<form method="post" enctype="multipart/form-data" name = "add">
+			<h1 style="margin-bottom:3%;margin-top:3%"><b>옵션 관리</b></h1>
+	<div style="display: inline-block;width:60%">
+			<div align="left" style="width:20%;display:inline-block">
+			카테고리 :
+			</div>
+		<div align="left" style="width:74%;display:inline-block">
+			<div style="width:50%;display:inline-block">
+				<select name="option" style="border-color:#fdcdcd">
+					<option style="border-color:#fdcdcd" value="size">size</option>
+					<option style="border-color:#fdcdcd" value="IcingColor">IcingColor</option>
+					<option style="border-color:#fdcdcd" value="BorderColor">BorderColor</option>
+					<option style="border-color:#fdcdcd" value="Flavor">Flavor</option>
+					<option style="border-color:#fdcdcd" value="MassageColor">MassageColor</option>
+					<option style="border-color:#fdcdcd" value="Box">Box</option>
+				</select>
 		</div>
+		</div>
+			<div align="left" style="width:20%;height:20%;display:inline-block">
+				옵션 ID :
+		</div>
+			<div align="left" style="width:74%;height:20%;display:inline-block">
+		<input type="text" name="optionId" placeholder="자동으로 입력 됩니다." size="20" readonly/>
+			</div>
+			<div align="left" style="width:20%;height:20%;display:inline-block">
+				옵션 이름 :
+		</div>
+			<div align="left" style="width:74%;height:20%;display:inline-block">
+			<input type="text" size="30" name="optionName" style="border-color:#fdcdcd" value="${optionName}" >
+		<c:if test="${check == null }">
+			<input type="hidden" name="ko" style="border-color:#fdcdcd" value="0"/></c:if>
+		<c:if test="${check == true }"> 
+				<span style = " font-size:1.0em;  color: red;"> 사용 불가능한 이름 입니다</span>
+			<<input type="hidden" name="ko" style="border-color:#fdcdcd" value="2"/></c:if>
+		<c:if test="${check == false }"> 
+				<span style = " font-size:1.0em;  color:  blue;"> 사용 가능한 이름 입니다</span>
+			<input type="hidden" name="ko" style="border-color:#fdcdcd" value="1"/></c:if>
+			</div>
+		<div align="left" style="width:20%;display:inline-block">
+		가격 이름 :
+		</div>
+		<div align="left" style="width:74%;display:inline-block">
+			<input type="text" name="optionPrice" style="border-color:#fdcdcd" value="${optionPrice}" >원
+		</div><br>
+		<div align="left" style="width:20%;display:inline-block">
+			사진
+			</div>
+		<div align="left" style="width:74%;display:inline-block">	
+			<input type="file" name="cakeoptionImage" onchange="previewFile(event)">
+		</div>
+	</div>
+		<div style="display:inline-block;width:30%;height:50%" align="center">
+			<div>
+			사진 미리보기
+			</div>
 		<div>
 			<img src="" id="preview" height="200" width="200" style="display:block;margin:20px;border-radius:10px;">
 		</div>
-	</div>
-	</th>
+		<div align="center" style="width:74%;display:inline-block">
+			<input type="button" value="돌아가기" style="background:#ffffff;border-color:#a87878;color:#a87878" onclick="Return()">
+			<input type="button" value="중복체크" style="background:#ffffff;border-color:#a87878;color:#a87878" onclick="CHECKOPTION()">
+			<input type="button" value="추가" style="background:#ffffff;border-color:#a87878;color:#a87878" onclick="ADDOPTION()">
+		</div>
+		</div>
 		
 	</form>
+	</div>
 		
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" 
-crossorigin="anonymous">
-</script>
+
 </body>
 </html>

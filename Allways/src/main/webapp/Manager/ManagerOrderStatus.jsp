@@ -35,6 +35,7 @@
 			<th>추가상품이름</th>
 			<th>주문가격</th>
 			<th>주문개수</th>
+			<th>포인트가격</th>
 			<th>제작선택</th>
 			<th>주문취소</th>
 		</tr>	
@@ -50,6 +51,7 @@
 			<td>${dto.goodsName}</td>
 			<td>${dto.ordersSalePrice}</td>
 			<td>${dto.ordersQuantity}</td>
+			<td>${dto.ordersPoint}</td>
 			<td><a href="Status.do?ordersId=${dto.ordersId}"><input type="button" value="선택"></a></td>
 			<td><a href="deleteOrder.do?ordersId=${dto.ordersId}"><input type="button" value="취소"></a></td>
 		</tr>
@@ -71,6 +73,7 @@
 			<th>추가상품이름</th>
 			<th>주문가격</th>
 			<th>주문개수</th>
+			<th>포인트가격</th>
 			<th>제작선택</th>
 			<th>주문취소</th>
 		</tr>	
@@ -86,6 +89,7 @@
 			<td>${dto2.goodsName}</td>
 			<td>${dto2.ordersSalePrice}</td>
 			<td>${dto2.ordersQuantity}</td>
+			<td>${dto2.ordersPoint}</td>
 			<td><a href="Status.do?ordersId=${dto2.ordersId}"><input type="button" value="선택"></a></td>
 			<td><a href="deleteOrder.do?ordersId=${dto2.ordersId}"><input type="button" value="취소"></a></td>
 		</tr>
@@ -106,6 +110,7 @@
 			<th>추가상품이름</th>
 			<th>주문가격</th>
 			<th>주문개수</th>
+			<th>포인트가격</th>
 			<th>제작선택</th>
 		</tr>	
 		</thead>
@@ -120,6 +125,7 @@
 			<td>${dto3.goodsName}</td>
 			<td>${dto3.ordersSalePrice}</td>
 			<td>${dto3.ordersQuantity}</td>
+			<td>${dto3.ordersPoint}</td>
 			<td><a href="Sold.do?ordersId=${dto3.ordersId}"><input type="button" value="선택"></a></td>
 		</tr>
 			</c:forEach>

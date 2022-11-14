@@ -7,11 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
-rel="stylesheet" 
-integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
-crossorigin="anonymous">
+
 <link rel="stylesheet" href="css/Table22.css">
+<style>
+div{
+	padding:1%;
+}
+
+input[type=file]::file-selector-button{
+	background-color:#ffffff;
+	border-color:#fdcdcd;
+	border-radius:10px;
+	hover:{
+		background:#fdcdcd;
+	}
+}
+</style>
 </head>
 <body>
 <%@include file="managerHeader.jsp"%>
@@ -102,13 +113,13 @@ function previewFile() {
 	</select></th>
 	<tr>
 		<th>CAKE ID :
-		<input type="hidden" name="optionId" value="${cake_option.cakeoptionId}" readonly/>
+		<input type="hidden" style="border-color:#FDCDCD" name="optionId" value="${cake_option.cakeoptionId}" readonly/>
 		<c:if test="${check == null }">
-		<input type="text" name="optionId" value="${cake_option.cakeoptionId}" readonly/></c:if>
+		<input type="text" style="border-color:#FDCDCD" name="optionId" value="${cake_option.cakeoptionId}" readonly/></c:if>
 		<c:if test="${check == true }">
-		<input type="text" name="optionId" value="${optionId}" readonly/></c:if>
+		<input type="text" style="border-color:#FDCDCD" name="optionId" value="${optionId}" readonly/></c:if>
 		<c:if test="${check == false }">
-		<input type="text" name="optionId" value="${optionId}" readonly/></c:if>
+		<input type="text" style="border-color:#FDCDCD" name="optionId" value="${optionId}" readonly/></c:if>
 		</th>
 	</tr>
 	
@@ -117,36 +128,36 @@ function previewFile() {
 			<input type="hidden" name="optionName" value="${cake_option.cakeoptionValue}" >
 		<c:if test="${check == null }">
 			<input type="hidden" name="ko" value="0"/>
-			<input type="text" name="optionName" value="${cake_option.cakeoptionValue}" ></c:if>
+			<input type="text" style="border-color:#FDCDCD" name="optionName" value="${cake_option.cakeoptionValue}" ></c:if>
 		<c:if test="${check == true }">
 			<input type="hidden" name="ko" value="2"/>
-			<input type="text" name="optionName" value="${optionName}" >
+			<input type="text" style="border-color:#FDCDCD" name="optionName" value="${optionName}" >
 				<br>
 				<span style = " font-size:1.0em;  color: red;"> 사용 불가능한 이름 입니다</span></c:if>
 		<c:if test="${check == false }">
 			<input type="hidden" name="ko" value="1"/>
-			<input type="text" name="optionName" value="${optionName}" >
+			<input type="text" style="border-color:#FDCDCD" name="optionName" value="${optionName}" >
 		 		<br>
 		 		<span style = " font-size:1.0em;  color: blue;"> 사용 가능한 이름 입니다</span></c:if>
 		</th>
 	</tr>
 	<tr>
 		<th>가격 이름 :
-		<input type="hidden" name="optionPrice" value="${cake_option.cakeoptionPrice}" >
+		<input type="hidden" style="border-color:#FDCDCD" name="optionPrice" value="${cake_option.cakeoptionPrice}" >
 		<c:if test="${check == null }">
-		<input type="text" name="optionPrice" value="${cake_option.cakeoptionPrice}" ></c:if>
+		<input type="text" style="border-color:#FDCDCD" name="optionPrice" value="${cake_option.cakeoptionPrice}" ></c:if>
 		<c:if test="${check == true }"> 
-		<input type="text" name="optionPrice" value="${optionPrice}" ></c:if>
+		<input type="text" style="border-color:#FDCDCD" name="optionPrice" value="${optionPrice}" ></c:if>
 		<c:if test="${check == false }"> 
-		<input type="text" name="optionPrice" value="${optionPrice}" ></c:if>
+		<input type="text" style="border-color:#FDCDCD" name="optionPrice" value="${optionPrice}" ></c:if>
 		</th>
 	</tr>
 	<tr>
 		<td>
-			<input type="button" value="돌아가기" onclick="Return()">
-			<input type="button" value="중복체크" onclick="CHECKOPTION()">
-			<input type="button" value="수정" onclick="Update()">
-			<input type="button" value="삭제" onclick="Delete()">
+			<input type="button" style="background:#ffffff;border-color:#a87878;color:#a87878" value="돌아가기" onclick="Return()">
+			<input type="button" style="background:#ffffff;border-color:#a87878;color:#a87878" value="중복체크" onclick="CHECKOPTION()">
+			<input type="button" style="background:#ffffff;border-color:#a87878;color:#a87878" value="수정" onclick="Update()">
+			<input type="button" style="background:#ffffff;border-color:#a87878;color:#a87878" value="삭제" onclick="Delete()">
 		</td>
 	</tr>
 	</thead>
@@ -177,9 +188,7 @@ function previewFile() {
 		
 	</form>
 		
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" 
-crossorigin="anonymous">
+
 </script>
 </body>
 </html>
