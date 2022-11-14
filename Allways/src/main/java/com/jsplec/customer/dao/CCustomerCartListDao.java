@@ -78,7 +78,7 @@ public class CCustomerCartListDao {
 
 	}
 
-	public ArrayList<CCustomerCartListDto> cartOptionList() {
+	public ArrayList<CCustomerCartListDto> cartOptionList(String customerId) {
 		ArrayList<CCustomerCartListDto> dtos2 = new ArrayList<CCustomerCartListDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -88,7 +88,7 @@ public class CCustomerCartListDao {
 			connection = dataSource.getConnection();
 
 			String query1 = "select co.cakeoptionCategory, co.cakeoptionValue, co.cakeoptionPrice, d.detailoptionLettering from cakeoption co, detailoption d ";
-			String query2 = "where d.d_cakeoptionId = co.cakeoptionId and d.d_ordersId in (select ordersId from orders where o_customerId = 'osu' and ordersPoint is null)";
+			String query2 = "where d.d_cakeoptionId = co.cakeoptionId and d.d_ordersId in (select ordersId from orders where o_customerId = '" + customerId + "' and ordersPoint is null)";
 
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();

@@ -27,7 +27,7 @@ public class CCustomerCakeOrderCommand implements CCustomerCommand {
 		request.setAttribute("orderList", dtos);
 		
 		CCustomerCartListDao dao2 = new CCustomerCartListDao();
-		ArrayList<CCustomerCartListDto> dtos2 = dao2.cartOptionList();
+		ArrayList<CCustomerCartListDto> dtos2 = dao2.cartOptionList(customerId);
 		request.setAttribute("optionList", dtos2);
 		
 		ArrayList<CCustomerCakeOrderDto> dtos3 = dao.customerInfo(customerId);

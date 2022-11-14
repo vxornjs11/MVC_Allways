@@ -19,14 +19,12 @@ public class CCustomerCartListCommand implements CCustomerCommand {
 		HttpSession session = request.getSession();
 		String customerId = (String) session.getAttribute("ID");
 		
-		String[] ordersId = request.getParameterValues("ordersId");
-
 		CCustomerCartListDao dao = new CCustomerCartListDao();
 		ArrayList<CCustomerCartListDto> dtos = dao.cartList(customerId);
 		request.setAttribute("cartList", dtos);
 		
 		CCustomerCartListDao dao2 = new CCustomerCartListDao();
-		ArrayList<CCustomerCartListDto> dtos2 = dao2.cartOptionList();
+		ArrayList<CCustomerCartListDto> dtos2 = dao2.cartOptionList(customerId);
 		request.setAttribute("optionList", dtos2);
 		
 		

@@ -109,29 +109,38 @@ color: #FFFDFD;
 		</tr>
 		
 	<c:forEach var = "dto" items="${cartList }">
+	
 		<tr align="center">
 			<td><input type="checkbox" name="ordersId" value="${dto.ordersId }"></td>
 			<td>${dto.cakeName }</td>
 			<td>${dto.ordersQuantity }</td>
 			<td>￦ <fmt:formatNumber value="${dto.ordersSalePrice}"/></td>
-			<td><a href="/Allways/Customer/customerCartDelete.do?ordersId=${dto.ordersId }">X</a>
-			</td>
+			<td><a href="/Allways/Customer/customerCartDelete.do?ordersId=${dto.ordersId }">X</a></td>
 		</tr>
+		
+		<c:forEach var = "dto" items="${optionList }">
+		
+			<tr align="center">
+				<td></td>
+				<td>
+					<label style = "font-style: italic; font-weight: bold;">${dto.cakeoptionCategory } : &nbsp;</label>
+					 ${dto.cakeoptionValue }
+					<label style = "font-style: italic; font-weight: bold;">Price : &nbsp;</label>￦ <fmt:formatNumber value="${dto.cakeoptionPrice}"/> 
+				</td>
+			</tr>
+			
+		</c:forEach>
+		
+		<c:forEach var = "dto" items="${optionList }" begin="1" end="1">
+		
+			<tr align="center">
+				<td></td>
+				<td><label style = "font-style: italic; font-weight: bold;"> Lettering : &nbsp;</label>${dto.detailoptionLettering }</td>
+			</tr>
+			
+		</c:forEach>		
+		
 	</c:forEach>
-	
-	
-	<!--  수정 필요   -->
-	<c:forEach var = "dto" items="${optionList }">
-		<tr align="center">
-			<td>${dto.cakeoptionCategory }</td>
-			<td>${dto.cakeoptionValue }</td>
-			<td>${dto.cakeoptionPrice }</td>
-			<td>${dto.detailoptionLettering }</td>
-		</tr>
-	</c:forEach>
-	<!--  수정 필요   -->
-	
-	
 	
 		<tr align="center">
 			<td><button type = "button" id="util_box" onclick = "mySubmit(1)">Delete</button></td>
@@ -142,7 +151,7 @@ color: #FFFDFD;
 </form>
 </div><br>
 
-
+ 
 
 
  
@@ -166,9 +175,9 @@ color: #FFFDFD;
 		</tr>
 		<tr align="center">
 			<td colspan="2"><hr id="line4"></td>
+
 		</tr> 
 	</table>
 </div> -->
-
 </body>
 </html>
