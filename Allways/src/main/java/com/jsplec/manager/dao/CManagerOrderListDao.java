@@ -76,7 +76,7 @@ public CManagerOrderListDao() {
 		try { 
 			connection = dataSource.getConnection();
 			
-			String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption where cakeoptionDeleteDate is null order by cakeoptionCategory DESC";
+			String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption where cakeoptionDeletedate is null order by cakeoptionCategory DESC";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -143,7 +143,7 @@ public CManagerOrderListDao() {
 			connection = dataSource.getConnection();
 			
 			
-			String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption where " + option + "  Like '%" + Query+ "%' and cakeoptionDeleteDate is null order by cakeoptionCategory DESC";
+			String query = "select cakeoptionId, cakeoptionCategory,cakeoptionValue,cakeoptionPrice from cakeoption where " + option + "  Like '%" + Query+ "%' and cakeoptionDeletedate is null order by cakeoptionCategory DESC";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -332,7 +332,7 @@ public CManagerOrderListDao() {
 			connection2 = dataSource.getConnection();
 			
 			String query = "insert into orders (ordersId, ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity,ordersPoint) values (?,?,?,?,?,?,?,?) ";
-			String query2 = "update orders set ordersMakeDate = now() where ordersId = ?";
+			String query2 = "update orders set ordersMakedate = now() where ordersId = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement2 = connection2.prepareStatement(query2);
 
@@ -372,7 +372,7 @@ public CManagerOrderListDao() {
 				connection2 = dataSource.getConnection();
 				
 				String query = "insert into orders (ordersId, ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity,ordersPoint) values (?,?,?,?,?,?,?,?) ";
-				String query2 = "update orders set orderSoldOutDate = now() where ordersId = ?";
+				String query2 = "update orders set orderSoldOutdate = now() where ordersId = ?";
 				preparedStatement = connection.prepareStatement(query);
 				preparedStatement2 = connection2.prepareStatement(query2);
 	

@@ -40,7 +40,7 @@ public ArrayList<CManagerOrderStautsDTo> orderStautsList(){
 			
 			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,cakeName,o_goodsId,goodsName,ordersSalePrice,ordersQuantity,ordersPoint ";
 			String query2 = "from orders as o, cake as c, goods as g where o.o_cakeId = c.cakeId and g.goodsId = o.o_goodsId and ordersStatus = '주문접수' ";
-			String query3 = "and orderDeleteDate is null and orderSoldOutDate is null and ordersMakeDate is null" ;
+			String query3 = "and ordersDeletedate is null and orderSoldOutdate is null and ordersMakedate is null" ;
 			preparedStatement = connection.prepareStatement(query+ query2+query3 );
 			resultSet = preparedStatement.executeQuery();
 				
@@ -81,7 +81,7 @@ public ArrayList<CManagerOrderStautsDTo> orderStautsList2(){
 			
 			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,cakeName,o_goodsId,goodsName,ordersSalePrice,ordersQuantity,ordersPoint ";
 			String query2 = "from orders as o, cake as c, goods as g where o.o_cakeId = c.cakeId and g.goodsId = o.o_goodsId and ordersStatus = '제작중' ";
-			String query3 = "and orderDeleteDate is null and orderSoldOutDate is null " ;
+			String query3 = "and ordersDeletedate is null and orderSoldOutdate is null " ;
 			preparedStatement = connection.prepareStatement(query +query2 +query3 );
 			resultSet = preparedStatement.executeQuery();
 				
@@ -122,7 +122,7 @@ public ArrayList<CManagerOrderStautsDTo> orderStautsList3(){
 			
 			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,cakeName,o_goodsId,goodsName,ordersSalePrice,ordersQuantity,ordersPoint ";
 			String query2 = "from orders as o, cake as c, goods as g where o.o_cakeId = c.cakeId and g.goodsId = o.o_goodsId and ordersStatus = '제작완료' ";
-			String query3 = "and orderDeleteDate is null " ;
+			String query3 = "and ordersDeletedate is null " ;
 			preparedStatement = connection.prepareStatement(query + query2+query3);
 			resultSet = preparedStatement.executeQuery();
 				
@@ -162,7 +162,7 @@ public void OrderDelete(String ordersId) {
 			try {
 				connection = dataSource.getConnection();
 				
-				String query = "update orders set orderDeleteDate = now() where ordersId = ?";
+				String query = "update orders set ordersDeletedate = now() where ordersId = ?";
 				preparedStatement = connection.prepareStatement(query);
 				
 			
@@ -192,7 +192,7 @@ public void OrderSoldOut(String ordersId) {
 			try {
 				connection = dataSource.getConnection();
 				
-				String query = "update orders set orderSoldOutDate = now() where ordersId = ?";
+				String query = "update orders set orderSoldOutdate = now() where ordersId = ?";
 				preparedStatement = connection.prepareStatement(query);
 				
 			
