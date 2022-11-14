@@ -14,7 +14,7 @@
 
 	<%@include file="customerHeader.jsp" %>
 	
-	<div align="center" class="container text-center">
+	<div align="center" class="container text-center" style = "margin-top: 50px;">
 		<form action = "" method = "post" name = "myform">
 			<table class="table">
 				<thead>
