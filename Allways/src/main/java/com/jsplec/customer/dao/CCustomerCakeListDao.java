@@ -87,7 +87,7 @@ public class CCustomerCakeListDao {
 
 			String query1 = "select cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews from cake ";
 			String query2 = "order by " + queryName + " " + content;
-
+			
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
 
