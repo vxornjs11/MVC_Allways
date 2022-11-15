@@ -28,7 +28,7 @@ public class CCustomerCakeQuickOrderCommand implements CCustomerCommand {
 		int shape = Integer.parseInt(request.getParameter("shape"));
 		int size = Integer.parseInt(request.getParameter("size"));
 		int[] option = { shape, size };
-		String detailoptionLettering = request.getParameter("detailoptionLattering");
+		String detailoptionLettering = request.getParameter("detailoptionLettering");
 		String detailoptionPickupDate = request.getParameter("detailoptionPickupDate");
 
 		CCustomerCakeQuickOrderDao dao = new CCustomerCakeQuickOrderDao();

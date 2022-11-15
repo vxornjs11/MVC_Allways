@@ -79,4 +79,32 @@ public class CCustomerCakeDetailDao {
 
 	}
 	
+	public void viewsUpdate(int CAKEID) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+
+				String query = "update cake set cakeViews = cakeViews +1 where cakeId = " + CAKEID;
+
+				preparedStatement = connection.prepareStatement(query);
+
+				preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 }

@@ -38,6 +38,12 @@ public class CCustomerCakeOrderDto {
 		this.customerAddress = customerAddress;
 		this.customerAddressDetail = customerAddressDetail;
 	}
+	
+	public CCustomerCakeOrderDto(int ordersSalePrice, int ordersQuantity) {
+		super();
+		this.ordersSalePrice = ordersSalePrice;
+		this.ordersQuantity = ordersQuantity;
+	}
 
 	public CCustomerCakeOrderDto(int ordersId) {
 		super();

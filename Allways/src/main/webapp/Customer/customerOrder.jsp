@@ -16,6 +16,7 @@ function order(index){
 	}
 	if (index == 2) {
 		form.action = "customerOrder.do";
+		alert("Order complete.")
 	}
 		form.submit();
 }
@@ -48,6 +49,24 @@ width: 400px;
 height: 0px;
 border: 2px solid #FECACA;
 }
+
+#util_box{
+width: 160px;
+height: 41.63px;
+background: #EF8C8C;
+border: 2px solid #EF8C8C;
+
+font-family: 'Baloo Tammudu 2';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 50px;
+align-items: center;
+text-align: center;
+text-transform: capitalize;
+color: #FFFDFD;
+}
+
 </style>
 </head>
 <body>
@@ -96,7 +115,7 @@ border: 2px solid #FECACA;
 
 
 
-<!--  수정 필요   -->
+<%-- <!--  수정 필요   -->
 <div align="center">
 	<c:forEach var = "dto" items="${optionList }">
 		<tr align="center">
@@ -107,7 +126,7 @@ border: 2px solid #FECACA;
 		</tr>
 	</c:forEach>
 </div>
-<!--  수정 필요   -->
+<!--  수정 필요   --> --%>
 
 
 
@@ -170,24 +189,28 @@ border: 2px solid #FECACA;
 			<td style="width: 150px;">
 				Total Quantity
 			</td>
-			<td style="width: 50px;">
-				3
-			</td>
+			<c:set var ="total" value="0"/>
+			<c:forEach var="result" items="${orderList }" varStatus="status">
+				<c:set var="total" value="${total + result.ordersQuantity }"/>
+			</c:forEach>
+			<td><c:out value="${total }"/></td>
 		</tr>
 		<tr align="center">
 			<td style="width: 150px;">
 				Total Price
 			</td>
-			<td style="width: 100px;">
-				￦52,000
-			</td>
+			<c:set var ="total" value="0"/>
+			<c:forEach var="result" items="${orderList }" varStatus="status">
+				<c:set var="total" value="${total + result.ordersSalePrice }"/>
+			</c:forEach>
+			<td>￦ <fmt:formatNumber value="${total }"/></td>
 		</tr>
 		<tr align="center">
 			<td colspan="2"><hr id="line4"></td>
 		</tr>
 		<tr align="center">
-			<td><input type="button" value="Cancle" style="width: 150px;" onclick="order(1)"></td>
-			<td><input type="button" value="Buy Now" style="width: 150px;" onclick="order(2)"></td>
+			<td><input id="util_box" type="button" value="Cancle" style="width: 150px;" onclick="order(1)"></td>
+			<td><input id="util_box" type="button" value="Buy Now" style="width: 150px;" onclick="order(2)"></td>
 		</tr>
 	</table>
 </div>

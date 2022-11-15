@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jsplec.customer.dao.CCustomerCakeDetailDao;
 import com.jsplec.customer.dao.CCustomerCakeDetailReviewDao;
@@ -19,6 +20,9 @@ public class CCustomerCakeDetailCommand implements CCustomerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
+		HttpSession session = request.getSession();
+		String customerId = (String) session.getAttribute("ID");
+		
 		int cakeId = Integer.parseInt(request.getParameter("cakeId"));
 		
 		CCustomerCakeDetailDao dao = new CCustomerCakeDetailDao();
@@ -26,6 +30,8 @@ public class CCustomerCakeDetailCommand implements CCustomerCommand {
 		CCustomerCakeListDto dto = dao.cakeDetail(cakeId);
 		
 		request.setAttribute("cakeInfo", dto);
+		
+		dao.viewsUpdate(cakeId);
 		
 		
 		
@@ -72,6 +78,26 @@ public class CCustomerCakeDetailCommand implements CCustomerCommand {
 		CCustomerCakeOptionListDao dao4 = new CCustomerCakeOptionListDao();
 		ArrayList<CCustomerCakeOptionListDto> dtos4 = dao4.sizeList();
 		request.setAttribute("sizeList", dtos4);
+		
+		CCustomerCakeOptionListDao dao5 = new CCustomerCakeOptionListDao();
+		ArrayList<CCustomerCakeOptionListDto> dtos5 = dao5.flavorList();
+		request.setAttribute("flavorList", dtos5);
+		
+		CCustomerCakeOptionListDao dao6 = new CCustomerCakeOptionListDao();
+		ArrayList<CCustomerCakeOptionListDto> dtos6 = dao6.icingColorList();
+		request.setAttribute("icingColorList", dtos6);
+		
+		CCustomerCakeOptionListDao dao7 = new CCustomerCakeOptionListDao();
+		ArrayList<CCustomerCakeOptionListDto> dtos7 = dao7.borderColorList();
+		request.setAttribute("borderColorList", dtos7);
+		
+		CCustomerCakeOptionListDao dao8 = new CCustomerCakeOptionListDao();
+		ArrayList<CCustomerCakeOptionListDto> dtos8 = dao8.messageColorList();
+		request.setAttribute("messageColorList", dtos8);
+		
+		
+		
+		
 		
 	}
 

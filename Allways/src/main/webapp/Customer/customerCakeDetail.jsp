@@ -8,18 +8,96 @@
 <head>
 
 <script type="text/javascript">
-
-function mySubmit(index){
-	var form = document.detail;
-	if (index == 1) {
-		form.action = "customerCakeCart.do";
-	}
-	if (index == 2) {
-		form.action = "customerCakeQuickOrder.do";
-	}
+	function login() {
+		alert('Available after login.');
+		var form = document.detail;
+		form.action = "customerLoginPage.do";
 		form.submit();
-}
+	}
 
+	function mySubmit(index) {
+		var form = document.detail;
+
+		if (index == 1) {
+			if (form.detailoptionPickupDate.value.length == 0) {
+				alert("Please choose a pickup date.")
+				return;
+			}
+			if (form.shape.value.length == 0) {
+				alert("Please choose a shape.");
+				return;
+			}
+			if (form.size.value.length == 0) {
+				alert("Please choose a size.");
+				return;
+			}
+			if (form.detailoptionLettering.value.length == 0) {
+				alert("Please enter a phrase.");
+				return;
+			}
+			if (form.detailoptionLettering.value.length > 30) {
+				alert("30 Char.Max.");
+				return;
+			}
+			if (form.ordersQuantity.value == 0) {
+				alert("Please select a quantity.");
+				return;
+			}
+			if (form.ordersQuantity.value > 10) {
+				alert("You can order up to 10.");
+				return;
+			}
+			alert("set in cartlist.");
+			form.action = "customerCakeCart.do";
+		}
+		if (index == 2) {
+			if (form.detailoptionPickupDate.value.length == 0) {
+				alert("Please choose a pickup date.")
+				return;
+			}
+			if (form.shape.value.length == 0) {
+				alert("Please choose a shape.");
+				return;
+			}
+			if (form.size.value.length == 0) {
+				alert("Please choose a size.");
+				return;
+			}
+			if (form.detailoptionLettering.value.length == 0) {
+				alert("Please enter a phrase.");
+				return;
+			}
+			if (form.detailoptionLettering.value.length > 30) {
+				alert("30 Char.Max.");
+				return;
+			}
+			if (form.ordersQuantity.value == 0) {
+				alert("Please select a quantity.");
+				return;
+			}
+			form.action = "customerCakeQuickOrder.do";
+		}
+		form.submit();
+	}
+	
+	
+	const input  = document.getElementById('input');
+	const kern   = document.getElementById('kern');
+	const nokern = document.getElementById('nokern');
+
+	input.addEventListener('keyup', () => {
+	  kern.textContent = input.value; /* Update content */
+	  nokern.textContent = input.value;
+	});
+
+	kern.textContent = input.value; /* Initialize content */
+	nokern.textContent = input.value;
+	
+	function printQuantity()  {
+  	  const name = document.getElementById('quantity').value;
+  	  document.getElementById("result").innerText = name;
+  	}
+	
 </script>
 
 <%@include file="customerHeader.jsp"%>
@@ -224,7 +302,6 @@ color: #FFFDFD;
 }
 </style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -269,7 +346,7 @@ color: #FFFDFD;
 				<div id="cake_option" align="left">
 				</div>
 				<div align="left">
-					<input type="date" name="detailoptionPickupDate"><br><br>
+					 <input type="date" id="Date" name="detailoptionPickupDate" ><br><br>
 				</div>
 				
 				
@@ -334,19 +411,50 @@ color: #FFFDFD;
 						</tr>
 					</table>
 				</div>
+			
+				<div id="cake_option" align="left">
+					Flavor
+				</div>
+				
+				<div class="select" align="left">
+					<table>
+						<tr align="center">
+							<c:forEach var="dto" items="${flavorList}">
+								<td>
+									<c:set var="i" value="${i+1 }"/>
+										<input type="radio" id="flavor${i}" name="flavor" value="${dto.cakeoptionId}"><label for="flavor${i}">${dto.cakeoptionValue}</label>
+										&nbsp;
+								</td>
+							</c:forEach>
+						</tr>	
+						<tr align="center">
+							<c:forEach var="dto" items="${flavorList }">
+								<td>
+									<c:if test="${dto.cakeoptionPrice ne 0 }">
+										<label id="option_price">
+										+ ￦ <fmt:formatNumber value="${dto.cakeoptionPrice}"/>
+										</label>
+										<input type = "hidden" name="flavorPrice" value="${dto.cakeoptionPrice }">
+									</c:if>
+								</td>
+							</c:forEach>
+						</tr>
+					</table>
+				</div>
+			
 				<div id="cake_option" align="left">
 					Lettering
 				</div>
 				
 				<div align="left">
-					<input type="text" id="lettering" name = "detailoptionLattering" placeholder="Handwritten In Icing. 30 Char. Max." style="padding-top: 8px;">
+					<input type="text" id="lettering" name = "detailoptionLettering" placeholder="Handwritten In Icing. 30 Char. Max." style="padding-top: 8px;">
 				</div><br>
 				
 				<div id="cake_option" align="left">
 					Quantity
 				</div>
 				<div align="left">
-					<input type="number" id="quantity" min="0" max="50" name ="ordersQuantity" placeholder="0" value="quantity">
+					<input type="number" id="quantity" min="0" max="50" name ="ordersQuantity" placeholder="0" value="quantity" onchange = "printQuantity()">
 				</div>
 				
 				<hr id="line4">
@@ -358,23 +466,30 @@ color: #FFFDFD;
 								Total Quantity
 							</td>
 							<td style="width: 50px;">
-								${quantity }
+								<div id='result'>0</div>
 							</td>
 						</tr>
 						<tr align="center">
 							<td style="width: 150px;" height="50px">
 								Total Price
 							</td>
-							<td style="width: 100px;">
-								￦52,000
-							</td>
+							<td style="width: 100px;">￦ <fmt:formatNumber
+									value="${cakeInfo.cakePrice}" /> 
 						</tr>
 						<tr align="center">
 							<td colspan="2"><hr id="line4"></td>
 						</tr>
 						<tr align="center">
-							<td><button type = "button" id="util_box" onclick = "mySubmit(1)">Cart</button></td>
-							<td><button type = "button" id="util_box" onclick = "mySubmit(2)">Buy Now</button></td>
+						<c:choose>
+							<c:when test="${ID != null }">
+								<td><button type = "button" id="util_box" onclick = "mySubmit(1)">Cart</button></td>
+								<td><button type = "button" id="util_box" onclick = "mySubmit(2)">Buy Now</button></td>
+							</c:when>
+							<c:otherwise>
+								<td><button type = "button" id="util_box" onclick = "login()">Cart</button></td>
+								<td><button type = "button" id="util_box" onclick = "login()">Buy Now</button></td>
+							</c:otherwise>
+						</c:choose>
 						</tr>
 					</table>
 				</div>

@@ -54,6 +54,10 @@ text-transform: capitalize;
 color: #766262;
 }
 
+.dropdown-toggle::after {
+    margin-top: 0px;
+}
+
 </style>
 
 </head>

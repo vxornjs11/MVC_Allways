@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -49,7 +48,7 @@ public class CCustomerCakeOrderDao {
 					int ordersQuantity = resultSet.getInt(3);
 					int ordersSalePrice = resultSet.getInt(4);
 					String cakeName = resultSet.getString(5);
-
+					
 					CCustomerCakeOrderDto dto = new CCustomerCakeOrderDto(ordersId, cakeId, ordersSalePrice,
 							ordersQuantity, cakeName);
 					dtos.add(dto);
@@ -162,7 +161,7 @@ public class CCustomerCakeOrderDao {
 			}
 		}
 	}
-	
+
 	public void cartListUpdate(String[] ORDERSID) {
 
 		Connection connection = null;

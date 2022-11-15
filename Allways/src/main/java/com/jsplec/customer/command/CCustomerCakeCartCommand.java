@@ -25,8 +25,9 @@ public class CCustomerCakeCartCommand implements CCustomerCommand {
 		
 		int shape = Integer.parseInt(request.getParameter("shape"));
 		int size = Integer.parseInt(request.getParameter("size"));
-		int[] option = {shape, size};
-		String detailoptionLettering = request.getParameter("detailoptionLattering");
+		int flavor = Integer.parseInt(request.getParameter("flavor"));
+		int[] option = {shape, size, flavor};
+		String detailoptionLettering = request.getParameter("detailoptionLettering");
 		String detailoptionPickupDate = request.getParameter("detailoptionPickupDate");
 		
 		dao.cartInsert(customerId, cakeId, cakePrice, ordersQuantity);
