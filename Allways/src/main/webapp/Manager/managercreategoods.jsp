@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
 <link rel="stylesheet" href="css/Table22.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 div{
 	padding:1%;
@@ -45,10 +46,10 @@ input[type=file]::file-selector-button{
 	function submitDo(){
 		var form=document.actionForm;
 		if (form.checkName.value=="true"){
-			alert("추가가 완료되었습니다");
+			swal("추가가 완료되었습니다",'','success');
 			form.submit();
 		} else{
-			alert("이름 중복체크를 해 주세요.");
+			swal("이름 중복체크를 해 주세요.",'','warning');
 			return;
 		}
 	}
@@ -56,7 +57,7 @@ input[type=file]::file-selector-button{
 	function nameCheck(){
 		var form=document.actionForm;
 		if (form.goodsName.value==""){
-			alert("추가상품 이름을 입력하세요");
+			swal("추가상품 이름을 입력하세요",'','warning');
 			return;
 		} else{
 			form.action="checkGoodsName.do";
@@ -90,11 +91,11 @@ input[type=file]::file-selector-button{
 					<input type="text" name="goodsName" class="form-control" style="border-color:#fdcdcd">
 				</c:if>
 				<c:if test="${check==true }">
-					<script>alert("사용 가능한 이름입니다.");</script>
+					<script>swal("사용 가능한 이름입니다.",'','success');</script>
 					<input type="text" name="goodsName" class="form-control is-valid" style="border-color:#fdcdcd" value="${goodsName }">
 				</c:if>
 				<c:if test="${check==false }">
-					<script>alert("이미 사용중인 이름입니다.");</script>
+					<script>swal("이미 사용중인 이름입니다.",'','warning');</script>
 					<input type="text" name="goodsName" class="form-control is-invalid" style="border-color:#fdcdcd" value="${goodsName }">
 				</c:if>
 			</div>

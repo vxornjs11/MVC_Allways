@@ -24,11 +24,11 @@ public class CManagerOptionUpdate implements CManagerCommand {
 		
 		try {
 			MultipartRequest multi = new MultipartRequest(request, context.getRealPath("/"), maxSize, "utf-8", new DefaultFileRenamePolicy());
-			String cakeoptionCategory = multi.getParameter("option2");
-			int cakeoptionId = Integer.parseInt(multi.getParameter("optionId2"));
-			String cakeoptionValue = multi.getParameter("optionName2");
-			int cakeoptionPrice = Integer.parseInt(multi.getParameter("optionPrice2"));
-			String cakeoptionImage = multi.getFilesystemName("cakeoptionImage2");
+			String cakeoptionCategory = multi.getParameter("option");
+			int cakeoptionId = Integer.parseInt(multi.getParameter("optionId"));
+			String cakeoptionValue = multi.getParameter("optionName");
+			int cakeoptionPrice = Integer.parseInt(multi.getParameter("optionPrice"));
+			String cakeoptionImage = multi.getFilesystemName("cakeoptionImage");
 			dao.contentUpdate(cakeoptionCategory, cakeoptionValue, cakeoptionPrice, cakeoptionImage, cakeoptionId);
 			
 			

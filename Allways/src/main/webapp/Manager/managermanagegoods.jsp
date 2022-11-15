@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="css/Table22.css">
 <style>
 div{
@@ -47,10 +48,10 @@ input[type=file]::file-selector-button{
 		var form=document.actionForm;
 		console.log(form.checkName.value);
 		if (form.checkName.value=="true"){
-			alert("추가가 완료되었습니다");
+			swal("추가가 완료되었습니다",'','success');
 			form.submit();
 		} else{
-			alert("이름 중복체크를 해 주세요.");
+			swal("이름 중복체크를 해 주세요.",'','warning');
 			return;
 		}
 	}
@@ -58,7 +59,7 @@ input[type=file]::file-selector-button{
 	function nameCheck(){
 		var form=document.actionForm;
 		if (form.goodsName.value==""){
-			alert("추가상품 이름을 입력하세요");
+			swal("추가상품 이름을 입력하세요",'','success');
 			return;
 		} else{
 			form.action="checkGoodsName2.do";
@@ -74,18 +75,18 @@ input[type=file]::file-selector-button{
 	function updateDo(){
 		var form=document.actionForm;
 		if (form.check.value==false){
-			alert("이름 중복체크를 해주세요.");
+			swal("이름 중복체크를 해주세요.",'','warning');
 			return;
 		}
 		form.action="updateGoods.do";
-		alert("수정이 완료되었습니다");
+		swal("수정이 완료되었습니다",'','success');
 		form.submit();
 	}
 	
 	function deleteDo(){
 		var form=document.actionForm;
 		form.action="deleteGoods.do";
-		alert("삭제가 완료되었습니다");
+		swal("삭제가 완료되었습니다",'','success');
 		form.submit();
 	}
 </script>
@@ -108,11 +109,11 @@ input[type=file]::file-selector-button{
 					<input type="text" name="goodsName" class="form-control" style="border-color:#fdcdcd" value="${goodsName }">
 				</c:if>
 				<c:if test="${check==true }">
-					<script>alert("사용 가능한 이름입니다.");</script>
+					<script>swal("사용 가능한 이름입니다.",'','success');</script>
 					<input type="text" name="goodsName" class="form-control is-valid" style="border-color:#fdcdcd" value="${goodsName }">
 				</c:if>
 				<c:if test="${check==false }">
-					<script>alert("이미 사용중인 이름입니다.");</script>
+					<script>swal("이미 사용중인 이름입니다.",'','warning');</script>
 					<input type="text" name="goodsName" class="form-control is-invalid" style="border-color:#fdcdcd" value="${goodsName }">
 				</c:if>
 			</div>

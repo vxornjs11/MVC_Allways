@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="managerstyle.css">
 <link rel="stylesheet" href="css/Table22.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 div{
 	padding:1%;
@@ -48,10 +49,10 @@ input[type=file]::file-selector-button{
 		var form=document.actionForm;
 		console.log(form.checkName.value);
 		if (form.checkName.value=="true"){
-			alert("추가가 완료되었습니다");
+			swal("추가가 완료되었습니다",'','success');
 			form.submit();
 		} else{
-			alert("이름 중복체크를 해 주세요.");
+			swal("이름 중복체크를 해 주세요.",'','warning');
 			return;
 		}
 	}
@@ -59,7 +60,7 @@ input[type=file]::file-selector-button{
 	function nameCheck(){
 		var form=document.actionForm;
 		if (form.cakeName.value==""){
-			alert("케이크 이름을 입력하세요");
+			swal("케이크 이름을 입력하세요",'','warning');
 			return;
 		} else{
 			form.action="checkName.do";

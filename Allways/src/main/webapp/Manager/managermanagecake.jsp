@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="managerstyle.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
 <link rel="stylesheet" href="css/Table22.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 div{
 	padding:1%;
@@ -46,10 +47,10 @@ input[type=file]::file-selector-button{
 	function submitDo(){
 		var form=document.actionForm;
 		if (form.checkName.value==true){
-			alert("추가가 완료되었습니다");
+			swal("추가가 완료되었습니다",'','success');
 			form.submit();
 		} else{
-			alert("이름 중복체크를 해 주세요.");
+			swal("이름 중복체크를 해 주세요.",'','warning');
 			return;
 		}
 	}
@@ -57,7 +58,7 @@ input[type=file]::file-selector-button{
 	function nameCheck(){
 		var form=document.actionForm;
 		if (form.cakeName.value==""){
-			alert("케이크 이름을 입력하세요");
+			swal("케이크 이름을 입력하세요",'','warning');
 			return;
 		} else{
 			form.action="checkName.do";
@@ -74,25 +75,25 @@ input[type=file]::file-selector-button{
 	function updateDo(){
 		var form=document.actionForm;
 		if (form.check.value==false){
-			alert("이름 중복체크를 해주세요.");
+			swal("이름 중복체크를 해주세요.",'','warning');
 			return;
 		}
 		form.action="updateCake.do";
-		alert("수정이 완료되었습니다");
+		swal("수정이 완료되었습니다",'','success');
 		form.submit();
 	}
 	
 	function deleteDo(){
 		var form=document.actionForm;
 		form.action="deleteCake.do";
-		alert("삭제가 완료되었습니다");
+		swal("삭제가 완료되었습니다",'','success');
 		form.submit();
 	}
 	
 	function nameCheck(){
 		var form=document.actionForm;
 		if (form.cakeName.value==""){
-			alert("케이크 이름을 입력하세요");
+			swal("케이크 이름을 입력하세요",'','warning');
 			return;
 		} else{
 			form.action="checkName2.do";
@@ -122,11 +123,11 @@ input[type=file]::file-selector-button{
 				<input type="text" name="cakeName" class="form-control" style="border-color:#fdcdcd" value="${cakeName }" onchange="formChange()">
 				</c:if>
 				<c:if test="${check==true }">
-				<script>alert("사용 가능한 이름입니다.");</script>
+				<script>swal("사용 가능한 이름입니다.",'','success');</script>
 				<input type="text" name="cakeName" class="form-control is-valid" style="border-color:#fdcdcd" value="${cakeName }">
 				</c:if>
 				<c:if test="${check==false }">
-				<script>alert("이미 사용중인 이름입니다.");</script>
+				<script>swal("이미 사용중인 이름입니다.",'','warning');</script>
 				<input type="text" name="cakeName" class="form-control is-invalid" style="border-color:#fdcdcd" value="${cakeName }">
 				</c:if>
 				<input type="hidden" name="cakeOriginalName" class="form-control" style="border-color:#fdcdcd" value="${cakeOriginalName }">

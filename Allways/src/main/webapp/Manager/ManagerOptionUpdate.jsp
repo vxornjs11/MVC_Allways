@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="managerstyle.css">
 <link rel="shortcut icon" href="./images/HeaderLogo2.png" sizes="180x180">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 div{
 	padding:1%;
@@ -42,21 +43,21 @@ function Update(){
 		if(Cek == 1){
 			upd.action="Update.do";
 			upd.method = "post";
-			alert("수정이 완료되었습니다");
+			swal("수정이 완료되었습니다",'','success');
 			upd.submit();
 			return;
 		}else if(Cek == 2){
-			alert("사용 불가능한 아이디 입니다.");
+			swal("사용 불가능한 아이디 입니다.",'','warning');
 			return;
 		}else{
-			alert("중복체크해주세요");
+			swal("중복체크해주세요",'','warning');
 			return;
 		}
 }
 function Delete(){
 		var upd = document.upd;
 		upd.action="MO_Delete.do";
-		alert("삭제가 완료되었습니다");
+		swal("삭제가 완료되었습니다",'','success');
 		upd.submit();
 		upd.method = "post";
 		}

@@ -76,7 +76,7 @@ function Addoption(){
 			<c:forEach items = "${OptionList}" var = "dto" begin="${(index-1)*rowcount }" end="${(index)*rowcount-1}">
 			
 		<tr>
-			<td><a href="optionId.do?cakeoptionId=${dto.cakeoptionId}">${dto.cakeoptionId}</a></td>
+			<td><a href="optionId.do?cakeoptionId=${dto.cakeoptionId}" class="tablebutton">${dto.cakeoptionId}</a></td>
 			<td>${dto.cakeoptionCategory}</td>
 			<td>${dto.cakeoptionValue}</td>
 			<td><fmt:formatNumber value="${dto.cakeoptionPrice}" type="currency"/></td>

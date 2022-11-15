@@ -9,6 +9,7 @@
 <%@include file="managerHeader.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/Table22.css">
+
 <script>
 
 	function Return(){

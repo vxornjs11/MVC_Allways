@@ -44,9 +44,10 @@
 		</div>
 	</div>
 	<c:if test="${CHECK==false }">
-			<p class="lead"	style="color:red;font-size:0.8em;margin:10px" >ID 또는 비밀번호가 일치하지 않습니다.</p>
+			<p class="lead"	style="color:red;font-size:1.2em;margin:10px" >ID 또는 비밀번호가 일치하지 않습니다.</p>
 	</c:if>
 	<input type="submit" name="login" value="LOGIN" class="btn" style="background:#ffffff;border-color:#a87878;color:#a87878">
+	
 	
 </form>
 </div>
