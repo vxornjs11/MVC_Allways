@@ -356,7 +356,7 @@ public class CController extends HttpServlet {
 		case ("/Customer/customerCakeCart.do"):
 			customercommand = new CCustomerCakeCartCommand();
 			customercommand.execute(request, response);
-			viewPage = "customerMain.do";
+			viewPage = "customerAbout.jsp";
 			break;
 			
 		case ("/Customer/customerCartList.do"):
@@ -375,7 +375,7 @@ public class CController extends HttpServlet {
 		case ("/Customer/customerOrder.do"):
 			customercommand = new CCustomerPayCommand();
 			customercommand.execute(request, response);
-			viewPage = "customerMain.do";
+			viewPage = "customerAbout.jsp";
 			break;
 			
 		// 결제
