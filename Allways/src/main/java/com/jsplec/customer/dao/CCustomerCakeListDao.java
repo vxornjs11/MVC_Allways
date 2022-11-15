@@ -41,7 +41,7 @@ public class CCustomerCakeListDao {
 			connection = dataSource.getConnection();
 
 			String query1 = "select cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews from cake ";
-			String query2 = "where " + queryName + " like '%" + content + "%' order by " + sort1 + " " + sort2;
+			String query2 = "where cakeDeletedate is null and " + queryName + " like '%" + content + "%' order by " + sort1 + " " + sort2;
 			
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
@@ -86,7 +86,7 @@ public class CCustomerCakeListDao {
 			connection = dataSource.getConnection();
 
 			String query1 = "select cakeId, cakeName, cakePrice, cakeImage, cakeLike, cakeViews from cake ";
-			String query2 = "order by " + queryName + " " + content;
+			String query2 = "where cakeDeletedate is null order by " + queryName + " " + content ;
 			
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
