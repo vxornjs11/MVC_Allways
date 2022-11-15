@@ -31,9 +31,9 @@
 						<tbody>
 							<tr>
 								<td>${dto.cakeName}</td>
-								<td><fmt:formatNumber value="${dto.ordersSalePrice}"/></td>
+								<td>￦ <fmt:formatNumber value="${dto.ordersSalePrice}"/></td>
 								<td>${dto.ordersQuantity}</td>
-								<td><fmt:formatNumber value="${dto.ordersPoint}"/></td>
+								<td>￦ <fmt:formatNumber value="${dto.ordersPoint}"/></td>
 							</tr>
 						</tbody>
 					</c:if>
@@ -41,6 +41,8 @@
 				</c:forEach>
 			</table>
 		</form>
+		
+		<h5 align="right">totalPoint : ￦ <fmt:formatNumber value="${totalPoint }"/></h5>
 		
 		<div align="center">
 		<table>

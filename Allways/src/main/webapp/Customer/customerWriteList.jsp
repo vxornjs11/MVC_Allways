@@ -32,11 +32,10 @@
 </style>
 <script type="text/javascript">
 
-function login() {
+function login(customerId) {
 	
-	alert('게시글 작성은 로그인 후 이용 가능합니다.');
 	var form = document.myform;
-	form.action = "customerLoginPage.do";
+	form.action = "customerBoardWritePage.do";
 	form.submit();
 	
 }
@@ -90,16 +89,16 @@ function next(commentId, index) {
 		<form name = "myform" method = "post">
 			
 			<div>
-				<c:choose>
-					<c:when test="${CUSTOMERID != null }">
-						<a href = "customerBoardWritePage.do"><button type = "button" style = "margin-left: -90px;" id="write_button">Write Board</button></a>
-					</c:when>
-					<c:otherwise>
-						<button style = "margin-left: -90px;" id="write_button" onclick = "login()">Write Board</button>
-					</c:otherwise>
-				</c:choose>
+				
+				<c:if test="${CUSTOMERID == null }">
+					<button type = "button" style = "margin-left: -90px;" id="write_button" onclick = "alert('게시글 작성은 로그인 후 이용 가능합니다.')">Write Board</button>
+				</c:if>
 	
-				<select style = "margin-left: 720px;" name = "combo">
+				<c:if test="${CUSTOMERID != null }">
+					<button type = "button" style = "margin-left: -90px;" id="write_button" onclick = "login()">Write Board</button>
+				</c:if>
+	
+				<select style = "margin-left: 660px;" name = "combo">
 					<option value = "w_customerId">작성자</option>
 					<option value = "writeTitle">내용</option>
 				</select>

@@ -21,10 +21,15 @@ public class CCustomerMyPointCommand implements CCustomerCommand {
 		int rowcount = 10; // 한 페이지에 출력할 리스트 개수
 		int pagecount = 10; // 한 페이지에 출력할 페이지 개수
 		int pagepage = 0; // ??
+		int totalPoint = 0;
 		
 		CCustomerMyPointDao dao = new CCustomerMyPointDao();
 		ArrayList<CCustomerMyPointDto> dtos = dao.selectPoint(customerId);
 	
+		for(int i = 0; i < dtos.size(); i++) {
+			totalPoint += dtos.get(i).getOrdersPoint();
+		}
+		
 		int maxpage = (dtos.size() % rowcount) != 0 ? (dtos.size() / rowcount) + 1 : (dtos.size() / rowcount);
 
 		if (request.getParameter("index")!=null) {
@@ -37,6 +42,7 @@ public class CCustomerMyPointCommand implements CCustomerCommand {
 			pagepage = index / pagecount;
 		}
 
+		request.setAttribute("totalPoint", totalPoint);
 		request.setAttribute("myPointList", dtos);
 		request.setAttribute("maxpage", maxpage);
 		request.setAttribute("arrsize", dtos.size());

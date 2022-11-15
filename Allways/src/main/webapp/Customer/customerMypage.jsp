@@ -105,7 +105,7 @@ function revision(index){
 		}
 		
 		if(index==3){
-		form.action="customerMypoint.do";
+		form.action="customerMyPointList.do";
 		}
 		
 		form.submit();

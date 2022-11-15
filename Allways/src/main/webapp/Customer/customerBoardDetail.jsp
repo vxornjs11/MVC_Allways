@@ -27,19 +27,36 @@ function writeComment(index) {
 	form.submit();
 }
 
+function writeComment(CUSTOMERID) {
+	
+	var form = document.myform;
+	if(CUSTOMERID == null) {
+		alert("로그인 후 이용 가능합니다.");
+	} else {
+		form.action = "customerWriteComment.do";
+		form.submit();
+	}
+	
+}
+
 </script>
 
 	<%@include file="customerHeader.jsp" %>
 
 	<br>
 	
-	<table>
+	<table align="center">
 		<tr>
-			<th width = "50">
+			<th></th>
+			<th><h6>No.${boardDetail.writeId}&nbsp;&nbsp;&nbsp;</h6></th>
+			<th><h6>작성자: ${boardDetail.customerName}&nbsp;&nbsp;&nbsp;</h6></th>
+			<th><h6>제목: ${boardDetail.writeTitle}&nbsp;&nbsp;&nbsp;</h6></th>
+			<th><h6>작성일자: ${boardDetail.writeInitdate}</h6></th>
+<%-- 			<th width = "50">
 			<th width="50" style = "text-align: left"><h6>No.${boardDetail.writeId}</h6></th>
 			<th width="110" style = "text-align: left"><h6>작성자: ${boardDetail.customerName}</h6></th>
 			<th width="300" style = "text-align: left"><h6>제목: ${boardDetail.writeTitle}</h6></th>
-			<th width="850" style = "text-align: right"><h6>작성일자: ${boardDetail.writeInitdate}</h6></th>
+			<th width="850" style = "text-align: right"><h6>작성일자: ${boardDetail.writeInitdate}</h6></th> --%>
 		</tr>
 	</table>
 	
@@ -178,10 +195,10 @@ function writeComment(index) {
 		
 		<br>
 		
-		<form action = "customerWriteComment.do" name = "myform" method = "post">
+		<form name = "myform" method = "post">
 			<input type = "hidden" name = "writeId" value = "${boardDetail.writeId}">
 			<input type = "text" name = "writeContent" size = "65" placeholder="답글 작성란">
-			<button type = "submit">OK</button>
+			<button type = "button" onclick = "writeComment(${CUSTOMERID})">OK</button>
 		</form>
 		
 	</div>

@@ -88,7 +88,11 @@ function review() {
 	form.action = "customerOrdersReview.do";
 }
 
-function ordersList() {
+function ordersList1() {
+	alert('');
+}
+
+function ordersList2() {
 	var form = document.myform;
 	form.action = "customerOrdersList.do";
 	form.submit();
@@ -126,17 +130,22 @@ function searchList() {
 	<div style = "margin-left: 300px; margin-top: 70px;">
 		
 		<form name = "myform" method = "post">
-		<button style = "margin-left: -120px;" onclick = "ordersList()">Write Review</button>
-		
-		<div class="btn-group">
-		  <button type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-			Sort
-		  </button>
-		  <ul class="dropdown-menu">
-		    <li><a class="dropdown-item" href="customerOrdersReview.do?sort=oreviewInitdate&index=${pageNum }">Newest</a></li>
-		    <li><a class="dropdown-item" href="customerOrdersReview.do?sort=oreviewStarrating&index=${pageNum }">Star Rating</a></li>
-		  </ul>
-		</div>
+			<c:if test="${CUSTOMERID == null }">
+				<button style = "margin-left: -135px;" onclick = "alert('리뷰 작성은 로그인 후 이용 가능합니다.')">Write Review</button>
+			</c:if>
+			<c:if test="${CUSTOMERID != null }">
+				<button style = "margin-left: -135px;" onclick = "ordersList2()">Write Review</button>
+			</c:if>
+			
+			<div class="btn-group">
+			  <button type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+				Sort
+			  </button>
+			  <ul class="dropdown-menu">
+			    <li><a class="dropdown-item" href="customerOrdersReview.do?sort=oreviewInitdate&index=${pageNum }">Newest</a></li>
+			    <li><a class="dropdown-item" href="customerOrdersReview.do?sort=oreviewStarrating&index=${pageNum }">Star Rating</a></li>
+			  </ul>
+			</div>
 			
 			
 			<select style = "margin-left: 600px;" name = "combo">
@@ -152,7 +161,7 @@ function searchList() {
 	
 	<div align = "center" class="container text-center">
 		<form action = "" name = "list" method = "post">
-			<table class="table" >
+			<table class="table">
 				
 				<thead>
 					<tr>
@@ -169,7 +178,7 @@ function searchList() {
 					<c:if test="${dto != null }">
 						<c:choose>
 							<c:when test="${CUSTOMERID == dto.or_customerId }">
-								<tbody style="vertical-align:middle;">
+								<tbody>
 									<tr>
 										<td>${dto.rowNum }</td>
 										<td><img name="img" src="./reviewImageFile/${dto.oreviewImage }" style = "width: 75px; height: 75px;"></td>
