@@ -40,7 +40,7 @@ public ArrayList<CManagerOrderStautsDTo> orderStautsList(){
 			
 			String query = "select ordersId,ordersStatus,o_customerId,o_cakeId,cakeName,o_goodsId,goodsName,ordersSalePrice,ordersQuantity,ordersPoint ";
 			String query2 = "from orders as o, cake as c, goods as g where o.o_cakeId = c.cakeId and g.goodsId = o.o_goodsId and ordersStatus = '구매' ";
-			String query3 = "and ordersDeletedate is null and orderSoldOutdate is null and ordersMakedate is null" ;
+			String query3 = "and ordersDeletedate is null and ordersSoldOutdate is null and ordersMakedate is null" ;
 			preparedStatement = connection.prepareStatement(query+ query2+query3 );
 			resultSet = preparedStatement.executeQuery();
 				
