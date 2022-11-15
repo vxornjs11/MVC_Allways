@@ -17,7 +17,7 @@
 <body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-
+/* 
 function writeComment(index) {
 	var form = document.myform;
 	if (index == 1) {
@@ -25,17 +25,19 @@ function writeComment(index) {
 		form.action = "customerWriteComment.do";
 	}
 	form.submit();
-}
+} */
 
-function writeComment(CUSTOMERID) {
-	
+function writeComment() {
 	var form = document.myform;
-	if(CUSTOMERID == null) {
-		alert("로그인 후 이용 가능합니다.");
-	} else {
-		form.action = "customerWriteComment.do";
-		form.submit();
+
+	if(form.writeContent.value.length==0){
+		form.writeContent.focus();
+		return;
+	}else {
+			form.action = "customerWriteComment.do";
+			form.submit();
 	}
+		
 	
 }
 
@@ -198,7 +200,12 @@ function writeComment(CUSTOMERID) {
 		<form name = "myform" method = "post">
 			<input type = "hidden" name = "writeId" value = "${boardDetail.writeId}">
 			<input type = "text" name = "writeContent" size = "65" placeholder="답글 작성란">
-			<button type = "button" onclick = "writeComment(${CUSTOMERID})">OK</button>
+			<c:if test="${CUSTOMERID == null }">
+				<button type = "button" onclick = "alert('로그인 후 이용 가능합니다.')">OK</button>
+			</c:if>
+			<c:if test="${CUSTOMERID != null }">
+				<button type = "button" onclick = "writeComment()">OK</button>
+			</c:if>
 		</form>
 		
 	</div>
