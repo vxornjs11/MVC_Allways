@@ -371,7 +371,7 @@ public CManagerOrderListDao() {
 				connection2 = dataSource.getConnection();
 				
 				String query = "insert into orders (ordersId, ordersStatus,o_customerId,o_cakeId,o_goodsId,ordersSalePrice,ordersQuantity,ordersPoint) values (?,?,?,?,?,?,?,?) ";
-				String query2 = "update orders set orderSoldOutdate = now() where ordersId = ?";
+				String query2 = "update orders set ordersSoldOutdate = now() where ordersId = ?";
 				preparedStatement = connection.prepareStatement(query);
 				preparedStatement2 = connection2.prepareStatement(query2);
 	
